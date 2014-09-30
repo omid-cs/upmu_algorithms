@@ -70,7 +70,7 @@ class ExampleDelta(qdf.QuasarDistillate):
 
         #Now that we are done, save the time we finished at
         self.persist("done", True)
-        print delta_values[1,10]
+    
 
 qdf.register(ExampleDelta())
 qdf.begin()
