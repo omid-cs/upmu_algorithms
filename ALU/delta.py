@@ -19,8 +19,8 @@ class DistillateDriver(qdf.QuasarDistillate):
         #This is the final level. You can have multiple of these
         self.add_stream("delta", unit="Degrees")
 
-        self.use_stream("2hz", "571ce598-3ffd-499b-be6c-0df52e597c93")
-        self.use_stream("1hz", "49129d4a-335e-4c81-a8a4-27f5d8c45646")
+        self.use_stream("2hz", "66fcb659-c69a-41b5-b874-80ac7d7f669d")
+        self.use_stream("1hz", "b4776088-2f85-4c75-90cd-7472a949a8fa")
 
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
