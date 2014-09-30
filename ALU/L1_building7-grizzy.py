@@ -14,7 +14,7 @@ class ExampleDelta(qdf.QuasarDistillate):
         self.set_author("Andrew")
 
         #This is the second level. This name should be unique for every algorithm you write
-        self.set_name("AdiffL1")
+        self.set_name("L1_B-G")
 
         #This is the final level. You can have multiple of these
         self.add_stream("deltaL1", unit="Degrees")
