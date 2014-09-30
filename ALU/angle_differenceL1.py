@@ -55,9 +55,13 @@ class ExampleDelta(qdf.QuasarDistillate):
                 idx2 += 1
                 continue
             delta = hz1_values[idx1].value - hz2_values[idx2].value
+            if delta > 180:
+                delta =delta-360
+            if delta <-180:
+                delta=delta+360
             delta_values.append((hz1_values[idx1].time, delta))
             if len(delta_values) >= qdf.OPTIMAL_BATCH_SIZE:
-                yield self.stream_insert_multiple("delta", delta_values)
+                yield self.stream_insert_multiple("deltaL1", delta_values)
                 delta_values = []
             idx1 += 1
             idx2 += 1
