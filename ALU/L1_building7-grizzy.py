@@ -48,6 +48,12 @@ class ExampleDelta(qdf.QuasarDistillate):
         idx1 = 0
         idx2 = 0
         while idx1 < len(hz1_values) and idx2 < len(hz2_values):
+            if hz1_values[idx1].time < hz2_values[idx2].time:
+                idx1 += 1
+                continue
+            if hz1_values[idx1].time > hz2_values[idx2].time:
+                idx2 += 1
+                continue
             delta = hz1_values[idx1].value - hz2_values[idx2].value
             if delta > 180:
                 delta =delta-360
