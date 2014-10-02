@@ -13,6 +13,7 @@ class Inst_Freq(qdf.QuasarDistillate):
         #TEMP. In future, find dynamically
         self.input_stream = "L1ANG"
         self.output_stream = "soda_a_L1ANG"
+        output_unit = "Hz"
         input_uid = "4d6525a9-b8ad-48a4-ae98-b171562cf817"
         version = 8
 
@@ -23,7 +24,7 @@ class Inst_Freq(qdf.QuasarDistillate):
         self.set_name("Instantaneous Frequency")
 
         #This is the final level. You can have multiple of these
-        self.add_stream(self.output_stream, unit="Hz")
+        self.add_stream(self.output_stream, unit=output_unit)
 
         self.use_stream(self.input_stream, input_uid)
 
@@ -36,7 +37,7 @@ class Inst_Freq(qdf.QuasarDistillate):
         """
         This is called to compute your algorithm.
 
-        This example generates the instantaneous frequency of phase
+        This distillate generates the instantaneous frequency of phase
         """
 
         if self.unpersist("done",False):
@@ -46,10 +47,10 @@ class Inst_Freq(qdf.QuasarDistillate):
         #TEMP. In future, find dynamically
         start_date = self.date("2014-09-07T00:00:00.000000")
         end_date = self.date("2014-09-07T04:00:00.000000")
+        sampling_freq = 160 #Hz
 
         input_version, input_phases = yield self.stream_get(self.input_stream, start_date, end_date)
         inst_freqs = []
-        sampling_freq = 160 #Hz
 
         i = 0
         while i < len(input_phases)-sampling_freq:
