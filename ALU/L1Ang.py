@@ -34,7 +34,9 @@ class ExampleDelta(qdf.QuasarDistillate):
         This example generates the difference between two streams
         """
 
-        
+        if self.unpersist("done",False):
+            print "Already done"
+            return 
 
         start_date = self.date("2014-10-01T00:00:00.000000")
         end_date = self.date("2014-10-02T00:00:00.000000")
