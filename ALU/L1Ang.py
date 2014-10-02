@@ -38,8 +38,8 @@ class ExampleDelta(qdf.QuasarDistillate):
             print "Already done"
             return 
 
-        start_date = self.date("2014-8-16T00:00:00.000000")
-        end_date = self.date("2014-8-17T00:00:00.000000")
+        start_date = self.date("2014-8-17T00:00:00.000000")
+        end_date = self.date("2014-8-18T00:00:00.000000")
 
         hz1_version, hz1_values = yield self.stream_get("1hz", start_date, end_date)
         hz2_version, hz2_values = yield self.stream_get("2hz", start_date, end_date)
