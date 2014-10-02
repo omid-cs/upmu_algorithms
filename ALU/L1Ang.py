@@ -19,8 +19,8 @@ class ExampleDelta(qdf.QuasarDistillate):
         #This is the final level. You can have multiple of these
         self.add_stream("L1ang", unit="Degrees")
 
-        self.use_stream("1hz", "b4776088-2f85-4c75-90cd-7472a949a8fa")
-        self.use_stream("2hz", "adf13e17-44b7-4ef6-ae3f-fde8a9152ab7")
+        self.use_stream("1hz", "2942433b-6511-4298-a0b2-2886456cff4f")
+        self.use_stream("2hz", "74182356-6d1e-4123-b312-5cc70da89840")
 
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
