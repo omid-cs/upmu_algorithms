@@ -164,3 +164,16 @@ def stream_insert_multiple(self, name, values):
     """
 
 ```
+
+In addition, the qdf package has the following constants, which may be useful:
+```
+OPTIMAL_BATCH_SIZE  # The best number of records to process per insert chunk
+MICROSECOND         # The number of nanoseconds in a microsecond
+MILLISECOND         # The number of nanoseconds in a millisecond
+SECOND              # The number of nanoseconds in a second
+MINUTE              # The number of nanoseconds in a minute
+HOUR                # The number of nanoseconds in an hour
+DAY                 # The number of nanoseconds in a day
+```
+
+

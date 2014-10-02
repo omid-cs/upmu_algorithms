@@ -15,7 +15,7 @@ class Inst_Freq(qdf.QuasarDistillate):
         self.output_stream = "soda_a_L1ANG"
         output_unit = "Hz"
         input_uid = "4d6525a9-b8ad-48a4-ae98-b171562cf817"
-        version = 8
+        version = 10
 
         #This is the first level in the distillate tree
         self.set_author("CAB")
@@ -44,7 +44,6 @@ class Inst_Freq(qdf.QuasarDistillate):
             print "Already done"
             return
 
-        #TEMP. In future, find dynamically
         start_date = self.date("2014-09-07T00:00:00.000000")
         end_date = self.date("2014-09-07T04:00:00.000000")
         sampling_freq = 160 #Hz
