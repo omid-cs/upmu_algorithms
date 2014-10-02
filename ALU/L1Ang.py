@@ -14,13 +14,13 @@ class ExampleDelta(qdf.QuasarDistillate):
         self.set_author("Andrew")
 
         #This is the second level. This name should be unique for every algorithm you write
-        self.set_name("L1")
+        self.set_name("L1Ang")
 
         #This is the final level. You can have multiple of these
-        self.add_stream("deltaL1", unit="Degrees")
+        self.add_stream("delta_L1", unit="Degrees")
 
-        self.use_stream("2hz", "66fcb659-c69a-41b5-b874-80ac7d7f669d")
-        self.use_stream("1hz", "b4776088-2f85-4c75-90cd-7472a949a8fa")
+        self.use_stream("1hz", " b4776088-2f85-4c75-90cd-7472a949a8fa")
+        self.use_stream("2hz", "adf13e17-44b7-4ef6-ae3f-fde8a9152ab7")
 
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
@@ -38,8 +38,8 @@ class ExampleDelta(qdf.QuasarDistillate):
             print "Already done"
             return
 
-        start_date = self.date("2014-09-01T00:00:00.000000")
-        end_date = self.date("2014-09-02T00:00:00.000000")
+        start_date = self.date("2014-10-01T00:00:00.000000")
+        end_date = self.date("2014-10-02T00:00:00.000000")
 
         hz1_version, hz1_values = yield self.stream_get("1hz", start_date, end_date)
         hz2_version, hz2_values = yield self.stream_get("2hz", start_date, end_date)
@@ -61,12 +61,12 @@ class ExampleDelta(qdf.QuasarDistillate):
                 delta=delta+360
             delta_values.append((hz1_values[idx1].time, delta))
             if len(delta_values) >= qdf.OPTIMAL_BATCH_SIZE:
-                yield self.stream_insert_multiple("deltaL1", delta_values)
+                yield self.stream_insert_multiple("delta_L1", delta_values)
                 delta_values = []
             idx1 += 1
             idx2 += 1
 
-        yield self.stream_insert_multiple("deltaL1", delta_values)
+        yield self.stream_insert_multiple("delta_L1", delta_values)
 
         #Now that we are done, save the time we finished at
         self.persist("done", True)
