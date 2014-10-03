@@ -14,15 +14,15 @@ class ExampleDelta(qdf.QuasarDistillate):
         self.set_author("Andrew")
 
         #This is the second level. This name should be unique for every algorithm you write
-        self.set_name("L1difference")
+        self.set_name("L2difference")
 
         #This is the final level. You can have multiple of these
-        self.add_stream("L1ang_GB", unit="Degrees")
-        self.add_stream("L1ang_GS", unit="Degrees")
-        self.add_stream("L1ang_BS", unit="Degrees")
-        self.use_stream("1hz", "b4776088-2f85-4c75-90cd-7472a949a8fa")
-        self.use_stream("2hz", "66fcb659-c69a-41b5-b874-80ac7d7f669d")
-        self.use_stream("3hz", "adf13e17-44b7-4ef6-ae3f-fde8a9152ab7")
+        self.add_stream("L2ang_GB", unit="Degrees")
+        self.add_stream("L2ang_GS", unit="Degrees")
+        self.add_stream("L2ang_BS", unit="Degrees")
+        self.use_stream("1hz", "8b80c070-7bb1-44d3-b3a8-301558d573ea")
+        self.use_stream("2hz", "f89e77a8-661e-49d2-a868-2071c1fae238")
+        self.use_stream("3hz", "4f56a8f1-f3ca-4684-930e-1b4d9955f72c")
         
 
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
@@ -65,12 +65,12 @@ class ExampleDelta(qdf.QuasarDistillate):
                 delta=delta+360
             delta_values.append((hz1_values[idx1].time, delta))
             if len(delta_values) >= qdf.OPTIMAL_BATCH_SIZE:
-                yield self.stream_insert_multiple("L1ang_GB", delta_values)
+                yield self.stream_insert_multiple("L2ang_GB", delta_values)
                 delta_values = []
             idx1 += 1
             idx2 += 1
 
-        yield self.stream_insert_multiple("L1ang_GB", delta_values)
+        yield self.stream_insert_multiple("L2ang_GB", delta_values)
         
         delta_values = []
 
@@ -90,12 +90,12 @@ class ExampleDelta(qdf.QuasarDistillate):
                 delta=delta+360
             delta_values.append((hz1_values[idx1].time, delta))
             if len(delta_values) >= qdf.OPTIMAL_BATCH_SIZE:
-                yield self.stream_insert_multiple("L1ang_GS", delta_values)
+                yield self.stream_insert_multiple("L2ang_GS", delta_values)
                 delta_values = []
             idx1 += 1
             idx2 += 1
 
-        yield self.stream_insert_multiple("L1ang_GS", delta_values)
+        yield self.stream_insert_multiple("L2ang_GS", delta_values)
         #Now that we are done, save the time we finished at
         delta_values = []
 
@@ -115,12 +115,12 @@ class ExampleDelta(qdf.QuasarDistillate):
                 delta=delta+360
             delta_values.append((hz2_values[idx1].time, delta))
             if len(delta_values) >= qdf.OPTIMAL_BATCH_SIZE:
-                yield self.stream_insert_multiple("L1ang_BS", delta_values)
+                yield self.stream_insert_multiple("L2ang_BS", delta_values)
                 delta_values = []
             idx1 += 1
             idx2 += 1
 
-        yield self.stream_insert_multiple("L1ang_BS", delta_values)
+        yield self.stream_insert_multiple("L2ang_BS", delta_values)
         self.persist("done", True)
     
 
