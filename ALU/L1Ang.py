@@ -24,7 +24,7 @@ class ExampleDelta(qdf.QuasarDistillate):
 
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
-        self.set_version(8)
+        self.set_version(9)
 
     @defer.inlineCallbacks
     def compute(self):
@@ -38,8 +38,8 @@ class ExampleDelta(qdf.QuasarDistillate):
             print "Already done"
             return 
 
-        start_date = self.date("2014-08-17T00:00:00.000000")
-        end_date = self.date("2014-08-17T00:30:00.000000")
+        start_date = self.date("2014-10-01T00:00:00.000000")
+        end_date = self.date("2014-10-02T00:30:00.000000")
 
         hz1_version, hz1_values = yield self.stream_get("1hz", start_date, end_date)
         hz2_version, hz2_values = yield self.stream_get("2hz", start_date, end_date)
