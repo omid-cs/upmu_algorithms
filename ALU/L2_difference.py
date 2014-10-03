@@ -27,7 +27,7 @@ class ExampleDelta(qdf.QuasarDistillate):
 
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
-        self.set_version(2)
+        self.set_version(3)
 
     @defer.inlineCallbacks
     def compute(self):
@@ -123,3 +123,6 @@ class ExampleDelta(qdf.QuasarDistillate):
         yield self.stream_insert_multiple("L2ang_BS", delta_values)
         self.persist("done", True)
     
+
+qdf.register(ExampleDelta())
+qdf.begin()
