@@ -46,8 +46,8 @@ class Distillate(qdf.QuasarDistillate):
 
         input_versions, input_streams = [], []
         
-        current_date = date(self.opts['start_date'])
-        end_date = date(self.opts['end_date'])
+        current_date = self.date(self.opts['start_date'])
+        end_date = self.date(self.opts['end_date'])
 
         # take 15 minute windows
         while current_date < end_date:
