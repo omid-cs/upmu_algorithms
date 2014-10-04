@@ -22,8 +22,8 @@ class Distillate(qdf.QuasarDistillate):
         self.set_name(opts['name'])
 
         #This is the final level. You can have multiple of these
-        for stream, unit in opts['output_streams'], opts['output_units']:
-          self.add_stream(stream, unit)
+        for i in range(len(opts['output_streams'])):
+          self.add_stream(opts['output_streams'][i], opts['output_units'][i])
 
         for stream, uid in opts['input_streams'], opts['input_uids']:
           self.use_stream(stream, uid)
@@ -56,7 +56,10 @@ class Distillate(qdf.QuasarDistillate):
             window_end = end
           
           # fill input_streams array with all streams for a 15 minute time window
-          for input_name, start_date, end_date in opts['input_names'], opts['start_dates'], opts['end_dates']:
+          for i in range(len(opts['input_names'])):
+            input_name = opts['input_names'][i]
+            start_date = opts['start_dates'][i]
+            end_date   = opts['end_dates'][i]
             input_version, input_values = yield self.stream_get(input_name, current, window_end)
             input_versions.append(input_version)
             input_stream.append(input_values)
