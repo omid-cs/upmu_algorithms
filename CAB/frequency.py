@@ -43,7 +43,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG'], \
          'output_streams' : ['grizzly_new_L1Mag_frequency'], \
          'output_units'   : ['Hz'], \
          'author'         : 'CAB', \
-         'name'           : 'Clean', \
+         'name'           : 'Frequency', \
          'version'        : 2, \
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
