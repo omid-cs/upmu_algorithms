@@ -46,8 +46,8 @@ class Distillate(qdf.QuasarDistillate):
 
         input_versions, input_streams = [], []
         
-        current_date = opts['start_date']
-        end_date = opts['end_date']
+        current_date = self.opts['start_date']
+        end_date = self.opts['end_date']
 
         # take 15 minute windows
         while current < end_date:
@@ -58,10 +58,10 @@ class Distillate(qdf.QuasarDistillate):
             window_end = end
           
           # fill input_streams array with all streams for a 15 minute time window
-          for i in range(len(opts['input_names'])):
-            input_name = opts['input_names'][i]
-            start_date = opts['start_dates'][i]
-            end_date   = opts['end_dates'][i]
+          for i in range(len(self.opts['input_names'])):
+            input_name = self.opts['input_names'][i]
+            start_date = self.opts['start_dates'][i]
+            end_date   = self.opts['end_dates'][i]
             input_version, input_values = yield self.stream_get(input_name, current, window_end)
             input_versions.append(input_version)
             input_stream.append(input_values)
@@ -69,7 +69,7 @@ class Distillate(qdf.QuasarDistillate):
           #opts['algorithm']() is a function where the algorithm is implememted for the distillate
           #when this function returns, all data from input streams will have been processed,
           #  and the results passed into the output streams for the 15 minute window of data
-          opts['algorithm'](input_streams, opts['output_streams'])
+          self.opts['algorithm'](input_streams, self.opts['output_streams'])
 
           current += 15 * qdf.MINUTE
 
