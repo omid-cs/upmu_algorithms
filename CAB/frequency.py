@@ -30,7 +30,7 @@ def frequency(input_streams):
     freqs.append((t1, (phase_diff/delta_time)*1e9/360 + 60))
 
     if len(freqs) >= qdf.OPTIMAL_BATCH_SIZE:
-      yield freqs
+      yield [freqs] # must yield list
       freqs = []
     i += 1
 

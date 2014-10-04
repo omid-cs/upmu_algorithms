@@ -69,10 +69,11 @@ class Distillate(qdf.QuasarDistillate):
           #on completion, 'True' is returned in the second argument to flag that the
           #processing is done for the input data
           output_data_gen = self.opts['algorithm'](input_streams)
-          output_batch = output_data_gen.next()
-          while output_batch:
-            self.stream_insert_multiple(self.opts['output_streams'][0], output_batch) #TEMP: extend to more than one output stream
-            output_batch = output_data_gen.next()
+          output_batch_list = output_data_gen.next()
+          while output_batch_list:
+            for i in range(len(output_batch_list)):
+              self.stream_insert_multiple(self.opts['output_streams'][i], output_batch_list[i])
+            output_batch_list = output_data_gen.next()
           
           #reset input versions and streams
           input_versions = []
