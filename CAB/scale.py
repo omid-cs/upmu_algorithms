@@ -8,7 +8,7 @@ def scale(input_streams, output_streams):
   # only one output stream
   output_stream = output_streams[0]
   
-  scale_factor = 9
+  scale_factor = 1.2
 
   scaled_values = []
   i = 0
@@ -25,12 +25,12 @@ def scale(input_streams, output_streams):
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c'], \
          'start_date'     : '2014-09-07T00:00:00.000000', \
-         'end_date'       : '2014-09-07T08:00:00.000000', \
-         'output_streams' : ['grizzly_new_L1Mag_scale_9.0'], \
+         'end_date'       : '2014-09-08T00:00:00.000000', \
+         'output_streams' : ['grizzly_new_L1Mag_scale_1.2'], \
          'output_units'   : ['V'], \
          'author'         : 'CAB', \
          'name'           : 'Scale', \
-         'version'        : 11, \
+         'version'        : 12, \
          'algorithm'      : scale }
 qdf.register(Distillate(), opts)
 qdf.begin()
