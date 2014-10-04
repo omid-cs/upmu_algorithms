@@ -34,8 +34,8 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'output_streams' : ['grizzly_new_L1Mag_clean', 'grizzly_new_L1Mag_errors'], \
          'output_units'   : ['V', 'error'], \
          'author'         : 'CAB', \
-         'name'           : 'Scale', \
-         'version'        : 13, \
+         'name'           : 'Clean', \
+         'version'        : 1, \
          'algorithm'      : scale }
 qdf.register(Distillate(), opts)
 qdf.begin()
