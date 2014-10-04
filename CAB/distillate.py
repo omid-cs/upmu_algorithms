@@ -22,7 +22,7 @@ class Distillate(qdf.QuasarDistillate):
         self.set_name(opts['name'])
 
         #This is the final level. You can have multiple of these
-        for stream, unit in opts['output_streams'], opts['ouput_units']:
+        for stream, unit in opts['output_streams'], opts['output_units']:
           self.add_stream(stream, unit)
 
         for stream, uid in opts['input_streams'], opts['input_uids']:
