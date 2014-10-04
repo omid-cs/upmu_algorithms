@@ -3,26 +3,26 @@ from distillate import Distillate
 
 def clean(input_streams):
   # only one input stream
-  input_values = input_streams[0]
+  input_points = input_streams[0]
 
   lower_bound = 0
   upper_bound = 500
   
-  clean_values = []
-  error_values = []
+  clean_points = []
+  error_points = []
 
   i = 0
-  while i < len(input_values):
-    if input_values[i] >= lower_bound and input_values[i] <= upper_bound:
-      clean_values.append((input_values[i].time, input_values[i].value))
-      error_values.append((input_values[i].time, 0))
+  while i < len(input_points):
+    if input_points[i].value >= lower_bound and input_points[i].value <= upper_bound:
+      clean_points.append((input_points[i].time, input_points[i].value))
+      error_points.append((input_points[i].time, 0))
     else:
-      error_values.append((input_values[i].time, 1))
+      error_points.append((input_points[i].time, 1))
 
-    if len(error_values) >= qdf.OPTIMAL_BATCH_SIZE:
-      yield [clean_values, error_values] # keep order as specified in opts
-      clean_values = []
-      error_values = []
+    if len(error_points) >= qdf.OPTIMAL_BATCH_SIZE:
+      yield [clean_points, error_points] # keep order as specified in opts
+      clean_points = []
+      error_points = []
     i += 1
 
   yield None
