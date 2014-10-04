@@ -40,11 +40,11 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG'], \
          'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa'], \
          'start_date'     : '2014-09-07T00:00:00.000000', \
          'end_date'       : '2014-09-08T00:00:00.000000', \
-         'output_streams' : ['grizzly_new_L1Mag_frequency'], \
+         'output_streams' : ['grizzly_new_L1Ang_frequency'], \
          'output_units'   : ['Hz'], \
          'author'         : 'CAB', \
          'name'           : 'Frequency', \
-         'version'        : 2, \
+         'version'        : 3, \
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
 qdf.begin()
