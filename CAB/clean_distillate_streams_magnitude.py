@@ -13,7 +13,7 @@ def scale(input_streams):
 
   i = 0
   while i < len(input_values):
-    if input_values[i] >= lower_bound && input_values[i] <= upper_bound:
+    if input_values[i] >= lower_bound and input_values[i] <= upper_bound:
       clean_values.append((input_values[i].time, input_values[i].value))
       error_values.append((input_values[i].time, 0))
     else:
