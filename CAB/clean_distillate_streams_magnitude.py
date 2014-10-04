@@ -19,7 +19,7 @@ def clean(input_streams):
     else:
       error_values.append((input_values[i].time, 1))
 
-    if len(clean_values) >= qdf.OPTIMAL_BATCH_SIZE:
+    if len(error_values) >= qdf.OPTIMAL_BATCH_SIZE:
       yield [clean_values, error_values] # keep order as specified in opts
       clean_values = []
       error_values = []
