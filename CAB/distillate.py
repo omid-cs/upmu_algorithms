@@ -54,8 +54,8 @@ class Distillate(qdf.QuasarDistillate):
           window_end = current_date + 15 * qdf.MINUTE
 
           # final window edge case
-          if window_end > end:
-            window_end = end
+          if window_end > end_date:
+            window_end = end_date
           
           # fill input_streams array with all streams for a 15 minute time window
           for i in range(len(self.opts['input_names'])):
