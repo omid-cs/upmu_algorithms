@@ -5,8 +5,8 @@ def clean(input_streams):
   # only one input stream
   input_points = input_streams[0]
 
-  lower_bound = 0
-  upper_bound = 500
+  lower_bound = 121.5
+  upper_bound = 122.5
   
   clean_points = []
   error_points = []
@@ -34,7 +34,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'output_units'   : ['V', 'error'], \
          'author'         : 'CAB', \
          'name'           : 'Clean', \
-         'version'        : 5, \
+         'version'        : 6, \
          'algorithm'      : clean }
 qdf.register(Distillate(), opts)
 qdf.begin()
