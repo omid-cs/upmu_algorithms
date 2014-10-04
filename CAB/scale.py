@@ -1,12 +1,9 @@
 import qdf
 from distillate import Distillate
 
-def scale(input_streams, output_streams):
+def scale(input_streams):
   # only one input stream
   input_values = input_streams[0]
-  
-  # only one output stream
-  output_stream = output_streams[0]
   
   scale_factor = 1.2
 
@@ -16,11 +13,11 @@ def scale(input_streams, output_streams):
     scaled_value = input_values[i].value * scale_factor
     scaled_values.append((input_values[i].time, scaled_value))
     if len(scaled_values) >= qdf.OPTIMAL_BATCH_SIZE:
-      yield (scaled_values, False)
+      yield scaled_values
       scaled_values = []
     i += 1
 
-  yield (scaled_values, True)
+  yield None
 
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c'], \
