@@ -1,7 +1,7 @@
 import qdf
 from distillate import Distillate
 
-def scale(input_streams):
+def clean(input_streams):
   # only one input stream
   input_values = input_streams[0]
 
@@ -19,7 +19,7 @@ def scale(input_streams):
     else:
       error_values.append((input_values[i].time, 1))
 
-    if len(scaled_values) >= qdf.OPTIMAL_BATCH_SIZE:
+    if len(clean_values) >= qdf.OPTIMAL_BATCH_SIZE:
       yield [clean_values, error_values] # keep order as specified in opts
       clean_values = []
       error_values = []
@@ -36,6 +36,6 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'author'         : 'CAB', \
          'name'           : 'Clean', \
          'version'        : 1, \
-         'algorithm'      : scale }
+         'algorithm'      : clean }
 qdf.register(Distillate(), opts)
 qdf.begin()
