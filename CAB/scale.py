@@ -25,7 +25,7 @@ def scale(input_streams, output_streams):
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c'], \
          'start_date'     : '2014-09-07T00:00:00.000000', \
-         'end_date'       : '2014-09-08T00:00:00.000000', \
+         'end_date'       : '2014-09-07T00:40:00.000000', \
          'output_streams' : ['grizzly_new_L1Mag_scale_9.0'], \
          'output_units'   : ['V'], \
          'author'         : 'CAB', \
