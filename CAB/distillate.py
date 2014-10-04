@@ -44,7 +44,8 @@ class Distillate(qdf.QuasarDistillate):
             print "Already done"
             return
 
-        input_versions, input_streams = [], []
+        input_versions = []
+        input_streams = []
         
         current_date = self.date(self.opts['start_date'])
         end_date = self.date(self.opts['end_date'])
@@ -62,12 +63,16 @@ class Distillate(qdf.QuasarDistillate):
             input_name = self.opts['input_streams'][i]
             input_version, input_values = yield self.stream_get(input_name, current_date, window_end)
             input_versions.append(input_version)
-            input_stream.append(input_values)
+            input_streams.append(input_values)
 
           #opts['algorithm']() is a function where the algorithm is implememted for the distillate
           #when this function returns, all data from input streams will have been processed,
           #  and the results passed into the output streams for the 15 minute window of data
           self.opts['algorithm'](input_streams, self.opts['output_streams'])
+          
+          #reset input versions and streams
+          input_versions = []
+          input_streams = []
 
           current_date += 15 * qdf.MINUTE
 
