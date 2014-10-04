@@ -27,11 +27,11 @@ def frequency(input_streams):
       phase_diff -= 360
     elif phase_diff < -180:
       phase_diff += 360
-    inst_freqs.append((t1, (phase_diff/delta_time)*1e9/360 + 60))
+    freqs.append((t1, (phase_diff/delta_time)*1e9/360 + 60))
 
-    if len(inst_freqs) >= qdf.OPTIMAL_BATCH_SIZE:
-      yield inst_freqs
-      inst_freqs = []
+    if len(freqs) >= qdf.OPTIMAL_BATCH_SIZE:
+      yield freqs
+      freqs = []
     i += 1
 
   yield None
