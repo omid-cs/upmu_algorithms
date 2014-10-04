@@ -25,8 +25,8 @@ class Distillate(qdf.QuasarDistillate):
         for i in range(len(opts['output_streams'])):
           self.add_stream(opts['output_streams'][i], opts['output_units'][i])
 
-        for stream, uid in opts['input_streams'], opts['input_uids']:
-          self.use_stream(stream, uid)
+        for i in range(len(opts['input_streams']):
+          self.use_stream(opts['input_streams'][i], opts['input_uids'][i])
 
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
