@@ -65,10 +65,14 @@ class Distillate(qdf.QuasarDistillate):
             input_versions.append(input_version)
             input_streams.append(input_values)
 
-          #opts['algorithm']() is a function where the algorithm is implememted for the distillate
-          #when this function returns, all data from input streams will have been processed,
-          #  and the results passed into the output streams for the 15 minute window of data
-          self.opts['algorithm'](input_streams, self.opts['output_streams'])
+          #opts['algorithm']() returns a generator for the 15 minute interval provided
+          #on completion, 'True' is returned in the second argument to flag that the
+          #processing is done for the input data
+          output_data_gen = self.opts['algorithm'](input_streams, self.opts['output_streams'])
+          done = False
+          while not done:
+            output_batch, done = output_data_gen.next()
+            self.stream_insert_multiple(self.output_stream, output_batch)
           
           #reset input versions and streams
           input_versions = []
