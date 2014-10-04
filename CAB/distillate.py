@@ -50,7 +50,7 @@ class Distillate(qdf.QuasarDistillate):
         end_date = self.opts['end_date']
 
         # take 15 minute windows
-        while current < end_date:
+        while current_date < end_date:
           window_end = current_date + 15 * qdf.MINUTE
 
           # final window edge case
@@ -71,7 +71,7 @@ class Distillate(qdf.QuasarDistillate):
           #  and the results passed into the output streams for the 15 minute window of data
           self.opts['algorithm'](input_streams, self.opts['output_streams'])
 
-          current += 15 * qdf.MINUTE
+          current_date += 15 * qdf.MINUTE
 
         #Now that we are done, save the time we finished at
         self.persist("done", True)
