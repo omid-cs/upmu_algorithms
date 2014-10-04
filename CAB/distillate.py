@@ -72,7 +72,7 @@ class Distillate(qdf.QuasarDistillate):
           done = False
           while not done:
             output_batch, done = output_data_gen.next()
-            self.stream_insert_multiple(self.output_stream, output_batch)
+            self.stream_insert_multiple(self.opts['output_streams'][0], output_batch) #TEMP: extend to more than one output stream
           
           #reset input versions and streams
           input_versions = []
