@@ -45,5 +45,5 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG'], \
          'name'           : 'Frequency', \
          'version'        : 1, \
          'algorithm'      : frequency }
-qdf.register(Inst_Freq())
+qdf.register(Distillate(), opts)
 qdf.begin()
