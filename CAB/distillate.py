@@ -69,7 +69,7 @@ class Distillate(qdf.QuasarDistillate):
           #generator yields a list of output streams in the same order as was given in
           #opts['output_streams']
           output_data_gen = self.opts['algorithm'](input_streams)
-          for output_batch_list in output_data_gen
+          for output_batch_list in output_data_gen:
             for i in range(len(output_batch_list)):
               self.stream_insert_multiple(self.opts['output_streams'][i], output_batch_list[i])
           
