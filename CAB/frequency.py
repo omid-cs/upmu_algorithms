@@ -5,6 +5,7 @@ overflow_points = []
 
 def frequency(input_streams):
   # only one input stream
+  global overflow_points
   input_points = overflow_points + input_streams[0]
 
   sampling_freq = 120 #Hz
