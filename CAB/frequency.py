@@ -4,16 +4,25 @@ from distillate import Distillate
 overflow_points = []
 
 def frequency(input_streams):
-  # only one input stream
   global overflow_points
-  input_points = overflow_points + input_streams[0]
+  
+  # only one stream
+  input_points_capnp = input_streams[0]
+  
+  # convert input_points to an array and prepend overflow_points
+  # TEMP: naive solution, find better one!
+  input_points = overflow_points
+  for point in input_points_capnp:
+    input_points.append(point)
+    
 
   sampling_freq = 120 #Hz
 
   freqs = []
+  
   i = 0
   while i < len(input_points)-sampling_freq:
-    delta_samples = sampling_freq #upper bound
+    delta_samples = sampling_freq #upper bound, does not account for double-values
     t1 = input_points[i].time
     t2 = input_points[i+delta_samples].time
     while ((t2 - t1) > 1e9 and t2 > t1): #catch zeroed or missing samples
@@ -38,7 +47,9 @@ def frequency(input_streams):
     i += 1
 
   #save trailing values for next batch
-  overflow_points = input_points[len(input_points)-sampling_freq:]
+  overflow_points = []
+  for i in range(len(input_points)-sampling_freq, len(input_points)):
+    overflow_points.append(input_points[i])
   yield [freqs]
 
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG'], \
