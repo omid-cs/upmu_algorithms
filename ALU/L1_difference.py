@@ -85,7 +85,7 @@ class ExampleDelta(qdf.QuasarDistillate):
                 continue
             delta = hz1_values[idx1].value - hz3_values[idx2].value
             if delta > 180:
-                delta =delta-360
+                delta =360-delta
             if delta <-180:
                 delta=delta+360
             delta_values.append((hz1_values[idx1].time, delta))
@@ -110,7 +110,7 @@ class ExampleDelta(qdf.QuasarDistillate):
                 continue
             delta = hz2_values[idx1].value - hz3_values[idx2].value
             if delta > 180:
-                delta =delta-360
+                delta =360-delta
             if delta <-180:
                 delta=delta+360
             delta_values.append((hz2_values[idx1].time, delta))
