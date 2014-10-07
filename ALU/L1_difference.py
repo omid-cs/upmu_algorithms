@@ -27,7 +27,7 @@ class ExampleDelta(qdf.QuasarDistillate):
 
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
-        self.set_version(3)
+        self.set_version(4)
 
     @defer.inlineCallbacks
     def compute(self):
@@ -60,7 +60,7 @@ class ExampleDelta(qdf.QuasarDistillate):
                 continue
             delta = hz1_values[idx1].value - hz2_values[idx2].value
             if delta > 180:
-                delta =delta-360
+                delta =360-delta
             if delta <-180:
                 delta=delta+360
             delta_values.append((hz1_values[idx1].time, delta))
