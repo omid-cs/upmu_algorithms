@@ -20,14 +20,17 @@ class ExampleDelta(qdf.QuasarDistillate):
         self.add_stream("L3ang_GB", unit="Degrees")
         self.add_stream("L3ang_GS", unit="Degrees")
         self.add_stream("L3ang_BS", unit="Degrees")
+        self.add_stream("L3ang_SaSb", unit="Degrees")
         self.use_stream("1hz", "b653c63b-4acc-45ee-ae3d-1602e6116bc1")
         self.use_stream("2hz", "65f49c81-dafa-4aa2-8467-1627fb489c0c")
         self.use_stream("3hz", "2c07ccef-20c5-4971-87cf-2c187ce5f722")
+        self.use_stream("4hz", "b5279898-5652-4d34-abd6-45c7d697e524")
+        self.use_stream("5hz", "33b376c8-a59e-4054-a213-e9eb95cc8ad9")
         
 
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
-        self.set_version(2)
+        self.set_version(3)
 
     @defer.inlineCallbacks
     def compute(self):
@@ -121,6 +124,28 @@ class ExampleDelta(qdf.QuasarDistillate):
             idx2 += 1
 
         yield self.stream_insert_multiple("L3ang_BS", delta_values)
+        
+        delta_values = []
+
+        idx1 = 0
+        idx2 = 0
+        while idx1 < len(hz5_values) and idx2 < len(hz4_values):
+            if hz4_values[idx1].time < hz5_values[idx2].time:
+                idx1 += 1
+                continue
+            if hz4_values[idx1].time > hz5_values[idx2].time:
+                idx2 += 1
+                continue
+            delta = hz4_values[idx1].value - hz5_values[idx2].value
+            
+            delta_values.append((hz4_values[idx1].time, delta))
+            if len(delta_values) >= qdf.OPTIMAL_BATCH_SIZE:
+                yield self.stream_insert_multiple("L3ang_SaSb", delta_values)
+                delta_values = []
+            idx1 += 1
+            idx2 += 1
+
+        yield self.stream_insert_multiple("L3ang_SaSb", delta_values)
         self.persist("done", True)
     
 
