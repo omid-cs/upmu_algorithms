@@ -28,7 +28,7 @@ class ExampleDelta(qdf.QuasarDistillate):
         self.use_stream("5hz", "321db464-b05b-4a97-988c-1a9cc5593143")
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
-        self.set_version(6)
+        self.set_version(7)
 
     @defer.inlineCallbacks
     def compute(self):
@@ -48,6 +48,8 @@ class ExampleDelta(qdf.QuasarDistillate):
         hz1_version, hz1_values = yield self.stream_get("1hz", start_date, end_date)
         hz2_version, hz2_values = yield self.stream_get("2hz", start_date, end_date)
         hz3_version, hz3_values = yield self.stream_get("3hz", start_date, end_date)
+        hz4_version, hz4_values = yield self.stream_get("4hz", start_date, end_date)
+        hz5_version, hz5_values = yield self.stream_get("5hz", start_date, end_date)
         delta_values = []
 
         idx1 = 0
