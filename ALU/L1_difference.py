@@ -20,14 +20,16 @@ class ExampleDelta(qdf.QuasarDistillate):
         self.add_stream("L1ang_GB", unit="Degrees")
         self.add_stream("L1ang_GS", unit="Degrees")
         self.add_stream("L1ang_BS", unit="Degrees")
+        self.add_stream("L1ang_SaSb", unit="Degrees")
         self.use_stream("1hz", "b4776088-2f85-4c75-90cd-7472a949a8fa")
         self.use_stream("2hz", "66fcb659-c69a-41b5-b874-80ac7d7f669d")
         self.use_stream("3hz", "adf13e17-44b7-4ef6-ae3f-fde8a9152ab7")
+        self.use_stream("4hz", "4d6525a9-b8ad-48a4-ae98-b171562cf817")
+        self.use_stream("5hz", "98435be7-7341-4661-b104-16af89e0333d")
         
-
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
-        self.set_version(7)
+        self.set_version(8)
 
     @defer.inlineCallbacks
     def compute(self):
@@ -47,6 +49,8 @@ class ExampleDelta(qdf.QuasarDistillate):
         hz1_version, hz1_values = yield self.stream_get("1hz", start_date, end_date)
         hz2_version, hz2_values = yield self.stream_get("2hz", start_date, end_date)
         hz3_version, hz3_values = yield self.stream_get("3hz", start_date, end_date)
+        hz4_version, hz4_values = yield self.stream_get("4hz", start_date, end_date)
+        hz5_version, hz5_values = yield self.stream_get("5hz", start_date, end_date)
         delta_values = []
 
         idx1 = 0
@@ -120,6 +124,26 @@ class ExampleDelta(qdf.QuasarDistillate):
         yield self.stream_insert_multiple("L1ang_BS", delta_values)
         self.persist("done", True)
     
+        delta_values = []
 
+        idx1 = 0
+        idx2 = 0
+        while idx1 < len(hz5_values) and idx2 < len(hz4_values):
+            if hz4_values[idx1].time < hz5_values[idx2].time:
+                idx1 += 1
+                continue
+            if hz4_values[idx1].time > hz5_values[idx2].time:
+                idx2 += 1
+                continue
+            delta = hz4_values[idx1].value - hz5_values[idx2].value
+            
+            delta_values.append((hz4_values[idx1].time, delta))
+            if len(delta_values) >= qdf.OPTIMAL_BATCH_SIZE:
+                yield self.stream_insert_multiple("L1ang_SaSb", delta_values)
+                delta_values = []
+            idx1 += 1
+            idx2 += 1
+
+        yield self.stream_insert_multiple("L1ang_SaSb", delta_values)
 qdf.register(ExampleDelta())
 qdf.begin()
