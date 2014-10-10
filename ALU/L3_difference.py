@@ -50,6 +50,8 @@ class ExampleDelta(qdf.QuasarDistillate):
         hz1_version, hz1_values = yield self.stream_get("1hz", start_date, end_date)
         hz2_version, hz2_values = yield self.stream_get("2hz", start_date, end_date)
         hz3_version, hz3_values = yield self.stream_get("3hz", start_date, end_date)
+        hz4_version, hz4_values = yield self.stream_get("4hz", start_date, end_date)
+        hz5_version, hz5_values = yield self.stream_get("5hz", start_date, end_date)
         delta_values = []
 
         idx1 = 0
@@ -129,7 +131,7 @@ class ExampleDelta(qdf.QuasarDistillate):
 
         idx1 = 0
         idx2 = 0
-        while idx1 < len(hz5_values) and idx2 < len(hz4_values):
+        while idx1 < len(hz4_values) and idx2 < len(hz5_values):
             if hz4_values[idx1].time < hz5_values[idx2].time:
                 idx1 += 1
                 continue
