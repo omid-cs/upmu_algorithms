@@ -122,8 +122,7 @@ class ExampleDelta(qdf.QuasarDistillate):
             idx2 += 1
 
         yield self.stream_insert_multiple("L1ang_BS", delta_values)
-        self.persist("done", True)
-    
+        
         delta_values = []
 
         idx1 = 0
@@ -145,5 +144,9 @@ class ExampleDelta(qdf.QuasarDistillate):
             idx2 += 1
 
         yield self.stream_insert_multiple("L1ang_SaSb", delta_values)
+        
+        self.persist("done", True)
+    
+        
 qdf.register(ExampleDelta())
 qdf.begin()
