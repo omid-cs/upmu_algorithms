@@ -38,7 +38,7 @@ def rocof(input_streams):
     freqs.append((t1, (diff/delta_time)*1e9))
     i += 1
 
-  return freqs
+  return [freqs]
 
 opts = { 'input_streams'  : ['grizzly_new_L2Ang_freq'], \
          'input_uids'     : ['377af6b1-1733-4a30-a280-6cf69591d257'], \
