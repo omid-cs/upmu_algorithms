@@ -24,7 +24,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'output_units'   : ['V'], \
          'author'         : 'CAB', \
          'name'           : 'Scale', \
-         'version'        : 14, \
+         'version'        : 15, \
          'algorithm'      : scale }
 qdf.register(Distillate(), opts)
 qdf.begin()
