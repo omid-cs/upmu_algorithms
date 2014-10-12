@@ -21,15 +21,15 @@ def clean(input_streams):
 
   return [clean_points, error_points]
 
-opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
-         'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c'], \
-         'start_date'     : '2014-08-28T00:00:00.000000', \
-         'end_date'       : '2014-08-28T02:00:00.000000', \
-         'output_streams' : ['grizzly_new_L1Mag_clean', 'grizzly_new_L1Mag_errors'], \
-         'output_units'   : ['V', 'error'], \
-         'author'         : 'CAB', \
-         'name'           : 'Test1', \
-         'version'        : 1, \
+opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'],
+         'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c'],
+         'start_date'     : '2014-08-28T00:00:00.000000',
+         'end_date'       : '2014-08-28T02:00:00.000000',
+         'output_streams' : ['grizzly_new_L1Mag_clean', 'grizzly_new_L1Mag_errors'],
+         'output_units'   : ['V', 'error'],
+         'author'         : 'CAB',
+         'name'           : 'Test1',
+         'version'        : 1,
          'algorithm'      : clean }
 qdf.register(Distillate(), opts)
 qdf.begin()
