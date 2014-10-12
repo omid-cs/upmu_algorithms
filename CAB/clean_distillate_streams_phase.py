@@ -37,15 +37,15 @@ def clean(input_streams):
 
   return [clean_points, error_points]
 
-opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG'], \
-         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa'], \
-         'start_date'     : '2014-08-28T00:00:00.000000', \
-         'end_date'       : '2014-08-29T00:00:00.000000', \
-         'output_streams' : ['grizzly_new_L1Ang_clean', 'grizzly_new_L1Ang_errors'], \
-         'output_units'   : ['Degrees', 'error'], \
-         'author'         : 'CAB', \
-         'name'           : 'Clean', \
-         'version'        : 8, \
+opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG'],
+         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa'],
+         'start_date'     : '2014-08-28T00:00:00.000000',
+         'end_date'       : '2014-08-28T02:00:00.000000',
+         'output_streams' : ['grizzly_new_L1Ang_clean', 'grizzly_new_L1Ang_errors'],
+         'output_units'   : ['Degrees', 'error'],
+         'author'         : 'CAB',
+         'name'           : 'Test1',
+         'version'        : 1,
          'algorithm'      : clean }
 qdf.register(Distillate(), opts)
 qdf.begin()
