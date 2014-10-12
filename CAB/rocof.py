@@ -38,7 +38,7 @@ def frequency(input_streams):
     freqs.append((t1, (diff/delta_time)*1e9))
     i += 1
 
- return freqs
+  return freqs
 
 opts = { 'input_streams'  : ['grizzly_new_L1Ang_freq'], \
          'input_uids'     : ['f6b24d9a-167f-4eed-8873-2ba577dcca6b'], \
