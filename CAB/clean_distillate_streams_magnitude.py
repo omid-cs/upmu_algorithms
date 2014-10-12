@@ -29,7 +29,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'output_units'   : ['V', 'error'], \
          'author'         : 'CAB', \
          'name'           : 'Clean', \
-         'version'        : 9, \
+         'version'        : 10, \
          'algorithm'      : clean }
 qdf.register(Distillate(), opts)
 qdf.begin()
