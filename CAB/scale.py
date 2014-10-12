@@ -12,12 +12,9 @@ def scale(input_streams):
   while i < len(input_values):
     scaled_value = input_values[i].value * scale_factor
     scaled_values.append((input_values[i].time, scaled_value))
-    if len(scaled_values) >= qdf.OPTIMAL_BATCH_SIZE:
-      yield [scaled_values] # must yield list
-      scaled_values = []
     i += 1
 
-  yield None
+  return scaled_values
 
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c'], \

@@ -30,7 +30,7 @@ def algorithm(input_streams):
     second_output_stream.append((time, max_x))
 
     i += 1
-  yield [freqs]
+  return [freqs]
 
 opts = { 'input_streams'  : ['in1', 'in2', 'in3'],
          'input_uids'     : ['00000000-0000-0000-0000-000000000000', \

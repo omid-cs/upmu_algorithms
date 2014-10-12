@@ -8,7 +8,7 @@ def algorithm(input_streams): # can change name 'algorithm', the name doesn't ma
   second_input_stream = input_streams[1]
   third_input_stream = input_streams[2]
 
-  # defined arrays for each output streams that we will yield
+  # defined arrays for each output streams that we will return
   # the order of output streams is the same order as specified in teh 'opts' dictionary
   first_output_stream = []
   second_output_stream = []
@@ -47,7 +47,7 @@ def algorithm(input_streams): # can change name 'algorithm', the name doesn't ma
 
   # after the algorithm loop finishes, we need to return out output data so it can be stored
   #   on the server
-  yield [freqs]
+  return [freqs]
 
 
 # This is where all the meta-data and input and output names and dates are defined

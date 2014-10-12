@@ -33,20 +33,12 @@ def frequency(input_streams):
       continue
     x1 = input_points[i].value
     x2 = input_points[i+delta_samples].value
-    phase_diff = x2 - x1
+    diff = x2 - x1
     delta_time = t2 - t1
-    if phase_diff > 180:
-      phase_diff -= 360
-    elif phase_diff < -180:
-      phase_diff += 360
-    freqs.append((t1, (phase_diff/delta_time)*1e9/360 + 60))
+    freqs.append((t1, (diff/delta_time)*1e9))
     i += 1
 
-  #save trailing values for next batch
-  overflow_points = []
-  for i in range(len(input_points)-sampling_freq, len(input_points)):
-    overflow_points.append(input_points[i])
-  return [freqs]
+ return freqs
 
 opts = { 'input_streams'  : ['upmu/grizzly_new/L2ANG'], \
          'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea'], \

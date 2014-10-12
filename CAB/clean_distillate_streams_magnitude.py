@@ -17,14 +17,9 @@ def clean(input_streams):
       clean_points.append((input_points[i].time, input_points[i].value))
     else:
       error_points.append((input_points[i].time, 1))
-
-    if len(error_points) + len(clean_points) >= qdf.OPTIMAL_BATCH_SIZE:
-      yield [clean_points, error_points] # keep order as specified in opts
-      clean_points = []
-      error_points = []
     i += 1
-  yield [clean_points, error_points]
-  yield None
+
+  return [clean_points, error_points]
 
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c'], \
