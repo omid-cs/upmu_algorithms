@@ -56,7 +56,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L2ANG'], \
          'output_units'   : ['Hz'], \
          'author'         : 'CAB', \
          'name'           : 'New Output Frequency', \
-         'version'        : 6, \
+         'version'        : 7, \
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
 qdf.begin()
