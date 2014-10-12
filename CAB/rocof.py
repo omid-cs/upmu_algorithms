@@ -40,15 +40,15 @@ def frequency(input_streams):
 
  return freqs
 
-opts = { 'input_streams'  : ['upmu/grizzly_new/L2ANG'], \
-         'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea'], \
+opts = { 'input_streams'  : ['grizzly_new_L1Ang_freq'], \
+         'input_uids'     : ['f6b24d9a-167f-4eed-8873-2ba577dcca6b'], \
          'start_date'     : '2014-10-06T01:30:00.000000', \
          'end_date'       : '2014-10-06T02:30:00.000000', \
-         'output_streams' : ['grizzly_new_L2Ang_frequency'], \
-         'output_units'   : ['Hz'], \
+         'output_streams' : ['grizzly_new_L2Ang_rocof'], \
+         'output_units'   : ['Hz/s'], \
          'author'         : 'CAB', \
-         'name'           : 'New Output Frequency', \
-         'version'        : 6, \
+         'name'           : 'Rocof', \
+         'version'        : 1, \
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
 qdf.begin()
