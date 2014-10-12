@@ -14,7 +14,7 @@ def scale(input_streams):
     scaled_values.append((input_values[i].time, scaled_value))
     i += 1
 
-  return scaled_values
+  return [scaled_values]
 
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'], \
          'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c'], \
