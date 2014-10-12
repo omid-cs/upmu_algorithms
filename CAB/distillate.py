@@ -67,12 +67,12 @@ class Distillate(qdf.QuasarDistillate):
 
           #opts['algorithm']() returns the output data for the 15 minute window
           #list of output streams is in the same order as was given in opts['output_streams']
-          output_data_gen = self.opts['algorithm'](input_streams)
-          start = 0
-          while start < len(output_data_gen):
-            for i in range(len(output_batch_list)):
+          output_data_list = self.opts['algorithm'](input_streams)
+          for output_data in output_data_list:
+            start = 0
+            while start < len(output_data):
               self.stream_insert_multiple(self.opts['output_streams'][i],
-                                          output_batch_list[start:start+qdf.OPTIMAL_BATCH_SIZE])
+                                          output_data[start:start+qdf.OPTIMAL_BATCH_SIZE])
             start += qdf.OPTIMAL_BATCH_SIZE
 
           
