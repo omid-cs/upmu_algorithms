@@ -73,7 +73,7 @@ class Distillate(qdf.QuasarDistillate):
             while start < len(output_data):
               self.stream_insert_multiple(self.opts['output_streams'][i],
                                           output_data[start:start+qdf.OPTIMAL_BATCH_SIZE])
-            start += qdf.OPTIMAL_BATCH_SIZE
+              start += qdf.OPTIMAL_BATCH_SIZE
 
           
           #reset input versions and streams
