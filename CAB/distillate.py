@@ -69,9 +69,10 @@ class Distillate(qdf.QuasarDistillate):
           #list of output streams is in the same order as was given in opts['output_streams']
           output_data_list = self.opts['algorithm'](input_streams)
           for i in range(len(output_data_list)):
+            output_data = output_data_list[i]
             start = 0
             while start < len(output_data):
-              self.stream_insert_multiple(self.opts['output_streams'][i],output_data_list[i][start:start+qdf.OPTIMAL_BATCH_SIZE])
+              self.stream_insert_multiple(self.opts['output_streams'][i],output_data[start:start+qdf.OPTIMAL_BATCH_SIZE])
               start += qdf.OPTIMAL_BATCH_SIZE
 
           
