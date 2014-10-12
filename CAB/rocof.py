@@ -42,13 +42,13 @@ def frequency(input_streams):
 
 opts = { 'input_streams'  : ['grizzly_new_L1Ang_freq'], \
          'input_uids'     : ['f6b24d9a-167f-4eed-8873-2ba577dcca6b'], \
-         'start_date'     : '2014-10-06T01:30:00.000000', \
-         'end_date'       : '2014-10-06T02:30:00.000000', \
+         'start_date'     : '2014-08-28T00:00:00.000000', \
+         'end_date'       : '2014-08-28T02:00:00.000000', \
          'output_streams' : ['grizzly_new_L2Ang_rocof'], \
          'output_units'   : ['Hz/s'], \
          'author'         : 'CAB', \
-         'name'           : 'Rocof', \
-         'version'        : 1, \
+         'name'           : 'Test1', \
+         'version'        : 4, \
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
 qdf.begin()
