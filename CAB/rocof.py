@@ -1,9 +1,9 @@
 import qdf
-from rocof import Distillate
+from distillate import Distillate
 
 overflow_points = []
 
-def frequency(input_streams):
+def rocof(input_streams):
   global overflow_points
   
   # only one stream
