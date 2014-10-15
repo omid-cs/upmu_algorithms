@@ -39,7 +39,7 @@ def frequency(input_streams):
       phase_diff -= 360
     elif phase_diff < -180:
       phase_diff += 360
-    freqs.append((t1, (phase_diff/delta_time)*1e9/360 + 60))
+    freqs.append((t2, (phase_diff/delta_time)*1e9/360 + 60))
     i += 1
 
   #save trailing values for next batch
