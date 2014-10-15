@@ -29,7 +29,7 @@ class ExampleDelta(qdf.QuasarDistillate):
         
         #If this is incremented, it is assumed that the whole distillate is invalidated, and it
         #will be deleted and discarded. In addition all 'persist' data will be removed
-        self.set_version(11)
+        self.set_version(12)
 
     @defer.inlineCallbacks
     def compute(self):
@@ -63,6 +63,10 @@ class ExampleDelta(qdf.QuasarDistillate):
                 idx2 += 1
                 continue
             delta = hz1_values[idx1].value - hz2_values[idx2].value
+            if delta > 180:
+                delta =delta-360
+            if delta <-180:
+                delta=delta+360
             if delta ==-180:
                 delta=180
             delta_values.append((hz1_values[idx1].time, delta))
@@ -86,6 +90,10 @@ class ExampleDelta(qdf.QuasarDistillate):
                 idx2 += 1
                 continue
             delta = hz1_values[idx1].value - hz3_values[idx2].value
+            if delta > 180:
+                delta =delta-360
+            if delta <-180:
+                delta=delta+360
             if delta ==-180:
                 delta=180
             delta_values.append((hz1_values[idx1].time, delta))
@@ -109,8 +117,12 @@ class ExampleDelta(qdf.QuasarDistillate):
                 idx2 += 1
                 continue
             delta = hz2_values[idx1].value - hz3_values[idx2].value
-            if delta == -180:
-                delta =180
+            if delta > 180:
+                delta =delta-360
+            if delta <-180:
+                delta=delta+360
+            if delta ==-180:
+                delta=180
             delta_values.append((hz2_values[idx1].time, delta))
             if len(delta_values) >= qdf.OPTIMAL_BATCH_SIZE:
                 yield self.stream_insert_multiple("L1ang_BS", delta_values)
@@ -132,6 +144,10 @@ class ExampleDelta(qdf.QuasarDistillate):
                 idx2 += 1
                 continue
             delta = hz4_values[idx1].value - hz5_values[idx2].value
+            if delta > 180:
+                delta =delta-360
+            if delta <-180:
+                delta=delta+360
             if delta ==-180:
                 delta=180
             delta_values.append((hz4_values[idx1].time, delta))
