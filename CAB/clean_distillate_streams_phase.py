@@ -1,6 +1,7 @@
 import qdf
 from distillate import Distillate
 
+prev_point = None
 def clean(input_streams):
   # only one input stream
   input_points = input_streams[0]
@@ -15,6 +16,9 @@ def clean(input_streams):
   #  Possibilities:
   #    use fetch point -1 from stream (requires -1 point to exist)
   #    interpret error using first three points:
+  #
+  #
+  # ignore this edge case for now
   """
   first = input_points[0].value
   second = input_points[1].value
@@ -24,17 +28,38 @@ def clean(input_streams):
   first_error = (second_error) and (not third_error)
   """
   
+  #dirty fix for batching
+  if prev_point is not None:
+    prev = prev_point.value
+    cur=input_points[0].value
+    delta_mag = abs(cur-prev)
+    if delta_mag > 360-max_delta_mag and delta_mag < 360+max_delta_mag:
+        # account for wrapping
+        delta_mag = abs(360-delta_mag)
+    if delta_mag > max_delta_mag:
+      error_points.append((input_points[0].time, 1))
+    else:
+      clean_points.append((input_points[0].time, input_points[0].value))
+
+  # main algorithm
   i = 1
   while i < len(input_points):
     prev = input_points[i-1].value
     cur = input_points[i].value
     delta_mag = abs(cur-prev)
+    if delta_mag > 360-max_delta_mag and delta_mag < 360+max_delta_mag:
+        # account for wrapping
+        delta_mag = abs(360-delta_mag)
     if delta_mag > max_delta_mag:
       error_points.append((input_points[i].time, 1))
     else:
       clean_points.append((input_points[i].time, input_points[i].value))
     i += 1
 
+  # save last point as reference for next point
+  # this poor fix will be fixed by distiller stream class
+  global prev_point
+  prev_point = input_points[-1]
   return [clean_points, error_points]
 
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG'],
