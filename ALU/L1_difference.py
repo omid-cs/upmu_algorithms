@@ -13,7 +13,7 @@ def compute(input_streams):
         idx1 = 0
         idx2 = 0
         while idx1 < len(grizzly) and idx2 < len(building71):
-            if grizzly_values[idx1].time < building71_values[idx2].time:
+            if grizzly[idx1].time < building71[idx2].time:
                 idx1 += 1
                 continue
             if grizzly[idx1].time > building71[idx2].time:
