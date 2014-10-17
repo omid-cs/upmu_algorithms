@@ -2,8 +2,7 @@ from distillate import Distillate
 import numpy as np
 import qdf
 
-
-    def compute(self):
+def compute(self):
         
         grizzly = input_streams[0]
         building71=input_streams[1]
