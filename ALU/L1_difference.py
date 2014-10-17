@@ -109,7 +109,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/building_71/L1ANG','
          'start_date'     : '2014-08-28T00:00:00.000000', \
          'end_date'       : '2014-08-28T02:00:00.000000', \
          'output_streams' : ['L1ang_GB','L1ang_GS','L1ang_BS','L1ang_SaSb'], \
-         'output_units'   : ['Degree','Degree','Degree'], \
+         'output_units'   : ['Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'L1_difference', \
          'version'        : 15, \
