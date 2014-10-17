@@ -112,7 +112,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/building_71/L1ANG','
          'output_units'   : ['Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'L1_difference', \
-         'version'        : 15, \
+         'version'        : 16, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
