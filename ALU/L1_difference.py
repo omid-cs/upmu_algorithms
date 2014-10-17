@@ -104,7 +104,7 @@ def compute(self):
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/building_71/L1ANG','upmu/switch_a6/L1ANG',
                             'upmu/soda_a/L1ANG','upmu/soda_b/L1ANG'], \
          'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea','66fcb659-c69a-41b5-b874-80ac7d7f669d',
-                             'adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','4d6525a9-b8ad-48a4-ae98-b171562cf817'
+                             'adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','4d6525a9-b8ad-48a4-ae98-b171562cf817',
                              '98435be7-7341-4661-b104-16af89e0333d'], \
          'start_date'     : '2014-08-28T00:00:00.000000', \
          'end_date'       : '2014-08-28T02:00:00.000000', \
