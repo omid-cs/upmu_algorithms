@@ -9,7 +9,7 @@ def compute(input_streams):
         L2Ang=input_streams[2]
         L2Mag=input_streams[3]
         L3Ang=input_streams[4]
-        L3Mag=input_streams[4]
+        L3Mag=input_streams[5]
         V0Ang=[]
         V0Mag=[]
         VpAng=[]
@@ -81,7 +81,7 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu
          'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequense', \
-         'version'        : 1, \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
