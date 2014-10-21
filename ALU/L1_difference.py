@@ -107,12 +107,12 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/building_71/L1ANG','
                              'adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','4d6525a9-b8ad-48a4-ae98-b171562cf817',
                              '98435be7-7341-4661-b104-16af89e0333d'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
-         'end_date'       : '2014-10-15T00:00:00.000000', \
+         'end_date'       : '2014-10-19T00:00:00.000000', \
          'output_streams' : ['L1ang_GB','L1ang_GS','L1ang_BS','L1ang_SaSb'], \
          'output_units'   : ['Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'L1_difference', \
-         'version'        : 16, \
+         'version'        : 17, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
