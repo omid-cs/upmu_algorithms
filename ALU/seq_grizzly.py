@@ -56,9 +56,9 @@ def compute(input_streams):
             v0a=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+L3Ang[idxL3A].value)/3.0
             V0Ang.append((L1Ang[idxL1A].time,v0a))
             vna=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+120+L3Ang[idxL3A].value+240)/3.0
-            VnAng.append((L1Ang[idxL1A].time,v-a))
+            VnAng.append((L1Ang[idxL1A].time,vna))
             vpa=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+240+L3Ang[idxL3A].value+120)/3.0
-            VpAng.append((L1Ang[idxL1A].time,v+a))
+            VpAng.append((L1Ang[idxL1A].time,vpa))
             idxL1A+= 1
             idxL1M+= 1
             idxL2A+= 1
