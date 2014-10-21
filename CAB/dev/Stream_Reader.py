@@ -10,8 +10,8 @@ SAMPLE_RATE = 60
 
 class Stream_Reader():
   """
-  This class requests and stores data into a database by managing a cache for input and cache
-  for output. IO for the object is identical to python lists, and implementation of caching is
+  This class requests data from a database by managing a cache
+  IO for the object is similar to python lists, and implementation of caching is
   hidden from the user.
 
   Cache details:
@@ -24,18 +24,13 @@ class Stream_Reader():
   """
   def __init__(self, quasar, name, start_date, end_date):
     """
-    initializes stream with empty caches for input and output.
-    sets up connection parameters for database
+    initializes stream with empty caches
 
     params --
       QuasarDistillate quasar:
         object with stream aquisition and storage methods
       str name:
         the name of the stream to read from 
-      int start_date:
-        integer representation of starting date-time
-      int end_date:
-        integer represenation of ending date-time
     """
     self.quasar = quasar
     self.name = name
@@ -56,14 +51,13 @@ class Stream_Reader():
     if isinstance(key, int):
       offset = (key % BLOCK_SIZE)
       index = (key/BLOCK_SIZE) % 4
-      tag = (((key/BLOCK_SIZE)*BLOCK_SIZE) / SAMPLE_RATE * qdf.SECOND) + self.start
+      tag = (((key/BLOCK_SIZE)*BLOCK_SIZE) / SAMPLE_RATE * qdf.SECOND)
       if self.cache[index][0] == 0:
         #cache entry is empty
         self._query_data(index, tag)
       elif self.cache[index][0] != tag:
         #cache miss
         self._query_data(index, tag)
-      else:
       return self.cache[index][offset]
 
     elif isinstance(key, slice):
@@ -79,3 +73,12 @@ class Stream_Reader():
     """
     version, values = yield quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
     self.cache[index] = values
+
+  def __iter__(self):
+    i = 0
+    time = quasar.date(self[i].time)
+      while time < self.end_date:
+        point = self[i]
+        i += 1
+        time = quasar.date(point.time)
+        yield point
