@@ -10,7 +10,12 @@ def compute(input_streams):
         L2Mag=input_streams[3]
         L3Ang=input_streams[4]
         L3Mag=input_streams[4]
-        V0Ang=[];V0Mag=[];V+Ang=[];V+Mag=[];V-Ang=[];V-Mag=[]
+        V0Ang=[]
+        V0Mag=[]
+        VpAng=[]
+        VpMag=[]
+        VnAng=[]
+        VnMag=[]
         idxL1A=0
         idxL1M=0
         idxL2A=0
@@ -46,21 +51,21 @@ def compute(input_streams):
                 continue
             v0m=(L1Mag[idxL1M].value+L2Mag[idxL2M].value+L3Mag[idxL3M].value)/3.0
             V0Mag.append((L1Mag[idxL1M].time, v0m))
-            V+Mag.append((L1Mag[idxL1M].time, v0m))
-            V-Mag.append((L1Mag[idxL1M].time, v0m))
+            VpMag.append((L1Mag[idxL1M].time, v0m))
+            VnMag.append((L1Mag[idxL1M].time, v0m))
             v0a=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+L3Ang[idxL3A].value)/3.0
             V0Ang.append((L1Ang[idxL1A].time,v0a))
-            v-a=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+120+L3Ang[idxL3A].value+240)/3.0
-            V-Ang.append((L1Ang[idxL1A].time,v-a))
-            v+a=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+240+L3Ang[idxL3A].value+120)/3.0
-            V+Ang.append((L1Ang[idxL1A].time,v+a))
+            vna=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+120+L3Ang[idxL3A].value+240)/3.0
+            VnAng.append((L1Ang[idxL1A].time,v-a))
+            vpa=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+240+L3Ang[idxL3A].value+120)/3.0
+            VpAng.append((L1Ang[idxL1A].time,v+a))
             idxL1A+= 1
             idxL1M+= 1
             idxL2A+= 1
             idxL2M+= 1
             idxL3A+= 1
             idxL3M+= 1
-        return[V0Ang,V0Mag,V+Ang,V+Mag,V-Ang,V-Mag]
+        return[V0Ang,V0Mag,VpAng,VpMag,VnAng,VnMag]
         
         
         
