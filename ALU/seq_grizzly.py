@@ -4,112 +4,76 @@ import qdf
 
 def compute(input_streams):
         
-        grizzly = input_streams[0]
-        building71=input_streams[1]
-        switcha6=input_streams[2]
-        sodaa=input_streams[3]
-        sodab=input_streams[4]
-        L2ang_GB=[]
-        idx1 = 0
-        idx2 = 0
-        while idx1 < len(grizzly) and idx2 < len(building71):
-            if grizzly[idx1].time < building71[idx2].time:
-                idx1 += 1
-                continue
-            if grizzly[idx1].time > building71[idx2].time:
-                idx2 += 1
-                continue
-            delta = grizzly[idx1].value - building71[idx2].value
-            if delta > 180:
-                delta =delta-360
-            if delta <-180:
-                delta=delta+360
-            if delta ==-180:
-                delta=180
-            L2ang_GB.append((grizzly[idx1].time, delta))
-            idx1 += 1
-            idx2 += 1
-
+        L1Ang = input_streams[0]
+        L1Mag=input_streams[1]
+        L2Ang=input_streams[2]
+        L2Mag=input_streams[3]
+        L3Ang=input_streams[4]
+        L3Mag=input_streams[4]
+        V0Ang=[];V0Mag=[];V+Ang=[];V+Mag=[];V-Ang=[];V-Mag=[]
+        idxL1A=0
+        idxL1M=0
+        idxL2A=0
+        idxL2M=0
+        idxL3A=0
+        idxL3M=0
         
-        L2ang_GS = []
-
-        idx1 = 0
-        idx2 = 0
-        while idx1 < len(grizzly) and idx2 < len(switcha6):
-            if grizzly[idx1].time < switcha6[idx2].time:
-                idx1 += 1
+        while idxL1A < len(L1Ang) and idxL1Mag < len(L1Mag) and idxL2A < len(L2Ang) and idxL2Mag < len(L2Mag) \
+        and idxL3A < len(L3Ang) and idxL3Mag < len(L3Mag): 
+            if L1Ang[idxL1A].time < L2Ang[idxL2A].time:
+                idxL1A += 1
+                idxL1M += 1
                 continue
-            if grizzly[idx1].time > switcha6[idx2].time:
-                idx2 += 1
+            if L1Ang[idxL1A].time > L2Ang[idxL2A].time:
+                idxL2A += 1
+                idxL2M += 1
                 continue
-            delta = grizzly[idx1].value - switcha6[idx2].value
-            if delta > 180:
-                delta =delta-360
-            if delta <-180:
-                delta=delta+360
-            if delta ==-180:
-                delta=180
-            L2ang_GS.append((grizzly[idx1].time, delta))
-            idx1 += 1
-            idx2 += 1
-        
-        L2ang_BS = []
-
-        idx1 = 0
-        idx2 = 0
-        while idx1 < len(building71) and idx2 < len(switcha6):
-            if building71[idx1].time < switcha6[idx2].time:
-                idx1 += 1
+            if L1Ang[idxL1A].time < L3Ang[idxL3A].time:
+                idxL1A += 1
+                idxL1M += 1
                 continue
-            if building71[idx1].time > switcha6[idx2].time:
-                idx2 += 1
+            if L1Ang[idxL1A].time > L3Ang[idxL3A].time:
+                idxL3A += 1
+                idxL3M += 1
                 continue
-            delta = building71[idx1].value - switcha6[idx2].value
-            if delta > 180:
-                delta =delta-360
-            if delta <-180:
-                delta=delta+360
-            if delta ==-180:
-                delta=180
-            L2ang_BS.append((building71[idx1].time, delta))
-            idx1 += 1
-            idx2 += 1
-        
-        L2ang_SaSb = []
-
-        idx1 = 0
-        idx2 = 0
-        while idx1 < len(sodaa) and idx2 < len(sodab):
-            if sodaa[idx1].time < sodab[idx2].time:
-                idx1 += 1
+            if L2Ang[idxL2A].time < L3Ang[idxL3A].time:
+                idxL2A += 1
+                idxL2M += 1
                 continue
-            if sodaa[idx1].time > sodab[idx2].time:
-                idx2 += 1
+            if L2Ang[idxL2A].time > L3Ang[idxL3A].time:
+                idxL3A += 1
+                idxL3M += 1
                 continue
-            delta = sodaa[idx1].value - sodab[idx2].value
-            if delta > 180:
-                delta =delta-360
-            if delta <-180:
-                delta=delta+360
-            if delta ==-180:
-                delta=180
-            L2ang_SaSb.append((sodaa[idx1].time, delta))
-            idx1 += 1
-            idx2 += 1
-        return[L2ang_GB,L2ang_GS,L2ang_BS,L2ang_SaSb]
+            v0m=(L1Mag[idxL1M].value+L2Mag[idxL2M].value+L3Mag[idxL3M].value)/3.0
+            V0Mag.append((L1Mag[idxL1M].time, v0m))
+            V+Mag.append((L1Mag[idxL1M].time, v0m))
+            V-Mag.append((L1Mag[idxL1M].time, v0m))
+            v0a=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+L3Ang[idxL3A].value)/3.0
+            V0Ang.append((L1Ang[idxL1A].time,v0a))
+            v-a=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+120+L3Ang[idxL3A].value+240)/3.0
+            V-Ang.append((L1Ang[idxL1A].time,v-a))
+            v+a=(L1Ang[idxL1A].value+L2Ang[idxL2A].value+240+L3Ang[idxL3A].value+120)/3.0
+            V+Ang.append((L1Ang[idxL1A].time,v+a))
+            idxL1A+= 1
+            idxL1M+= 1
+            idxL2A+= 1
+            idxL2M+= 1
+            idxL3A+= 1
+            idxL3M+= 1
+        return[V0Ang,V0Mag,V+Ang,V+Mag,V-Ang,V-Mag]
         
         
         
     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L2ANG','upmu/building_71/L2ANG','upmu/switch_a6/L2ANG',
-                            'upmu/soda_a/L2ANG','upmu/soda_b/L2ANG'], \
-         'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea','f89e77a8-661e-49d2-a868-2071c1fae238',
-                             '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','fe580578-854d-43c5-95b4-9f305a70e6a3',
-                             '321db464-b05b-4a97-988c-1a9cc5593143'], \
+opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','upmu/grizzly_new/L2ANG',
+                            'upmu/grizzly_new/L2MAG','upmu/grizzly_new/L3ANG','upmu/grizzly_new/L3MAG'], \
+         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','a64c386e-2dd4-4f17-96cb-1655358cb12c',
+                             '8b80c070-7bb1-44d3-b3a8-301558d573ea','a002295a-32ee-41a1-8ec4-8657d0d1f943',
+                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1','db3ea4f7-a337-4874-baeb-17fc2c0cf18b'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['L2ang_GB','L2ang_GS','L2ang_BS','L2ang_SaSb'], \
-         'output_units'   : ['Degree','Degree','Degree','Degree'], \
+         'output_streams' : ['V0Ang','V0Mag','V+Ang','V+Mag','V-Ang','V-Mag'], \
+         'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequense', \
          'version'        : 1, \
