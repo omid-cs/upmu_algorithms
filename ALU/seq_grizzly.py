@@ -23,8 +23,8 @@ def compute(input_streams):
         idxL3A=0
         idxL3M=0
         
-        while idxL1A < len(L1Ang) and idxL1Mag < len(L1Mag) and idxL2A < len(L2Ang) and idxL2Mag < len(L2Mag) \
-        and idxL3A < len(L3Ang) and idxL3Mag < len(L3Mag): 
+        while idxL1A < len(L1Ang) and idxL1M < len(L1Mag) and idxL2A < len(L2Ang) and idxL2M < len(L2Mag) \
+        and idxL3A < len(L3Ang) and idxL3M < len(L3Mag): 
             if L1Ang[idxL1A].time < L2Ang[idxL2A].time:
                 idxL1A += 1
                 idxL1M += 1
