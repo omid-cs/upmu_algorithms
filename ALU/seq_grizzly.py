@@ -9,7 +9,7 @@ def compute(input_streams):
         switcha6=input_streams[2]
         sodaa=input_streams[3]
         sodab=input_streams[4]
-        L3ang_GB=[]
+        L2ang_GB=[]
         idx1 = 0
         idx2 = 0
         while idx1 < len(grizzly) and idx2 < len(building71):
@@ -26,12 +26,12 @@ def compute(input_streams):
                 delta=delta+360
             if delta ==-180:
                 delta=180
-            L3ang_GB.append((grizzly[idx1].time, delta))
+            L2ang_GB.append((grizzly[idx1].time, delta))
             idx1 += 1
             idx2 += 1
 
         
-        L3ang_GS = []
+        L2ang_GS = []
 
         idx1 = 0
         idx2 = 0
@@ -49,11 +49,11 @@ def compute(input_streams):
                 delta=delta+360
             if delta ==-180:
                 delta=180
-            L3ang_GS.append((grizzly[idx1].time, delta))
+            L2ang_GS.append((grizzly[idx1].time, delta))
             idx1 += 1
             idx2 += 1
         
-        L3ang_BS = []
+        L2ang_BS = []
 
         idx1 = 0
         idx2 = 0
@@ -71,11 +71,11 @@ def compute(input_streams):
                 delta=delta+360
             if delta ==-180:
                 delta=180
-            L3ang_BS.append((building71[idx1].time, delta))
+            L2ang_BS.append((building71[idx1].time, delta))
             idx1 += 1
             idx2 += 1
         
-        L3ang_SaSb = []
+        L2ang_SaSb = []
 
         idx1 = 0
         idx2 = 0
@@ -93,26 +93,26 @@ def compute(input_streams):
                 delta=delta+360
             if delta ==-180:
                 delta=180
-            L3ang_SaSb.append((sodaa[idx1].time, delta))
+            L2ang_SaSb.append((sodaa[idx1].time, delta))
             idx1 += 1
             idx2 += 1
-        return[L3ang_GB,L3ang_GS,L3ang_BS,L3ang_SaSb]
+        return[L2ang_GB,L2ang_GS,L2ang_BS,L2ang_SaSb]
         
         
         
     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L3ANG','upmu/building_71/L3ANG','upmu/switch_a6/L3ANG',
-                            'upmu/soda_a/L3ANG','upmu/soda_b/L3ANG'], \
-         'input_uids'     : ['b653c63b-4acc-45ee-ae3d-1602e6116bc1','65f49c81-dafa-4aa2-8467-1627fb489c0c',
-                             '2c07ccef-20c5-4971-87cf-2c187ce5f722','b5279898-5652-4d34-abd6-45c7d697e524',
-                             '33b376c8-a59e-4054-a213-e9eb95cc8ad9'], \
+opts = { 'input_streams'  : ['upmu/grizzly_new/L2ANG','upmu/building_71/L2ANG','upmu/switch_a6/L2ANG',
+                            'upmu/soda_a/L2ANG','upmu/soda_b/L2ANG'], \
+         'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea','f89e77a8-661e-49d2-a868-2071c1fae238',
+                             '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','fe580578-854d-43c5-95b4-9f305a70e6a3',
+                             '321db464-b05b-4a97-988c-1a9cc5593143'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['L3ang_GB','L3ang_GS','L3ang_BS','L3ang_SaSb'], \
+         'output_streams' : ['L2ang_GB','L2ang_GS','L2ang_BS','L2ang_SaSb'], \
          'output_units'   : ['Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
-         'name'           : 'L3_difference', \
-         'version'        : 6, \
+         'name'           : 'Sequense', \
+         'version'        : 1, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
