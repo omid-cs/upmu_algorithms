@@ -101,8 +101,8 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/building_71/L1ANG','upmu/switch_a6/L1ANG',
-                            'upmu/soda_a/L1ANG','upmu/soda_b/L1ANG'], \
+opts = { 'input_streams'  : ['upmu/grizzly_new/L2ANG','upmu/building_71/L2ANG','upmu/switch_a6/L2ANG',
+                            'upmu/soda_a/L2ANG','upmu/soda_b/L2ANG'], \
          'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea','f89e77a8-661e-49d2-a868-2071c1fae238',
                              '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','fe580578-854d-43c5-95b4-9f305a70e6a3',
                              '321db464-b05b-4a97-988c-1a9cc5593143'], \
@@ -112,7 +112,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/building_71/L1ANG','
          'output_units'   : ['Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'L2_difference', \
-         'version'        : 9, \
+         'version'        : 10, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
