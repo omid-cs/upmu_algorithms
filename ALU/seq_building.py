@@ -70,14 +70,14 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu/switch_a6/L2ANG',
-                            'upmu/switch_a6/L2MAG','upmu/switch_a6/L3ANG','upmu/switch_a6/L3MAG'], \
-         'input_uids'     : ['adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','df64af25-a389-4be9-8061-f87c3616f286',
-                             '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','6e6ad513-ddd2-47fb-98c1-16e6477504fc',
-                             '2c07ccef-20c5-4971-87cf-2c187ce5f722','bcf38098-0e16-46f2-a9fb-9ce481d7d55b'], \
+opts = { 'input_streams'  : ['upmu/building_71/L1ANG','upmu/building_71/L1MAG','upmu/building_71/L2ANG',
+                            'upmu/building_71/L2MAG','upmu/building_71/L3ANG','upmu/building_71/L3MAG'], \
+         'input_uids'     : ['66fcb659-c69a-41b5-b874-80ac7d7f669d','cc866bb9-849f-4955-9276-241d5732fa0a',
+                             'f89e77a8-661e-49d2-a868-2071c1fae238','87b2b0bf-cb23-4381-b6d8-5068fbdf6ebb',
+                             '65f49c81-dafa-4aa2-8467-1627fb489c0c','f8b59b00-63be-4e7c-958b-831830df07f4'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['switch_V0Ang','switch_V0Mag','switch_V+Ang','switch_V+Mag','switch_V-Ang','switch_V-Mag'], \
+         'output_streams' : ['building_V0Ang','building_V0Mag','building_V+Ang','building_V+Mag','building_V-Ang','building_V-Mag'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequense', \
