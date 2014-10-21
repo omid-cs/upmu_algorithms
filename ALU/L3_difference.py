@@ -96,13 +96,13 @@ def compute(input_streams):
             L3ang_SaSb.append((sodaa[idx1].time, delta))
             idx1 += 1
             idx2 += 1
-        return[L2ang_GB,L2ang_GS,L2ang_BS,L2ang_SaSb]
+        return[L3ang_GB,L3ang_GS,L3ang_BS,L3ang_SaSb]
         
         
         
     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/building_71/L1ANG','upmu/switch_a6/L1ANG',
-                            'upmu/soda_a/L1ANG','upmu/soda_b/L1ANG'], \
+opts = { 'input_streams'  : ['upmu/grizzly_new/L3ANG','upmu/building_71/L3ANG','upmu/switch_a6/L3ANG',
+                            'upmu/soda_a/L3ANG','upmu/soda_b/L3ANG'], \
          'input_uids'     : ['b653c63b-4acc-45ee-ae3d-1602e6116bc1','65f49c81-dafa-4aa2-8467-1627fb489c0c',
                              '2c07ccef-20c5-4971-87cf-2c187ce5f722','b5279898-5652-4d34-abd6-45c7d697e524',
                              '33b376c8-a59e-4054-a213-e9eb95cc8ad9'], \
