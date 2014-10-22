@@ -64,7 +64,7 @@ def compute(input_streams):
             if L1Mag[idxL1M].time < L1Ang[idxL1A].time:
                 idxL1M += 1
                 continue
-            if L1Mag[idxL1M].time > L!Ang[idxL1A].time:
+            if L1Mag[idxL1M].time > L1Ang[idxL1A].time:
                 idxL1A += 1
                 continue
             if L2Mag[idxL2M].time < L2Ang[idxL2A].time:
