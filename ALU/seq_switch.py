@@ -1,5 +1,6 @@
 from distillate import Distillate
 import numpy as np
+import math
 import qdf
 
 def compute(input_streams):
@@ -99,21 +100,21 @@ def compute(input_streams):
             v0imagine=(L1Mag[idxL1M].value*sinL1Ang+L2Mag[idxL2M].value*sinL2Ang+L3Mag[idxL3M].value*sinL3Ang)/3.0
             v0real=(L1Mag[idxL1M].value*cosL1Ang+L2Mag[idxL2M].value*cosL2Ang+L3Mag[idxL3M].value*cosL3Ang)/3.0
             v0mag=np.sqrt(v0imagine**2+v0real**2)
-            v0ang=np.degrees(np.atan2(v0imagine,v0real))
+            v0ang=np.degrees(math.atan2(v0imagine,v0real))
             V0Mag.append((L1Mag[idxL1M].time, v0mag))
             V0Ang.append((L1Ang[idxL1A].time,v0ang))
             
             vnimagine=(L1Mag[idxL1M].value*sinL1Ang+L2Mag[idxL2M].value*sinL2Ang_add120+L3Mag[idxL3M].value*sinL3Ang_add240)/3.0
             vnreal=(L1Mag[idxL1M].value*cosL1Ang+L2Mag[idxL2M].value*cosL2Ang_add120+L3Mag[idxL3M].value*cosL3Ang_add240)/3.0
             vnmag=np.sqrt(vnimagine**2+vnreal**2)
-            vnang=np.degrees(np.atan2(vnimagine,vnreal))
+            vnang=np.degrees(math.atan2(vnimagine,vnreal))
             VnMag.append((L1Mag[idxL1M].time, vnmag))
             VnAng.append((L1Ang[idxL1A].time,vnang))
             
             vpimagine=(L1Mag[idxL1M].value*sinL1Ang+L2Mag[idxL2M].value*sinL2Ang_add240+L3Mag[idxL3M].value*sinL3Ang_add120)/3.0
             vpreal=(L1Mag[idxL1M].value*cosL1Ang+L2Mag[idxL2M].value*cosL2Ang_add240+L3Mag[idxL3M].value*cosL3Ang_add120)/3.0
             vpmag=np.sqrt(vpimagine**2+vpreal**2)
-            vpang=np.degrees(np.atan2(vpimagine,vpreal))
+            vpang=np.degrees(math.atan2(vpimagine,vpreal))
             VpMag.append((L1Mag[idxL1M].time, vpmag))
             VpAng.append((L1Ang[idxL1A].time,vpang))
             
