@@ -28,9 +28,13 @@ class Stream_Reader():
 
     params --
       QuasarDistillate quasar:
-        object with stream aquisition and storage methods
+        object with stream acquisition and storage methods
       str name:
         the name of the stream to read from 
+      int start_date:
+        the date-time of the begining of the stream
+      int end_date:
+        the date-time of the end of the stream
     """
     self.quasar = quasar
     self.name = name
@@ -46,25 +50,33 @@ class Stream_Reader():
     Calculates offset, index, and tag to identify a cache hit or cache miss, and to index into
       the cache to return the correct value
 
+    The tag is the initial timestamp of the block
+
     On miss, queries data from database to update the cache
     """
     if isinstance(key, int):
-      offset = (key % BLOCK_SIZE)
-      index = (key/BLOCK_SIZE) % 4
-      tag = (((key/BLOCK_SIZE)*BLOCK_SIZE) / SAMPLE_RATE * qdf.SECOND)
+      if key < 0:
+        raise IndexError('Cannot index less than 0')
+      offset = key % BLOCK_SIZE
+      index = (key/BLOCK_SIZE) % CACHE_ENTRIES
+      tag = self.start + ((((key/BLOCK_SIZE)*BLOCK_SIZE)/SAMPLE_RATE)*qdf.SECOND)
       if self.cache[index][0] == 0:
         #cache entry is empty
         self._query_data(index, tag)
       elif self.cache[index][0] != tag:
         #cache miss
         self._query_data(index, tag)
+      if quasar.date(self.cache[index][offset].time) > self.end:
+          raise IndexError('Requested date past end-date:\n'+
+                           'End-Date: '+str(self.end)+'\n'+
+                           'Requested-Date: '+str(self.cache[index][offset].time)
       return self.cache[index][offset]
 
     elif isinstance(key, slice):
       #not implemented yet
-      return 0
+      return TypeError('list indices must be integers, not '+type(key))
     else: #slice error
-      return 1
+      raise TypeError('list indices must be integers, not '+type(key))
     
   def _query_data(self, index, tag):
     """
@@ -77,7 +89,7 @@ class Stream_Reader():
   def __iter__(self):
     i = 0
     time = quasar.date(self[i].time)
-      while time < self.end_date:
+      while time < self.end:
         point = self[i]
         i += 1
         time = quasar.date(point.time)
