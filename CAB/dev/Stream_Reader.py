@@ -1,5 +1,5 @@
 import numpy as np
-import qdf
+#import qdf
 
 """
 Constants
@@ -16,7 +16,7 @@ class Stream_Reader():
 
   Cache details:
     directly mapped
-    15 minute block size (54000 data points)
+    15 minute block size (max 54000 data points)
     uses first timestamp of block as faux tag
 
   Notes:
@@ -69,7 +69,7 @@ class Stream_Reader():
       if quasar.date(self.cache[index][offset].time) > self.end:
           raise IndexError('Requested date past end-date:\n'+
                            'End-Date: '+str(self.end)+'\n'+
-                           'Requested-Date: '+str(self.cache[index][offset].time)
+                           'Requested-Date: '+str(self.cache[index][offset].time))
       return self.cache[index][offset]
 
     elif isinstance(key, slice):
@@ -89,8 +89,8 @@ class Stream_Reader():
   def __iter__(self):
     i = 0
     time = quasar.date(self[i].time)
-      while time < self.end:
-        point = self[i]
-        i += 1
-        time = quasar.date(point.time)
-        yield point
+    while time < self.end:
+      point = self[i]
+      i += 1
+      time = quasar.date(point.time)
+      yield point
