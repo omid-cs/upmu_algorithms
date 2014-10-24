@@ -1,5 +1,5 @@
 import qdf
-from distillate import Distillate
+from distillate_new import Distillate
 
 def frequency(input_streams):
   # only one stream
