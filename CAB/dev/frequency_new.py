@@ -37,14 +37,15 @@ def frequency(input_streams):
     overflow_points.append(input_points[i])
   return [freqs]
 
-opts = { 'input_streams'  : ['upmu/grizzly_new/L2ANG'], \
-         'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea'], \
-         'start_date'     : '2014-10-01T00:00:00.000000', \
-         'output_streams' : ['grizzly_new_L2Ang_frequency'], \
-         'output_units'   : ['Hz'], \
-         'author'         : 'CAB', \
-         'name'           : 'Test2', \
-         'version'        : 1, \
+opts = { 'input_streams'  : ['B71_C1ANG'],
+         'input_uids'     : ['9717c589-d0cf-4a5e-83d6-5325134ba13b'],
+         'start_dates'    : ['2014-10-01T00:00:00.000000', '2014-10-01T00:01.000000'],
+         'end_dates'      : ['2014-10-01T00:02:00.000000', '2014-10-01T02:01.000000'],
+         'output_streams' : [],
+         'output_units'   : ['Hz'],
+         'author'         : 'CAB',
+         'name'           : 'Dev',
+         'version'        : 1,
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
 qdf.begin()
