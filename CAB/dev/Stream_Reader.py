@@ -83,7 +83,7 @@ class Stream_Reader():
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
     """
-    values = quasar.stream_get_values(self.name, tag, tag+(15*qdf.MINUTE))
+    version, values = yield quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
     self.cache[index] = values
 
   def __iter__(self):
