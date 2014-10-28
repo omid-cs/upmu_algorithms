@@ -57,7 +57,3 @@ class Distillate(qdf.QuasarDistillate):
 
         #Now that we are done, save the time we finished at
         self.persist("done", True)
-
-    def stream_get_values(self, name, start, end):
-        version, values = yield stream_get(name, start, end)
-        return values
