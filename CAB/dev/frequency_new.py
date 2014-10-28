@@ -38,7 +38,7 @@ def frequency(input_streams):
   return [freqs]
 
 opts = { 'input_streams'  : ['B71_C1ANG'],
-         'input_uids'     : ['9717c589-d0cf-4a5e-83d6-5325134ba13b'],
+         'input_uids'     : ['9717c589-d0cf-4a5e-83d6-5325134ba13b','9717c589-d0cf-4a5e-83d6-5325134ba13b'],
          'start_dates'    : ['2014-10-01T00:00:00.000000', '2014-10-01T00:01.000000'],
          'end_dates'      : ['2014-10-01T00:02:00.000000', '2014-10-01T02:01.000000'],
          'output_streams' : [],
