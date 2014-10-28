@@ -3,7 +3,7 @@ __author__ = 'immesys'
 import numpy as np
 import qdf
 from twisted.internet import defer
-from Stream_Reader.py import Stream_Reader
+from Stream_Reader import Stream_Reader
 
 class Distillate(qdf.QuasarDistillate):
 
