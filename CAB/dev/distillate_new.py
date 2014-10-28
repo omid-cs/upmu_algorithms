@@ -47,12 +47,11 @@ class Distillate(qdf.QuasarDistillate):
 
         input_streams = []
 
-        start_date = self.date(self.opts['start_date'])
-
         for i in range(len(self.opts['input_streams'])):
-          input_streams.append(Stream_Reader(self, self.opts['input_streams'][i],
-                                                   self.opts['start_dates'][i],
-                                                   self.opts['end_dates'][i]))
+          input_stream = self.opts['input_streams'][i]
+          start_date = self.opts['start_dates'][i]
+          end_date = self.opts['end_dates'][i]
+          input_streams.append(Stream_Reader(self, input_stream, start_date, end_date))
 
         self.opts['algorithm'](self, input_streams)
 
