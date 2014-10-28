@@ -66,7 +66,7 @@ class Stream_Reader():
       elif self.cache[index][0] != tag:
         #cache miss
         self._query_data(index, tag)
-      if quasar.date(self.cache[index][offset].time) > self.end:
+      if self.cache[index][offset].time > self.end:
           raise IndexError('Requested date past end-date:\n'+
                            'End-Date: '+str(self.end)+'\n'+
                            'Requested-Date: '+str(self.cache[index][offset].time))
@@ -88,9 +88,9 @@ class Stream_Reader():
 
   def __iter__(self):
     i = 0
-    time = quasar.date(self[i].time)
+    time = self[i].time
     while time < self.end:
       point = self[i]
       i += 1
-      time = quasar.date(point.time)
+      time = point.time
       yield point
