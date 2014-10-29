@@ -45,7 +45,7 @@ class Stream_Reader():
     self.start = start_date
     self.end = end_date
 
-    self.cache = [(None, None) for x in range(CACHE_ENTRIES)]
+    self.cache = [[None, None] for x in range(CACHE_ENTRIES)]
 
   def __getitem__(self, key):
     """
