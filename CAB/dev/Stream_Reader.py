@@ -92,6 +92,7 @@ class Stream_Reader():
     version, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
     self.cache[index][CACHE_INDEX_TAG] = tag
     self.cache[index][CACHE_INDEX_DATA] = values
+    defer.ReturnValue('test Return Value')
 
   def __iter__(self):
     i = 0
