@@ -5,7 +5,7 @@ from twisted.internet import defer
 """
 Constants
 """ 
-SAMPLE_RATE = 60
+SAMPLE_RATE = 120
 CACHE_ENTRIES = 4
 BLOCK_SIZE = 15*60*SAMPLE_RATE
 
