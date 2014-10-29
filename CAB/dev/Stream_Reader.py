@@ -1,5 +1,6 @@
 import numpy as np
 import qdf
+from twisted.internet import defer
 
 """
 Constants
@@ -77,7 +78,8 @@ class Stream_Reader():
       return TypeError('list indices must be integers, not '+type(key))
     else: #slice error
       raise TypeError('list indices must be integers, not '+type(key))
-    
+
+  @defer.inlineCallbacks
   def _query_data(self, index, tag):
     """
     Queries data from database, storing it into cache index specified
