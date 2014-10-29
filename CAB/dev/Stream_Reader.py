@@ -5,9 +5,9 @@ from twisted.internet import defer
 """
 Constants
 """ 
-CACHE_ENTRIES = 4
-BLOCK_SIZE = 15*60*60
 SAMPLE_RATE = 60
+CACHE_ENTRIES = 4
+BLOCK_SIZE = 15*60*SAMPLE_RATE
 
 class Stream_Reader():
   """
