@@ -1,4 +1,4 @@
-import qdf
+#import qdf
 from distillate_new import Distillate
 
 def frequency(input_streams):
