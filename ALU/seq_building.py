@@ -140,7 +140,8 @@ opts = { 'input_streams'  : ['upmu/building_71/L1ANG','upmu/building_71/L1MAG','
          'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequense', \
-         'version'        : 3, \
+         'version'        : 4, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
+ 

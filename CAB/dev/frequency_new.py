@@ -3,7 +3,10 @@ from distillate_new import Distillate
 
 def frequency(input_streams):
   # only one stream
-  input_points_capnp = input_streams[0]
+  s = input_streams[0]
+  for i in range(20):
+    s[2]
+  
   
   sampling_freq = 60 #Hz
 

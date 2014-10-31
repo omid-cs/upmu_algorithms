@@ -116,3 +116,4 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L2ANG','upmu/building_71/L2ANG','
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
+d

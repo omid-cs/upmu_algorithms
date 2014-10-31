@@ -1,12 +1,16 @@
 import numpy as np
 import qdf
+from twisted.internet import defer
 
 """
 Constants
 """ 
+SAMPLE_RATE = 120
 CACHE_ENTRIES = 4
-BLOCK_SIZE = 15*60*60
-SAMPLE_RATE = 60
+BLOCK_SIZE = 15*60*SAMPLE_RATE
+
+CACHE_INDEX_TAG = 0
+CACHE_INDEX_DATA = 1
 
 class Stream_Reader():
   """
@@ -41,7 +45,7 @@ class Stream_Reader():
     self.start = start_date
     self.end = end_date
 
-    self.cache = np.zeros([CACHE_ENTRIES, BLOCK_SIZE])
+    self.cache = [[None, None] for x in range(CACHE_ENTRIES)]
 
   def __getitem__(self, key):
     """
@@ -60,31 +64,35 @@ class Stream_Reader():
       offset = key % BLOCK_SIZE
       index = (key/BLOCK_SIZE) % CACHE_ENTRIES
       tag = self.start + ((((key/BLOCK_SIZE)*BLOCK_SIZE)/SAMPLE_RATE)*qdf.SECOND)
-      if self.cache[index][0] == 0:
+      if self.cache[index][CACHE_INDEX_TAG] == None:
         #cache entry is empty
         self._query_data(index, tag)
-      elif self.cache[index][0] != tag:
+      elif self.cache[index][CACHE_INDEX_TAG] != tag:
         #cache miss
         self._query_data(index, tag)
-      if self.cache[index][offset].time > self.end:
+      datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
+      if datapoint.time > self.end:
           raise IndexError('Requested date past end-date:\n'+
                            'End-Date: '+str(self.end)+'\n'+
                            'Requested-Date: '+str(self.cache[index][offset].time))
-      return self.cache[index][offset]
+      return datapoint
 
     elif isinstance(key, slice):
       #not implemented yet
       return TypeError('list indices must be integers, not '+type(key))
     else: #slice error
       raise TypeError('list indices must be integers, not '+type(key))
-    
+
+  @defer.inlineCallbacks
   def _query_data(self, index, tag):
     """
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
     """
-    version, values = yield quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
-    self.cache[index] = values
+    version, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
+    self.cache[index][CACHE_INDEX_TAG] = tag
+    self.cache[index][CACHE_INDEX_DATA] = values
+    defer.ReturnValue('test Return Value')
 
   def __iter__(self):
     i = 0
