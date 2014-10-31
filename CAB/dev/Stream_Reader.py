@@ -1,6 +1,5 @@
 import numpy as np
 import qdf
-from twisted.internet import defer
 
 """
 Constants
@@ -83,16 +82,17 @@ class Stream_Reader():
     else: #slice error
       raise TypeError('list indices must be integers, not '+type(key))
 
-  @defer.inlineCallbacks
   def _query_data(self, index, tag):
     """
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
     """
-    version, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
-    self.cache[index][CACHE_INDEX_TAG] = tag
-    self.cache[index][CACHE_INDEX_DATA] = values
-    defer.ReturnValue('test Return Value')
+    #deferred = queryStandardValues(self, uid, start, end, version=LATEST)
+    
+    deferred = self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
+    #self.cache[index][CACHE_INDEX_TAG] = tag
+    #self.cache[index][CACHE_INDEX_DATA] = values
+    #defer.ReturnValue('test Return Value')
 
   def __iter__(self):
     i = 0
