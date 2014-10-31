@@ -3,15 +3,17 @@ import numpy as np
 import qdf
 
 def compute(input_streams):
-        
+        # data input
         grizzly = input_streams[0]
         building71=input_streams[1]
         switcha6=input_streams[2]
         sodaa=input_streams[3]
         sodab=input_streams[4]
+        # computation for angle difference between grizzly and building71 start
         L1ang_GB=[]
         idx1 = 0
         idx2 = 0
+        # matching time between data stream and skip the piont when there is no data for that time
         while idx1 < len(grizzly) and idx2 < len(building71):
             if grizzly[idx1].time < building71[idx2].time:
                 idx1 += 1
@@ -19,6 +21,7 @@ def compute(input_streams):
             if grizzly[idx1].time > building71[idx2].time:
                 idx2 += 1
                 continue
+            # compute angle difference 
             delta = grizzly[idx1].value - building71[idx2].value
             if delta > 180:
                 delta =delta-360
@@ -52,7 +55,7 @@ def compute(input_streams):
             L1ang_GS.append((grizzly[idx1].time, delta))
             idx1 += 1
             idx2 += 1
-        
+        # computation for building71 and switch a6 start
         L1ang_BS = []
 
         idx1 = 0
@@ -74,7 +77,7 @@ def compute(input_streams):
             L1ang_BS.append((building71[idx1].time, delta))
             idx1 += 1
             idx2 += 1
-        
+        # computation for angle difference between soda a and b start
         L1ang_SaSb = []
 
         idx1 = 0
@@ -96,11 +99,12 @@ def compute(input_streams):
             L1ang_SaSb.append((sodaa[idx1].time, delta))
             idx1 += 1
             idx2 += 1
+         # return all angle difference computed   
         return[L1ang_GB,L1ang_GS,L1ang_BS,L1ang_SaSb]
         
         
         
-    
+# set all data stream, date, distillate name, unit, output folder needed for this job     
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/building_71/L1ANG','upmu/switch_a6/L1ANG',
                             'upmu/soda_a/L1ANG','upmu/soda_b/L1ANG'], \
          'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea','66fcb659-c69a-41b5-b874-80ac7d7f669d',
