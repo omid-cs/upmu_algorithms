@@ -107,7 +107,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L3ANG','upmu/building_71/L3ANG','
                              '2c07ccef-20c5-4971-87cf-2c187ce5f722','b5279898-5652-4d34-abd6-45c7d697e524',
                              '33b376c8-a59e-4054-a213-e9eb95cc8ad9'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
-         'end_date'       : '2014-10-19T00:00:00.000000', \
+         'end_date'       : '2014-10-30T00:00:00.000000', \
          'output_streams' : ['L3ang_GB','L3ang_GS','L3ang_BS','L3ang_SaSb'], \
          'output_units'   : ['Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
