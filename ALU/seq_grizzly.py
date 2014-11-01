@@ -112,16 +112,16 @@ def compute(input_streams):
             vnreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add120+LCMag[idxLCM].value*cosLCAng_add240)/3.0
             vnmag=np.sqrt(vnimagine**2+vnreal**2)
             vnang=np.degrees(math.atan2(vnimagine,vnreal))
-            VnMag.append((LAMag[idxL1M].time, vnmag))
-            VnAng.append((LAAng[idxL1A].time,vnang))
+            VnMag.append((LAMag[idxLAM].time, vnmag))
+            VnAng.append((LAAng[idxLAA].time,vnang))
             
             # compute v+
             vpimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add240+LCMag[idxLCM].value*sinLCAng_add120)/3.0
             vpreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add240+LCMag[idxLCM].value*cosLCAng_add120)/3.0
             vpmag=np.sqrt(vpimagine**2+vpreal**2)
             vpang=np.degrees(math.atan2(vpimagine,vpreal))
-            VpMag.append((LAMag[idxL1M].time, vpmag))
-            VpAng.append((LAAng[idxL1A].time,vpang))
+            VpMag.append((LAMag[idxLAM].time, vpmag))
+            VpAng.append((LAAng[idxLAA].time,vpang))
             
             idxLAA+= 1
             idxLAM+= 1
