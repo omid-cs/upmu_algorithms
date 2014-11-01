@@ -142,11 +142,11 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1','db3ea4f7-a337-4874-baeb-17fc2c0cf18b'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['V0Ang','V0Mag','V+Ang','V+Mag','V-Ang','V-Mag'], \
+         'output_streams' : ['grizzly_V0Ang','grizzly_V0Mag','grizzly_V+Ang','grizzly_V+Mag','grizzly_V-Ang','grizzly_V-Mag'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequence_new', \
-         'version'        : 7, \
+         'version'        : 8, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
