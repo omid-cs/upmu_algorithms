@@ -108,20 +108,20 @@ def compute(input_streams):
             V0Ang.append((LAAng[idxLAA].time,v0ang))
             
             #compute v-
-            vnimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add120+LCMag[idxLCM].value*sinLCAng_add240)/3.0
-            vnreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add120+LCMag[idxLCM].value*cosLCAng_add240)/3.0
-            vnmag=np.sqrt(vnimagine**2+vnreal**2)
-            vnang=np.degrees(math.atan2(vnimagine,vnreal))
-            VnMag.append((LAMag[idxLAM].time, vnmag))
-            VnAng.append((LAAng[idxLAA].time,vnang))
-            
-            # compute v+
-            vpimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add240+LCMag[idxLCM].value*sinLCAng_add120)/3.0
-            vpreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add240+LCMag[idxLCM].value*cosLCAng_add120)/3.0
+            vpimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add120+LCMag[idxLCM].value*sinLCAng_add240)/3.0
+            vpreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add120+LCMag[idxLCM].value*cosLCAng_add240)/3.0
             vpmag=np.sqrt(vpimagine**2+vpreal**2)
             vpang=np.degrees(math.atan2(vpimagine,vpreal))
             VpMag.append((LAMag[idxLAM].time, vpmag))
             VpAng.append((LAAng[idxLAA].time,vpang))
+            
+            # compute v+
+            vnimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add240+LCMag[idxLCM].value*sinLCAng_add120)/3.0
+            vnreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add240+LCMag[idxLCM].value*cosLCAng_add120)/3.0
+            vnmag=np.sqrt(vnimagine**2+vnreal**2)
+            vnang=np.degrees(math.atan2(vnimagine,vnreal))
+            VnMag.append((LAMag[idxLAM].time, vnmag))
+            VnAng.append((LAAng[idxLAA].time,vnang))
             
             idxLAA+= 1
             idxLAM+= 1
@@ -146,7 +146,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
          'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequense', \
-         'version'        : 5, \
+         'version'        : 6, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
