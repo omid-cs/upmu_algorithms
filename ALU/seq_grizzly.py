@@ -82,22 +82,22 @@ def compute(input_streams):
                 idxL3A += 1
                 continue
             # compute sin value for three phase and sin value for l2 and l3 anfter add 120 degree and 240 degree
-            sinL1Ang=np.sin(np.radians(L1Ang[idxL1A].value))
-            sinL2Ang=np.sin(np.radians(L2Ang[idxL2A].value))
-            sinL3Ang=np.sin(np.radians(L3Ang[idxL3A].value))
-            sinL2Ang_add120=np.sin(np.radians(L2Ang[idxL2A].value+120))
-            sinL2Ang_add240=np.sin(np.radians(L2Ang[idxL2A].value+240))
-            sinL3Ang_add120=np.sin(np.radians(L3Ang[idxL3A].value+120))
-            sinL3Ang_add240=np.sin(np.radians(L3Ang[idxL3A].value+240))
+            sinL1Ang=np.sin(np.radians(L1Ang[idxL1A].value-L1Ang[idxL1A].value))
+            sinL2Ang=np.sin(np.radians(L2Ang[idxL2A].value-L1Ang[idxL1A].value))
+            sinL3Ang=np.sin(np.radians(L3Ang[idxL3A].value-L1Ang[idxL1A].value))
+            sinL2Ang_add120=np.sin(np.radians(L2Ang[idxL2A].value+120-L1Ang[idxL1A].value))
+            sinL2Ang_add240=np.sin(np.radians(L2Ang[idxL2A].value+240-L1Ang[idxL1A].value))
+            sinL3Ang_add120=np.sin(np.radians(L3Ang[idxL3A].value+120-L1Ang[idxL1A].value))
+            sinL3Ang_add240=np.sin(np.radians(L3Ang[idxL3A].value+240-L1Ang[idxL1A].value))
             
             # compute cosin value for three phase and cosin value for l2 and l3 anfter add 120 degree and 240 degree
-            cosL1Ang=np.cos(np.radians(L1Ang[idxL1A].value))
-            cosL2Ang=np.cos(np.radians(L2Ang[idxL2A].value))
-            cosL3Ang=np.cos(np.radians(L3Ang[idxL3A].value))
-            cosL2Ang_add120=np.cos(np.radians(L2Ang[idxL2A].value+120))
-            cosL2Ang_add240=np.cos(np.radians(L2Ang[idxL2A].value+240))
-            cosL3Ang_add120=np.cos(np.radians(L3Ang[idxL3A].value+120))
-            cosL3Ang_add240=np.cos(np.radians(L3Ang[idxL3A].value+240))
+            cosL1Ang=np.cos(np.radians(L1Ang[idxL1A].value-L1Ang[idxL1A].value))
+            cosL2Ang=np.cos(np.radians(L2Ang[idxL2A].value-L1Ang[idxL1A].value))
+            cosL3Ang=np.cos(np.radians(L3Ang[idxL3A].value-L1Ang[idxL1A].value))
+            cosL2Ang_add120=np.cos(np.radians(L2Ang[idxL2A].value+120-L1Ang[idxL1A].value))
+            cosL2Ang_add240=np.cos(np.radians(L2Ang[idxL2A].value+240-L1Ang[idxL1A].value))
+            cosL3Ang_add120=np.cos(np.radians(L3Ang[idxL3A].value+120-L1Ang[idxL1A].value))
+            cosL3Ang_add240=np.cos(np.radians(L3Ang[idxL3A].value+240-L1Ang[idxL1A].value))
             
             # compute V0
             v0imagine=(L1Mag[idxL1M].value*sinL1Ang+L2Mag[idxL2M].value*sinL2Ang+L3Mag[idxL3M].value*sinL3Ang)/3.0
@@ -146,7 +146,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
          'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequense', \
-         'version'        : 3, \
+         'version'        : 4, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
