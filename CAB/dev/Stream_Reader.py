@@ -1,7 +1,7 @@
 import numpy as np
 import qdf
 from twisted.internet import defer
-import time.sleep #!!! FOR TESTING ONLY
+import time #!!! FOR TESTING ONLY
 
 """
 Constants
@@ -73,7 +73,7 @@ class Stream_Reader():
         self._query_data(index, tag)
       while self.cache[index][CACHE_INDEX_DATA] == None: ##!!! BUSY WAIT FOR QUERY. REMOVE AFTER TESTING
         print ("Waiting for data...")
-        sleep(1)
+        time.sleep(1)
       datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
       if datapoint.time > self.end:
           raise IndexError('Requested date past end-date:\n'+
