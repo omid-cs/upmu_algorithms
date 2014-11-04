@@ -66,10 +66,10 @@ class Stream_Reader():
       tag = self.start + ((((key/BLOCK_SIZE)*BLOCK_SIZE)/SAMPLE_RATE)*qdf.SECOND)
       if self.cache[index][CACHE_INDEX_TAG] == None:
         #cache entry is empty
-        self._query_data(index, tag)
+        result = self._query_data(index, tag)
       elif self.cache[index][CACHE_INDEX_TAG] != tag:
         #cache miss
-        self._query_data(index, tag)
+        result = self._query_data(index, tag)
       datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
       if datapoint.time > self.end:
           raise IndexError('Requested date past end-date:\n'+
