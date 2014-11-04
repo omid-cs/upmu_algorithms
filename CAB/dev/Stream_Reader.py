@@ -1,6 +1,7 @@
 import numpy as np
 import qdf
 from twisted.internet import defer
+import time.sleep #!!! FOR TESTING ONLY
 
 """
 Constants
@@ -66,10 +67,13 @@ class Stream_Reader():
       tag = self.start + ((((key/BLOCK_SIZE)*BLOCK_SIZE)/SAMPLE_RATE)*qdf.SECOND)
       if self.cache[index][CACHE_INDEX_TAG] == None:
         #cache entry is empty
-        result = self._query_data(index, tag)
+        self._query_data(index, tag)
       elif self.cache[index][CACHE_INDEX_TAG] != tag:
         #cache miss
-        result = self._query_data(index, tag)
+        self._query_data(index, tag)
+      while self.cache[index][CACHE_INDEX_DATA] == None: ##!!! BUSY WAIT FOR QUERY. REMOVE AFTER TESTING
+        print ("Waiting for data...")
+        sleep(1)
       datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
       if datapoint.time > self.end:
           raise IndexError('Requested date past end-date:\n'+
@@ -89,10 +93,14 @@ class Stream_Reader():
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
     """
-    version, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
+    version, values =
+    d = self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
+    d.addCallback(self.storeValues)
+    
+  def storeValues(self, queried):
+    tag, values = queried
     self.cache[index][CACHE_INDEX_TAG] = tag
     self.cache[index][CACHE_INDEX_DATA] = values
-    defer.returnValue('Query Complete')
 
   def __iter__(self):
     i = 0
