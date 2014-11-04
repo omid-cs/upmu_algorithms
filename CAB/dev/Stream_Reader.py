@@ -87,7 +87,7 @@ class Stream_Reader():
     else: #slice error
       raise TypeError('list indices must be integers, not '+type(key))
 
-  @defer.inlineCallbacks
+  #@defer.inlineCallbacks
   def _query_data(self, index, tag):
     """
     Queries data from database, storing it into cache index specified
