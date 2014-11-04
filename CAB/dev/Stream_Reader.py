@@ -1,6 +1,6 @@
 import numpy as np
 import qdf
-from twisted.internet import defer, returnValue
+from twisted.internet import defer
 
 """
 Constants
@@ -92,7 +92,7 @@ class Stream_Reader():
     version, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
     self.cache[index][CACHE_INDEX_TAG] = tag
     self.cache[index][CACHE_INDEX_DATA] = values
-    returnValue('Query Complete')
+    defer.returnValue('Query Complete')
 
   def __iter__(self):
     i = 0
