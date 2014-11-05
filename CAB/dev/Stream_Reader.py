@@ -90,15 +90,10 @@ class Stream_Reader():
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
     """
-    tag, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
+    tag, values = yield defer.waitForDeferred(self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE)))
     self.cache[index][CACHE_INDEX_TAG] = tag
     self.cache[index][CACHE_INDEX_DATA] = values
     defer.returnValue("!!! Test")
-    
-  def _storeValues(self, queried, index):
-    tag, values = queried
-
-    return "This is a test message"
 
   def __iter__(self):
     i = 0
