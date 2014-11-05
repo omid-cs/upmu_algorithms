@@ -67,16 +67,17 @@ class Stream_Reader():
       tag = self.start + ((((key/BLOCK_SIZE)*BLOCK_SIZE)/SAMPLE_RATE)*qdf.SECOND)
       if self.cache[index][CACHE_INDEX_TAG] == None:
         #cache entry is empty
-        deferred = self._query_data(index, tag)
+        self._query_data(index, tag)
       elif self.cache[index][CACHE_INDEX_TAG] != tag:
         #cache miss
-        deferred = self._query_data(index, tag)
-      datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
-      if datapoint.time > self.end:
+        self._query_data(index, tag)
+      else:
+        datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
+        if datapoint.time > self.end:
           raise IndexError('Requested date past end-date:\n'+
                            'End-Date: '+str(self.end)+'\n'+
                            'Requested-Date: '+str(self.cache[index][offset].time))
-      return datapoint
+        return datapoint
 
     elif isinstance(key, slice):
       #not implemented yet
@@ -90,7 +91,7 @@ class Stream_Reader():
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
     """
-    tag, values = yield defer.waitForDeferred(self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE)))
+    tag, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
     self.cache[index][CACHE_INDEX_TAG] = tag
     self.cache[index][CACHE_INDEX_DATA] = values
     defer.returnValue("!!! Test")
