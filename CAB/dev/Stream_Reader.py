@@ -84,19 +84,21 @@ class Stream_Reader():
     else: #slice error
       raise TypeError('list indices must be integers, not '+type(key))
 
-  @defer.inlineCallbacks
+  #@defer.inlineCallbacks
   def _query_data(self, index, tag):
     """
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
     """
     d = self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
-    d.addCallback(self.storeValues)
+    test = d.addCallback(self._storeValues)
+    return d
     
-  def storeValues(self, queried):
+  def _storeValues(self, queried):
     tag, values = queried
     self.cache[index][CACHE_INDEX_TAG] = tag
     self.cache[index][CACHE_INDEX_DATA] = values
+    return "This is a test message"
 
   def __iter__(self):
     i = 0
