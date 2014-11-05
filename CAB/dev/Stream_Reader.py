@@ -71,9 +71,6 @@ class Stream_Reader():
       elif self.cache[index][CACHE_INDEX_TAG] != tag:
         #cache miss
         self._query_data(index, tag)
-      while self.cache[index][CACHE_INDEX_DATA] == None: ##!!! BUSY WAIT FOR QUERY. REMOVE AFTER TESTING
-        print ("Waiting for data...")
-        time.sleep(1)
       datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
       if datapoint.time > self.end:
           raise IndexError('Requested date past end-date:\n'+
@@ -87,7 +84,7 @@ class Stream_Reader():
     else: #slice error
       raise TypeError('list indices must be integers, not '+type(key))
 
-  #@defer.inlineCallbacks
+  @defer.inlineCallbacks
   def _query_data(self, index, tag):
     """
     Queries data from database, storing it into cache index specified
