@@ -81,7 +81,7 @@ class Stream_Reader():
 
     elif isinstance(key, slice):
       #not implemented yet
-      return TypeError('list indices must be integers, not '+type(key))
+      raise TypeError('list indices must be integers, not '+type(key))
     else: #slice error
       raise TypeError('list indices must be integers, not '+type(key))
 
