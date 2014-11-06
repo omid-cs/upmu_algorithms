@@ -48,6 +48,7 @@ class Stream_Reader():
 
     self.cache = [[None, None] for x in range(CACHE_ENTRIES)]
 
+  @defer.inlineCallbacks
   def __getitem__(self, key):
     """
     returns the point specified by the slicing index
@@ -67,17 +68,16 @@ class Stream_Reader():
       tag = self.start + ((((key/BLOCK_SIZE)*BLOCK_SIZE)/SAMPLE_RATE)*qdf.SECOND)
       if self.cache[index][CACHE_INDEX_TAG] == None:
         #cache entry is empty
-        self._query_data(index, tag)
+        yield self._query_data(index, tag)
       elif self.cache[index][CACHE_INDEX_TAG] != tag:
         #cache miss
-        self._query_data(index, tag)
-      else:
-        datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
-        if datapoint.time > self.end:
-          raise IndexError('Requested date past end-date:\n'+
-                           'End-Date: '+str(self.end)+'\n'+
-                           'Requested-Date: '+str(self.cache[index][offset].time))
-        return datapoint
+        yield self._query_data(index, tag)
+      datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
+      if datapoint.time > self.end:
+        raise IndexError('Requested date past end-date:\n'+
+                         'End-Date: '+str(self.end)+'\n'+
+                         'Requested-Date: '+str(self.cache[index][offset].time))
+      defer.returnValue(datapoint)
 
     elif isinstance(key, slice):
       #not implemented yet
