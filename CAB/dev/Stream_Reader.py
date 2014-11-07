@@ -1,7 +1,7 @@
 import numpy as np
 import qdf
 from twisted.internet import defer
-import time #!!! FOR TESTING ONLY
+from threading import Lock
 
 """
 Constants
@@ -47,8 +47,8 @@ class Stream_Reader():
     self.end = end_date
 
     self.cache = [[None, None] for x in range(CACHE_ENTRIES)]
+    self.cache_lock = Lock()
 
-  @defer.inlineCallbacks
   def __getitem__(self, key):
     """
     returns the point specified by the slicing index
@@ -68,16 +68,18 @@ class Stream_Reader():
       tag = self.start + ((((key/BLOCK_SIZE)*BLOCK_SIZE)/SAMPLE_RATE)*qdf.SECOND)
       if self.cache[index][CACHE_INDEX_TAG] == None:
         #cache entry is empty
-        yield self._query_data(index, tag)
+        self._query_data(index, tag)
       elif self.cache[index][CACHE_INDEX_TAG] != tag:
         #cache miss
-        yield self._query_data(index, tag)
+        self._query_data(index, tag)
+      self.cache_lock.acquire()
       datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
+      self.cache_lock.release()
       if datapoint.time > self.end:
         raise IndexError('Requested date past end-date:\n'+
                          'End-Date: '+str(self.end)+'\n'+
-                         'Requested-Date: '+str(self.cache[index][offset].time))
-      defer.returnValue(datapoint)
+                         'Requested-Date: '+str(datapoint.time))
+      return datapoint
 
     elif isinstance(key, slice):
       #not implemented yet
@@ -91,10 +93,12 @@ class Stream_Reader():
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
     """
+    self.cache_lock.acquire
     tag, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
     self.cache[index][CACHE_INDEX_TAG] = tag
     self.cache[index][CACHE_INDEX_DATA] = values
-    defer.returnValue("!!! Test")
+    self.cache_lock.release()
+    #defer.returnValue("!!! Test")
 
   def __iter__(self):
     i = 0

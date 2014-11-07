@@ -2,12 +2,11 @@
 from distillate_new import Distillate
 from twisted.internet import defer
 
-@defer.inlineCallbacks
 def frequency(input_streams):
   # only one stream
   s = input_streams[0]
   for i in range(20):
-    yield s[2]
+    val =  s[2]
   
   
   sampling_freq = 60 #Hz
@@ -40,7 +39,7 @@ def frequency(input_streams):
   overflow_points = []
   for i in range(len(input_points)-sampling_freq, len(input_points)):
     overflow_points.append(input_points[i])
-  defer.returnValue([freqs])
+  return [freqs]
 
 opts = { 'input_streams'  : ['B71_C1ANG'],
          'input_uids'     : ['9717c589-d0cf-4a5e-83d6-5325134ba13b','9717c589-d0cf-4a5e-83d6-5325134ba13b'],
