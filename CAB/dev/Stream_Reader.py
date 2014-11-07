@@ -67,14 +67,14 @@ class Stream_Reader():
       if self.cache[index][CACHE_INDEX_TAG] == None:
         #cache entry is empty
         deferred = self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
-        deferred.addCallback(_fill_cache)
+        deferred.addCallback(self._fill_cache)
       elif self.cache[index][CACHE_INDEX_TAG] != tag:
         #cache miss
         deferred = self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
-        deferred.addCallback(fill_cache)
+        deferred.addCallback(self._fill_cache)
       else:
         deferred = defer()
-      deferred.addCallback(_get_value, key)
+      deferred.addCallback(self._get_value, key)
     
     elif isinstance(key, slice):
       #not implemented yet
