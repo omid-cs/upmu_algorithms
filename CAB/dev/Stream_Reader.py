@@ -75,7 +75,7 @@ class Stream_Reader():
         deferred.addCallback(fill_cache)
       else
         deferred = defer()
-      deferred.addCallback(_get_value)
+      deferred.addCallback(_get_value, key)
     
     elif isinstance(key, slice):
       #not implemented yet
@@ -83,12 +83,13 @@ class Stream_Reader():
     else: #slice error
       raise TypeError('list indices must be integers, not '+type(key))
 
-  def _get_value(self):
+  def _get_value(self, key):
+    datapoint = self.cache[index][CACHE_INDEX_DATA][key]
     if datapoint.time > self.end:
         raise IndexError('Requested date past end-date:\n'+
                          'End-Date: '+str(self.end)+'\n'+
                          'Requested-Date: '+str(datapoint.time))
-      return datapoint
+    return datapoint
 
 
 
