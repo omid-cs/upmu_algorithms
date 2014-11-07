@@ -11,6 +11,7 @@ def compute(input_streams):
         LCMag=input_streams[3]
         LAAng=input_streams[4]
         LAMag=input_streams[5]
+        LAGAng=input_streams[6]
         V0Ang=[]
         V0Mag=[]
         VpAng=[]
@@ -23,6 +24,7 @@ def compute(input_streams):
         idxLCM=0
         idxLAA=0
         idxLAM=0
+        idxLAGA=0
         
         # matching time among all 6 data strams to make sure they are at same time before compute sequence
         while idxLBA < len(LBAng) and idxLBM < len(LBMag) and idxLCA < len(LCAng) and idxLCM < len(LCMag) \
@@ -81,23 +83,41 @@ def compute(input_streams):
             if LAMag[idxLAM].time > LAAng[idxLAA].time:
                 idxLAA += 1
                 continue
+            if LAGAng[idxLAGA].time < LAAng[idxLAA].time:
+                idxLAGA += 1
+                continue
+            if LAGAng[idxLAGA].time > LAAng[idxLAA].time:
+                idxLAA += 1
+                continue
+            if LAGAng[idxLAGA].time < LBAng[idxLBA].time:
+                idxLAGA += 1
+                continue
+            if LAGAng[idxLAGA].time > LBAng[idxLBA].time:
+                idxLBA += 1
+                continue
+            if LAGAng[idxLAGA].time < LCAng[idxLCA].time:
+                idxLAGA += 1
+                continue
+            if LAGAng[idxLAGA].time > LCAng[idxLCA].time:
+                idxLCA += 1
+                continue
             # compute sin value for three phase and sin value for l2 and l3 anfter add 120 degree and 240 degree
-            sinLAAng=np.sin(np.radians(LAAng[idxLAA].value-LAAng[idxLAA].value))
-            sinLBAng=np.sin(np.radians(LBAng[idxLBA].value-LAAng[idxLAA].value))
-            sinLCAng=np.sin(np.radians(LCAng[idxLCA].value-LAAng[idxLAA].value))
-            sinLBAng_add120=np.sin(np.radians(LBAng[idxLBA].value+120-LAAng[idxLAA].value))
-            sinLBAng_add240=np.sin(np.radians(LBAng[idxLBA].value+240-LAAng[idxLAA].value))
-            sinLCAng_add120=np.sin(np.radians(LCAng[idxLCA].value+120-LAAng[idxLAA].value))
-            sinLCAng_add240=np.sin(np.radians(LCAng[idxLCA].value+240-LAAng[idxLAA].value))
+            sinLAAng=np.sin(np.radians(LAAng[idxLAA].value-LAGAng[idxLAGA].value))
+            sinLBAng=np.sin(np.radians(LBAng[idxLBA].value-LAGAng[idxLAGA].value))
+            sinLCAng=np.sin(np.radians(LCAng[idxLCA].value-LAGAng[idxLAGA].value))
+            sinLBAng_add120=np.sin(np.radians(LBAng[idxLBA].value+120-LAGAng[idxLAGA].value))
+            sinLBAng_add240=np.sin(np.radians(LBAng[idxLBA].value+240-LAGAng[idxLAGA].value))
+            sinLCAng_add120=np.sin(np.radians(LCAng[idxLCA].value+120-LAGAng[idxLAGA].value))
+            sinLCAng_add240=np.sin(np.radians(LCAng[idxLCA].value+240-LAGAng[idxLAGA].value))
             
             # compute cosin value for three phase and cosin value for l2 and l3 anfter add 120 degree and 240 degree
-            cosLAAng=np.cos(np.radians(LAAng[idxLAA].value-LAAng[idxLAA].value))
-            cosLBAng=np.cos(np.radians(LBAng[idxLBA].value-LAAng[idxLAA].value))
-            cosLCAng=np.cos(np.radians(LCAng[idxLCA].value-LAAng[idxLAA].value))
-            cosLBAng_add120=np.cos(np.radians(LBAng[idxLBA].value+120-LAAng[idxLAA].value))
-            cosLBAng_add240=np.cos(np.radians(LBAng[idxLBA].value+240-LAAng[idxLAA].value))
-            cosLCAng_add120=np.cos(np.radians(LCAng[idxLCA].value+120-LAAng[idxLAA].value))
-            cosLCAng_add240=np.cos(np.radians(LCAng[idxLCA].value+240-LAAng[idxLAA].value))
+            cosLAAng=np.cos(np.radians(LAAng[idxLAA].value-LAGAng[idxLAGA].value))
+            cosLBAng=np.cos(np.radians(LBAng[idxLBA].value-LAGAng[idxLAGA].value))
+            cosLCAng=np.cos(np.radians(LCAng[idxLCA].value-LAGAng[idxLAGA].value))
+            cosLBAng_add120=np.cos(np.radians(LBAng[idxLBA].value+120-LAGAng[idxLAGA].value))
+            cosLBAng_add240=np.cos(np.radians(LBAng[idxLBA].value+240-LAGAng[idxLAGA].value))
+            cosLCAng_add120=np.cos(np.radians(LCAng[idxLCA].value+120-LAGAng[idxLAGA].value))
+            cosLCAng_add240=np.cos(np.radians(LCAng[idxLCA].value+240-LAGAng[idxLAGA].value))
             
             # compute V0
             v0imagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng+LCMag[idxLCM].value*sinLCAng)/3.0
@@ -136,17 +156,18 @@ def compute(input_streams):
         
     
 opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu/switch_a6/L2ANG',
-                            'upmu/switch_a6/L2MAG','upmu/switch_a6/L3ANG','upmu/switch_a6/L3MAG'], \
+                            'upmu/switch_a6/L2MAG','upmu/switch_a6/L3ANG','upmu/switch_a6/L3MAG','upmu/grizzly_new/L3ANG'], \
          'input_uids'     : ['adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','df64af25-a389-4be9-8061-f87c3616f286',
                              '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','6e6ad513-ddd2-47fb-98c1-16e6477504fc',
-                             '2c07ccef-20c5-4971-87cf-2c187ce5f722','bcf38098-0e16-46f2-a9fb-9ce481d7d55b'], \
+                             '2c07ccef-20c5-4971-87cf-2c187ce5f722','bcf38098-0e16-46f2-a9fb-9ce481d7d55b',
+                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
          'output_streams' : ['switch_V0Ang','switch_V0Mag','switch_V+Ang','switch_V+Mag','switch_V-Ang','switch_V-Mag'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
          'author'         : 'Andrew', \
-         'name'           : 'Sequense', \
-         'version'        : 4, \
+         'name'           : 'Sequence_new', \
+         'version'        : 1, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()

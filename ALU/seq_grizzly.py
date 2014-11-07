@@ -5,130 +5,130 @@ import qdf
 
 def compute(input_streams):
         # data input
-        L1Ang = input_streams[0]
-        L1Mag=input_streams[1]
-        L2Ang=input_streams[2]
-        L2Mag=input_streams[3]
-        L3Ang=input_streams[4]
-        L3Mag=input_streams[5]
+        LBAng = input_streams[0]
+        LBMag=input_streams[1]
+        LCAng=input_streams[2]
+        LCMag=input_streams[3]
+        LAAng=input_streams[4]
+        LAMag=input_streams[5]
         V0Ang=[]
         V0Mag=[]
         VpAng=[]
         VpMag=[]
         VnAng=[]
         VnMag=[]
-        idxL1A=0
-        idxL1M=0
-        idxL2A=0
-        idxL2M=0
-        idxL3A=0
-        idxL3M=0
+        idxLBA=0
+        idxLBM=0
+        idxLCA=0
+        idxLCM=0
+        idxLAA=0
+        idxLAM=0
         
         # matching time among all 6 data strams to make sure they are at same time before compute sequence
-        while idxL1A < len(L1Ang) and idxL1M < len(L1Mag) and idxL2A < len(L2Ang) and idxL2M < len(L2Mag) \
-        and idxL3A < len(L3Ang) and idxL3M < len(L3Mag): 
-            if L1Ang[idxL1A].time < L2Ang[idxL2A].time:
-                idxL1A += 1
+        while idxLBA < len(LBAng) and idxLBM < len(LBMag) and idxLCA < len(LCAng) and idxLCM < len(LCMag) \
+        and idxLAA < len(LAAng) and idxLAM < len(LAMag): 
+            if LBAng[idxLBA].time < LCAng[idxLCA].time:
+                idxLBA += 1
                 continue
-            if L1Ang[idxL1A].time > L2Ang[idxL2A].time:
-                idxL2A += 1
+            if LBAng[idxLBA].time > LCAng[idxLCA].time:
+                idxLCA += 1
                 continue
-            if L1Ang[idxL1A].time < L3Ang[idxL3A].time:
-                idxL1A += 1
+            if LBAng[idxLBA].time < LAAng[idxLAA].time:
+                idxLBA += 1
                 continue
-            if L1Ang[idxL1A].time > L3Ang[idxL3A].time:
-                idxL3A += 1
+            if LBAng[idxLBA].time > LAAng[idxLAA].time:
+                idxLAA += 1
                 continue
-            if L2Ang[idxL2A].time < L3Ang[idxL3A].time:
-                idxL2A += 1
+            if LCAng[idxLCA].time < LAAng[idxLAA].time:
+                idxLCA += 1
                 continue
-            if L2Ang[idxL2A].time > L3Ang[idxL3A].time:
-                idxL3A += 1
+            if LCAng[idxLCA].time > LAAng[idxLAA].time:
+                idxLAA += 1
                 continue
-            if L1Mag[idxL1M].time < L2Mag[idxL2M].time:
-                idxL1M += 1
+            if LBMag[idxLBM].time < LCMag[idxLCM].time:
+                idxLBM += 1
                 continue
-            if L1Mag[idxL1M].time > L2Mag[idxL2M].time:
-                idxL2M += 1
+            if LBMag[idxLBM].time > LCMag[idxLCM].time:
+                idxLCM += 1
                 continue
-            if L1Mag[idxL1M].time < L3Mag[idxL3M].time:
-                idxL1M += 1
+            if LBMag[idxLBM].time < LAMag[idxLAM].time:
+                idxLBM += 1
                 continue
-            if L1Mag[idxL1M].time > L3Mag[idxL3M].time:
-                idxL3M += 1
+            if LBMag[idxLBM].time > LAMag[idxLAM].time:
+                idxLAM += 1
                 continue
-            if L2Mag[idxL2M].time < L3Mag[idxL3M].time:
-                idxL2M += 1
+            if LCMag[idxLCM].time < LAMag[idxLAM].time:
+                idxLCM += 1
                 continue
-            if L2Mag[idxL2M].time > L3Mag[idxL3M].time:
-                idxL3M += 1
+            if LCMag[idxLCM].time > LAMag[idxLAM].time:
+                idxLAM += 1
                 continue
-            if L1Mag[idxL1M].time < L1Ang[idxL1A].time:
-                idxL1M += 1
+            if LBMag[idxLBM].time < LBAng[idxLBA].time:
+                idxLBM += 1
                 continue
-            if L1Mag[idxL1M].time > L1Ang[idxL1A].time:
-                idxL1A += 1
+            if LBMag[idxLBM].time > LBAng[idxLBA].time:
+                idxLBA += 1
                 continue
-            if L2Mag[idxL2M].time < L2Ang[idxL2A].time:
-                idxL2M += 1
+            if LCMag[idxLCM].time < LCAng[idxLCA].time:
+                idxLCM += 1
                 continue
-            if L2Mag[idxL2M].time > L2Ang[idxL2A].time:
-                idxL2A += 1
+            if LCMag[idxLCM].time > LCAng[idxLCA].time:
+                idxLCA += 1
                 continue
-            if L3Mag[idxL3M].time < L3Ang[idxL3A].time:
-                idxL2M += 1
+            if LAMag[idxLAM].time < LAAng[idxLAA].time:
+                idxLAM += 1
                 continue
-            if L3Mag[idxL3M].time > L3Ang[idxL3A].time:
-                idxL3A += 1
+            if LAMag[idxLAM].time > LAAng[idxLAA].time:
+                idxLAA += 1
                 continue
             # compute sin value for three phase and sin value for l2 and l3 anfter add 120 degree and 240 degree
-            sinL1Ang=np.sin(np.radians(L1Ang[idxL1A].value))
-            sinL2Ang=np.sin(np.radians(L2Ang[idxL2A].value))
-            sinL3Ang=np.sin(np.radians(L3Ang[idxL3A].value))
-            sinL2Ang_add120=np.sin(np.radians(L2Ang[idxL2A].value+120))
-            sinL2Ang_add240=np.sin(np.radians(L2Ang[idxL2A].value+240))
-            sinL3Ang_add120=np.sin(np.radians(L3Ang[idxL3A].value+120))
-            sinL3Ang_add240=np.sin(np.radians(L3Ang[idxL3A].value+240))
+            sinLAAng=np.sin(np.radians(LAAng[idxLAA].value-LAAng[idxLAA].value))
+            sinLBAng=np.sin(np.radians(LBAng[idxLBA].value-LAAng[idxLAA].value))
+            sinLCAng=np.sin(np.radians(LCAng[idxLCA].value-LAAng[idxLAA].value))
+            sinLBAng_add120=np.sin(np.radians(LBAng[idxLBA].value+120-LAAng[idxLAA].value))
+            sinLBAng_add240=np.sin(np.radians(LBAng[idxLBA].value+240-LAAng[idxLAA].value))
+            sinLCAng_add120=np.sin(np.radians(LCAng[idxLCA].value+120-LAAng[idxLAA].value))
+            sinLCAng_add240=np.sin(np.radians(LCAng[idxLCA].value+240-LAAng[idxLAA].value))
             
             # compute cosin value for three phase and cosin value for l2 and l3 anfter add 120 degree and 240 degree
-            cosL1Ang=np.cos(np.radians(L1Ang[idxL1A].value))
-            cosL2Ang=np.cos(np.radians(L2Ang[idxL2A].value))
-            cosL3Ang=np.cos(np.radians(L3Ang[idxL3A].value))
-            cosL2Ang_add120=np.cos(np.radians(L2Ang[idxL2A].value+120))
-            cosL2Ang_add240=np.cos(np.radians(L2Ang[idxL2A].value+240))
-            cosL3Ang_add120=np.cos(np.radians(L3Ang[idxL3A].value+120))
-            cosL3Ang_add240=np.cos(np.radians(L3Ang[idxL3A].value+240))
+            cosLAAng=np.cos(np.radians(LAAng[idxLAA].value-LAAng[idxLAA].value))
+            cosLBAng=np.cos(np.radians(LBAng[idxLBA].value-LAAng[idxLAA].value))
+            cosLCAng=np.cos(np.radians(LCAng[idxLCA].value-LAAng[idxLAA].value))
+            cosLBAng_add120=np.cos(np.radians(LBAng[idxLBA].value+120-LAAng[idxLAA].value))
+            cosLBAng_add240=np.cos(np.radians(LBAng[idxLBA].value+240-LAAng[idxLAA].value))
+            cosLCAng_add120=np.cos(np.radians(LCAng[idxLCA].value+120-LAAng[idxLAA].value))
+            cosLCAng_add240=np.cos(np.radians(LCAng[idxLCA].value+240-LAAng[idxLAA].value))
             
             # compute V0
-            v0imagine=(L1Mag[idxL1M].value*sinL1Ang+L2Mag[idxL2M].value*sinL2Ang+L3Mag[idxL3M].value*sinL3Ang)/3.0
-            v0real=(L1Mag[idxL1M].value*cosL1Ang+L2Mag[idxL2M].value*cosL2Ang+L3Mag[idxL3M].value*cosL3Ang)/3.0
+            v0imagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng+LCMag[idxLCM].value*sinLCAng)/3.0
+            v0real=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng+LCMag[idxLCM].value*cosLCAng)/3.0
             v0mag=np.sqrt(v0imagine**2+v0real**2)
             v0ang=np.degrees(math.atan2(v0imagine,v0real))
-            V0Mag.append((L1Mag[idxL1M].time, v0mag))
-            V0Ang.append((L1Ang[idxL1A].time,v0ang))
+            V0Mag.append((LAMag[idxLAM].time, v0mag))
+            V0Ang.append((LAAng[idxLAA].time,v0ang))
             
             #compute v-
-            vnimagine=(L1Mag[idxL1M].value*sinL1Ang+L2Mag[idxL2M].value*sinL2Ang_add120+L3Mag[idxL3M].value*sinL3Ang_add240)/3.0
-            vnreal=(L1Mag[idxL1M].value*cosL1Ang+L2Mag[idxL2M].value*cosL2Ang_add120+L3Mag[idxL3M].value*cosL3Ang_add240)/3.0
-            vnmag=np.sqrt(vnimagine**2+vnreal**2)
-            vnang=np.degrees(math.atan2(vnimagine,vnreal))
-            VnMag.append((L1Mag[idxL1M].time, vnmag))
-            VnAng.append((L1Ang[idxL1A].time,vnang))
-            
-            # compute v+
-            vpimagine=(L1Mag[idxL1M].value*sinL1Ang+L2Mag[idxL2M].value*sinL2Ang_add240+L3Mag[idxL3M].value*sinL3Ang_add120)/3.0
-            vpreal=(L1Mag[idxL1M].value*cosL1Ang+L2Mag[idxL2M].value*cosL2Ang_add240+L3Mag[idxL3M].value*cosL3Ang_add120)/3.0
+            vpimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add120+LCMag[idxLCM].value*sinLCAng_add240)/3.0
+            vpreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add120+LCMag[idxLCM].value*cosLCAng_add240)/3.0
             vpmag=np.sqrt(vpimagine**2+vpreal**2)
             vpang=np.degrees(math.atan2(vpimagine,vpreal))
-            VpMag.append((L1Mag[idxL1M].time, vpmag))
-            VpAng.append((L1Ang[idxL1A].time,vpang))
+            VpMag.append((LAMag[idxLAM].time, vpmag))
+            VpAng.append((LAAng[idxLAA].time,vpang))
             
-            idxL1A+= 1
-            idxL1M+= 1
-            idxL2A+= 1
-            idxL2M+= 1
-            idxL3A+= 1
-            idxL3M+= 1
+            # compute v+
+            vnimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add240+LCMag[idxLCM].value*sinLCAng_add120)/3.0
+            vnreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add240+LCMag[idxLCM].value*cosLCAng_add120)/3.0
+            vnmag=np.sqrt(vnimagine**2+vnreal**2)
+            vnang=np.degrees(math.atan2(vnimagine,vnreal))
+            VnMag.append((LAMag[idxLAM].time, vnmag))
+            VnAng.append((LAAng[idxLAA].time,vnang))
+            
+            idxLAA+= 1
+            idxLAM+= 1
+            idxLBA+= 1
+            idxLBM+= 1
+            idxLCA+= 1
+            idxLCM+= 1
         # return V0 V+ V- 
         return[V0Ang,V0Mag,VpAng,VpMag,VnAng,VnMag]
         
@@ -142,11 +142,11 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1','db3ea4f7-a337-4874-baeb-17fc2c0cf18b'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['V0Ang','V0Mag','V+Ang','V+Mag','V-Ang','V-Mag'], \
+         'output_streams' : ['grizzly_V0Ang','grizzly_V0Mag','grizzly_V+Ang','grizzly_V+Mag','grizzly_V-Ang','grizzly_V-Mag'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
          'author'         : 'Andrew', \
-         'name'           : 'Sequense', \
-         'version'        : 3, \
+         'name'           : 'Sequence_new', \
+         'version'        : 8, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()

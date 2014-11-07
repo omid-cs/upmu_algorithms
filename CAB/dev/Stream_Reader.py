@@ -1,6 +1,7 @@
 import numpy as np
 import qdf
 from twisted.internet import defer
+import time #!!! FOR TESTING ONLY
 
 """
 Constants
@@ -47,6 +48,7 @@ class Stream_Reader():
 
     self.cache = [[None, None] for x in range(CACHE_ENTRIES)]
 
+  @defer.inlineCallbacks
   def __getitem__(self, key):
     """
     returns the point specified by the slicing index
@@ -66,20 +68,20 @@ class Stream_Reader():
       tag = self.start + ((((key/BLOCK_SIZE)*BLOCK_SIZE)/SAMPLE_RATE)*qdf.SECOND)
       if self.cache[index][CACHE_INDEX_TAG] == None:
         #cache entry is empty
-        self._query_data(index, tag)
+        yield self._query_data(index, tag)
       elif self.cache[index][CACHE_INDEX_TAG] != tag:
         #cache miss
-        self._query_data(index, tag)
+        yield self._query_data(index, tag)
       datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
       if datapoint.time > self.end:
-          raise IndexError('Requested date past end-date:\n'+
-                           'End-Date: '+str(self.end)+'\n'+
-                           'Requested-Date: '+str(self.cache[index][offset].time))
-      return datapoint
+        raise IndexError('Requested date past end-date:\n'+
+                         'End-Date: '+str(self.end)+'\n'+
+                         'Requested-Date: '+str(self.cache[index][offset].time))
+      defer.returnValue(datapoint)
 
     elif isinstance(key, slice):
       #not implemented yet
-      return TypeError('list indices must be integers, not '+type(key))
+      raise TypeError('list indices must be integers, not '+type(key))
     else: #slice error
       raise TypeError('list indices must be integers, not '+type(key))
 
@@ -89,10 +91,10 @@ class Stream_Reader():
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
     """
-    version, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
+    tag, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
     self.cache[index][CACHE_INDEX_TAG] = tag
     self.cache[index][CACHE_INDEX_DATA] = values
-    defer.ReturnValue('test Return Value')
+    defer.returnValue("!!! Test")
 
   def __iter__(self):
     i = 0
