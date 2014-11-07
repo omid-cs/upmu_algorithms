@@ -1,7 +1,6 @@
 import numpy as np
 import qdf
 from twisted.internet import defer
-from threading import Lock
 
 """
 Constants
@@ -68,37 +67,38 @@ class Stream_Reader():
       tag = self.start + ((((key/BLOCK_SIZE)*BLOCK_SIZE)/SAMPLE_RATE)*qdf.SECOND)
       if self.cache[index][CACHE_INDEX_TAG] == None:
         #cache entry is empty
-        self._query_data(index, tag)
+        deferred = self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
+        deferred.addCallback(_fill_cache)
       elif self.cache[index][CACHE_INDEX_TAG] != tag:
         #cache miss
-        self._query_data(index, tag)
-      self.cache_lock.acquire()
-      datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
-      self.cache_lock.release()
-      if datapoint.time > self.end:
-        raise IndexError('Requested date past end-date:\n'+
-                         'End-Date: '+str(self.end)+'\n'+
-                         'Requested-Date: '+str(datapoint.time))
-      return datapoint
-
+        deferred = self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
+        deferred.addCallback(fill_cache)
+      else
+        deferred = defer()
+      deferred.addCallback(_get_value)
+    
     elif isinstance(key, slice):
       #not implemented yet
       raise TypeError('list indices must be integers, not '+type(key))
     else: #slice error
       raise TypeError('list indices must be integers, not '+type(key))
 
-  @defer.inlineCallbacks
-  def _query_data(self, index, tag):
+  def _get_value(self):
+    if datapoint.time > self.end:
+        raise IndexError('Requested date past end-date:\n'+
+                         'End-Date: '+str(self.end)+'\n'+
+                         'Requested-Date: '+str(datapoint.time))
+      return datapoint
+
+
+
+  def _fill_cache(self, data):
     """
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
     """
-    self.cache_lock.acquire
-    tag, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
-    self.cache[index][CACHE_INDEX_TAG] = tag
-    self.cache[index][CACHE_INDEX_DATA] = values
-    self.cache_lock.release()
-    #defer.returnValue("!!! Test")
+    self.cache[index][CACHE_INDEX_TAG] = data[0]
+    self.cache[index][CACHE_INDEX_DATA] = data[1]
 
   def __iter__(self):
     i = 0
