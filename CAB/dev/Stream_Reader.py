@@ -73,7 +73,7 @@ class Stream_Reader():
         #cache miss
         deferred = self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
         deferred.addCallback(fill_cache)
-      else
+      else:
         deferred = defer()
       deferred.addCallback(_get_value, key)
     
