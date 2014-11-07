@@ -42,7 +42,7 @@ def frequency(input_streams):
       #save trailing values for next batch
       overflow_points[j] = []
       for i in range(len(input_points)-sampling_freq, len(input_points)):
-        overflow_points[j].append(input_points[j])
+        overflow_points[j].append(input_points[i])
       output_streams.append(freqs)
   return output_streams
 
