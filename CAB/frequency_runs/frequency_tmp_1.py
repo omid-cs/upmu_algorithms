@@ -49,7 +49,7 @@ def frequency(input_streams):
 opts = { 'input_streams'  : ['C1ANG', 'C2ANG', 'C3ANG', 'L1ANG', 'L2ANG', 'L3ANG'],
          'input_uids'     : ['4b7fec6d-270e-4bd6-b301-0eac6df17ca2',
                              '9ffeaf2a-46a9-465f-985d-96f84df66283',
-                             '8b40fe4c-36ee-4b10-8aef-1eef8c471e1du',
+                             '8b40fe4c-36ee-4b10-8aef-1eef8c471e1d',
                              'b4776088-2f85-4c75-90cd-7472a949a8fa',
                              '8b80c070-7bb1-44d3-b3a8-301558d573ea',
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1'],
