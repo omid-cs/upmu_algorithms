@@ -42,7 +42,7 @@ def frequency(input_streams):
       #save trailing values for next batch
       overflow_points[j] = []
       for i in range(len(input_points)-sampling_freq, len(input_points)):
-        overflow_points[j].append(input_points[j])
+        overflow_points[j].append(input_points[i])
       output_streams.append(freqs)
   return output_streams
 
@@ -59,7 +59,7 @@ opts = { 'input_streams'  : ['C1ANG', 'C2ANG', 'C3ANG', 'L1ANG', 'L2ANG', 'L3ANG
          'output_units'   : ['Hz', 'Hz', 'Hz', 'Hz', 'Hz', 'Hz'],
          'author'         : 'FREQ_1SEC_IN_HZ',
          'name'           : 'switch_a6',
-         'version'        : 2,
+         'version'        : 3,
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
 qdf.begin()
