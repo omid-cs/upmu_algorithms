@@ -47,18 +47,18 @@ def frequency(input_streams):
   return output_streams
 
 opts = { 'input_streams'  : ['C1ANG', 'C2ANG', 'C3ANG', 'L1ANG', 'L2ANG', 'L3ANG'],
-         'input_uids'     : ['4b7fec6d-270e-4bd6-b301-0eac6df17ca2',
-                             '9ffeaf2a-46a9-465f-985d-96f84df66283',
-                             '8b40fe4c-36ee-4b10-8aef-1eef8c471e1d',
-                             'b4776088-2f85-4c75-90cd-7472a949a8fa',
-                             '8b80c070-7bb1-44d3-b3a8-301558d573ea',
-                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1'],
+         'input_uids'     : ['4072af6f-938e-450c-9927-37dee6968446',
+                             'bf045a36-34df-4bee-a747-b20c3164723a',
+                             '8a5d0010-4665-4b59-ab6f-e7858c12284a',
+                             'adf13e17-44b7-4ef6-ae3f-fde8a9152ab7',
+                             '4f56a8f1-f3ca-4684-930e-1b4d9955f72c',
+                             '2c07ccef-20c5-4971-87cf-2c187ce5f722'],
          'start_date'     : '2014-09-30T00:00:00.000000',
          'end_date'       : '2014-09-30T08:00:00.000000',
          'output_streams' : ['C1ANG', 'C2ANG', 'C3ANG', 'L1ANG', 'L2ANG', 'L3ANG'],
          'output_units'   : ['Hz', 'Hz', 'Hz', 'Hz', 'Hz', 'Hz'],
          'author'         : 'FREQ_1SEC_IN_HZ',
-         'name'           : 'grizzly_new',
+         'name'           : 'switch_a6',
          'version'        : 2,
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
