@@ -11,10 +11,8 @@ def compute(input_streams):
         clean_LC=[]
         clean_LA=[]
         i=0
-        myfile=file("test.txt",'w')
         while i < 10:
-          print >> myfile, LB.time[i] 
-        myfile.close()
+          print '%d,%d' %(LB.time[i],LB.value[i] 
         return[clean_LA,clean_LB,clean_LC]
         
         
