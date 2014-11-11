@@ -40,7 +40,7 @@ def frequency(input_streams):
   overflow_points = []
   for i in range(len(input_points)-sampling_freq, len(input_points)):
     overflow_points.append(input_points[i])
-  return [freqs]
+  #return [freqs]
 
 opts = { 'input_streams'  : ['B71_C1ANG'],
          'input_uids'     : ['9717c589-d0cf-4a5e-83d6-5325134ba13b','9717c589-d0cf-4a5e-83d6-5325134ba13b'],
