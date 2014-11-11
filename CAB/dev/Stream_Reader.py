@@ -1,7 +1,6 @@
 import numpy as np
 import qdf
 from twisted.internet import defer
-import time #!!! FOR TESTING ONLY
 
 """
 Constants
@@ -90,10 +89,20 @@ class Stream_Reader():
     """
     Queries data from database, storing it into cache index specified
     Write back is NOT implemented as this stream is read-only
+
+    Data is preprocessed such that indices correspond to times, not datapoints
     """
-    tag, values = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
+    version, datapoints = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
+    time_index = np.empty(BLOCK_SIZE)
+    time_index[:] = None
+    
+    for point in datapoints:
+      time = float(point.time - tag)
+      index = int(round(time/SAMPLE_RATE))
+      time_index[index] = point
+
     self.cache[index][CACHE_INDEX_TAG] = tag
-    self.cache[index][CACHE_INDEX_DATA] = values
+    self.cache[index][CACHE_INDEX_DATA] = time_index
 
   def __iter__(self):
     i = 0

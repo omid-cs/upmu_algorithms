@@ -6,8 +6,8 @@ from twisted.internet import defer
 def frequency(input_streams):
   # only one stream
   s = input_streams[0]
-  for i in range(20):
-    val =  yield s[i*10000]
+  for i in range(50):
+    val =  yield s[i*6]
     print val
   print "done!"
   
