@@ -94,7 +94,7 @@ class Stream_Reader():
     """
     version, datapoints = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
     values = np.empty((BLOCK_SIZE,), dtype=(type(datapoints[0])))
-    time_index[:] = None
+    values[:] = None
     
     for point in datapoints:
       time = float(point.time - tag)
