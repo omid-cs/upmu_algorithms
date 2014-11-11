@@ -93,7 +93,7 @@ class Stream_Reader():
     Data is preprocessed such that indices correspond to times, not datapoints
     """
     version, datapoints = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
-    time_index = np.empty(BLOCK_SIZE)
+    time_index = np.empty((BLOCK_SIZE,), dtype=(type(datapoints[0])))
     time_index[:] = None
     
     for point in datapoints:
