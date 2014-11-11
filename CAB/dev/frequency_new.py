@@ -2,11 +2,12 @@ import qdf
 from distillate_new import Distillate
 from twisted.internet import defer
 
+@defer.inlineCallbacks
 def frequency(input_streams):
   # only one stream
   s = input_streams[0]
   for i in range(20):
-    val =  s[2]
+    val =  yield s[2]
   
   
   sampling_freq = 60 #Hz
