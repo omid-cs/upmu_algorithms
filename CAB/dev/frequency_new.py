@@ -7,7 +7,9 @@ def frequency(input_streams):
   # only one stream
   s = input_streams[0]
   for i in range(20):
-    val =  yield s[i]
+    val =  yield s[i*10000]
+    print val
+  print "done!"
   
   
   sampling_freq = 60 #Hz
@@ -45,7 +47,7 @@ def frequency(input_streams):
 opts = { 'input_streams'  : ['B71_C1ANG'],
          'input_uids'     : ['9717c589-d0cf-4a5e-83d6-5325134ba13b','9717c589-d0cf-4a5e-83d6-5325134ba13b'],
          'start_dates'    : ['2014-10-01T00:00:00.000000', '2014-10-01T00:01.000000'],
-         'end_dates'      : ['2014-10-01T00:02:00.000000', '2014-10-01T02:01.000000'],
+         'end_dates'      : ['2014-10-01T00:20:00.000000', '2014-10-01T20:01.000000'],
          'output_streams' : [],
          'output_units'   : ['Hz'],
          'author'         : 'CAB',
