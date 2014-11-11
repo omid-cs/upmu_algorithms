@@ -5,7 +5,7 @@ from twisted.internet import defer
 """
 Constants
 """ 
-SAMPLE_RATE = 120
+SAMPLE_RATE = 120 # samples per second
 CACHE_ENTRIES = 4
 BLOCK_SIZE = 15*60*SAMPLE_RATE
 
@@ -93,16 +93,16 @@ class Stream_Reader():
     Data is preprocessed such that indices correspond to times, not datapoints
     """
     version, datapoints = yield self.quasar.stream_get(self.name, tag, tag+(15*qdf.MINUTE))
-    time_index = np.empty((BLOCK_SIZE,), dtype=(type(datapoints[0])))
+    values = np.empty((BLOCK_SIZE,), dtype=(type(datapoints[0])))
     time_index[:] = None
     
     for point in datapoints:
       time = float(point.time - tag)
-      index = int(round(time/SAMPLE_RATE))
-      time_index[index] = point
+      time_index = int(round(time*SAMPLE_RATE/qdf.SECOND))
+      values[time_index] = point
 
     self.cache[index][CACHE_INDEX_TAG] = tag
-    self.cache[index][CACHE_INDEX_DATA] = time_index
+    self.cache[index][CACHE_INDEX_DATA] = values
 
   def __iter__(self):
     i = 0
