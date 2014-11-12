@@ -19,8 +19,8 @@ def compute(input_streams):
         idx=0
         while idx < len(LB):
          raw_LB.append(LB[idx].value)
-         raw_LB=np.asarray(raw_LB)
          idx+=1
+        raw_LB=np.asarray(raw_LB)
         r = boxplot(raw_LB)
         top_points_LB = r["fliers"][0].get_data()[1]
         bottom_pionts_LB = r["fliers"][2].get_data()[1]
@@ -30,8 +30,8 @@ def compute(input_streams):
         idx=0
         while idx < len(LA):
          raw_LA.append(LA[idx].value)
-         raw_LA=np.asarray(raw_LA)
          idx+=1
+        raw_LA=np.asarray(raw_LA)
         r = boxplot(raw_LA)
         top_points_LA = r["fliers"][0].get_data()[1]
         bottom_pionts_LA = r["fliers"][2].get_data()[1]
@@ -41,8 +41,8 @@ def compute(input_streams):
         idx=0
         while idx < len(LC):
          raw_LC.append(LC[idx].value)
-         raw_LC=np.asarray(raw_LC)
          idx+=1
+        raw_LC=np.asarray(raw_LC)
         r = boxplot(raw_LC)
         top_points_LC = r["fliers"][0].get_data()[1]
         bottom_pionts_LC = r["fliers"][2].get_data()[1]
