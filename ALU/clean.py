@@ -17,7 +17,7 @@ def compute(input_streams):
         bad_LC=[]
         bad_LA=[]
         idx=0
-        for idx < len(LB):
+        while idx < len(LB):
          raw_LB.append(LB[idx].value)
          raw_LB=np.asarray(raw_LB)
          idx+=1
@@ -28,7 +28,7 @@ def compute(input_streams):
         top_points_LB = list(top_points_LB)
         outliers_LB=bottom_pionts_LB+top_pionts_LB
         idx=0
-        for idx < len(LA):
+        while idx < len(LA):
          raw_LA.append(LA[idx].value)
          raw_LA=np.asarray(raw_LA)
          idx+=1
@@ -39,7 +39,7 @@ def compute(input_streams):
         top_points_LA = list(top_points_LA)
         outliers_LA=bottom_pionts_LA+top_pionts_LA
         idx=0
-        for idx < len(LC):
+        while idx < len(LC):
          raw_LC.append(LC[idx].value)
          raw_LC=np.asarray(raw_LC)
          idx+=1
@@ -50,21 +50,21 @@ def compute(input_streams):
         top_points_LC = list(top_points_LC)
         outliers_LC=bottom_pionts_LA+top_pionts_LC
         idx=0
-        for idx < len(LA):
+        while idx < len(LA):
          if LA[idx].value in outliers_LA:
             bad_LA.append((LA[idx].time, LA[idx].value))              
          else:
             good_LA.append((LA[idx].time, LA[idx].value))     
          idx+=1    
         idx=0
-        for idx < len(LB):
+        while idx < len(LB):
          if LB[idx].value in outliers_LB:
             bad_LB.append((LB[idx].time, LB[idx].value))              
          else:
             good_LB.append((LB[idx].time, LB[idx].value))     
          idx+=1  
         idx=0
-        for idx < len(LC):
+        while idx < len(LC):
          if LC[idx].value in outliers_LC:
             bad_LC.append((LC[idx].time, LC[idx].value))              
          else:
