@@ -13,7 +13,7 @@ def compute(input_streams):
         idx=0
         while idx < len(LB):
          print LB[idx].time
-         break
+         idx+=1
        
         return[good_LA,bad_LA,good_LB]
         
