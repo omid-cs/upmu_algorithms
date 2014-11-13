@@ -23,7 +23,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-01T00:00:10.000000', \
-         'output_streams' : ['LA','LB','LC'], \
+         'output_streams' : ['grizzly_LA','grizzly_LB','grizzly_LC'], \
          'output_units'   : ['Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'count missing data', \
