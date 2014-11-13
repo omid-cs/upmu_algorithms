@@ -3,7 +3,9 @@ import numpy as np
 import qdf
 
 def compute(input_streams):
-        print input_streams[0][0].time
+        good_LA=[]
+        bad_LA=[]
+        good_LB=[]
         LB = input_streams[0]
         LC=input_streams[1]
         LA=input_streams[2]
