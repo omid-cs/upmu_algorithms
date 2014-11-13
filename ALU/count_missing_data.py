@@ -13,30 +13,27 @@ def compute(input_streams):
         while idx < len(LB):
          LB_check.append((LB[idx-1].time,0))
          time=LB[idx-1].time
-         if (LB[idx].time-time)!=8333333:
+         while (LB[idx].time-time)!=8333333:
            time+=8333333 
            LB_check.append((time,1))
-           continue
          idx+=1
         LB_check.append((LB[idx-1].time,0))
         idx=1
         while idx < len(LA):
          LA_check.append((LA[idx-1].time,0))
          time=LA[idx-1].time
-         if (LA[idx].time-time)!=8333333:
+         while (LA[idx].time-time)!=8333333:
            time+=8333333 
            LA_check.append((time,1))
-           continue
          idx+=1
         LA_check.append((LA[idx-1].time,0))
         idx=1
         while idx < len(LC):
          LC_check.append((LC[idx-1].time,0))
          time=LC[idx-1].time
-         if (LC[idx].time-time)!=8333333:
+         while (LC[idx].time-time)!=8333333:
            time+=8333333 
            LC_check.append((time,1))
-           continue
          idx+=1
         LC_check.append((LC[idx-1].time,0))
         return[LA_check,LB_check,LC_check]
@@ -53,7 +50,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'output_units'   : ['Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'count missing data', \
-         'version'        : 4, \
+         'version'        : 5, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
