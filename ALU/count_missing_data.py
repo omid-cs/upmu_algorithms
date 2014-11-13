@@ -13,7 +13,7 @@ def compute(input_streams):
         while idx < len(LB):
          LB_check.append((LB[idx-1].time,0))
          time=LB[idx-1].time
-         while (LB[idx].time-time)!=8333333:
+         while (round(LB[idx].time-time))<8333333:
            time+=8333333 
            LB_check.append((time,1))
          idx+=1
@@ -22,7 +22,7 @@ def compute(input_streams):
         while idx < len(LA):
          LA_check.append((LA[idx-1].time,0))
          time=LA[idx-1].time
-         while (LA[idx].time-time)!=8333333:
+         while (round(LA[idx].time-time))<8333333:
            time+=8333333 
            LA_check.append((time,1))
          idx+=1
@@ -31,7 +31,7 @@ def compute(input_streams):
         while idx < len(LC):
          LC_check.append((LC[idx-1].time,0))
          time=LC[idx-1].time
-         while (LC[idx].time-time)!=8333333:
+         while (round(LC[idx].time-time))<8333333:
            time+=8333333 
            LC_check.append((time,1))
          idx+=1
@@ -45,12 +45,12 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','8b80c070-7bb1-44d3-b3a8-301558d573ea',
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
-         'end_date'       : '2014-10-01T00:00:01.000000', \
+         'end_date'       : '2014-10-01T00:01:00.000000', \
          'output_streams' : ['grizzly_LA','grizzly_LB','grizzly_LC'], \
          'output_units'   : ['Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'count missing data', \
-         'version'        : 10, \
+         'version'        : 11, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
