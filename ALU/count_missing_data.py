@@ -12,7 +12,7 @@ def compute(input_streams):
         idx=1
         
         while idx < len(LB):
-         if (round((LB[idx].time-time)/10000000.0))!=round(8333333/10000000.0):
+         if (round((LB[idx].time-LB[idx-1].time)/10000000.0))!=round(8333333/10000000.0):
            print False,LB[idx].time,LB[idx-1].time
          idx+=1
         '''
