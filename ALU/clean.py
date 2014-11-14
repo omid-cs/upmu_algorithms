@@ -80,7 +80,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','8b80c070-7bb1-44d3-b3a8-301558d573ea',
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
-         'end_date'       : '2014-10-01T00:00:10.000000', \
+         'end_date'       : '2014-10-01T00:10:00.000000', \
          'output_streams' : ['good_LA','bad_LA','good_LB','bad_LB','good_LC','bad_LC'], \
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
