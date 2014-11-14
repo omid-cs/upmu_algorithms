@@ -11,6 +11,11 @@ def compute(input_streams):
         LC_check=[]
         idx=1
         while idx < len(LA):
+         if (round((LB[idx].time-time)/10000000.0))!=round(8333333/10000000.0):
+           print False,LB[idx].time,LB[idx-1].time
+         idx+=1
+        '''
+        while idx < len(LA):
          LB_check.append((LB[idx-1].time,0))
          time=LB[idx-1].time
          while (round((LB[idx].time-time)/10000000.0))!=round(8333333/10000000.0):
@@ -36,6 +41,7 @@ def compute(input_streams):
            LC_check.append((time,1))
          idx+=1
         LC_check.append((LC[idx-1].time,0))
+        '''
         return[LA_check,LB_check,LC_check]
         
         
