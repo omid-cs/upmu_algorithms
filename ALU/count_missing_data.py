@@ -11,9 +11,12 @@ def compute(input_streams):
         LC_check=[]
         idx=1
         while idx < len(LB):
-         print LB[idx].time
-         idx+=1
-        '''
+         if LB[idx].time-LB[idx-1].time == 8333333
+          print True,LB[idx].time,LB[idx-1].time
+         else
+          print False,LB[idx].time,LB[idx-1].time
+         idx+=1 
+         ''' 
          LB_check.append((LB[idx-1].time,0))
          time=LB[idx-1].time
          while (round(LB[idx].time-time))<8333333:
@@ -54,7 +57,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'output_units'   : ['Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'count missing data', \
-         'version'        : 13, \
+         'version'        : 14, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
