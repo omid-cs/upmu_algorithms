@@ -11,7 +11,7 @@ def compute(input_streams):
         LC_check=[]
         idx=1
         while idx < len(LB):
-         if LB[idx].time-LB[idx-1].time == 8333333
+         if LB[idx].time-LB[idx-1].time == 8333333:
           print True,LB[idx].time,LB[idx-1].time
          else
           print False,LB[idx].time,LB[idx-1].time
