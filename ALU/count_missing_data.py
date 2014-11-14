@@ -10,8 +10,8 @@ def compute(input_streams):
         LA_check=[]
         LC_check=[]
         idx=1
-        '''
-        while idx < len(LA):
+        
+        while idx < len(LB):
          if (round((LB[idx].time-time)/10000000.0))!=round(8333333/10000000.0):
            print False,LB[idx].time,LB[idx-1].time
          idx+=1
@@ -42,6 +42,7 @@ def compute(input_streams):
            LC_check.append((time,1))
          idx+=1
         LC_check.append((LC[idx-1].time,0))
+        '''
         return[LA_check,LB_check,LC_check]
         
         
@@ -56,7 +57,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'output_units'   : ['Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'count missing data', \
-         'version'        : 17, \
+         'version'        : 18, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
