@@ -13,7 +13,7 @@ def compute(input_streams):
         while idx < len(LB):
          if LB[idx].time-LB[idx-1].time == 8333333:
           print True,LB[idx].time,LB[idx-1].time
-         else
+         else:
           print False,LB[idx].time,LB[idx-1].time
          idx+=1 
          ''' 
