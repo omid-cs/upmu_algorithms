@@ -1,7 +1,7 @@
 from distillate import Distillate
 import numpy as np
 import qdf
-import matplotplib *
+from matplotplib import *
 
 def compute(input_streams):
         # data input
