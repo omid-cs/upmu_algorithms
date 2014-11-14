@@ -13,7 +13,8 @@ def compute(input_streams):
         
         while idx < len(LB):
          if (round((LB[idx].time-LB[idx-1].time)/10000000.0))!=round(8333333/10000000.0):
-           print False,LB[idx].time,LB[idx-1].time
+           print False,LB[idx].time,LB[idx-1].time,idx
+           
          idx+=1
         '''
         while idx < len(LB):
@@ -57,7 +58,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'output_units'   : ['Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'count missing data', \
-         'version'        : 18, \
+         'version'        : 19, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
