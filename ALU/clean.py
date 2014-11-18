@@ -98,7 +98,8 @@ def compute(input_streams):
          else:
             minor_good_LC.append((LC[idx].time, LC[idx].value))
             major_good_LC.append((LC[idx].time, LC[idx].value))
-         idx+=1    
+         idx+=1  
+        print major_good_LA
         return[major_good_LA,major_bad_LA,minor_good_LA,minor_bad_LA,major_good_LB,major_bad_LB,minor_good_LB,minor_bad_LB,major_good_LC,major_bad_LC,minor_good_LC,minor_bad_LC]
         
         
@@ -114,7 +115,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'Remove Outlier', \
-         'version'        : 6, \
+         'version'        : 7, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
