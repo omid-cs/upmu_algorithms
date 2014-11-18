@@ -50,7 +50,6 @@ def compute(input_streams):
         LA_interquartile=LA_Q3-LA_Q1
         LA_innerfences=[LA_Q1-LA_interquartile*1.5,LA_Q3+LA_interquartile*1.5]
         LA_outerfences=[LA_Q1-LA_interquartile*3,LA_Q3+LA_interquartile*3]
-        print LA_innerfences,LA_outerfences
         LB_Q1=np.percentile(raw_LB,25)
         LB_Q3=np.percentile(raw_LB,75)
         LB_interquartile=LB_Q3-LB_Q1
@@ -66,12 +65,15 @@ def compute(input_streams):
         ldx=0
         while idx < len(LA):
          if LA[idx].value>LA_outerfences[1] or  LA[idx].value<LA_outerfences[0]:
+            print 1
             major_bad_LA.append((LA[idx].time, LA[idx].value))
             minor_bad_LA.append((LA[idx].time, LA[idx].value))
          elif LA[idx].value>LA_innerfences[1] or  LA[idx].value<LA_innerfences[0]:
+            print 2
             minor_bad_LA.append((LA[idx].time, LA[idx].value))
             major_good_LA.append((LA[idx].time, LA[idx].value))
          else:
+            print 3
             minor_good_LA.append((LA[idx].time, LA[idx].value))
             major_good_LA.append((LA[idx].time, LA[idx].value))
          idx+=1    
@@ -114,7 +116,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'Remove Outlier', \
-         'version'        : 8, \
+         'version'        : 9, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
