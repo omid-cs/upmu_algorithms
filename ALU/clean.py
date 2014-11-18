@@ -107,13 +107,13 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','8b80c070-7bb1-44d3-b3a8-301558d573ea',
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1'], \
          'start_date'     : '2014-11-10T10:00:00.000000', \
-         'end_date'       : '2014-10-10T10:00:10.000000', \
+         'end_date'       : '2014-11-10T10:00:10.000000', \
          'output_streams' : ['major_good_LA','major_bad_LA','minor_good_LA','minor_bad_LA','major_good_LB','major_bad_LB',
                              'minor_good_LB','minor_bad_LB','major_good_LC','major_bad_LC','minor_good_LC','minor_bad_LC'], \
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'Remove Outlier', \
-         'version'        : 14, \
+         'version'        : 15, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
