@@ -62,23 +62,19 @@ def compute(input_streams):
         LC_outerfences=[LC_Q1-LC_interquartile*3,LC_Q3+LC_interquartile*3]
         
         # classify data into difffernt group
-        ldx=0
-        print idx
+        idx=0
         while idx < len(LA):
          if LA[idx].value>LA_outerfences[1] or  LA[idx].value<LA_outerfences[0]:
-            print 1
             major_bad_LA.append((LA[idx].time, LA[idx].value))
             minor_bad_LA.append((LA[idx].time, LA[idx].value))
          elif LA[idx].value>LA_innerfences[1] or  LA[idx].value<LA_innerfences[0]:
-            print 2
             minor_bad_LA.append((LA[idx].time, LA[idx].value))
             major_good_LA.append((LA[idx].time, LA[idx].value))
          else:
-            print 3
             minor_good_LA.append((LA[idx].time, LA[idx].value))
             major_good_LA.append((LA[idx].time, LA[idx].value))
          idx+=1    
-        ldx=0
+        idx=0
         while idx < len(LB):
          if LB[idx].value>LB_outerfences[1] or  LB[idx].value<LB_outerfences[0]:
             major_bad_LB.append((LB[idx].time, LB[idx].value))
@@ -90,7 +86,7 @@ def compute(input_streams):
             minor_good_LB.append((LB[idx].time, LB[idx].value))
             major_good_LB.append((LB[idx].time, LB[idx].value))
          idx+=1  
-        ldx=0
+        idx=0
         while idx < len(LC):
          if LC[idx].value>LC_outerfences[1] or  LC[idx].value<LC_outerfences[0]:
             major_bad_LC.append((LC[idx].time, LC[idx].value))
@@ -117,7 +113,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'Remove Outlier', \
-         'version'        : 10, \
+         'version'        : 11, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
