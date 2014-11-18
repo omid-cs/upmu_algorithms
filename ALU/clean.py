@@ -63,6 +63,7 @@ def compute(input_streams):
         
         # classify data into difffernt group
         ldx=0
+        print idx
         while idx < len(LA):
          if LA[idx].value>LA_outerfences[1] or  LA[idx].value<LA_outerfences[0]:
             print 1
@@ -116,7 +117,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'Remove Outlier', \
-         'version'        : 9, \
+         'version'        : 10, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
