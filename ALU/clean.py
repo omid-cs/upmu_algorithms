@@ -114,7 +114,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'Remove Outlier', \
-         'version'        : 3, \
+         'version'        : 6, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
