@@ -1,7 +1,6 @@
 from distillate import Distillate
 import numpy as np
 import qdf
-from matplotlib.pylab import *
 
 def compute(input_streams):
         # data input
@@ -11,67 +10,96 @@ def compute(input_streams):
         raw_LB=[]
         raw_LC=[]
         raw_LA=[]
-        good_LB=[]
-        good_LC=[]
-        good_LA=[]
-        bad_LB=[]
-        bad_LC=[]
-        bad_LA=[]
+        major_good_LA=[]
+        major_bad_LA=[]
+        minor_good_LA=[]
+        minor_bad_LA=[]
+        major_good_LB=[]
+        major_bad_LB=[]
+        minor_good_LB=[]
+        minor_bad_LB=[]
+        major_good_LC=[]
+        major_bad_LC=[]
+        minor_good_LC=[]
+        minor_bad_LC=[]
+        
+        # data input
         idx=0
         while idx < len(LB):
          raw_LB.append(LB[idx].value)
          idx+=1
-        raw_LB=np.asarray(raw_LB)
-        r = boxplot(raw_LB)
-        top_points_LB = r["fliers"][0].get_data()[1]
-        bottom_pionts_LB = r["fliers"][2].get_data()[1]
-        bottom_pionts_LB = list(bottom_pionts_LB)
-        top_points_LB = list(top_points_LB)
-        outliers_LB=bottom_pionts_LB+top_pionts_LB
+        raw_LB=np.array(raw_LB)
+        while idx < len(LB):
+         raw_LB.append(LB[idx].value)
+         idx+=1
+        raw_LB=np.array(raw_LB)
         idx=0
         while idx < len(LA):
          raw_LA.append(LA[idx].value)
          idx+=1
-        raw_LA=np.asarray(raw_LA)
-        r = boxplot(raw_LA)
-        top_points_LA = r["fliers"][0].get_data()[1]
-        bottom_pionts_LA = r["fliers"][2].get_data()[1]
-        bottom_pionts_LA = list(bottom_pionts_LA)
-        top_points_LA = list(top_points_LA)
-        outliers_LA=bottom_pionts_LA+top_pionts_LA
+        raw_LA=np.array(raw_LA)
         idx=0
         while idx < len(LC):
          raw_LC.append(LC[idx].value)
          idx+=1
-        raw_LC=np.asarray(raw_LC)
-        r = boxplot(raw_LC)
-        top_points_LC = r["fliers"][0].get_data()[1]
-        bottom_pionts_LC = r["fliers"][2].get_data()[1]
-        bottom_pionts_LC = list(bottom_pionts_LC)
-        top_points_LC = list(top_points_LC)
-        outliers_LC=bottom_pionts_LA+top_pionts_LC
-        idx=0
+        raw_LC=np.array(raw_LC)
+        
+        # calaulate the min outlier and major outlier
+        LA_Q1=np.percentile(raw_LA,25)
+        LA_Q3=np.percentile(raw_LA,75)
+        LA_interquartile=LA_Q3-LA_Q1
+        LA_innerfences=[LA_Q1-LA_interquartile*1.5,LA_Q3+LA_interquartile*1.5]
+        LA_outerfences=[LA_Q1-LA_interquartile*3,LA_Q3+LA_interquartile*3]
+        
+        LB_Q1=np.percentile(raw_LB,25)
+        LB_Q3=np.percentile(raw_LB,75)
+        LB_interquartile=LB_Q3-LB_Q1
+        LB_innerfences=[LB_Q1-LB_interquartile*1.5,LB_Q3+LB_interquartile*1.5]
+        LB_outerfences=[LB_Q1-LB_interquartile*3,LB_Q3+LB_interquartile*3]
+        LC_Q1=np.percentile(raw_LC,25)
+        LC_Q3=np.percentile(raw_LC,75)
+        LC_interquartile=LC_Q3-LC_Q1
+        LC_innerfences=[LC_Q1-LC_interquartile*1.5,LC_Q3+LC_interquartile*1.5]
+        LC_outerfences=[LC_Q1-LC_interquartile*3,LC_Q3+LC_interquartile*3]
+        
+        # classify data into difffernt group
+        ldx=0
         while idx < len(LA):
-         if LA[idx].value in outliers_LA:
-            bad_LA.append((LA[idx].time, LA[idx].value))              
+         if LA[idx].value>LA_outerfences[1] or  LA[idx].value<LA_outerfences[0]:
+            major_bad_LA.append((LA[idx].time, LA[idx].value))
+            minor_bad_LA.append((LA[idx].time, LA[idx].value))
+         elif LA[idx].value>LA_innerfences[1] or  LA[idx].value<LA_innerfences[0]:
+            minor_bad_LA.append((LA[idx].time, LA[idx].value))
+            major_good_LA.append((LA[idx].time, LA[idx].value))
          else:
-            good_LA.append((LA[idx].time, LA[idx].value))     
+            minor_good_LA.append((LA[idx].time, LA[idx].value))
+            major_good_LA.append((LA[idx].time, LA[idx].value))
          idx+=1    
-        idx=0
+        ldx=0
         while idx < len(LB):
-         if LB[idx].value in outliers_LB:
-            bad_LB.append((LB[idx].time, LB[idx].value))              
+         if LB[idx].value>LB_outerfences[1] or  LB[idx].value<LB_outerfences[0]:
+            major_bad_LB.append((LB[idx].time, LB[idx].value))
+            minor_bad_LB.append((LB[idx].time, LB[idx].value))
+         elif LB[idx].value>LB_innerfences[1] or  LB[idx].value<LB_innerfences[0]:
+            minor_bad_LB.append((LB[idx].time, LB[idx].value))
+            major_good_LB.append((LB[idx].time, LB[idx].value))
          else:
-            good_LB.append((LB[idx].time, LB[idx].value))     
+            minor_good_LB.append((LB[idx].time, LB[idx].value))
+            major_good_LB.append((LB[idx].time, LB[idx].value))
          idx+=1  
-        idx=0
+        ldx=0
         while idx < len(LC):
-         if LC[idx].value in outliers_LC:
-            bad_LC.append((LC[idx].time, LC[idx].value))              
+         if LC[idx].value>LC_outerfences[1] or  LC[idx].value<LC_outerfences[0]:
+            major_bad_LC.append((LC[idx].time, LC[idx].value))
+            minor_bad_LC.append((LC[idx].time, LC[idx].value))
+         elif LC[idx].value>LC_innerfences[1] or  LC[idx].value<LC_innerfences[0]:
+            minor_bad_LC.append((LC[idx].time, LC[idx].value))
+            major_good_LC.append((LC[idx].time, LC[idx].value))
          else:
-            good_LC.append((LC[idx].time, LC[idx].value))     
-         idx+=1        
-        return[good_LA,bad_LA,good_LB,bad_LB,good_LC,bad_LC]
+            minor_good_LC.append((LC[idx].time, LC[idx].value))
+            major_good_LC.append((LC[idx].time, LC[idx].value))
+         idx+=1    
+        return[major_good_LA,major_bad_LA,minor_good_LA,minor_bad_LA,major_good_LB,major_bad_LB,minor_good_LB,minor_bad_LB,major_good_LC,major_bad_LC,minor_good_LC,minor_bad_LC]
         
         
         
@@ -81,11 +109,12 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L2ANG','
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-01T00:10:00.000000', \
-         'output_streams' : ['good_LA','bad_LA','good_LB','bad_LB','good_LC','bad_LC'], \
-         'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree'], \
+         'output_streams' : ['major_good_LA','major_bad_LA','minor_good_LA','minor_bad_LA','major_good_LB','major_bad_LB',
+                             'minor_good_LB','minor_bad_LB','major_good_LC','major_bad_LC','minor_good_LC','minor_bad_LC'], \
+         'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree','Degree'], \
          'author'         : 'Andrew', \
          'name'           : 'Remove Outlier', \
-         'version'        : 2, \
+         'version'        : 3, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
