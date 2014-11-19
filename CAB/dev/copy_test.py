@@ -4,8 +4,10 @@ from twisted.internet import defer
 
 @defer.inlineCallbacks
 def copy(input_streams, output_streams):
-  # only one stream
+  # only one input stream
   stream = input_streams[0]
+
+  # only one output stream
   copy_stream = output_streams[0]
 
   i = 0
