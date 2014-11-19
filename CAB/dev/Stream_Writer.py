@@ -1,4 +1,4 @@
-import qdf
+#import qdf
 
 class Stream_Writer():
   """
@@ -27,7 +27,7 @@ class Stream_Writer():
 
   def append(self, point):
     """
-    Saves point specified by the slicing index
+    Saves record 'point' into the buffer
 
     When buffer is full, it is flushed to the stream
     """

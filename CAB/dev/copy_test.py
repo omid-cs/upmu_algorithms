@@ -14,7 +14,7 @@ def copy(input_streams, output_streams):
   for i in range(120*60*60*10): # 10 hours of datapoints
     datapoint = stream[i]
     if datapoint != None:
-      copy_stream.append(datapoint)
+      yield copy_stream.append(datapoint)
 
 
 opts = { 'input_streams'  : ['B71_L2ANG'],
