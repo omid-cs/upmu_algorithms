@@ -271,14 +271,14 @@ def compute(input_streams):
         
         # comput Totalp_dpf_seq
         while idxCT < len(CpAng) and idxLT < len(VpAng):
-            if CpAng[idxCT].time < VpAng[idxLT].time:
+            if CpAng[idxCT][0] < VpAng[idxLT][0]:
                 idxCT += 1
                 continue
-            if CpAng[idxCT].time > VpAng[idxLT].time:
+            if CpAng[idxCT][0] > VpAng[idxLT][0]:
                 idxLT += 1
                 continue  
-            total=np.cos(np.radians(VpAng[idxLT].value-CpAng[idxCT].value))
-            Totalp_dpf_seq.append((CpAng[idxCT].time,total))
+            total=np.cos(np.radians(VpAng[idxLT][1]-CpAng[idxCT][1]))
+            Totalp_dpf_seq.append((CpAng[idxCT][0],total))
             idxLT+=1
             idxCT+=1
         ''' return V0, V+, V-, unbalance V neg seq, unbalance V zero seq
