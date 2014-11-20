@@ -25,6 +25,14 @@ def compute(input_streams):
         VnMag=[]
         Vn_ubalance_seq=[]
         V0_ubalance_seq=[]
+        C0Ang=[]
+        C0Mag=[]
+        CpAng=[]
+        CpMag=[]
+        CnAng=[]
+        CnMag=[]
+        Cn_ubalance_seq=[]
+        C0_ubalance_seq=[]
         Totalp_dpf_seq=[]
         idxLBA=0
         idxLBM=0
