@@ -301,7 +301,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
                              'Degree','V','Degree','V','Degree','V','Precent','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequence_new', \
-         'version'        : 9, \
+         'version'        : 10, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
