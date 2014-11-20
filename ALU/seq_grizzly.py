@@ -218,7 +218,7 @@ def compute(input_streams):
             
             # compute cosin value for three current and cosin value for l2 and l3 anfter add 120 degree and 240 degree
             cosCAAng=np.cos(np.radians(CAAng[idxCAA].value-CAAng[idxCAA].value))
-            cosCBAng=np.cos(np.radians(CBAng[idxLBA].value-CAAng[idxCAA].value))
+            cosCBAng=np.cos(np.radians(CBAng[idxCBA].value-CAAng[idxCAA].value))
             cosCCAng=np.cos(np.radians(CCAng[idxCCA].value-CAAng[idxCAA].value))
             cosCBAng_add120=np.cos(np.radians(CBAng[idxCBA].value+120-CAAng[idxCAA].value))
             cosCBAng_add240=np.cos(np.radians(CBAng[idxCBA].value+240-CAAng[idxCAA].value))
