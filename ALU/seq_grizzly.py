@@ -17,6 +17,8 @@ def compute(input_streams):
         VpMag=[]
         VnAng=[]
         VnMag=[]
+        Vn_ubalance_seq=[]
+        V0_ubalance_seq=[]
         idxLBA=0
         idxLBM=0
         idxLCA=0
@@ -99,7 +101,7 @@ def compute(input_streams):
             cosLCAng_add120=np.cos(np.radians(LCAng[idxLCA].value+120-LAAng[idxLAA].value))
             cosLCAng_add240=np.cos(np.radians(LCAng[idxLCA].value+240-LAAng[idxLAA].value))
             
-            # compute V0
+            # compute balance V0
             v0imagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng+LCMag[idxLCM].value*sinLCAng)/3.0
             v0real=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng+LCMag[idxLCM].value*cosLCAng)/3.0
             v0mag=np.sqrt(v0imagine**2+v0real**2)
@@ -107,7 +109,7 @@ def compute(input_streams):
             V0Mag.append((LAMag[idxLAM].time, v0mag))
             V0Ang.append((LAAng[idxLAA].time,v0ang))
             
-            #compute v-
+            #compute balance v-
             vpimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add120+LCMag[idxLCM].value*sinLCAng_add240)/3.0
             vpreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add120+LCMag[idxLCM].value*cosLCAng_add240)/3.0
             vpmag=np.sqrt(vpimagine**2+vpreal**2)
@@ -115,7 +117,7 @@ def compute(input_streams):
             VpMag.append((LAMag[idxLAM].time, vpmag))
             VpAng.append((LAAng[idxLAA].time,vpang))
             
-            # compute v+
+            # compute balance v+
             vnimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add240+LCMag[idxLCM].value*sinLCAng_add120)/3.0
             vnreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add240+LCMag[idxLCM].value*cosLCAng_add120)/3.0
             vnmag=np.sqrt(vnimagine**2+vnreal**2)
@@ -123,14 +125,19 @@ def compute(input_streams):
             VnMag.append((LAMag[idxLAM].time, vnmag))
             VnAng.append((LAAng[idxLAA].time,vnang))
             
+            # compute unbalance V-
+            Vn_ubalance_seq.append((LAMag[idxLAM].time,(vnmag/float(vpmag))*100))
+            # compute unbalance v0
+            V0_ubalance_seq.append((LAMag[idxLAM].time,(v0mag/float(vpmag))*100))
+            
             idxLAA+= 1
             idxLAM+= 1
             idxLBA+= 1
             idxLBM+= 1
             idxLCA+= 1
             idxLCM+= 1
-        # return V0 V+ V- 
-        return[V0Ang,V0Mag,VpAng,VpMag,VnAng,VnMag]
+        ''' return V0 V+ V- unbalance neg seq unbalance zero seq'''
+        return[V0Ang,V0Mag,VpAng,VpMag,VnAng,VnMag,Vn_ubalance_seq,V0_ubalance_seq]
         
         
         
@@ -142,11 +149,12 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1','db3ea4f7-a337-4874-baeb-17fc2c0cf18b'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['grizzly_V0Ang','grizzly_V0Mag','grizzly_V+Ang','grizzly_V+Mag','grizzly_V-Ang','grizzly_V-Mag'], \
-         'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
+         'output_streams' : ['grizzly_V0Ang','grizzly_V0Mag','grizzly_V+Ang','grizzly_V+Mag','grizzly_V-Ang','grizzly_V-Mag',
+                             'grizzly_unbalance_neq_seq','grizzly_unbalance_zero_seq'], \
+         'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequence_new', \
-         'version'        : 8, \
+         'version'        : 9, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
