@@ -298,7 +298,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
                              'grizzly_C0Ang','grizzly_C0Mag','grizzly_C+Ang','grizzly_C+Mag','grizzly_C-Ang','grizzly_C-Mag',
                              'grizzly_unbalance_Cneq_seq','grizzly_unbalance_Czero_seq','grizzly_totalp_dpf_seq'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent',
-                             'Degree','V','Degree','V','Degree','V','Precent','Precent','Precent'], \
+                             'Degree','Degree','Degree','Degree','Degree','Degree','Precent','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequence_new', \
          'version'        : 10, \
