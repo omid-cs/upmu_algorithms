@@ -18,6 +18,8 @@ def compute(input_streams):
         VpMag=[]
         VnAng=[]
         VnMag=[]
+        Vn_ubalance_seq=[]
+        V0_ubalance_seq=[]
         idxLBA=0
         idxLBM=0
         idxLCA=0
@@ -143,6 +145,11 @@ def compute(input_streams):
             VnMag.append((LAMag[idxLAM].time, vnmag))
             VnAng.append((LAAng[idxLAA].time,vnang))
             
+            # compute unbalance V-
+            Vn_ubalance_seq.append((LAMag[idxLAM].time,(vnmag/float(vpmag))*100))
+            # compute unbalance v0
+            V0_ubalance_seq.append((LAMag[idxLAM].time,(v0mag/float(vpmag))*100))
+            
             idxLAA+= 1
             idxLAM+= 1
             idxLBA+= 1
@@ -150,7 +157,7 @@ def compute(input_streams):
             idxLCA+= 1
             idxLCM+= 1
         # return V0 V+ V- 
-        return[V0Ang,V0Mag,VpAng,VpMag,VnAng,VnMag]
+        return[V0Ang,V0Mag,VpAng,VpMag,VnAng,VnMag,Vn_ubalance_seq,V0_ubalance_seq]
         
         
         
@@ -163,11 +170,12 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['switch_V0Ang','switch_V0Mag','switch_V+Ang','switch_V+Mag','switch_V-Ang','switch_V-Mag'], \
-         'output_units'   : ['Degree','V','Degree','V','Degree','V'], \
+         'output_streams' : ['switch_V0Ang','switch_V0Mag','switch_V+Ang','switch_V+Mag','switch_V-Ang','switch_V-Mag',
+                             'switch_unbalance_neq_seq','switch_unbalance_zero_seq'], \
+         'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequence_new', \
-         'version'        : 1, \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
