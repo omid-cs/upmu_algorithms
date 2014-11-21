@@ -73,11 +73,11 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1','8b40fe4c-36ee-4b10-8aef-1eef8c471e1d'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['DPF_A_grizzly,DPF_B_grizzly,DPF_C_grizzly'], \
+         'output_streams' : ['DPF_A_grizzly','DPF_B_grizzly','DPF_C_grizzly'], \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'DPF', \
-         'version'        : 1, \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
