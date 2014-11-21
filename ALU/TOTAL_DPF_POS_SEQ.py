@@ -5,8 +5,8 @@ import qdf
 
 def compute(input_streams):
         # data input
-        V0Ang=input_streams[0]
-        C0Ang=input_streams[1]
+        VpAng=input_streams[0]
+        CpAng=input_streams[1]
         Total_dpf_pos_seq=[]
         idxVp=0
         idxCp=0
