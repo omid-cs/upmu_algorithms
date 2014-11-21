@@ -8,8 +8,8 @@ def compute(input_streams):
         V0Ang=input_streams[0]
         C0Ang=input_streams[1]
         Total_dpf_pos_seq=[]
-        idxV0=0
-        idxC0=0
+        idxVp=0
+        idxCp=0
         
         # time matching
         while idxVp < len(VpAng) and idxCp < len(CpAng):
@@ -33,8 +33,8 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['Distillate/Andrew/Sequence_new/grizzly_V0Ang','Distillate/Andrew/Sequence_new/grizzly_C0Ang'], \
-         'input_uids'     : ['f8b5154b-fdc5-4b0a-82cb-bcc04b28adad','bee7fd99-e292-42da-a89f-af57dd32ce59'], \
+opts = { 'input_streams'  : ['Distillate/Andrew/Sequence_new/grizzly_V+Ang','Distillate/Andrew/Sequence_new/grizzly_C+Ang'], \
+         'input_uids'     : ['55ec9d08-887d-4626-bba1-0be2a5e6d08f','91d5d281-c796-4f86-a75d-47d1ed137501'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
          'output_streams' : [], \
