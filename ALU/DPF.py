@@ -10,7 +10,7 @@ def compute(input_streams):
         LCAng=input_streams[2]
         CCAng=input_streams[3]
         LAAng=input_streams[4]
-        CAAag=input_streams[5]
+        CAAng=input_streams[5]
         DPF_A=[]
         DPF_B=[]
         DPF_C=[]
