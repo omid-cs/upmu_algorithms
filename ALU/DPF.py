@@ -21,7 +21,7 @@ def compute(input_streams):
         idxCC=0
         idxLC=0
         # matching time among all 6 data strams to make sure they are at same time before compute sequence
-        while idxCA < len(CAAng) and idxLA < len(LAAag):
+        while idxCA < len(CAAng) and idxLA < len(LAAng):
             if CAAng[idxCA].time < LAAng[idxLA].time:
                 idxCA += 1
                 continue
@@ -34,7 +34,7 @@ def compute(input_streams):
             idxCA+=1
             idxLA+=1
             
-        while idxCB < len(CBAng) and idxLB < len(LBAag):
+        while idxCB < len(CBAng) and idxLB < len(LBAng):
             if CBAng[idxCB].time < LBAng[idxLB].time:
                 idxCB += 1
                 continue
@@ -47,7 +47,7 @@ def compute(input_streams):
             idxCB+=1
             idxLB+=1
             
-        while idxCC < len(CCAng) and idxLC < len(LCAag):
+        while idxCC < len(CCAng) and idxLC < len(LCAng):
             if CCAng[idxCC].time < LCAng[idxLC].time:
                 idxCC += 1
                 continue
