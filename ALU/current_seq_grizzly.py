@@ -151,7 +151,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/C1ANG','upmu/grizzly_new/C1MAG','
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
          'output_streams' : ['grizzly_C0Ang','grizzly_C0Mag','grizzly_C+Ang','grizzly_C+Mag','grizzly_C-Ang','grizzly_C-Mag',
-                             'grizzly_unbalance_Cneq_seq','grizzly_unbalance_Czero_seq','grizzly_totalp_dpf_seq'], \
+                             'grizzly_unbalance_Cneq_seq','grizzly_unbalance_Czero_seq'], \
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequence_new', \
