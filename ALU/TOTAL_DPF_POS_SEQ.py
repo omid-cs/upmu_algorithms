@@ -37,7 +37,7 @@ opts = { 'input_streams'  : ['Distillate/Andrew/Sequence_new/grizzly_V+Ang','Dis
          'input_uids'     : ['55ec9d08-887d-4626-bba1-0be2a5e6d08f','91d5d281-c796-4f86-a75d-47d1ed137501'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : [], \
+         'output_streams' : ['grizzly_totalp_dpf_seq'], \
          'output_units'   : ['Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'Sequence_new', \
