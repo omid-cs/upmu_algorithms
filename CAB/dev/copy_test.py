@@ -25,7 +25,7 @@ opts = { 'input_streams'  : ['B71_L2ANG'],
          'output_units'   : ['Degrees'],
          'author'         : 'CAB',
          'name'           : 'Dev',
-         'version'        : 2,
+         'version'        : 3,
          'algorithm'      : copy }
 qdf.register(Distillate(), opts)
 qdf.begin()
