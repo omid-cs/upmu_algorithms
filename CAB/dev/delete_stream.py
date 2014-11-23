@@ -38,7 +38,7 @@ class DeleteStream(qdf.QuasarDistillate):
         start_date = self.date("2014-10-01T00:00:00.000000")
         end_date = self.date("2014-10-01T00:01:00.000000")
 
-        stream_delete_range("dev", start_date, end_date)
+        qdf.stream_delete_range("dev", start_date, end_date)
 
         #Now that we are done, save the time we finished at
         self.persist("done", True)
