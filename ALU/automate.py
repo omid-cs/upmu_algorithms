@@ -5,7 +5,8 @@ import qdf
 
 Stream=[]
 Out=[]
-While  1:
+swytch='y'
+While switch !='n':
         stream=input('Enter the stream name or N (eg upmu/grizzly_new/L1ANG)')
         if stram !='N':
            Stream.append(stream)                             
