@@ -5,7 +5,7 @@ import numpy as np
 import math
 import qdf
 Stream=[]
-Steam_id=[]
+Stream_id=[]
 Out=[]
 Calaulation=input('Enter 1 for DPF 2 for sequence 3 for angle difference 4 for total dpf pos seq: ')
 while True:
