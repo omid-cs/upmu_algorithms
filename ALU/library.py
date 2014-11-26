@@ -3,11 +3,10 @@ import math
 def DPF(input_streams):
   Input=[]
   Output=[]
-  print len(input_streams)
   i=0
   while i<len(input_streams):
         Input.append(input_streams[i])
-        i=+1
+        i+=1
   interaction=0
   stream_number=0
   while interaction<(len(input_streams)/2):
