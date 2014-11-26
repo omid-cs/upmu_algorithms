@@ -3,6 +3,10 @@ import numpy as np
 import math
 import qdf
 
+Id=['b4776088-2f85-4c75-90cd-7472a949a8fa','4b7fec6d-270e-4bd6-b301-0eac6df17ca2',
+                             '8b80c070-7bb1-44d3-b3a8-301558d573ea','9ffeaf2a-46a9-465f-985d-96f84df66283',
+                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1','8b40fe4c-36ee-4b10-8aef-1eef8c471e1d']
+                             
 def compute(input_streams):
         # data input
         LBAng = input_streams[0]
@@ -68,16 +72,14 @@ def compute(input_streams):
     
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','upmu/grizzly_new/L2ANG',
                              'upmu/grizzly_new/C2ANG','upmu/grizzly_new/L3ANG','upmu/grizzly_new/C3ANG'], \
-         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','4b7fec6d-270e-4bd6-b301-0eac6df17ca2',
-                             '8b80c070-7bb1-44d3-b3a8-301558d573ea','9ffeaf2a-46a9-465f-985d-96f84df66283',
-                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1','8b40fe4c-36ee-4b10-8aef-1eef8c471e1d'], \
+         'input_uids'     : Id, \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
          'output_streams' : ['DPF_A_grizzly','DPF_B_grizzly','DPF_C_grizzly'], \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'DPF', \
-         'version'        : 2, \
+         'version'        : 3, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
