@@ -27,8 +27,8 @@ while True:
 
 def compute(input_streams):
         if Calculation==1:
-          DPF_A,DPF_B,DPF_C= DPF(input_streams)
-          return[DPF_A,DPF_B,DPF_C]
+          DPF_A= DPF(input_streams)
+          return[DPF_A]
         
     
 opts = { 'input_streams'  : Stream, \
@@ -39,7 +39,7 @@ opts = { 'input_streams'  : Stream, \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'Test', \
-         'version'        : 4, \
+         'version'        : 5, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
