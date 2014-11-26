@@ -33,5 +33,11 @@ class Stream_Writer():
     """
     self.buf.append(point)
     if len(self.buf) == qdf.OPTIMAL_BATCH_SIZE:
-      yield self.quasar.stream_insert_multiple(self.name, self.buf)
-      self.buf = []
+      self.flush()
+
+  def flush(self):
+    """
+    Flushes data to store from buffer
+    """
+    yield self.quasar.stream_insert_multiple(self.name, self.buf)
+    self.buf = []

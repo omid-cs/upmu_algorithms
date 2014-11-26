@@ -60,5 +60,9 @@ class Distillate(qdf.QuasarDistillate):
 
         yield self.opts['algorithm'](input_streams, output_streams)
 
+        # Flush buffers to store for all output streams
+        for stream in output_streams:
+          stream.flush()
+
         #Now that we are done, save the time we finished at
         self.persist("done", True)
