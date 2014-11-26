@@ -33,7 +33,7 @@ def compute(input_streams):
         
     
 opts = { 'input_streams'  : Stream, \
-         'input_uids'     : Stream_id, \
+         'input_uids'     : ['4b7fec6d-270e-4bd6-b301-0eac6df17ca2', 'b4776088-2f85-4c75-90cd-7472a949a8fa'], \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
          'output_streams' : Out, \
