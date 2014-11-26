@@ -7,7 +7,7 @@ import qdf
 Stream=[]
 Stream_id=[]
 Out=[]
-Calaulation=input('Enter 1 for DPF 2 for sequence 3 for angle difference 4 for total dpf pos seq: ')
+Calculation=input('Enter 1 for DPF 2 for sequence 3 for angle difference 4 for total dpf pos seq: ')
 while True:
         stream=input("Enter the stream name or N (eg 'upmu/grizzly_new/L1ANG'): ")
         if stream !='N':
