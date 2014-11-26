@@ -62,7 +62,7 @@ class Distillate(qdf.QuasarDistillate):
 
         # Flush buffers to store for all output streams
         for stream in output_streams:
-          stream.flush()
+          yield stream.flush()
 
         #Now that we are done, save the time we finished at
         self.persist("done", True)
