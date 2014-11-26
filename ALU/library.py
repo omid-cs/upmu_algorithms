@@ -1,4 +1,4 @@
-def DPF(input_data):
+def DPF(input_streams):
   # data input
         LBAng = input_streams[0]
         CBAng=input_streams[1]
