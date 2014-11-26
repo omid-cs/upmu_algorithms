@@ -1,4 +1,4 @@
-def sequence_grizzly(input_data):
+def DPF(input_data):
   # data input
         LBAng = input_streams[0]
         CBAng=input_streams[1]
