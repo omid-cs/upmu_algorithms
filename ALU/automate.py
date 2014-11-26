@@ -1,15 +1,19 @@
 from distillate import Distillate
 from library import *
+from get_stream import *
 import numpy as np
 import math
 import qdf
-
 Stream=[]
+Steam_id=[]
 Out=[]
+Calaulation=input('Enter 1 for DPF 2 for sequence 3 for angle difference 4 for total dpf pos seq: ')
 while True:
-        stream=input('Enter the stream name or N (eg upmu/grizzly_new/L1ANG): ')
+        stream=input("Enter the stream name or N (eg 'upmu/grizzly_new/L1ANG'): ")
         if stream !='N':
-           Stream.append(stream)                             
+           Stream.append(stream)
+           temp=get_streams(stream)
+           Stream_id.append(temp)
            continue 
         else:
            break 
@@ -22,9 +26,9 @@ while True:
            break                                   
 
 def compute(input_streams):
-        DPF_A,DPF_B,DPF_C= DPF(input_streams)
-        return[DPF_A,DPF_B,DPF_C]
-        
+        if Calculation==1:
+          DPF_A,DPF_B,DPF_C= DPF(input_streams)
+          return[DPF_A,DPF_B,DPF_C]
         
     
 opts = { 'input_streams'  : Stream, \
@@ -37,7 +41,7 @@ opts = { 'input_streams'  : Stream, \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'Test', \
-         'version'        : 1, \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
