@@ -25,7 +25,7 @@ def DPF(input_streams):
             out.append((Input[stream_number][idxC].time,dpf))
             idxC+=1
             idxL+=1
-        Out.append(out) 
+        Output.append(out) 
         interaction+=1
         stream_number+=2
   return Out[0],Out[1],Out[2]
