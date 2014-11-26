@@ -9,7 +9,7 @@ def DPF(input_streams):
         i=+1
   interaction=0
   stream_number=0
-  while interaction<len(input_streams)/2:
+  while interaction<(len(input_streams)/2):
         out=[]
         idxC=0
         idxL=0
@@ -28,4 +28,4 @@ def DPF(input_streams):
         Out.append(out) 
         interaction+=1
         stream_number+=2
-        return Out[0],Out[1],Out[2]
+  return Out[0],Out[1],Out[2]
