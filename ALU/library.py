@@ -28,4 +28,4 @@ def DPF(input_streams):
         Output.append(out) 
         interaction+=1
         stream_number+=2
-  return Output[0],Output[1],Output[2]
+  return Output
