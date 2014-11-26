@@ -66,4 +66,4 @@ def get_stream(name):
  elif name=='upmu/switch_a6/LSTATE':
    return "33eb7c04-6357-4de8-aa44-6f5a6abab7e6"
  else:
-   retuen None
+   return None
