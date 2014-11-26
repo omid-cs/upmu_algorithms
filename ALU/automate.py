@@ -17,6 +17,7 @@ while True:
            continue 
         else:
            break 
+print   Stream_id      
 while True:        
         out=input('Enter out put stream name or N: ')
         if out !='N':
@@ -39,7 +40,7 @@ opts = { 'input_streams'  : Stream, \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'Test', \
-         'version'        : 5, \
+         'version'        : 6, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
