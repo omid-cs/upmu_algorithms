@@ -32,16 +32,14 @@ def compute(input_streams):
         
     
 opts = { 'input_streams'  : Stream, \
-         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','4b7fec6d-270e-4bd6-b301-0eac6df17ca2',
-                             '8b80c070-7bb1-44d3-b3a8-301558d573ea','9ffeaf2a-46a9-465f-985d-96f84df66283',
-                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1','8b40fe4c-36ee-4b10-8aef-1eef8c471e1d'], \
+         'input_uids'     : Stream_id, \
          'start_date'     : '2014-10-01T00:00:00.000000', \
          'end_date'       : '2014-10-19T00:00:00.000000', \
          'output_streams' : Out, \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Andrew', \
          'name'           : 'Test', \
-         'version'        : 3, \
+         'version'        : 4, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
