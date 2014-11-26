@@ -7,14 +7,14 @@ Stream=[]
 Out=[]
 while True:
         stream=input('Enter the stream name or N (eg upmu/grizzly_new/L1ANG)')
-        if stram !='N':
+        if stream !='N':
            Stream.append(stream)                             
            continue 
         else:
            break 
 while True:        
         out=input('Enter out put stream name or N')
-        if stram !='N':
+        if stream !='N':
            Out.append(out)                             
            continue
         else:
