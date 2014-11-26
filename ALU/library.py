@@ -1,61 +1,31 @@
 import numpy as np
 import math
 def DPF(input_streams):
-  # data input
-        LBAng = input_streams[0]
-        CBAng=input_streams[1]
-        LCAng=input_streams[2]
-        CCAng=input_streams[3]
-        LAAng=input_streams[4]
-        CAAng=input_streams[5]
-        DPF_A=[]
-        DPF_B=[]
-        DPF_C=[]
-        idxCA=0
-        idxLA=0
-        idxCB=0
-        idxLB=0
-        idxCC=0
-        idxLC=0
-        # matching time among all 6 data strams to make sure they are at same time before compute sequence
-        while idxCA < len(CAAng) and idxLA < len(LAAng):
-            if CAAng[idxCA].time < LAAng[idxLA].time:
-                idxCA += 1
+  Input=[]
+  Output=[]
+  i=0
+  while i<len(input_streams):
+        Input.append(input_streams[i])
+        i=+1
+  interaction=0
+  stream_number=0
+  while interaction<len(input_streams)/2:
+        out=[]
+        idxC=0
+        idxL=0
+        while idxC < len(Input[stream_number]) and idxL < len(Input[stream_number+1]):
+            if Input[stream_number].time < Input[stream_number+1].time:
+                idxC += 1
                 continue
-            if CAAng[idxCA].time > LAAng[idxLA].time:
-                idxLA += 1
+            if Input[stream_number].time < Input[stream_number+1].time:
+                idxL += 1
                 continue
            # compute cosin value of the differnece between voltage angle and current angle and dpf
-            dpfa=(np.cos(np.radians(LAAng[idxLA].value-CAAng[idxCA].value)))*100
-            DPF_A.append((LAAng[idxLA].time,dpfa))
-            idxCA+=1
-            idxLA+=1
-            
-        while idxCB < len(CBAng) and idxLB < len(LBAng):
-            if CBAng[idxCB].time < LBAng[idxLB].time:
-                idxCB += 1
-                continue
-            if CBAng[idxCB].time > LBAng[idxLB].time:
-                idxLB += 1
-                continue
-           # compute cosin value of the differnece between voltage angle and current angle and dpf
-            dpfb=(np.cos(np.radians(LBAng[idxLB].value-CBAng[idxCB].value)))*100
-            DPF_B.append((LBAng[idxLB].time,dpfb))
-            idxCB+=1
-            idxLB+=1
-            
-        while idxCC < len(CCAng) and idxLC < len(LCAng):
-            if CCAng[idxCC].time < LCAng[idxLC].time:
-                idxCC += 1
-                continue
-            if CCAng[idxCC].time > LCAng[idxLC].time:
-                idxLC += 1
-                continue
-           # compute cosin value of the differnece between voltage angle and current angle and dpf
-            dpfc=(np.cos(np.radians(LCAng[idxLC].value-CCAng[idxCC].value)))*100
-            DPF_C.append((LCAng[idxLC].time,dpfc))
-            idxCC+=1
-            idxLC+=1
-            
-        ''' DPF_A,DPF_B,DPF_C'''
-        return DPF_A,DPF_B,DPF_C
+            dpf=(np.cos(np.radians(Input[stream_number+1].value-Input[stream_number].value)))*100
+            out.append((Input[stream_number].time,dpf))
+            idxC+=1
+            idxL+=1
+        Out.append(out) 
+        interaction+=1
+        stream_number+=2
+        return Out[0],Out[1],Out[2]
