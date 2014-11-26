@@ -1,4 +1,4 @@
-def get_stream(name):
+def get_streams(name):
  Stream_dict={'upmu/grizzly_new/C1ANG':"4b7fec6d-270e-4bd6-b301-0eac6df17ca2",'upmu/grizzly_new/C1MAG':"425b9c51-9aba-4d1a-a677-85cd7afd6269",\
               'upmu/grizzly_new/C2ANG':"9ffeaf2a-46a9-465f-985d-96f84df66283",'upmu/grizzly_new/C2MAG':"ca613e9a-1211-4c52-a98f-b8f9f1ce0672",\
               'upmu/grizzly_new/C3ANG':"8b40fe4c-36ee-4b10-8aef-1eef8c471e1d",'upmu/grizzly_new/C3MAG':"b1025f33-97fd-45d6-bc0f-80132e1dc756",\
