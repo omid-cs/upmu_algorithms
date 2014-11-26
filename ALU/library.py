@@ -17,7 +17,7 @@ def DPF(input_streams):
             if Input[stream_number].time < Input[stream_number+1].time:
                 idxC += 1
                 continue
-            if Input[stream_number].time < Input[stream_number+1].time:
+            if Input[stream_number].time > Input[stream_number+1].time:
                 idxL += 1
                 continue
            # compute cosin value of the differnece between voltage angle and current angle and dpf
