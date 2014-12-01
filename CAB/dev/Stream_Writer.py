@@ -36,10 +36,8 @@ class Stream_Writer():
     """
     self.buf.append(point)
     if len(self.buf) == qdf.OPTIMAL_BATCH_SIZE:
-      print "FULL"
       return BUFFER_FULL
     else:
-      print "FREE"
       return BUFFER_FREE
 
   def flush(self):
