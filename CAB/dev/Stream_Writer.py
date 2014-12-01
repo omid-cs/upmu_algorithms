@@ -35,7 +35,7 @@ class Stream_Writer():
     When buffer is full, it is flushed to the stream
     """
     self.buf.append(point)
-    if len(self.buf) == qdf.OPTIMAL_BATCH_SIZE:
+    if len(self.buf) >= qdf.OPTIMAL_BATCH_SIZE:
       return BUFFER_FULL
     else:
       return BUFFER_FREE
