@@ -46,4 +46,4 @@ class Stream_Writer():
     """
     temp = self.buf[:]
     self.buf = []
-    yield self.quasar.stream_insert_multiple(self.name, self.buf)
+    yield self.quasar.stream_insert_multiple(self.name, temp)
