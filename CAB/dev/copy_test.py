@@ -14,7 +14,7 @@ def copy(input_streams, output_streams):
   for i in range(120*60*60*1): # 1 hour of datapoints
     datapoint = yield stream[i]
     if datapoint != None:
-      is_full = copy_stream.append(datapoint)
+      is_full = copy_stream.append(datapoint.time, datapoint.value)
       if is_full:
         yield copy_stream.flush()
 
