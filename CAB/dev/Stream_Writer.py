@@ -44,5 +44,6 @@ class Stream_Writer():
     """
     Flushes data to store from buffer
     """
-    yield self.quasar.stream_insert_multiple(self.name, self.buf)
+    temp = self.buf[:]
     self.buf = []
+    yield self.quasar.stream_insert_multiple(self.name, self.buf)
