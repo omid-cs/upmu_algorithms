@@ -12,7 +12,7 @@ def copy(input_streams, output_streams):
 
   i = 0
   for i in range(120*60*60*1): # 1 hour of datapoints
-    datapoint = stream[i]
+    datapoint = yield stream[i]
     if datapoint != None:
       yield copy_stream.append(datapoint)
 
