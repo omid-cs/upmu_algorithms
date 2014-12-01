@@ -72,6 +72,8 @@ class Stream_Reader():
         #cache miss
         yield self._query_data(index, tag)
       datapoint = self.cache[index][CACHE_INDEX_DATA][offset]
+      if datapoint == None:
+        defer.returnValue(datapoint)
       if datapoint.time > self.end:
         raise IndexError('Requested date past end-date:\n'+
                          'End-Date: '+str(self.end)+'\n'+
