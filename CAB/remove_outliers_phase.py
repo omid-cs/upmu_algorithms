@@ -29,6 +29,7 @@ def clean(input_streams):
   """
   
   #dirty fix for batching
+  global prev_point
   if prev_point is not None:
     prev = prev_point.value
     cur=input_points[0].value

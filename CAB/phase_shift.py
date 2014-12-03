@@ -11,8 +11,8 @@ def scale(input_streams):
   i = 0
   while i < len(input_values):
     shifted_value = input_values[i].value + shift_amount
-    if shifted_value > 180:
-      shifted_value -= 180
+    if shifted_value > 360:
+      shifted_value -= 360
     shifted_values.append((input_values[i].time, shifted_value))
     i += 1
 
