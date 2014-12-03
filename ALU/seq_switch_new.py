@@ -168,14 +168,15 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu
                              '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','6e6ad513-ddd2-47fb-98c1-16e6477504fc',
                              '2c07ccef-20c5-4971-87cf-2c187ce5f722','bcf38098-0e16-46f2-a9fb-9ce481d7d55b',
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1'], \
-         'start_date'     : '2014-10-01T00:00:00.000000', \
-         'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['switch_V0Ang','switch_V0Mag','switch_V+Ang','switch_V+Mag','switch_V-Ang','switch_V-Mag',
-                             'switch_unbalance_neq_seq','switch_unbalance_zero_seq'], \
+         'start_date'     : '2014-10-07T02:00:00.000000', \
+         'end_date'       : '2014-10-07T03:00:00.000000', \
+         'output_streams' : ['VOLTAGE _ZERO_SEQ_ANG','VOLTAGE _ZERO_SEQ_MAG','VOLTAGE _POSITIVE_SEQ_ANG',
+                             'VOLTAGE_POSITIVE_SEQ_MAG','VOLTAGE _NEGATIVE_SEQ_ANG','VOLTAGE _NEGATIVE_SEQ_MAG',
+                             'VOLTAGE_UNBALANCE_NEG_SEQ','VOLTAGE_UNBALANCE_ZERO_SEQ'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
-         'author'         : 'Andrew', \
-         'name'           : 'Sequence_new', \
-         'version'        : 2, \
+         'author'         : 'Refined Switch_a6', \
+         'name'           : 'Sequence Components', \
+         'version'        : 3, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
