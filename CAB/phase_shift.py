@@ -10,7 +10,7 @@ def scale(input_streams):
   shifted_values = []
   i = 0
   while i < len(input_values):
-    shifted_value = input_values[i].value + scale_factor
+    shifted_value = input_values[i].value + shift_amount
     if shifted_value > 180:
       shifted_value -= 180
     shifted_values.append((input_values[i].time, shifted_value))
