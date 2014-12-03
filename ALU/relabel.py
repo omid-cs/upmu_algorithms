@@ -92,26 +92,26 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','upmu/grizzly_new/C1ANG','upmu/grizzly_new/C1MAG',
-                             'upmu/grizzly_new/L2ANG','upmu/grizzly_new/L2MAG','upmu/grizzly_new/C2ANG','upmu/grizzly_new/C2MAG',
-                             'upmu/grizzly_new/L3ANG','upmu/grizzly_new/L3MAG','upmu/grizzly_new/C3ANG','upmu/grizzly_new/C3MAG',
-                             'upmu/grizzly_new/LSTATE'], \
-         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','a64c386e-2dd4-4f17-96cb-1655358cb12c',
-                             '4b7fec6d-270e-4bd6-b301-0eac6df17ca2','425b9c51-9aba-4d1a-a677-85cd7afd6269',
-                             '8b80c070-7bb1-44d3-b3a8-301558d573ea','a002295a-32ee-41a1-8ec4-8657d0d1f943',
-                             '9ffeaf2a-46a9-465f-985d-96f84df66283','ca613e9a-1211-4c52-a98f-b8f9f1ce0672',
-                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1','db3ea4f7-a337-4874-baeb-17fc2c0cf18b',
-                             '8b40fe4c-36ee-4b10-8aef-1eef8c471e1d','b1025f33-97fd-45d6-bc0f-80132e1dc756',
-                             '89d1c0a1-aa97-4f5b-bdfb-0d04b1dc94f8'], \
+opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu/switch_a6/C1ANG','upmu/switch_a6/C1MAG',
+                             'upmu/switch_a6/L2ANG','upmu/switch_a6/L2MAG','upmu/switch_a6/C2ANG','upmu/switch_a6/C2MAG',
+                             'upmu/switch_a6/L3ANG','upmu/switch_a6/L3MAG','upmu/switch_a6/C3ANG','upmu/switch_a6/C3MAG',
+                             'upmu/switch_a6/LSTATE'], \
+         'input_uids'     : ['adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','df64af25-a389-4be9-8061-f87c3616f286',
+                             '4072af6f-938e-450c-9927-37dee6968446','bf8ea2c0-6d04-4cdd-ba4b-0421eac0cabd',
+                             '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','6e6ad513-ddd2-47fb-98c1-16e6477504fc',
+                             'bf045a36-34df-4bee-a747-b20c3164723a','51d4801e-0bb6-4040-8e74-e7839be65156',
+                             '2c07ccef-20c5-4971-87cf-2c187ce5f722','bcf38098-0e16-46f2-a9fb-9ce481d7d55b',
+                             '8a5d0010-4665-4b59-ab6f-e7858c12284a','249b364d-b0a1-4b65-8aca-ffd68565c1de',
+                             '33eb7c04-6357-4de8-aa44-6f5a6abab7e6'], \
          'start_date'     : '2014-10-07T02:00:00.000000', \
          'end_date'       : '2014-10-07T03:00:00.000000', \
          'output_streams' : ['VoltA_MAG','VoltA_ANG','VoltB_MAG','VoltB_ANG','VoltC_MAG','VoltC_ANG',
                              'CurrA_MAG','CurrA_ANG','CurrB_MAG','CurrB_ANG','CurrC_MAG','CurrC_ANG',
                              'LSTATE'], \
          'output_units'   : ['v','deg','v','deg','v','deg','v','deg','v','deg','v','deg','bitmap'], \
-         'author'         : 'Refined Grizzly', \
+         'author'         : 'Refined Switch_a6', \
          'name'           : 'Original Data', \
-         'version'        : 2, \
+         'version'        : 3, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
