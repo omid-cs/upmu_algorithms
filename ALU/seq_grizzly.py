@@ -148,14 +148,15 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
          'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','a64c386e-2dd4-4f17-96cb-1655358cb12c',
                              '8b80c070-7bb1-44d3-b3a8-301558d573ea','a002295a-32ee-41a1-8ec4-8657d0d1f943',
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1','db3ea4f7-a337-4874-baeb-17fc2c0cf18b'], \
-         'start_date'     : '2014-10-01T00:00:00.000000', \
-         'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['grizzly_V0Ang','grizzly_V0Mag','grizzly_V+Ang','grizzly_V+Mag','grizzly_V-Ang','grizzly_V-Mag',
-                             'grizzly_unbalance_Vneq_seq','grizzly_unbalance_Vzero_seq'], \
+         'start_date'     : '2014-10-07T02:00:00.000000', \
+         'end_date'       : '2014-10-07T03:00:00.000000', \
+         'output_streams' : ['VOLTAGE _ZERO_SEQ_ANG','VOLTAGE _ZERO_SEQ_MAG','VOLTAGE _POSITIVE_SEQ_ANG',
+                             'VOLTAGE_POSITIVE_SEQ_MAG','VOLTAGE _NEGATIVE_SEQ_ANG','VOLTAGE _NEGATIVE_SEQ_MAG',
+                             'VOLTAGE_UNBALANCE_NEG_SEQ','VOLTAGE_UNBALANCE_ZERO_SEQ'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
-         'author'         : 'Andrew', \
-         'name'           : 'Sequence_new', \
-         'version'        : 10, \
+         'author'         : 'Refined Grizzly', \
+         'name'           : 'Sequence Components', \
+         'version'        : 11, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
