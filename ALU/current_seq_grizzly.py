@@ -149,14 +149,14 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/C1ANG','upmu/grizzly_new/C1MAG','
                              '9ffeaf2a-46a9-465f-985d-96f84df66283','ca613e9a-1211-4c52-a98f-b8f9f1ce0672',
                              '8b40fe4c-36ee-4b10-8aef-1eef8c471e1d','b1025f33-97fd-45d6-bc0f-80132e1dc756'], \
          'start_date'     : '2014-10-07T02:00:00.000000', \
-         'end_date'       : '2014-10-17T03:00:00.000000', \
+         'end_date'       : '2014-10-07T03:00:00.000000', \
          'output_streams' : ['CURRENT_ZERO_SEQ_ANG','CURRENT_ZERO_SEQ_MAG','CURRENT_POSITIVE_SEQ_ANG','CURRENT_POSITIVE_SEQ_MAG',
                              'CURRENT_NEGATIVE_SEQ_ANG','CURRENT_NEGATIVE_SEQ_MAG',
                              'CURRENT_UNBALANCE_NEG_SEQ','CURRENT_UNBALANCE_ZERO_SEQ '], \
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree','Precent','Precent'], \
          'author'         : 'Refined Grizzly', \
          'name'           : 'Sequence Components', \
-         'version'        : 2, \
+         'version'        : 3, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
