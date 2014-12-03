@@ -109,9 +109,9 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
                              'CurrA_MAG','CurrA_ANG','CurrB_MAG','CurrB_ANG','CurrC_MAG','CurrC_ANG',
                              'LSTATE'], \
          'output_units'   : ['v','deg','v','deg','v','deg','v','deg','v','deg','v','deg','bitmap'], \
-         'author'         : 'aaa', \
-         'name'           : '', \
-         'version'        : 1, \
+         'author'         : 'Refined Grizzly', \
+         'name'           : 'Original Data', \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
