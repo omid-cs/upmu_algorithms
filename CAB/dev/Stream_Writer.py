@@ -1,4 +1,5 @@
 import qdf
+from twisted.internet import defer
 
 BUFFER_FULL = 1
 BUFFER_FREE = 0
@@ -40,6 +41,7 @@ class Stream_Writer():
     else:
       return BUFFER_FREE
 
+  @defer.inlineCallbacks
   def flush(self):
     """
     Flushes data to store from buffer
