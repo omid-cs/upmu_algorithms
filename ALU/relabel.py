@@ -85,7 +85,7 @@ def compute(input_streams):
         while idx<len(Lstate):
           LSTATE.append((Lstate[idx].time,Lstate[idx].value))
           idx+=1
-        return[VoltA_MAG,VoltA_ANG,VoltB_MAG,VoltB_ANG,VoltC_MAG,VlotC_ANG,
+        return[VoltA_MAG,VoltA_ANG,VoltB_MAG,VoltB_ANG,VoltC_MAG,VoltC_ANG,
                CurrA_MAG,CurrA_ANG,CurrB_MAG,CurrB_ANG,CurrC_MAG,CurrC_ANG,
                              LSTATE]
         
@@ -105,7 +105,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
                              '89d1c0a1-aa97-4f5b-bdfb-0d04b1dc94f8'], \
          'start_date'     : '2014-10-07T02:00:00.000000', \
          'end_date'       : '2014-10-07T03:00:00.000000', \
-         'output_streams' : ['VoltA_MAG','VoltA_ANG','VoltB_MAG','VoltB_ANG','VoltC_MAG','VlotC_ANG',
+         'output_streams' : ['VoltA_MAG','VoltA_ANG','VoltB_MAG','VoltB_ANG','VoltC_MAG','VoltC_ANG',
                              'CurrA_MAG','CurrA_ANG','CurrB_MAG','CurrB_ANG','CurrC_MAG','CurrC_ANG',
                              'LSTATE'], \
          'output_units'   : ['v','deg','v','deg','v','deg','v','deg','v','deg','v','deg','bitmap'], \
