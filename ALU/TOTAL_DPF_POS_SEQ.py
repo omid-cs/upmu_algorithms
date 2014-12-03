@@ -33,15 +33,16 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['Distillate/Andrew/Sequence_new/grizzly_V+Ang','Distillate/Andrew/Sequence_new/grizzly_C+Ang'], \
-         'input_uids'     : ['55ec9d08-887d-4626-bba1-0be2a5e6d08f','91d5d281-c796-4f86-a75d-47d1ed137501'], \
-         'start_date'     : '2014-10-01T00:00:00.000000', \
-         'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['grizzly_totalp_dpf_seq'], \
+opts = { 'input_streams'  : ['Refined Grizzly/Sequence Components/VOLTAGE _POSITIVE_SEQ_ANG',
+                             'Refined Grizzly/Sequence Components/CURRENT_POSITIVE_SEQ_ANG'], \
+         'input_uids'     : ['8ac16cac-f935-42bd-a375-ed7c74a89913','ee3ad881-09fe-4ad0-ae02-44a9555c1600'], \
+         'start_date'     : '2014-10-07T02:00:00.000000', \
+         'end_date'       : '2014-10-07T03:00:00.000000', \
+         'output_streams' : ['TOTAL_DPF_POS_SEQ'], \
          'output_units'   : ['Precent'], \
-         'author'         : 'Andrew', \
-         'name'           : 'Sequence_new', \
-         'version'        : 1, \
+         'author'         : 'Refined Grizzly', \
+         'name'           : 'Sequence Components', \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
