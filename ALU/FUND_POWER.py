@@ -97,20 +97,20 @@ def compute(input_streams):
     
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/grizzly_new/C1MAG','upmu/grizzly_new/L2MAG',
                              'upmu/grizzly_new/C2MAG','upmu/grizzly_new/L3MAG','upmu/grizzly_new/C3MAG',
-                             'Distillate/Andrew/DPF/DPF_A_grizzly','Distillate/Andrew/DPF/DPF_B_grizzly',
-                             'Distillate/Andrew/DPF/DPF_C_grizzly'], \
+                             'Refined Grizzly/Displacement Power Factor/DPF_A','Refined Grizzly/Displacement Power Factor/DPF_B',
+                             'Refined Grizzly/Displacement Power Factor/DPF_C'], \
          'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c','425b9c51-9aba-4d1a-a677-85cd7afd6269',
                              'a002295a-32ee-41a1-8ec4-8657d0d1f943','ca613e9a-1211-4c52-a98f-b8f9f1ce0672',
                              'db3ea4f7-a337-4874-baeb-17fc2c0cf18b','b1025f33-97fd-45d6-bc0f-80132e1dc756',
-                             '6556b72a-3a9e-433e-b369-85675cdbdd39','0263f906-77b9-40e8-95b1-3b5fd5c7e82e',
-                             '75588689-c012-49c1-bd80-07d6fc117016'], \
-         'start_date'     : '2014-10-01T00:00:00.000000', \
-         'end_date'       : '2014-10-19T00:00:00.000000', \
-         'output_streams' : ['FUND_POWER_A_grizzly','FUND_POWER_B_grizzly','FUND_POWER_C_grizzly'], \
+                             '808c28d5-e031-4a28-9dd3-bade0b401c3a','e3d8d699-66b3-4e3e-9724-f5bf2b2d729d',
+                             'd0eee180-0f4c-409a-a4ce-79926b687cd6'], \
+         'start_date'     : '2014-10-07T02:00:00.000000', \
+         'end_date'       : '2014-10-07T03:00:00.000000', \
+         'output_streams' : ['Power_A','Power_B','Power_C'], \
          'output_units'   : ['Watts','Watts','Watts'], \
-         'author'         : 'Andrew', \
-         'name'           : 'FUND_POWER', \
-         'version'        : 1, \
+         'author'         : 'Refined Grizzly', \
+         'name'           : 'Displacement Power Flow', \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
