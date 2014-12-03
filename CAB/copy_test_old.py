@@ -4,13 +4,15 @@ from distillate import Distillate
 def scale(input_streams):
   # only one input stream
   input_values = input_streams[0]
+
+  copied_values = []
   
   i = 0
   while i < len(input_values):
-    scaled_values.append((input_values[i].time, input_values[i].value))
+    copied_values.append((input_values[i].time, input_values[i].value))
     i += 1
 
-  return [scaled_values]
+  return [copied_values]
 
 opts = { 'input_streams'  : ['B71_L2ANG'],
          'input_uids'     : ['f89e77a8-661e-49d2-a868-2071c1fae238'],
