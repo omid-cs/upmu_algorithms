@@ -16,7 +16,7 @@ def compute(input_streams):
         CCAng=input_streams[6]
         CCMag=input_streams[7]
         LAAng=input_streams[8]
-        LAMAG=input_streams[9]
+        LAMag=input_streams[9]
         CAAng=input_streams[10]
         CAMag=input_streams[11]
         Lstate=input_streams[12]
