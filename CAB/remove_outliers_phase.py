@@ -6,7 +6,7 @@ def clean(input_streams):
   # only one input stream
   input_points = input_streams[0]
 
-  max_delta_mag = 2.0 #degrees
+  max_delta_mag = .1 #degrees
   
   clean_points = []
   error_points = []
@@ -69,8 +69,8 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG'],
          'output_streams' : ['grizzly_new_L1Ang_clean', 'grizzly_new_L1Ang_errors'],
          'output_units'   : ['Degrees', 'error'],
          'author'         : 'CAB',
-         'name'           : 'Test1',
-         'version'        : 10,
+         'name'           : 'dev_remove_outliers_phase',
+         'version'        : 1,
          'algorithm'      : clean }
 qdf.register(Distillate(), opts)
 qdf.begin()

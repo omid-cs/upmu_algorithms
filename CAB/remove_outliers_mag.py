@@ -28,7 +28,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG'],
          'output_streams' : ['grizzly_new_L1Mag_clean', 'grizzly_new_L1Mag_errors'],
          'output_units'   : ['V', 'error'],
          'author'         : 'CAB',
-         'name'           : 'Test1',
+         'name'           : 'dev_remove_outliers_mag',
          'version'        : 1,
          'algorithm'      : clean }
 qdf.register(Distillate(), opts)
