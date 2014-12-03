@@ -26,7 +26,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG'], \
          'output_units'   : ['Degrees'], \
          'author'         : 'CAB', \
          'name'           : 'dev_phase_shift', \
-         'version'        : 1, \
+         'version'        : 2, \
          'algorithm'      : scale }
 qdf.register(Distillate(), opts)
 qdf.begin()
