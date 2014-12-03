@@ -77,7 +77,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','
          'end_date'       : '2014-10-07T03:00:00.000000', \
          'output_streams' : ['DPF_A','DPF_B','DPF_C'], \
          'output_units'   : ['Precent','Precent','Precent'], \
-         'author'         : 'refined Grizzly', \
+         'author'         : 'Refined Grizzly', \
          'name'           : 'Displacement Power Factor', \
          'version'        : 2, \
          'algorithm'      : compute }        
