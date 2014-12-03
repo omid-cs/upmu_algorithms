@@ -77,9 +77,9 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','
          'end_date'       : '2014-10-19T00:00:00.000000', \
          'output_streams' : ['DPF_A_grizzly','DPF_B_grizzly','DPF_C_grizzly'], \
          'output_units'   : ['Precent','Precent','Precent'], \
-         'author'         : 'Andrew', \
-         'name'           : 'DPF', \
-         'version'        : 4, \
+         'author'         : 'aaa', \
+         'name'           : '', \
+         'version'        : 1, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
