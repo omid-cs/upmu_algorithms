@@ -3,15 +3,13 @@ from distillate_new import Distillate
 from twisted.internet import defer
 
 @defer.inlineCallbacks
-def frequency(input_streams):
-  # only one stream
-  s = input_streams[0]
-  for i in range(0,50):
-    val =  yield s[i]
-    print val
-  print "done!"
-  
-  
+def frequency(input_streams, output_streams):
+  # only one input stream
+  input_stream = input_streams[0]
+
+  # only one output stream
+  output_stream = output_streams[0]
+
   sampling_freq = 60 #Hz
 
   freqs = []
@@ -45,13 +43,13 @@ def frequency(input_streams):
   #return [freqs]
 
 opts = { 'input_streams'  : ['B71_L2ANG'],
-         'input_uids'     : ['f89e77a8-661e-49d2-a868-2071c1fae238','f89e77a8-661e-49d2-a868-2071c1fae238'],
-         'start_dates'    : ['2014-10-01T00:00:00.000000', '2014-10-01T00:01.000000'],
-         'end_dates'      : ['2014-10-01T00:20:00.000000', '2014-10-01T20:01.000000'],
-         'output_streams' : [],
+         'input_uids'     : ['f89e77a8-661e-49d2-a868-2071c1fae238'],
+         'start_dates'    : ['2014-10-01T00:00:00.000000', '2014-10-01T00:00.000000'],
+         'end_dates'      : ['2014-10-01T00:20:00.000000', '2014-10-01T01:00.000000'],
+         'output_streams' : ['B71_L2ANG_freq'],
          'output_units'   : ['Hz'],
          'author'         : 'CAB',
-         'name'           : 'Dev',
+         'name'           : 'dev_freq',
          'version'        : 1,
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
