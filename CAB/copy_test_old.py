@@ -16,8 +16,8 @@ def scale(input_streams):
 
 opts = { 'input_streams'  : ['B71_L2ANG'],
          'input_uids'     : ['f89e77a8-661e-49d2-a868-2071c1fae238'],
-         'start_date'     : '2014-10-01T00:00:00.000000',
-         'end_date'       : '2014-10-01T01:00:00.000000',
+         'start_date'     : '2014-12-01T00:00:00.000000',
+         'end_date'       : '2014-12-01T01:00:00.000000',
          'output_streams' : ['B71_L2ANG_copy_old'],
          'output_units'   : ['Degrees'],
          'author'         : 'CAB',

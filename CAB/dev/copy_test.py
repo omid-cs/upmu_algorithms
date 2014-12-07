@@ -21,8 +21,8 @@ def copy(input_streams, output_streams):
 
 opts = { 'input_streams'  : ['B71_L2ANG'],
          'input_uids'     : ['f89e77a8-661e-49d2-a868-2071c1fae238'],
-         'start_dates'    : ['2014-10-01T00:00.000000'],
-         'end_dates'      : ['2014-10-01T01:00.000000'],
+         'start_dates'    : ['2014-12-01T00:00.000000'],
+         'end_dates'      : ['2014-12-01T01:00.000000'],
          'output_streams' : ['B71_L2ANG_copy'],
          'output_units'   : ['Degrees'],
          'author'         : 'CAB',

@@ -40,15 +40,15 @@ def rocof(input_streams):
 
   return [freqs]
 
-opts = { 'input_streams'  : ['grizzly_new_L2Ang_freq'], \
-         'input_uids'     : ['377af6b1-1733-4a30-a280-6cf69591d257'], \
-         'start_date'     : '2014-08-28T00:00:00.000000', \
-         'end_date'       : '2014-08-28T02:00:00.000000', \
-         'output_streams' : ['grizzly_new_L2Ang_rocof'], \
-         'output_units'   : ['Hz/s'], \
-         'author'         : 'CAB', \
-         'name'           : 'Test1', \
-         'version'        : 6, \
+opts = { 'input_streams'  : ['grizzly_new_L2Ang_freq'],
+         'input_uids'     : ['377af6b1-1733-4a30-a280-6cf69591d257'],
+         'start_date'     : '2014-12-01T00:00:00.000000',
+         'end_date'       : '2014-12-01T01:00:00.000000',
+         'output_streams' : ['grizzly_new_L2Ang_rocof'],
+         'output_units'   : ['Hz/s'],
+         'author'         : 'CAB',
+         'name'           : 'dev_rocof_old',
+         'version'        : 1,
          'algorithm'      : rocof }
 qdf.register(Distillate(), opts)
 qdf.begin()
