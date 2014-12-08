@@ -73,13 +73,13 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/C1ANG','upmu
          'input_uids'     : ['adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','4072af6f-938e-450c-9927-37dee6968446',
                              '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','bf045a36-34df-4bee-a747-b20c3164723a',
                              '2c07ccef-20c5-4971-87cf-2c187ce5f722','8a5d0010-4665-4b59-ab6f-e7858c12284a'], \
-         'start_date'     : '2014-10-07T02:00:00.000000', \
-         'end_date'       : '2014-10-07T03:00:00.000000', \
-         'output_streams' : ['DPF_A','DPF_B','DPF_C'], \
+         'start_date'     : '2014-12-03T12:00:00.000000', \
+         'end_date'       : '2014-12-03T13:00:00.000000', \
+         'output_streams' : ['L3_DPF','L1_DPF','L2_DPF'], \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Displacement Power Factor', \
-         'version'        : 3, \
+         'version'        : 4, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
