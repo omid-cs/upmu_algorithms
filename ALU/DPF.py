@@ -79,7 +79,7 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/C1ANG','upmu
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Displacement Power Factor', \
-         'version'        : 8, \
+         'version'        : 9, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
