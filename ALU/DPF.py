@@ -68,18 +68,18 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','upmu/grizzly_new/L2ANG',
-                             'upmu/grizzly_new/C2ANG','upmu/grizzly_new/L3ANG','upmu/grizzly_new/C3ANG'], \
-         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','4b7fec6d-270e-4bd6-b301-0eac6df17ca2',
-                             '8b80c070-7bb1-44d3-b3a8-301558d573ea','9ffeaf2a-46a9-465f-985d-96f84df66283',
-                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1','8b40fe4c-36ee-4b10-8aef-1eef8c471e1d'], \
+opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/C1ANG','upmu/switch_a6/L2ANG',
+                             'upmu/switch_a6/C2ANG','upmu/switch_a6/L3ANG','upmu/switch_a6/C3ANG'], \
+         'input_uids'     : ['adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','4072af6f-938e-450c-9927-37dee6968446',
+                             '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','bf045a36-34df-4bee-a747-b20c3164723a',
+                             '2c07ccef-20c5-4971-87cf-2c187ce5f722','8a5d0010-4665-4b59-ab6f-e7858c12284a'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
          'output_streams' : ['L1_DPF','L2_DPF','L3_DPF'], \
          'output_units'   : ['Precent','Precent','Precent'], \
-         'author'         : 'Refined Grizzly', \
+         'author'         : 'Refined Switch_a6', \
          'name'           : 'Displacement Power Factor', \
-         'version'        : 7, \
+         'version'        : 8, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
