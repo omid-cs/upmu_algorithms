@@ -103,7 +103,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/grizzly_new/C1MAG','
                              'a002295a-32ee-41a1-8ec4-8657d0d1f943','ca613e9a-1211-4c52-a98f-b8f9f1ce0672',
                              'db3ea4f7-a337-4874-baeb-17fc2c0cf18b','b1025f33-97fd-45d6-bc0f-80132e1dc756',
                              '34df34b2-7989-4d3d-8d1b-c94008857b71','146153a3-f109-462f-9e51-52efa921700c',
-                             '2f4b0878e-a322-4ce8-ab79-0c25f2d4d669'], \
+                             'f4b0878e-a322-4ce8-ab79-0c25f2d4d669'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
          'output_streams' : ['FUND_POWER_L3','FUND_POWER_L1','FUND_POWER_L2'], \
