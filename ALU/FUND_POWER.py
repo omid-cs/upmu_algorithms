@@ -97,13 +97,13 @@ def compute(input_streams):
     
 opts = { 'input_streams'  : ['upmu/switch_a6/L1MAG','upmu/switch_a6/C1MAG','upmu/switch_a6/L2MAG',
                              'upmu/switch_a6/C2MAG','upmu/switch_a6/L3MAG','upmu/switch_a6/C3MAG',
-                             'Refined Switch_a6/Displacement Power Factor/DPF_A','Refined Switch_a6/Displacement Power Factor/DPF_B',
-                             'Refined Switch_a6/Displacement Power Factor/DPF_C'], \
+                             'Refined Switch_a6/Displacement Power Factor/L3_DPF','Refined Switch_a6/Displacement Power Factor/L1_DPF',
+                             'Refined Switch_a6/Displacement Power Factor/L2_DPF'], \
          'input_uids'     : ['df64af25-a389-4be9-8061-f87c3616f286','bf8ea2c0-6d04-4cdd-ba4b-0421eac0cabd',
                              '6e6ad513-ddd2-47fb-98c1-16e6477504fc','51d4801e-0bb6-4040-8e74-e7839be65156',
                              'bcf38098-0e16-46f2-a9fb-9ce481d7d55b','249b364d-b0a1-4b65-8aca-ffd68565c1de',
-                             '371f98c8-5fb8-49a8-ad14-2227df2836b1','388dc2ef-8a6d-4a37-a9ef-9eb1251d95ce',
-                             '8f2b51a1-7177-4db5-b831-e4dd65dc5416'], \
+                             '187fcdb3-593c-4232-9547-129428c9f8a3','94e9db74-c138-4676-934c-397e2d27a43d',
+                             '21d0689b-4aa1-4b0f-a79d-9e3456b46a8a'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
          'output_streams' : ['FUND_POWER_L3','FUND_POWER_L1','FUND_POWER_L2'], \
