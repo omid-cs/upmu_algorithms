@@ -176,7 +176,7 @@ opts = { 'input_streams'  : ['upmu/switch_a6/C1ANG','upmu/switch_a6/C1MAG','upmu
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Sequence Components', \
-         'version'        : 5, \
+         'version'        : 6, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
