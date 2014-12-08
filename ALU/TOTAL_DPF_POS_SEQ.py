@@ -42,7 +42,7 @@ opts = { 'input_streams'  : ['Refined Switch_a6/Sequence Components/VOLTAGE _POS
          'output_units'   : ['Precent'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Sequence Components', \
-         'version'        : 6, \
+         'version'        : 7, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
