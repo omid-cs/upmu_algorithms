@@ -104,13 +104,13 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1MAG','upmu/switch_a6/C1MAG','upmu
                              'bcf38098-0e16-46f2-a9fb-9ce481d7d55b','249b364d-b0a1-4b65-8aca-ffd68565c1de',
                              '371f98c8-5fb8-49a8-ad14-2227df2836b1','388dc2ef-8a6d-4a37-a9ef-9eb1251d95ce',
                              '8f2b51a1-7177-4db5-b831-e4dd65dc5416'], \
-         'start_date'     : '2014-10-07T02:00:00.000000', \
-         'end_date'       : '2014-10-07T03:00:00.000000', \
-         'output_streams' : ['Power_A','Power_B','Power_C'], \
+         'start_date'     : '2014-12-03T12:00:00.000000', \
+         'end_date'       : '2014-12-03T13:00:00.000000', \
+         'output_streams' : ['FUND_POWER_L3','FUND_POWER_L1','FUND_POWER_L2'], \
          'output_units'   : ['Watts','Watts','Watts'], \
          'author'         : 'Refined Switch_a6', \
-         'name'           : 'Displacement Power Flow', \
-         'version'        : 3, \
+         'name'           : 'Power Flow', \
+         'version'        : 4, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
