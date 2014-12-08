@@ -33,7 +33,7 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['Refined Switch_a6/Sequence Components/VOLTAGE _POSITIVE_SEQ_ANG',
+opts = { 'input_streams'  : ['Refined Switch_a6/Sequence Components/VOLTAGE_POSITIVE_SEQ_ANG',
                              'Refined Switch_a6/Sequence Components/CURRENT_POSITIVE_SEQ_ANG'], \
          'input_uids'     : ['57e2b4a9-2bdb-454e-9365-071da03d1ee4','195895c2-60f5-463f-84ea-9dc42f90d900'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
