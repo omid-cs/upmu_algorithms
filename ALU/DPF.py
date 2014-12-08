@@ -79,7 +79,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Refined Grizzly', \
          'name'           : 'Displacement Power Factor', \
-         'version'        : 6, \
+         'version'        : 7, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
