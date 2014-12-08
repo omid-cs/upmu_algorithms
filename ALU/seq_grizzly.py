@@ -143,20 +143,20 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','upmu/grizzly_new/L2ANG',
-                             'upmu/grizzly_new/L2MAG','upmu/grizzly_new/L3ANG','upmu/grizzly_new/L3MAG'], \
-         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','a64c386e-2dd4-4f17-96cb-1655358cb12c',
-                             '8b80c070-7bb1-44d3-b3a8-301558d573ea','a002295a-32ee-41a1-8ec4-8657d0d1f943',
-                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1','db3ea4f7-a337-4874-baeb-17fc2c0cf18b'], \
+opts = { 'input_streams'  : ['upmu/grizzly_new/C1ANG','upmu/grizzly_new/C1MAG','upmu/grizzly_new/C2ANG',
+                             'upmu/grizzly_new/C2MAG','upmu/grizzly_new/C3ANG','upmu/grizzly_new/C3MAG'], \
+         'input_uids'     : ['4b7fec6d-270e-4bd6-b301-0eac6df17ca2','425b9c51-9aba-4d1a-a677-85cd7afd6269',
+                             '9ffeaf2a-46a9-465f-985d-96f84df66283','ca613e9a-1211-4c52-a98f-b8f9f1ce0672',
+                             '8b40fe4c-36ee-4b10-8aef-1eef8c471e1d','b1025f33-97fd-45d6-bc0f-80132e1dc756'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
-         'output_streams' : ['VOLTAGE _ZERO_SEQ_ANG','VOLTAGE _ZERO_SEQ_MAG','VOLTAGE _POSITIVE_SEQ_ANG',
-                             'VOLTAGE_POSITIVE_SEQ_MAG','VOLTAGE _NEGATIVE_SEQ_ANG','VOLTAGE _NEGATIVE_SEQ_MAG',
-                             'VOLTAGE_UNBALANCE_NEG_SEQ','VOLTAGE_UNBALANCE_ZERO_SEQ'], \
+         'output_streams' : ['CURRENT_ZERO_SEQ_ANG','CURRENT_ZERO_SEQ_MAG','CURRENT_POSITIVE_SEQ_ANG',
+                             'CURRENT_POSITIVE_SEQ_MAG','CURRENT_NEGATIVE_SEQ_ANG','CURRENT_NEGATIVE_SEQ_MAG',
+                             'CURRENT_UNBALANCE_NEG_SEQ','CURRENT_UNBALANCE_ZERO_SEQ'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Refined Grizzly', \
          'name'           : 'Sequence Components', \
-         'version'        : 13, \
+         'version'        : 14, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
