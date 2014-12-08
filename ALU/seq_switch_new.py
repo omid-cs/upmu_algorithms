@@ -168,15 +168,15 @@ opts = { 'input_streams'  : ['upmu/switch_a6/C1ANG','upmu/switch_a6/C1MAG','upmu
                              'bf045a36-34df-4bee-a747-b20c3164723a','51d4801e-0bb6-4040-8e74-e7839be65156',
                              '8a5d0010-4665-4b59-ab6f-e7858c12284a','249b364d-b0a1-4b65-8aca-ffd68565c1de',
                              '8b40fe4c-36ee-4b10-8aef-1eef8c471e1d'], \
-         'start_date'     : '2014-10-07T02:00:00.000000', \
-         'end_date'       : '2014-10-07T03:00:00.000000', \
+         'start_date'     : '2014-12-03T12:00:00.000000', \
+         'end_date'       : '2014-12-03T13:00:00.000000', \
          'output_streams' : ['CURRENT_ZERO_SEQ_ANG','CURRENT_ZERO_SEQ_MAG','CURRENT_POSITIVE_SEQ_ANG',
                              'CURRENT_POSITIVE_SEQ_MAG','CURRENT_NEGATIVE_SEQ_ANG','CURRENT_NEGATIVE_SEQ_MAG',
                              'CURRENT_UNBALANCE_NEG_SEQ','CURRENT_UNBALANCE_ZERO_SEQ'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Sequence Components', \
-         'version'        : 4, \
+         'version'        : 5, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
