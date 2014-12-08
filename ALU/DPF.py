@@ -75,11 +75,11 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1','8b40fe4c-36ee-4b10-8aef-1eef8c471e1d'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
-         'output_streams' : ['L3_DPF','L1_DPF','L2_DPF'], \
+         'output_streams' : ['L1_DPF','L2_DPF','L3_DPF'], \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Refined Grizzly', \
          'name'           : 'Displacement Power Factor', \
-         'version'        : 5, \
+         'version'        : 6, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
