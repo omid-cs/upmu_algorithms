@@ -5,9 +5,20 @@ import qdf
 
 def compute(input_streams):
         # data input
-        grizzly = input_streams[0]
-        switcha6=input_streams[1]
-        
+        grizzly_L1 = input_streams[0]
+        switcha6_L1=input_streams[1]
+        grizzly_L2 = input_streams[2]
+        switcha6_L2=input_streams[3]
+        grizzly_L3 = input_streams[4]
+        switcha6_L3=input_streams[5]
+        grizzly_C1 = input_streams[6]
+        switcha6_C1=input_streams[7]
+        grizzly_C2 = input_streams[8]
+        switcha6_C2=input_streams[9]
+        grizzly_C3 = input_streams[10]
+        switcha6_C3=input_streams[11]
+        L1ang_GS = []
+        L1ang_GS = []
         L1ang_GS = []
         idx1 = 0
         idx2 = 0
@@ -36,8 +47,8 @@ def compute(input_streams):
         
         
 # set all data stream, date, distillate name, unit, output folder needed for this job     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L2ANG','upmu/switch_a6/L2ANG'], \
-         'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea','4f56a8f1-f3ca-4684-930e-1b4d9955f72c'], \
+opts = { 'input_streams'  : ['upmu/grizzly_new/L3ANG','upmu/switch_a6/L3ANG'], \
+         'input_uids'     : ['b653c63b-4acc-45ee-ae3d-1602e6116bc1','2c07ccef-20c5-4971-87cf-2c187ce5f722'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
          'output_streams' : ['Grizzly-SwitchA6_VOLT_ANGDIFF_1'], \
