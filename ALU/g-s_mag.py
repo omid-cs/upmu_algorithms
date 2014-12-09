@@ -25,12 +25,7 @@ def compute(input_streams):
                 continue
             # compute angle difference 
             delta = grizzly_L1[idx1].value - soda_a_L1[idx2].value
-            if delta > 180:
-                delta =delta-360
-            if delta <-180:
-                delta=delta+360
-            if delta ==-180:
-                delta=180
+            
             L1ang_GS.append((grizzly_L1[idx1].time, delta))
             idx1 += 1
             idx2 += 1
@@ -47,12 +42,7 @@ def compute(input_streams):
                 continue
             # compute angle difference 
             delta = grizzly_C1[idx1].value - soda_a_C1[idx2].value
-            if delta > 180:
-                delta =delta-360
-            if delta <-180:
-                delta=delta+360
-            if delta ==-180:
-                delta=180
+            
             C1ang_GS.append((grizzly_C1[idx1].time, delta))
             idx1 += 1
             idx2 += 1 
@@ -64,14 +54,14 @@ def compute(input_streams):
         
         
 # set all data stream, date, distillate name, unit, output folder needed for this job     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/soda_a/L1ANG','upmu/grizzly_new/C1ANG','upmu/soda_a/C1ANG'], \
-         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','4d6525a9-b8ad-48a4-ae98-b171562cf817',
-                             '4b7fec6d-270e-4bd6-b301-0eac6df17ca2','888b8f61-c2a4-44a1-bd5c-9865ea6ea8ca'], \
+opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/soda_a/L1MAG','upmu/grizzly_new/C1MAG','upmu/soda_a/C1MAG'], \
+         'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c','abffcf07-9e17-404a-98c3-ea4d60042ff3',
+                             '425b9c51-9aba-4d1a-a677-85cd7afd6269','9f638ccc-0c73-4e76-a43f-7538058f2974'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
-         'output_streams' : ['Grizzly-Soda_a_VOLT_ANGDIFF_1','Grizzly-Soda_a_CURR_ANGDIFF_1'], \
-         'output_units'   : ['Degree','Degree'], \
-         'author'         : 'Phase Ang Diff', \
+         'output_streams' : ['Grizzly-Soda_a_VOLT_MAGDIFF_1','Grizzly-Soda_a_CURR_MAGDIFF_1'], \
+         'output_units'   : ['V','V'], \
+         'author'         : 'Phase Mag Diff', \
          'name'           : 'Grizzly-Soda_a', \
          'version'        : 1, \
          'algorithm'      : compute }        
