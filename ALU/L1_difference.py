@@ -44,7 +44,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/C3ANG','upmu/switch_a6/C3ANG'], \
          'output_units'   : ['Degree'], \
          'author'         : 'Phase Ang Diff', \
          'name'           : 'Grizzly-Switch_a6', \
-         'version'        : 26, \
+         'version'        : 27, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
