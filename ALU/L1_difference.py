@@ -36,15 +36,15 @@ def compute(input_streams):
         
         
 # set all data stream, date, distillate name, unit, output folder needed for this job     
-opts = { 'input_streams'  : ['upmu/grizzly_new/C2ANG','upmu/switch_a6/C2ANG'], \
-         'input_uids'     : ['9ffeaf2a-46a9-465f-985d-96f84df66283','bf045a36-34df-4bee-a747-b20c3164723a'], \
+opts = { 'input_streams'  : ['upmu/grizzly_new/C3ANG','upmu/switch_a6/C3ANG'], \
+         'input_uids'     : ['8b40fe4c-36ee-4b10-8aef-1eef8c471e1d','8a5d0010-4665-4b59-ab6f-e7858c12284a'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
-         'output_streams' : ['Grizzly-SwitchA6_CURR_ANGDIFF_3'], \
+         'output_streams' : ['Grizzly-SwitchA6_CURR_ANGDIFF_1'], \
          'output_units'   : ['Degree'], \
          'author'         : 'Phase Ang Diff', \
          'name'           : 'Grizzly-Switch_a6', \
-         'version'        : 25, \
+         'version'        : 26, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
