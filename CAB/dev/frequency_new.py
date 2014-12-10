@@ -38,7 +38,7 @@ opts = { 'input_streams'  : ['grizzly_new_L2ANG'],
          'output_units'   : ['Hz'],
          'author'         : 'CAB',
          'name'           : 'dev_freq_new',
-         'version'        : 3,
+         'version'        : 4,
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
 qdf.begin()
