@@ -119,4 +119,4 @@ class Stream_Reader():
 
   def __len__(self):
     delta_time = self.end-self.start
-    length = int(round((delta_time/qdf.SECOND)/self.sampling_freq))
+    return int(round((delta_time/qdf.SECOND)/self.sampling_freq))
