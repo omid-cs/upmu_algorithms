@@ -41,7 +41,7 @@ def compute(input_streams):
                 idxDA += 1
                 continue
            # compute FUND_POWER_A
-            fpa=LAMag[idxLA].value*CAMag[idxCA].value*DPF_A[idxDA].value
+            fpa=LAMag[idxLA].value*CAMag[idxCA].value*DPF_A[idxDA].value/100.0
             FUND_POWER_A.append((DPF_A[idxDA].time,fpa))
             idxCA+=1
             idxLA+=1
@@ -62,7 +62,7 @@ def compute(input_streams):
                 idxDB += 1
                 continue
            # compute FUND_POWER_B
-            fpb=LBMag[idxLB].value*CBMag[idxCB].value*DPF_B[idxDB].value
+            fpb=LBMag[idxLB].value*CBMag[idxCB].value*DPF_B[idxDB].value/100.0
             FUND_POWER_B.append((DPF_B[idxDB].time,fpb))
             idxCB+=1
             idxLB+=1
@@ -83,7 +83,7 @@ def compute(input_streams):
                 idxDC += 1
                 continue
            # compute FUND_POWER_C
-            fpc=LCMag[idxLC].value*CCMag[idxCC].value*DPF_C[idxDC].value
+            fpc=LCMag[idxLC].value*CCMag[idxCC].value*DPF_C[idxDC].value/100.0
             FUND_POWER_C.append((DPF_C[idxDC].time,fpc))
             idxCC+=1
             idxLC+=1
@@ -106,11 +106,11 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1MAG','upmu/switch_a6/C1MAG','upmu
                              '1e1806c1-3baa-4942-99c5-52c724adfe80'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
-         'output_streams' : ['FUND_POWER_L1','FUND_POWER_L2','FUND_POWER_L3'], \
+         'output_streams' : ['FUND_POWER_L3','FUND_POWER_L1','FUND_POWER_L2'], \
          'output_units'   : ['Watts','Watts','Watts'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Power Flow', \
-         'version'        : 8, \
+         'version'        : 9, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
