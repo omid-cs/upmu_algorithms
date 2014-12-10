@@ -15,25 +15,26 @@ def frequency(input_streams, output_streams):
 
   i = 0
   while i + sampling_freq*delta_time < len(output_stream):
-    point1 = input_stream[i]
-    point2 = input_stream[i+sampling_freq*delta_time]
+    point1 = yield input_stream[i]
+    point2 = yield input_stream[i+sampling_freq*delta_time]
     if point1 == None or point2 == None:
       i += 1
       continue
     phase_diff = point2.value - point1.value
-    delta_time = point2.time - point2.time
-    assert delta_time == delta_time*qdf.SECOND, "Time mismatch! Found: "+str(delta_time/qdf.SECOND)+" seconds. Expected: "+str(delta_time)+" seconds."
+    delta_time = point2.time - point1.time
     if phase_diff > 180:
       phase_diff -= 360
     elif phase_diff < -180:
       phase_diff += 360
-    output_stream.append((point1.time, (phase_diff/delta_time)/360 + 60))
+    is_full = output_stream.append((point1.time, (phase_diff/delta_time)/360 + 60))
+    if is_full:
+      yield output_stream.flush()
     i += 1
 
 opts = { 'input_streams'  : ['grizzly_new_L2ANG'],
          'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea'],
          'start_dates'    : ['2014-12-01T00:00:00.000000'],
-         'end_dates'      : ['2014-12-01T00:00:00.000000'],
+         'end_dates'      : ['2014-12-02T00:00:00.000000'],
          'output_streams' : ['grizzly_new_L2ANG_freq'],
          'output_units'   : ['Hz'],
          'author'         : 'CAB',
