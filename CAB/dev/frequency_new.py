@@ -15,6 +15,7 @@ def frequency(input_streams, output_streams):
 
   i = 0
   while i + sampling_freq*delta_time < len(input_stream):
+    print(i)
     point1 = yield input_stream[i]
     point2 = yield input_stream[i+sampling_freq*delta_time]
     if point1 == None or point2 == None:
@@ -34,12 +35,12 @@ def frequency(input_streams, output_streams):
 opts = { 'input_streams'  : ['grizzly_new_L2ANG'],
          'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea'],
          'start_dates'    : ['2014-12-01T00:00:00.000000'],
-         'end_dates'      : ['2014-12-02T00:00:00.000000'],
+         'end_dates'      : ['2014-12-01T00:16:00.000000'],
          'output_streams' : ['grizzly_new_L2ANG_freq'],
          'output_units'   : ['Hz'],
          'author'         : 'CAB',
          'name'           : 'dev_freq_new',
-         'version'        : 1,
+         'version'        : 2,
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
 qdf.begin()
