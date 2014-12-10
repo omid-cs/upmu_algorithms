@@ -31,9 +31,9 @@ def frequency(input_streams, output_streams):
     i += 1
 
 opts = { 'input_streams'  : ['grizzly_new_L2ANG'],
-         'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea']
-         'start_dates'    : ['2014-12-01T00:00:00.000000']
-         'end_dates'      : ['2014-12-01T00:00:00.000000']
+         'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea'],
+         'start_dates'    : ['2014-12-01T00:00:00.000000'],
+         'end_dates'      : ['2014-12-01T00:00:00.000000'],
          'output_streams' : ['grizzly_new_L2ANG_freq'],
          'output_units'   : ['Hz'],
          'author'         : 'CAB',
