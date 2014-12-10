@@ -51,12 +51,12 @@ def frequency(input_streams):
 opts = { 'input_streams'  : ['upmu/grizzly_new/L2ANG'],
          'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea'],
          'start_date'     : '2014-12-01T00:00:00.000000',
-         'end_date'       : '2014-12-01T01:00:00.000000',
+         'end_date'       : '2014-12-02T00:00:00.000000',
          'output_streams' : ['grizzly_new_L2Ang_frequency'],
          'output_units'   : ['Hz'],
          'author'         : 'CAB',
          'name'           : 'dev_frequence_old',
-         'version'        : 1,
+         'version'        : 2,
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
 qdf.begin()
