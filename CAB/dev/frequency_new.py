@@ -14,7 +14,7 @@ def frequency(input_streams, output_streams):
   delta_time = 1 #second
 
   i = 0
-  while i + sampling_freq*delta_time < len(output_stream):
+  while i + sampling_freq*delta_time < len(input_stream):
     point1 = yield input_stream[i]
     point2 = yield input_stream[i+sampling_freq*delta_time]
     if point1 == None or point2 == None:
