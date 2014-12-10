@@ -10,9 +10,9 @@ def compute(input_streams):
         CCMag=input_streams[3]
         LAMag=input_streams[4]
         CAMag=input_streams[5]
-        DPF_A=input_streams[6]
-        DPF_B=input_streams[7]
-        DPF_C=input_streams[8]
+        DPF_A=input_streams[8]
+        DPF_B=input_streams[6]
+        DPF_C=input_streams[7]
         FUND_POWER_A=[]
         FUND_POWER_B=[]
         FUND_POWER_C=[]
@@ -102,15 +102,15 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1MAG','upmu/switch_a6/C1MAG','upmu
          'input_uids'     : ['df64af25-a389-4be9-8061-f87c3616f286','bf8ea2c0-6d04-4cdd-ba4b-0421eac0cabd',
                              '6e6ad513-ddd2-47fb-98c1-16e6477504fc','51d4801e-0bb6-4040-8e74-e7839be65156',
                              'bcf38098-0e16-46f2-a9fb-9ce481d7d55b','249b364d-b0a1-4b65-8aca-ffd68565c1de',
-                             '14e16f50-6ee3-4e7d-8eaa-53a89d49c0ef','d456eb31-1ced-4199-b252-16059cb8e0e0',
-                             '1e1806c1-3baa-4942-99c5-52c724adfe80'], \
+                             '8bf772b7-bce9-4dc6-96cd-f12f9a3e5aeb','4257df87-9452-4760-841d-ddb2fdf0c177',
+                             'a8d34e8b-fdb2-4ba4-a8ae-d404eea50916'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
          'output_streams' : ['FUND_POWER_L3','FUND_POWER_L1','FUND_POWER_L2'], \
          'output_units'   : ['Watts','Watts','Watts'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Power Flow', \
-         'version'        : 9, \
+         'version'        : 10, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
