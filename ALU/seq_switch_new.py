@@ -163,11 +163,11 @@ def compute(input_streams):
         
     
 opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu/switch_a6/L2ANG',
-                            'upmu/switch_a6/L2MAG','upmu/switch_a6/L3ANG','upmu/switch_a6/L3MAG','upmu/grizzly_new/L3ANG'], \
+                            'upmu/switch_a6/L2MAG','upmu/switch_a6/L3ANG','upmu/switch_a6/L3MAG','upmu/grizzly_new/L1ANG'], \
          'input_uids'     : ['adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','df64af25-a389-4be9-8061-f87c3616f286',
                              '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','6e6ad513-ddd2-47fb-98c1-16e6477504fc',
                              '2c07ccef-20c5-4971-87cf-2c187ce5f722','bcf38098-0e16-46f2-a9fb-9ce481d7d55b',
-                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1'], \
+                             'b4776088-2f85-4c75-90cd-7472a949a8fa'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
          'output_streams' : ['VOLTAGE_ZERO_SEQ_ANG','VOLTAGE_ZERO_SEQ_MAG','VOLTAGE_POSITIVE_SEQ_ANG',
@@ -176,7 +176,7 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Sequence Components', \
-         'version'        : 7, \
+         'version'        : 8, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
