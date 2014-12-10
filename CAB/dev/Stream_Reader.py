@@ -45,6 +45,8 @@ class Stream_Reader():
     self.start = start_date
     self.end = end_date
 
+    self.sampling_freq = 60 # Hz
+
     self.cache = [[None, None] for x in range(CACHE_ENTRIES)]
 
   @defer.inlineCallbacks
@@ -114,3 +116,7 @@ class Stream_Reader():
       i += 1
       time = point.time
       yield point
+
+  def __len__(self):
+    delta_time = self.end-self.start
+    length = (delta_time/qdf.SECOND)/self.sampling_freq
