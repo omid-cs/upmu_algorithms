@@ -171,12 +171,12 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/switch_a6/L1ANG','up
                              '8b40fe4c-36ee-4b10-8aef-1eef8c471e1d','8a5d0010-4665-4b59-ab6f-e7858c12284a'], \
          'start_date'     : '2014-12-03T12:00:00.000000', \
          'end_date'       : '2014-12-03T13:00:00.000000', \
-         'output_streams' : ['Grizzly-SwitchA6_VOLT_ANGDIFF_1','Grizzly-SwitchA6_VOLT_ANGDIFF_2','Grizzly-SwitchA6_VOLT_ANGDIFF_3',
-                             'Grizzly-SwitchA6_CURR_ANGDIFF_1','Grizzly-SwitchA6_CURR_ANGDIFF_2','Grizzly-SwitchA6_CURR_ANGDIFF_3'], \
+         'output_streams' : ['Grizzly-SwitchA6_VOLT_ANGDIFF_3','Grizzly-SwitchA6_VOLT_ANGDIFF_1','Grizzly-SwitchA6_VOLT_ANGDIFF_2',
+                             'Grizzly-SwitchA6_CURR_ANGDIFF_3','Grizzly-SwitchA6_CURR_ANGDIFF_1','Grizzly-SwitchA6_CURR_ANGDIFF_2'], \
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree'], \
          'author'         : 'Phase Ang Diff', \
          'name'           : 'Grizzly-Switch_a6', \
-         'version'        : 32, \
+         'version'        : 33, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
