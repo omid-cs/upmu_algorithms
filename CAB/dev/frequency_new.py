@@ -21,7 +21,6 @@ def frequency(input_streams, output_streams):
       i += 1
       continue
     phase_diff = point2.value - point1.value
-    delta_time = point2.time - point1.time
     if phase_diff > 180:
       phase_diff -= 360
     elif phase_diff < -180:
