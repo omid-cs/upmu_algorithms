@@ -110,7 +110,7 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1MAG','upmu/switch_a6/C1MAG','upmu
          'output_units'   : ['Watts','Watts','Watts'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Power Flow', \
-         'version'        : 11, \
+         'version'        : 12, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
