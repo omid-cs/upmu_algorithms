@@ -176,7 +176,7 @@ opts = { 'input_streams'  : ['upmu/bank_514/C1ANG','upmu/bank_514/C1MAG','upmu/b
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Refined Bank_514', \
          'name'           : 'Sequence Components', \
-         'version'        : 5, \
+         'version'        : 8, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
