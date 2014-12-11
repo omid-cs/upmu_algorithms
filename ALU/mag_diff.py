@@ -139,14 +139,14 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/switch_a6/L1MAG','up
                              '425b9c51-9aba-4d1a-a677-85cd7afd6269','bf8ea2c0-6d04-4cdd-ba4b-0421eac0cabd',
                              'ca613e9a-1211-4c52-a98f-b8f9f1ce0672','51d4801e-0bb6-4040-8e74-e7839be65156',
                              'b1025f33-97fd-45d6-bc0f-80132e1dc756','249b364d-b0a1-4b65-8aca-ffd68565c1de'], \
-         'start_date'     : '2014-12-03T12:00:00.000000', \
-         'end_date'       : '2014-12-03T13:00:00.000000', \
-         'output_streams' : ['Grizzly-SwitchA6_VOLT_MAGDIFF_1','Grizzly-SwitchA6_VOLT_MAGDIFF_2','Grizzly-SwitchA6_VOLT_MAGDIFF_3',
-                             'Grizzly-SwitchA6_CURR_MAGDIFF_1','Grizzly-SwitchA6_CURR_MAGDIFF_2','Grizzly-SwitchA6_CURR_MAGDIFF_3'], \
+         'start_date'     : '2014-12-03T00:00:00.000000', \
+         'end_date'       : '2014-12-03T11:59:59.000000', \
+         'output_streams' : ['Grizzly-SwitchA6_VOLT_MAGDIFF_3','Grizzly-SwitchA6_VOLT_MAGDIFF_1','Grizzly-SwitchA6_VOLT_MAGDIFF_2',
+                             'Grizzly-SwitchA6_CURR_MAGDIFF_3','Grizzly-SwitchA6_CURR_MAGDIFF_1','Grizzly-SwitchA6_CURR_MAGDIFF_2'], \
          'output_units'   : ['V','V','V','V','V','V'], \
          'author'         : 'Phase Mag Diff', \
          'name'           : 'Grizzly-Switch_a6', \
-         'version'        : 1, \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
