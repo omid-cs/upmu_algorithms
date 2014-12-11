@@ -45,7 +45,7 @@ class Stream_Reader():
     self.start = start_date
     self.end = end_date
 
-    self.sampling_freq = 60 # Hz
+    self.sampling_freq = 120 # Hz
 
     self.cache = [[None, None] for x in range(CACHE_ENTRIES)]
 
