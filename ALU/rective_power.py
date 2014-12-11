@@ -77,9 +77,9 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/C1ANG','upmu
          'end_date'       : '2014-12-03T23:59:59.000000', \
          'output_streams' : ['L3_Rective_power','L1_Rective_power','L2_Rective_power'], \
          'output_units'   : ['Precent','Precent','Precent'], \
-         'author'         : 'Refined Switch_a6', \
+         'author'         : 'Andrew', \
          'name'           : 'Reactive power', \
-         'version'        : 2, \
+         'version'        : 3, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
