@@ -110,7 +110,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/grizzly_new/C1MAG','
          'output_units'   : ['Watts','Watts','Watts'], \
          'author'         : 'Refined Grizzly', \
          'name'           : 'Reactive power', \
-         'version'        : 1, \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
