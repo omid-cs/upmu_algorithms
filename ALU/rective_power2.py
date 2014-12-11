@@ -97,20 +97,20 @@ def compute(input_streams):
     
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/grizzly_new/C1MAG','upmu/grizzly_new/L2MAG',
                              'upmu/grizzly_new/C2MAG','upmu/grizzly_new/L3MAG','upmu/grizzly_new/C3MAG',
-                             'Refined Grizzly/Displacement Power Factor/L1_DPF','Refined Grizzly/Displacement Power Factor/L2_DPF',
-                             'Refined Grizzly/Displacement Power Factor/L3_DPF'], \
+                             'Andrew/Reactive power_g/L1_Rective_power','Andrew/Reactive power_g/L2_Rective_power',
+                             'Andrew/Reactive power_g/L3_Rective_power'], \
          'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c','425b9c51-9aba-4d1a-a677-85cd7afd6269',
                              'a002295a-32ee-41a1-8ec4-8657d0d1f943','ca613e9a-1211-4c52-a98f-b8f9f1ce0672',
                              'db3ea4f7-a337-4874-baeb-17fc2c0cf18b','b1025f33-97fd-45d6-bc0f-80132e1dc756',
-                             '5365a3f8-14fa-4b8a-9a9f-ce49c6cd3106','a060c0ef-bb23-4020-9994-0927462bb42c',
-                             '0426953c-ab67-4637-87e8-8ae3cabbce13'], \
+                             '508c6c76-d128-4920-a497-d5d49dce0bfd','eb43fb81-5e82-46cd-b3fb-a0a9cdafe5af',
+                             '5bc69a25-23a0-428f-a60e-4b9c7ce594db'], \
          'start_date'     : '2014-12-03T00:00:00.000000', \
          'end_date'       : '2014-12-03T23:59:59.000000', \
-         'output_streams' : ['FUND_POWER_L3','FUND_POWER_L1','FUND_POWER_L2'], \
+         'output_streams' : ['L3_Rective_power','L1_Rective_power','L2_Rective_power'], \
          'output_units'   : ['Watts','Watts','Watts'], \
          'author'         : 'Refined Grizzly', \
-         'name'           : 'Power Flow', \
-         'version'        : 15, \
+         'name'           : 'Reactive power', \
+         'version'        : 1, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
