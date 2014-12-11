@@ -83,18 +83,18 @@ def compute(input_streams):
                 idxLAA += 1
                 continue
             # compute sin value for three phase and sin value for l2 and l3 anfter add 120 degree and 240 degree
-            sinLAAng=np.sin(np.radians(LAAng[idxLAA].value-LAAng[idxLAA].value))
-            sinLBAng=np.sin(np.radians(LBAng[idxLBA].value-LAAng[idxLAA].value))
-            sinLCAng=np.sin(np.radians(LCAng[idxLCA].value-LAAng[idxLAA].value))
+            sinLAAng=np.sin(np.radians(LAAng[idxLAA].value-LBAng[idxLBA].value))
+            sinLBAng=np.sin(np.radians(LBAng[idxLBA].value-LBAng[idxLBA].value))
+            sinLCAng=np.sin(np.radians(LCAng[idxLCA].value-LBAng[idxLBA].value))
             sinLAAng_add120=np.sin(np.radians(LAAng[idxLAA].value+120-LBAng[idxLBA].value))
             sinLAAng_add240=np.sin(np.radians(LAAng[idxLAA].value+240-LBAng[idxLBA].value))
             sinLCAng_add120=np.sin(np.radians(LCAng[idxLCA].value+120-LBAng[idxLBA].value))
             sinLCAng_add240=np.sin(np.radians(LCAng[idxLCA].value+240-LBAng[idxLBA].value))
             
             # compute cosin value for three phase and cosin value for l2 and l3 anfter add 120 degree and 240 degree
-            cosLAAng=np.cos(np.radians(LAAng[idxLAA].value-LAAng[idxLAA].value))
-            cosLBAng=np.cos(np.radians(LBAng[idxLBA].value-LAAng[idxLAA].value))
-            cosLCAng=np.cos(np.radians(LCAng[idxLCA].value-LAAng[idxLAA].value))
+            cosLAAng=np.cos(np.radians(LAAng[idxLAA].value-LBAng[idxLBA].value))
+            cosLBAng=np.cos(np.radians(LBAng[idxLBA].value-LBAng[idxLBA].value))
+            cosLCAng=np.cos(np.radians(LCAng[idxLCA].value-LBAng[idxLBA].value))
             cosLAAng_add120=np.cos(np.radians(LAAng[idxLAA].value+120-LBAng[idxLBA].value))
             cosLAAng_add240=np.cos(np.radians(LAAng[idxLAA].value+240-LBAng[idxLBA].value))
             cosLCAng_add120=np.cos(np.radians(LCAng[idxLCA].value+120-LBAng[idxLBA].value))
@@ -156,7 +156,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/L1MAG','
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Refined Grizzly', \
          'name'           : 'Sequence Components', \
-         'version'        : 16, \
+         'version'        : 17, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
