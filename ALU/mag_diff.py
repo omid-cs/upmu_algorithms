@@ -144,9 +144,9 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/switch_a6/L1MAG','up
          'output_streams' : ['Grizzly-SwitchA6_VOLT_MAGDIFF_3','Grizzly-SwitchA6_VOLT_MAGDIFF_1','Grizzly-SwitchA6_VOLT_MAGDIFF_2',
                              'Grizzly-SwitchA6_CURR_MAGDIFF_3','Grizzly-SwitchA6_CURR_MAGDIFF_1','Grizzly-SwitchA6_CURR_MAGDIFF_2'], \
          'output_units'   : ['V','V','V','V','V','V'], \
-         'author'         : 'Phase Mag Diff', \
+         'author'         : 'Mag Diff', \
          'name'           : 'Grizzly-Switch_a6', \
-         'version'        : 2, \
+         'version'        : 3, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
