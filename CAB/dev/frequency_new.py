@@ -25,7 +25,7 @@ def frequency(input_streams, output_streams):
       phase_diff -= 360
     elif phase_diff < -180:
       phase_diff += 360
-    is_full = output_stream.append((point1.time, (phase_diff/delta_time)/360 + 60))
+    is_full = output_stream.append((point2.time, (phase_diff/delta_time)/360 + 60))
     if is_full:
       yield output_stream.flush()
     i += 1
@@ -38,7 +38,7 @@ opts = { 'input_streams'  : ['grizzly_new_L2ANG'],
          'output_units'   : ['Hz'],
          'author'         : 'CAB',
          'name'           : 'dev_freq_new',
-         'version'        : 5,
+         'version'        : 6,
          'algorithm'      : frequency }
 qdf.register(Distillate(), opts)
 qdf.begin()
