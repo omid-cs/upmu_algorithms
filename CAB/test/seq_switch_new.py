@@ -169,7 +169,7 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu
                              '2c07ccef-20c5-4971-87cf-2c187ce5f722','bcf38098-0e16-46f2-a9fb-9ce481d7d55b',
                              'b4776088-2f85-4c75-90cd-7472a949a8fa'], \
          'start_date'     : '2014-12-03T00:00:00.000000', \
-         'end_date'       : '2014-12-03T23:59:59.000000', \
+         'end_date'       : '2014-12-03T01:00:00.000000', \
          'output_streams' : ['VOLTAGE_ZERO_SEQ_ANG','VOLTAGE_ZERO_SEQ_MAG','VOLTAGE_POSITIVE_SEQ_ANG',
                              'VOLTAGE_POSITIVE_SEQ_MAG','VOLTAGE_NEGATIVE_SEQ_ANG','VOLTAGE_NEGATIVE_SEQ_MAG',
                              'VOLTAGE_UNBALANCE_NEG_SEQ','VOLTAGE_UNBALANCE_ZERO_SEQ'], \
