@@ -57,13 +57,13 @@ def compute(input_streams):
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/soda_a/L1MAG','upmu/grizzly_new/C1MAG','upmu/soda_a/C1MAG'], \
          'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c','abffcf07-9e17-404a-98c3-ea4d60042ff3',
                              '425b9c51-9aba-4d1a-a677-85cd7afd6269','9f638ccc-0c73-4e76-a43f-7538058f2974'], \
-         'start_date'     : '2014-12-03T12:00:00.000000', \
-         'end_date'       : '2014-12-03T13:00:00.000000', \
+         'start_date'     : '2014-12-03T00:00:00.000000', \
+         'end_date'       : '2014-12-03T11:59:59.000000', \
          'output_streams' : ['Grizzly-Soda_a_VOLT_MAGDIFF_1','Grizzly-Soda_a_CURR_MAGDIFF_1'], \
          'output_units'   : ['V','V'], \
          'author'         : 'Phase Mag Diff', \
          'name'           : 'Grizzly-Soda_a', \
-         'version'        : 1, \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
