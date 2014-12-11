@@ -95,22 +95,22 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['upmu/switch_a6/L1MAG','upmu/switch_a6/C1MAG','upmu/switch_a6/L2MAG',
-                             'upmu/switch_a6/C2MAG','upmu/switch_a6/L3MAG','upmu/switch_a6/C3MAG',
-                             'Refined Switch_a6/Displacement Power Factor/L1_DPF','Refined Switch_a6/Displacement Power Factor/L2_DPF',
-                             'Refined Switch_a6/Displacement Power Factor/L3_DPF'], \
-         'input_uids'     : ['df64af25-a389-4be9-8061-f87c3616f286','bf8ea2c0-6d04-4cdd-ba4b-0421eac0cabd',
-                             '6e6ad513-ddd2-47fb-98c1-16e6477504fc','51d4801e-0bb6-4040-8e74-e7839be65156',
-                             'bcf38098-0e16-46f2-a9fb-9ce481d7d55b','249b364d-b0a1-4b65-8aca-ffd68565c1de',
-                             '9b258fc7-148e-4a82-9d35-a35151684d94','2f0b1dd4-76dc-4169-a4c2-c166ce6a9063',
-                             'b1722639-65aa-41cc-a9ef-ca2f1b632f92'], \
+opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/grizzly_new/C1MAG','upmu/grizzly_new/L2MAG',
+                             'upmu/grizzly_new/C2MAG','upmu/grizzly_new/L3MAG','upmu/grizzly_new/C3MAG',
+                             'Refined Grizzly/Displacement Power Factor/L1_DPF','Refined Grizzly/Displacement Power Factor/L2_DPF',
+                             'Refined Grizzly/Displacement Power Factor/L3_DPF'], \
+         'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c','425b9c51-9aba-4d1a-a677-85cd7afd6269',
+                             'a002295a-32ee-41a1-8ec4-8657d0d1f943','ca613e9a-1211-4c52-a98f-b8f9f1ce0672',
+                             'db3ea4f7-a337-4874-baeb-17fc2c0cf18b','b1025f33-97fd-45d6-bc0f-80132e1dc756',
+                             '5365a3f8-14fa-4b8a-9a9f-ce49c6cd3106','a060c0ef-bb23-4020-9994-0927462bb42c',
+                             '0426953c-ab67-4637-87e8-8ae3cabbce13'], \
          'start_date'     : '2014-12-03T00:00:00.000000', \
          'end_date'       : '2014-12-03T23:59:59.000000', \
          'output_streams' : ['FUND_POWER_L3','FUND_POWER_L1','FUND_POWER_L2'], \
          'output_units'   : ['Watts','Watts','Watts'], \
-         'author'         : 'Refined Switch_a6', \
+         'author'         : 'Refined Grizzly', \
          'name'           : 'Power Flow', \
-         'version'        : 14, \
+         'version'        : 15, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
