@@ -105,12 +105,12 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1MAG','upmu/switch_a6/C1MAG','upmu
                              '9b258fc7-148e-4a82-9d35-a35151684d94','2f0b1dd4-76dc-4169-a4c2-c166ce6a9063',
                              'b1722639-65aa-41cc-a9ef-ca2f1b632f92'], \
          'start_date'     : '2014-12-03T00:00:00.000000', \
-         'end_date'       : '2014-12-03T11:59:59.000000', \
+         'end_date'       : '2014-12-03T23:59:59.000000', \
          'output_streams' : ['FUND_POWER_L3','FUND_POWER_L1','FUND_POWER_L2'], \
          'output_units'   : ['Watts','Watts','Watts'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Power Flow', \
-         'version'        : 13, \
+         'version'        : 14, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
