@@ -31,7 +31,7 @@ def compute(input_streams):
                 idxLA += 1
                 continue
            # compute cosin value of the differnece between voltage angle and current angle and dpf
-            dpfa=(np.cos(np.radians(LAAng[idxLA].value-CAAng[idxCA].value)))*100
+            dpfa=(np.sin(np.radians(LAAng[idxLA].value-CAAng[idxCA].value)))*100
             DPF_A.append((LAAng[idxLA].time,dpfa))
             idxCA+=1
             idxLA+=1
@@ -44,7 +44,7 @@ def compute(input_streams):
                 idxLB += 1
                 continue
            # compute cosin value of the differnece between voltage angle and current angle and dpf
-            dpfb=(np.cos(np.radians(LBAng[idxLB].value-CBAng[idxCB].value)))*100
+            dpfb=(np.sin(np.radians(LBAng[idxLB].value-CBAng[idxCB].value)))*100
             DPF_B.append((LBAng[idxLB].time,dpfb))
             idxCB+=1
             idxLB+=1
@@ -57,7 +57,7 @@ def compute(input_streams):
                 idxLC += 1
                 continue
            # compute cosin value of the differnece between voltage angle and current angle and dpf
-            dpfc=(np.cos(np.radians(LCAng[idxLC].value-CCAng[idxCC].value)))*100
+            dpfc=(np.sin(np.radians(LCAng[idxLC].value-CCAng[idxCC].value)))*100
             DPF_C.append((LCAng[idxLC].time,dpfc))
             idxCC+=1
             idxLC+=1
@@ -78,8 +78,8 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','
          'output_streams' : ['L3_DPF','L1_DPF','L2_DPF'], \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Refined Grizzly', \
-         'name'           : 'Displacement Power Factor', \
-         'version'        : 13, \
+         'name'           : 'Reactive power', \
+         'version'        : 1, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
