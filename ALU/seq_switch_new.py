@@ -107,8 +107,8 @@ def compute(input_streams):
             sinLAAng=np.sin(np.radians(LAAng[idxLAA].value-LAGAng[idxLAGA].value))
             sinLBAng=np.sin(np.radians(LBAng[idxLBA].value-LAGAng[idxLAGA].value))
             sinLCAng=np.sin(np.radians(LCAng[idxLCA].value-LAGAng[idxLAGA].value))
-            sinLBAng_add120=np.sin(np.radians(LBAng[idxLBA].value+120-LAGAng[idxLAGA].value))
-            sinLBAng_add240=np.sin(np.radians(LBAng[idxLBA].value+240-LAGAng[idxLAGA].value))
+            sinLAAng_add120=np.sin(np.radians(LAAng[idxLAA].value+120-LAGAng[idxLAGA].value))
+            sinLAAng_add240=np.sin(np.radians(LAAng[idxLAA].value+240-LAGAng[idxLAGA].value))
             sinLCAng_add120=np.sin(np.radians(LCAng[idxLCA].value+120-LAGAng[idxLAGA].value))
             sinLCAng_add240=np.sin(np.radians(LCAng[idxLCA].value+240-LAGAng[idxLAGA].value))
             
@@ -116,8 +116,8 @@ def compute(input_streams):
             cosLAAng=np.cos(np.radians(LAAng[idxLAA].value-LAGAng[idxLAGA].value))
             cosLBAng=np.cos(np.radians(LBAng[idxLBA].value-LAGAng[idxLAGA].value))
             cosLCAng=np.cos(np.radians(LCAng[idxLCA].value-LAGAng[idxLAGA].value))
-            cosLBAng_add120=np.cos(np.radians(LBAng[idxLBA].value+120-LAGAng[idxLAGA].value))
-            cosLBAng_add240=np.cos(np.radians(LBAng[idxLBA].value+240-LAGAng[idxLAGA].value))
+            cosLAAng_add120=np.cos(np.radians(LAAng[idxLAA].value+120-LAGAng[idxLAGA].value))
+            cosLAAng_add240=np.cos(np.radians(LAAng[idxLAA].value+240-LAGAng[idxLAGA].value))
             cosLCAng_add120=np.cos(np.radians(LCAng[idxLCA].value+120-LAGAng[idxLAGA].value))
             cosLCAng_add240=np.cos(np.radians(LCAng[idxLCA].value+240-LAGAng[idxLAGA].value))
             
@@ -176,7 +176,7 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Sequence Components', \
-         'version'        : 9, \
+         'version'        : 10, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
