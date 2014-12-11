@@ -61,9 +61,9 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/soda_a/L1MAG','upmu/
          'end_date'       : '2014-12-03T11:59:59.000000', \
          'output_streams' : ['Grizzly-Soda_a_VOLT_MAGDIFF_1','Grizzly-Soda_a_CURR_MAGDIFF_1'], \
          'output_units'   : ['V','V'], \
-         'author'         : 'Phase Mag Diff', \
+         'author'         : 'Mag Diff', \
          'name'           : 'Grizzly-Soda_a', \
-         'version'        : 2, \
+         'version'        : 3, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
