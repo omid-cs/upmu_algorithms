@@ -75,7 +75,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1','8b40fe4c-36ee-4b10-8aef-1eef8c471e1d'], \
          'start_date'     : '2014-12-03T00:00:00.000000', \
          'end_date'       : '2014-12-03T23:59:59.000000', \
-         'output_streams' : ['L3_DPF','L1_DPF','L2_DPF'], \
+         'output_streams' : ['L3_Rective_power','L1_Rective_power','L2_Rective_power'], \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Refined Grizzly', \
          'name'           : 'Reactive power', \
