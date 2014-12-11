@@ -73,7 +73,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/soda_a/L1ANG','upmu/
          'output_units'   : ['Degree','Degree'], \
          'author'         : 'Phase Ang Diff', \
          'name'           : 'Grizzly-Soda_a', \
-         'version'        : 1, \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
