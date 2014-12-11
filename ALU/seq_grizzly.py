@@ -86,19 +86,19 @@ def compute(input_streams):
             sinLAAng=np.sin(np.radians(LAAng[idxLAA].value-LAAng[idxLAA].value))
             sinLBAng=np.sin(np.radians(LBAng[idxLBA].value-LAAng[idxLAA].value))
             sinLCAng=np.sin(np.radians(LCAng[idxLCA].value-LAAng[idxLAA].value))
-            sinLBAng_add120=np.sin(np.radians(LBAng[idxLBA].value+120-LAAng[idxLAA].value))
-            sinLBAng_add240=np.sin(np.radians(LBAng[idxLBA].value+240-LAAng[idxLAA].value))
-            sinLCAng_add120=np.sin(np.radians(LCAng[idxLCA].value+120-LAAng[idxLAA].value))
-            sinLCAng_add240=np.sin(np.radians(LCAng[idxLCA].value+240-LAAng[idxLAA].value))
+            sinLAAng_add120=np.sin(np.radians(LAAng[idxLAA].value+120-LBAng[idxLBA].value))
+            sinLAAng_add240=np.sin(np.radians(LAAng[idxLAA].value+240-LBAng[idxLBA].value))
+            sinLCAng_add120=np.sin(np.radians(LCAng[idxLCA].value+120-LBAng[idxLBA].value))
+            sinLCAng_add240=np.sin(np.radians(LCAng[idxLCA].value+240-LBAng[idxLBA].value))
             
             # compute cosin value for three phase and cosin value for l2 and l3 anfter add 120 degree and 240 degree
             cosLAAng=np.cos(np.radians(LAAng[idxLAA].value-LAAng[idxLAA].value))
             cosLBAng=np.cos(np.radians(LBAng[idxLBA].value-LAAng[idxLAA].value))
             cosLCAng=np.cos(np.radians(LCAng[idxLCA].value-LAAng[idxLAA].value))
-            cosLBAng_add120=np.cos(np.radians(LBAng[idxLBA].value+120-LAAng[idxLAA].value))
-            cosLBAng_add240=np.cos(np.radians(LBAng[idxLBA].value+240-LAAng[idxLAA].value))
-            cosLCAng_add120=np.cos(np.radians(LCAng[idxLCA].value+120-LAAng[idxLAA].value))
-            cosLCAng_add240=np.cos(np.radians(LCAng[idxLCA].value+240-LAAng[idxLAA].value))
+            cosLAAng_add120=np.cos(np.radians(LAAng[idxLAA].value+120-LBAng[idxLBA].value))
+            cosLAAng_add240=np.cos(np.radians(LAAng[idxLAA].value+240-LBAng[idxLBA].value))
+            cosLCAng_add120=np.cos(np.radians(LCAng[idxLCA].value+120-LBAng[idxLBA].value))
+            cosLCAng_add240=np.cos(np.radians(LCAng[idxLCA].value+240-LBAng[idxLBA].value))
             
             # compute balance V0
             v0imagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng+LCMag[idxLCM].value*sinLCAng)/3.0
@@ -108,26 +108,26 @@ def compute(input_streams):
             V0Mag.append((LAMag[idxLAM].time, v0mag))
             V0Ang.append((LAAng[idxLAA].time,v0ang))
             
-            #compute balance v-
-            vpimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add120+LCMag[idxLCM].value*sinLCAng_add240)/3.0
-            vpreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add120+LCMag[idxLCM].value*cosLCAng_add240)/3.0
+            #compute balance v+
+            vpimagine=(LBMag[idxLBM].value*sinLBAng+LCMag[idxLCM].value*sinLCAng_add120+LAMag[idxLAM].value*sinLAAng_add240)/3.0
+            vpreal=(LBMag[idxLBM].value*cosLBAng+LCMag[idxLCM].value*cosLCAng_add120+LAMag[idxLAM].value*cosLAAng_add240)/3.0
             vpmag=np.sqrt(vpimagine**2+vpreal**2)
             vpang=np.degrees(math.atan2(vpimagine,vpreal))
             VpMag.append((LAMag[idxLAM].time, vpmag))
             VpAng.append((LAAng[idxLAA].time,vpang))
             
-            # compute balance v+
-            vnimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add240+LCMag[idxLCM].value*sinLCAng_add120)/3.0
-            vnreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add240+LCMag[idxLCM].value*cosLCAng_add120)/3.0
+            # compute balance v-
+            vnimagine=(LBMag[idxLBM].value*sinLBAng+LCMag[idxLCM].value*sinLCAng_add240+LAMag[idxLAM].value*sinLAAng_add120)/3.0
+            vnreal=(LBMag[idxLBM].value*cosLBAng+LCMag[idxLCM].value*cosLCAng_add240+LAMag[idxLAM].value*cosLAAng_add120)/3.0
             vnmag=np.sqrt(vnimagine**2+vnreal**2)
             vnang=np.degrees(math.atan2(vnimagine,vnreal))
             VnMag.append((LAMag[idxLAM].time, vnmag))
             VnAng.append((LAAng[idxLAA].time,vnang))
             
             # compute unbalance V-
-            Vn_ubalance_seq.append((LAMag[idxLAM].time,(vnmag/float(vpmag))*100))
+            Vn_ubalance_seq.append((LBMag[idxLBM].time,(vnmag/float(vpmag))*100))
             # compute unbalance v0
-            V0_ubalance_seq.append((LAMag[idxLAM].time,(v0mag/float(vpmag))*100))
+            V0_ubalance_seq.append((LBMag[idxLBM].time,(v0mag/float(vpmag))*100))
             
             idxLAA+= 1
             idxLAM+= 1
@@ -148,15 +148,15 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/C1ANG','upmu/grizzly_new/C1MAG','
          'input_uids'     : ['4b7fec6d-270e-4bd6-b301-0eac6df17ca2','425b9c51-9aba-4d1a-a677-85cd7afd6269',
                              '9ffeaf2a-46a9-465f-985d-96f84df66283','ca613e9a-1211-4c52-a98f-b8f9f1ce0672',
                              '8b40fe4c-36ee-4b10-8aef-1eef8c471e1d','b1025f33-97fd-45d6-bc0f-80132e1dc756'], \
-         'start_date'     : '2014-12-03T12:00:00.000000', \
-         'end_date'       : '2014-12-03T13:00:00.000000', \
+         'start_date'     : '2014-12-03T00:00:00.000000', \
+         'end_date'       : '2014-12-03T11:59:59.000000', \
          'output_streams' : ['CURRENT_ZERO_SEQ_ANG','CURRENT_ZERO_SEQ_MAG','CURRENT_POSITIVE_SEQ_ANG',
                              'CURRENT_POSITIVE_SEQ_MAG','CURRENT_NEGATIVE_SEQ_ANG','CURRENT_NEGATIVE_SEQ_MAG',
                              'CURRENT_UNBALANCE_NEG_SEQ','CURRENT_UNBALANCE_ZERO_SEQ'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Refined Grizzly', \
          'name'           : 'Sequence Components', \
-         'version'        : 14, \
+         'version'        : 15, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
