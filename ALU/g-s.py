@@ -67,13 +67,13 @@ def compute(input_streams):
 opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/soda_a/L1ANG','upmu/grizzly_new/C1ANG','upmu/soda_a/C1ANG'], \
          'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','4d6525a9-b8ad-48a4-ae98-b171562cf817',
                              '4b7fec6d-270e-4bd6-b301-0eac6df17ca2','888b8f61-c2a4-44a1-bd5c-9865ea6ea8ca'], \
-         'start_date'     : '2014-12-03T12:00:00.000000', \
-         'end_date'       : '2014-12-03T13:00:00.000000', \
+         'start_date'     : '2014-12-03T00:00:00.000000', \
+         'end_date'       : '2014-12-03T11:59:59.000000', \
          'output_streams' : ['Grizzly-Soda_a_VOLT_ANGDIFF_1','Grizzly-Soda_a_CURR_ANGDIFF_1'], \
          'output_units'   : ['Degree','Degree'], \
          'author'         : 'Phase Ang Diff', \
          'name'           : 'Grizzly-Soda_a', \
-         'version'        : 1, \
+         'version'        : 2, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()

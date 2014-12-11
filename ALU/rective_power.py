@@ -31,7 +31,7 @@ def compute(input_streams):
                 idxLA += 1
                 continue
            # compute cosin value of the differnece between voltage angle and current angle and dpf
-            dpfa=(np.cos(np.radians(LAAng[idxLA].value-CAAng[idxCA].value)))*100
+            dpfa=(np.sin(np.radians(LAAng[idxLA].value-CAAng[idxCA].value)))*100
             DPF_A.append((LAAng[idxLA].time,dpfa))
             idxCA+=1
             idxLA+=1
@@ -44,7 +44,7 @@ def compute(input_streams):
                 idxLB += 1
                 continue
            # compute cosin value of the differnece between voltage angle and current angle and dpf
-            dpfb=(np.cos(np.radians(LBAng[idxLB].value-CBAng[idxCB].value)))*100
+            dpfb=(np.sin(np.radians(LBAng[idxLB].value-CBAng[idxCB].value)))*100
             DPF_B.append((LBAng[idxLB].time,dpfb))
             idxCB+=1
             idxLB+=1
@@ -57,7 +57,7 @@ def compute(input_streams):
                 idxLC += 1
                 continue
            # compute cosin value of the differnece between voltage angle and current angle and dpf
-            dpfc=(np.cos(np.radians(LCAng[idxLC].value-CCAng[idxCC].value)))*100
+            dpfc=(np.sin(np.radians(LCAng[idxLC].value-CCAng[idxCC].value)))*100
             DPF_C.append((LCAng[idxLC].time,dpfc))
             idxCC+=1
             idxLC+=1
@@ -75,11 +75,11 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','
                              'b653c63b-4acc-45ee-ae3d-1602e6116bc1','8b40fe4c-36ee-4b10-8aef-1eef8c471e1d'], \
          'start_date'     : '2014-12-03T00:00:00.000000', \
          'end_date'       : '2014-12-03T23:59:59.000000', \
-         'output_streams' : ['L3_DPF','L1_DPF','L2_DPF'], \
+         'output_streams' : ['L3_Rective_power','L1_Rective_power','L2_Rective_power'], \
          'output_units'   : ['Precent','Precent','Precent'], \
-         'author'         : 'Refined Grizzly', \
-         'name'           : 'Displacement Power Factor', \
-         'version'        : 13, \
+         'author'         : 'Andrew', \
+         'name'           : 'Reactive power_g', \
+         'version'        : 4, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()

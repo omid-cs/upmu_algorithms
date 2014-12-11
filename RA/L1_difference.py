@@ -174,7 +174,7 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/switch_a6/L1ANG','up
          'output_streams' : ['Grizzly-SwitchA6_VOLT_ANGDIFF_3','Grizzly-SwitchA6_VOLT_ANGDIFF_1','Grizzly-SwitchA6_VOLT_ANGDIFF_2',
                              'Grizzly-SwitchA6_CURR_ANGDIFF_3','Grizzly-SwitchA6_CURR_ANGDIFF_1','Grizzly-SwitchA6_CURR_ANGDIFF_2'], \
          'output_units'   : ['Degree','Degree','Degree','Degree','Degree','Degree'], \
-         'author'         : 'Phase Ang Diff_Test', \
+         'author'         : 'RA', \
          'name'           : 'Grizzly-Switch_a6_Test', \
          'version'        : 1, \
          'algorithm'      : compute }        
