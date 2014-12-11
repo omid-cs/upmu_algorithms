@@ -130,25 +130,25 @@ def compute(input_streams):
             V0Ang.append((LAAng[idxLAA].time,v0ang))
             
             #compute v-
-            vpimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add120+LCMag[idxLCM].value*sinLCAng_add240)/3.0
-            vpreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add120+LCMag[idxLCM].value*cosLCAng_add240)/3.0
+            vpimagine=(LBMag[idxLBM].value*sinLBAng+LCMag[idxLCM].value*sinLCAng_add120+LAMag[idxLAM].value*sinLAAng_add240)/3.0
+            vpreal=(LBMag[idxLBM].value*cosLBAng+LCMag[idxLCM].value*cosLCAng_add120+LAMag[idxLAM].value*cosLAAng_add240)/3.0
             vpmag=np.sqrt(vpimagine**2+vpreal**2)
             vpang=np.degrees(math.atan2(vpimagine,vpreal))
-            VpMag.append((LAMag[idxLAM].time, vpmag))
-            VpAng.append((LAAng[idxLAA].time,vpang))
+            VpMag.append((LBMag[idxLBM].time, vpmag))
+            VpAng.append((LBAng[idxLBA].time,vpang))
             
             # compute v+
-            vnimagine=(LAMag[idxLAM].value*sinLAAng+LBMag[idxLBM].value*sinLBAng_add240+LCMag[idxLCM].value*sinLCAng_add120)/3.0
-            vnreal=(LAMag[idxLAM].value*cosLAAng+LBMag[idxLBM].value*cosLBAng_add240+LCMag[idxLCM].value*cosLCAng_add120)/3.0
+            vnimagine=(LBMag[idxLBM].value*sinLBAng+LCMag[idxLCM].value*sinLCAng_add240+LAMag[idxLAM].value*sinLAAng_add120)/3.0
+            vnreal=(LBMag[idxLBM].value*cosLBAng+LCMag[idxLCM].value*cosLCAng_add240+LAMag[idxLAM].value*cosLAAng_add120)/3.0
             vnmag=np.sqrt(vnimagine**2+vnreal**2)
             vnang=np.degrees(math.atan2(vnimagine,vnreal))
-            VnMag.append((LAMag[idxLAM].time, vnmag))
-            VnAng.append((LAAng[idxLAA].time,vnang))
+            VnMag.append((LBMag[idxLBM].time, vnmag))
+            VnAng.append((LBAng[idxLBA].time,vnang))
             
             # compute unbalance V-
-            Vn_ubalance_seq.append((LAMag[idxLAM].time,(vnmag/float(vpmag))*100))
+            Vn_ubalance_seq.append((LBMag[idxLBM].time,(vnmag/float(vpmag))*100))
             # compute unbalance v0
-            V0_ubalance_seq.append((LAMag[idxLAM].time,(v0mag/float(vpmag))*100))
+            V0_ubalance_seq.append((LBMag[idxLBM].time,(v0mag/float(vpmag))*100))
             
             idxLAA+= 1
             idxLAM+= 1
@@ -168,15 +168,15 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu
                              '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','6e6ad513-ddd2-47fb-98c1-16e6477504fc',
                              '2c07ccef-20c5-4971-87cf-2c187ce5f722','bcf38098-0e16-46f2-a9fb-9ce481d7d55b',
                              'b4776088-2f85-4c75-90cd-7472a949a8fa'], \
-         'start_date'     : '2014-12-03T12:00:00.000000', \
-         'end_date'       : '2014-12-03T13:00:00.000000', \
+         'start_date'     : '2014-12-03T00:00:00.000000', \
+         'end_date'       : '2014-12-03T59:59:59.000000', \
          'output_streams' : ['VOLTAGE_ZERO_SEQ_ANG','VOLTAGE_ZERO_SEQ_MAG','VOLTAGE_POSITIVE_SEQ_ANG',
                              'VOLTAGE_POSITIVE_SEQ_MAG','VOLTAGE_NEGATIVE_SEQ_ANG','VOLTAGE_NEGATIVE_SEQ_MAG',
                              'VOLTAGE_UNBALANCE_NEG_SEQ','VOLTAGE_UNBALANCE_ZERO_SEQ'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Refined Switch_a6', \
          'name'           : 'Sequence Components', \
-         'version'        : 8, \
+         'version'        : 9, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
