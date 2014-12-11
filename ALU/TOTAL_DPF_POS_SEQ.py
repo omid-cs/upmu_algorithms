@@ -33,16 +33,16 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['Refined Grizzly/Sequence Components/VOLTAGE_POSITIVE_SEQ_ANG',
-                             'Refined Grizzly/Sequence Components/CURRENT_POSITIVE_SEQ_ANG'], \
-         'input_uids'     : ['26c0ec2f-b6b9-4ee3-9e22-c4112ddaf1ae','8e5bdca1-11b5-40de-82c5-832012642d84'], \
+opts = { 'input_streams'  : ['Refined Switch_a6/Sequence Components/VOLTAGE_POSITIVE_SEQ_ANG',
+                             'Refined Switch_a6/Sequence Components/CURRENT_POSITIVE_SEQ_ANG'], \
+         'input_uids'     : ['978ffd60-f4ed-4d29-a13d-882f3f0196ff','5cfb3c7c-161e-46d1-b39b-e1a30c3e558e'], \
          'start_date'     : '2014-12-03T00:00:00.000000', \
          'end_date'       : '2014-12-03T11:59:59.000000', \
          'output_streams' : ['TOTAL_DPF_POS_SEQ'], \
          'output_units'   : ['Precent'], \
-         'author'         : 'Refined Grizzly', \
+         'author'         : 'Refined Switch_a6', \
          'name'           : 'Sequence Components', \
-         'version'        : 12, \
+         'version'        : 14, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
