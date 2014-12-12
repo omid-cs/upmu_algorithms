@@ -2,6 +2,8 @@ import qdf
 from distillate_new import Distillate
 from twisted.internet import defer
 
+NOMINAL_FREQUENCY = 60 #hz
+
 @defer.inlineCallbacks
 def frequency_c37(input_streams, output_streams):
   # only one input stream
