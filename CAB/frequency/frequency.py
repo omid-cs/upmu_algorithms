@@ -1,5 +1,5 @@
 import qdf
-from distillate_new import Distillate
+from distillate import Distillate
 from twisted.internet import defer
 
 @defer.inlineCallbacks

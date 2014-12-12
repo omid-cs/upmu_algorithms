@@ -1,5 +1,5 @@
 import qdf
-from distillate_new import Distillate
+from distillate import Distillate
 from twisted.internet import defer
 
 NOMINAL_FREQUENCY = 60 #hz
@@ -44,15 +44,15 @@ def angle_diff(v1, v2):
       phase_diff += 360
   return phase_diff
 
-opts = { 'input_streams'  : ['grizzly_new_L2ANG'],
-         'input_uids'     : ['8b80c070-7bb1-44d3-b3a8-301558d573ea'],
-         'start_dates'    : ['2014-12-01T00:00:00.000000'],
-         'end_dates'      : ['2014-12-02T00:00:00.000000'],
-         'output_streams' : ['grizzly_new_L2ANG_freq'],
+opts = { 'input_streams'  : ['grizzly_new_L1ANG'],
+         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa'],
+         'start_dates'    : ['2014-12-03T00:00:00.000000'],
+         'end_dates'      : ['2014-12-04T00:00:00.000000'],
+         'output_streams' : ['grizzly_new_L1ANG_freq_c37'],
          'output_units'   : ['Hz'],
-         'author'         : 'CAB',
-         'name'           : 'dev_freq_c37',
-         'version'        : 2,
+         'author'         : 'Calculated Grizzly',
+         'name'           : 'FREQ_C37',
+         'version'        : 1,
          'algorithm'      : frequency_c37 }
 qdf.register(Distillate(), opts)
 qdf.begin()
