@@ -28,7 +28,7 @@ def frequency_c37(input_streams, output_streams):
 
     frequency = NOMINAL_FREQUENCY+((sampling_freq/360.0)*(6.0*(v1)+3.0*(v2)+0.1*(v3)))
     
-    is_full = output_stream.append((point4.time, frequency)
+    is_full = output_stream.append((point4.time, frequency))
     if is_full:
       yield output_stream.flush()
     i += 1
