@@ -20,7 +20,7 @@ def frequency_c37(input_streams, output_streams):
     point2 = yield input_stream[i+1]
     point3 = yield input_stream[i+2]
     point4 = yield input_stream[i+3]
-    if point1 == None or point2 == None or point3 == None:
+    if point1 == None or point2 == None or point3 == None or point4 == None:
       i += 1
       continue
     # adjust values for wrapping
@@ -28,7 +28,7 @@ def frequency_c37(input_streams, output_streams):
     v2 = angle_diff(point2.value, point3.value)
     v3 = angle_diff(point1.value, point2.value)
 
-    frequency = NOMINAL_FREQUENCY+((sampling_freq/360.0)*(6.0*(v1)+3.0*(v2)+0.1*(v3)))
+    frequency = NOMINAL_FREQUENCY+((sampling_freq/360.0)*(6.0*(v1)+3.0*(v2)+1.0*(v3))/10)
     
     is_full = output_stream.append((point4.time, frequency))
     if is_full:
@@ -52,7 +52,7 @@ opts = { 'input_streams'  : ['grizzly_new_L2ANG'],
          'output_units'   : ['Hz'],
          'author'         : 'CAB',
          'name'           : 'dev_freq_c37',
-         'version'        : 1,
+         'version'        : 2,
          'algorithm'      : frequency_c37 }
 qdf.register(Distillate(), opts)
 qdf.begin()
