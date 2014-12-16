@@ -154,9 +154,9 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/C1ANG','upmu/grizzly_new/C1MAG','
                              'CURRENT_POSITIVE_SEQ_MAG','CURRENT_NEGATIVE_SEQ_ANG','CURRENT_NEGATIVE_SEQ_MAG',
                              'CURRENT_UNBALANCE_NEG_SEQ','CURRENT_UNBALANCE_ZERO_SEQ'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
-         'author'         : 'Refined Grizzly', \
+         'author'         : 'Calculated Grizzly', \
          'name'           : 'Sequence Components', \
-         'version'        : 18, \
+         'version'        : 19, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
