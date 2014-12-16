@@ -174,9 +174,9 @@ opts = { 'input_streams'  : ['upmu/switch_a6/C1ANG','upmu/switch_a6/C1MAG','upmu
                              'CURRENT_POSITIVE_SEQ_MAG','CURRENT_NEGATIVE_SEQ_ANG','CURRENT_NEGATIVE_SEQ_MAG',
                              'CURRENT_UNBALANCE_NEG_SEQ','CURRENT_UNBALANCE_ZERO_SEQ'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
-         'author'         : 'Refined Switch_a6', \
+         'author'         : 'Calculated Switch_a6', \
          'name'           : 'Sequence Components', \
-         'version'        : 11, \
+         'version'        : 12, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
