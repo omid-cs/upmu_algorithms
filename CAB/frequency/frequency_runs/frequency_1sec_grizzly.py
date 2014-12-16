@@ -36,7 +36,7 @@ opts = { 'input_streams'  : ['grizzly_new_L1ANG'],
          'end_dates'      : ['2014-12-04T00:00:00.000000'],
          'output_streams' : ['Grizzly_new_L1ANG_freq_1sec'],
          'output_units'   : ['Hz'],
-         'author'         : 'Calculated Grizzly',
+         'author'         : 'Frequency Grizzly',
          'name'           : 'FREQ_1SEC',
          'version'        : 1,
          'algorithm'      : frequency }
