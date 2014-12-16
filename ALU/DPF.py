@@ -77,9 +77,9 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','
          'end_date'       : '2014-12-03T23:59:59.000000', \
          'output_streams' : ['L3_DPF','L1_DPF','L2_DPF'], \
          'output_units'   : ['Precent','Precent','Precent'], \
-         'author'         : 'Refined Grizzly', \
+         'author'         : 'Calculated Grizzly', \
          'name'           : 'Displacement Power Factor', \
-         'version'        : 13, \
+         'version'        : 14, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
