@@ -108,9 +108,9 @@ opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/grizzly_new/C1MAG','
          'end_date'       : '2014-12-03T23:59:59.000000', \
          'output_streams' : ['FUND_POWER_L3','FUND_POWER_L1','FUND_POWER_L2'], \
          'output_units'   : ['Watts','Watts','Watts'], \
-         'author'         : 'Refined Grizzly', \
+         'author'         : 'Calculated Grizzly', \
          'name'           : 'Power Flow', \
-         'version'        : 15, \
+         'version'        : 16, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
