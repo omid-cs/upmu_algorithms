@@ -108,9 +108,9 @@ opts = { 'input_streams'  : ['upmu/switch_a6/L1MAG','upmu/switch_a6/C1MAG','upmu
          'end_date'       : '2014-12-03T23:59:59.000000', \
          'output_streams' : ['L3_Rective_power','L1_Rective_power','L2_Rective_power'], \
          'output_units'   : ['Watts','Watts','Watts'], \
-         'author'         : 'Refined Switch_a6', \
+         'author'         : 'Calculated Switch_a6', \
          'name'           : 'Reactive power', \
-         'version'        : 3, \
+         'version'        : 4, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
