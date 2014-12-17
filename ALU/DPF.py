@@ -68,18 +68,18 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/C1ANG','upmu/switch_a6/L2ANG',
-                             'upmu/switch_a6/C2ANG','upmu/switch_a6/L3ANG','upmu/switch_a6/C3ANG'], \
-         'input_uids'     : ['adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','4072af6f-938e-450c-9927-37dee6968446',
-                             '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','bf045a36-34df-4bee-a747-b20c3164723a',
-                             '2c07ccef-20c5-4971-87cf-2c187ce5f722','8a5d0010-4665-4b59-ab6f-e7858c12284a'], \
-         'start_date'     : '2014-12-03T00:00:00.000000', \
-         'end_date'       : '2014-12-03T23:59:59.000000', \
+opts = { 'input_streams'  : ['upmu/bank_514/L1ANG','upmu/bank_514/C1ANG','upmu/bank_514/L2ANG',
+                             'upmu/bank_514/C2ANG','upmu/bank_514/L3ANG','upmu/bank_514/C3ANG'], \
+         'input_uids'     : ['3c73d7ca-80ba-11e4-b1c9-002590e8ec24','3c73c866-80ba-11e4-b1c9-002590e8ec24',
+                             '3c73cb86-80ba-11e4-b1c9-002590e8ec24','3c73ce92-80ba-11e4-b1c9-002590e8ec24',
+                             '3c73af34-80ba-11e4-b1c9-002590e8ec24','3c73c514-80ba-11e4-b1c9-002590e8ec24'], \
+         'start_date'     : '2014-12-12T12:00:00.000000', \
+         'end_date'       : '2014-12-12T13:59:59.000000', \
          'output_streams' : ['L3_DPF','L1_DPF','L2_DPF'], \
          'output_units'   : ['Precent','Precent','Precent'], \
-         'author'         : 'Calculated Switch_a6', \
+         'author'         : 'Calculated Bank_514', \
          'name'           : 'Displacement Power Factor', \
-         'version'        : 15, \
+         'version'        : 16, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
