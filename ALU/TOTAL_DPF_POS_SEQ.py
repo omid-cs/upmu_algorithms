@@ -40,9 +40,9 @@ opts = { 'input_streams'  : ['Refined Switch_a6/Sequence Components/VOLTAGE_POSI
          'end_date'       : '2014-12-03T11:59:59.000000', \
          'output_streams' : ['TOTAL_DPF_POS_SEQ'], \
          'output_units'   : ['Precent'], \
-         'author'         : 'Refined Switch_a6', \
+         'author'         : 'Calculated Switch_a6', \
          'name'           : 'Sequence Components', \
-         'version'        : 14, \
+         'version'        : 15, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
