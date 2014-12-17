@@ -162,21 +162,21 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['upmu/switch_a6/C1ANG','upmu/switch_a6/C1MAG','upmu/switch_a6/C2ANG',
-                            'upmu/switch_a6/C2MAG','upmu/switch_a6/C3ANG','upmu/switch_a6/C3MAG','upmu/grizzly_new/C1ANG'], \
-         'input_uids'     : ['4072af6f-938e-450c-9927-37dee6968446','bf8ea2c0-6d04-4cdd-ba4b-0421eac0cabd',
-                             'bf045a36-34df-4bee-a747-b20c3164723a','51d4801e-0bb6-4040-8e74-e7839be65156',
-                             '8a5d0010-4665-4b59-ab6f-e7858c12284a','249b364d-b0a1-4b65-8aca-ffd68565c1de',
-                             '4b7fec6d-270e-4bd6-b301-0eac6df17ca2'], \
+opts = { 'input_streams'  : ['upmu/switch_a6/L1ANG','upmu/switch_a6/L1MAG','upmu/switch_a6/L2ANG',
+                            'upmu/switch_a6/L2MAG','upmu/switch_a6/L3ANG','upmu/switch_a6/L3MAG','upmu/grizzly_new/L1ANG'], \
+         'input_uids'     : ['adf13e17-44b7-4ef6-ae3f-fde8a9152ab7','df64af25-a389-4be9-8061-f87c3616f286',
+                             '4f56a8f1-f3ca-4684-930e-1b4d9955f72c','6e6ad513-ddd2-47fb-98c1-16e6477504fc',
+                             '2c07ccef-20c5-4971-87cf-2c187ce5f722','bcf38098-0e16-46f2-a9fb-9ce481d7d55b',
+                             'b4776088-2f85-4c75-90cd-7472a949a8fa'], \
          'start_date'     : '2014-12-03T00:00:00.000000', \
          'end_date'       : '2014-12-03T23:59:59.000000', \
-         'output_streams' : ['CURRENT_ZERO_SEQ_ANG','CURRENT_ZERO_SEQ_MAG','CURRENT_POSITIVE_SEQ_ANG',
-                             'CURRENT_POSITIVE_SEQ_MAG','CURRENT_NEGATIVE_SEQ_ANG','CURRENT_NEGATIVE_SEQ_MAG',
-                             'CURRENT_UNBALANCE_NEG_SEQ','CURRENT_UNBALANCE_ZERO_SEQ'], \
+         'output_streams' : ['VOLTAGE_ZERO_SEQ_ANG','VOLTAGE_ZERO_SEQ_MAG','VOLTAGE_POSITIVE_SEQ_ANG',
+                             'VOLTAGE_POSITIVE_SEQ_MAG','VOLTAGE_NEGATIVE_SEQ_ANG','VOLTAGE_NEGATIVE_SEQ_MAG',
+                             'VOLTAGE_UNBALANCE_NEG_SEQ','VOLTAGE_UNBALANCE_ZERO_SEQ'], \
          'output_units'   : ['Degree','V','Degree','V','Degree','V','Precent','Precent'], \
          'author'         : 'Calculated Switch_a6', \
          'name'           : 'Sequence Components', \
-         'version'        : 12, \
+         'version'        : 13, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
