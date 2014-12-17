@@ -95,22 +95,22 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L1MAG','upmu/grizzly_new/C1MAG','upmu/grizzly_new/L2MAG',
-                             'upmu/grizzly_new/C2MAG','upmu/grizzly_new/L3MAG','upmu/grizzly_new/C3MAG',
-                             'Andrew/Reactive power_g/L1_Rective_power','Andrew/Reactive power_g/L2_Rective_power',
-                             'Andrew/Reactive power_g/L3_Rective_power'], \
-         'input_uids'     : ['a64c386e-2dd4-4f17-96cb-1655358cb12c','425b9c51-9aba-4d1a-a677-85cd7afd6269',
-                             'a002295a-32ee-41a1-8ec4-8657d0d1f943','ca613e9a-1211-4c52-a98f-b8f9f1ce0672',
-                             'db3ea4f7-a337-4874-baeb-17fc2c0cf18b','b1025f33-97fd-45d6-bc0f-80132e1dc756',
-                             '508c6c76-d128-4920-a497-d5d49dce0bfd','eb43fb81-5e82-46cd-b3fb-a0a9cdafe5af',
-                             '5bc69a25-23a0-428f-a60e-4b9c7ce594db'], \
-         'start_date'     : '2014-12-03T00:00:00.000000', \
-         'end_date'       : '2014-12-03T23:59:59.000000', \
+opts = { 'input_streams'  : ['upmu/bank_514/L1MAG','upmu/bank_514/C1MAG','upmu/bank_514/L2MAG',
+                             'upmu/bank_514/C2MAG','upmu/bank_514/L3MAG','upmu/bank_514/C3MAG',
+                             'Andrew/Reactive power_b/L1_Rective_power','Andrew/Reactive power_b/L2_Rective_power',
+                             'Andrew/Reactive power_b/L3_Rective_power'], \
+         'input_uids'     : ['3c73baa6-80ba-11e4-b1c9-002590e8ec24','3c73be2a-80ba-11e4-b1c9-002590e8ec24',
+                             '3c73b70e-80ba-11e4-b1c9-002590e8ec24','3c73d4be-80ba-11e4-b1c9-002590e8ec24',
+                             '3c73c1c2-80ba-11e4-b1c9-002590e8ec24','3c73d1b2-80ba-11e4-b1c9-002590e8ec24',
+                             '02a8bcf8-fd8a-4f3e-b1e8-5860c5b4ff47','3d808cfa-8b89-47b9-93df-d6b29137e483',
+                             '6f8bceb7-580a-4a4f-b1a6-d704cc166267'], \
+         'start_date'     : '2014-12-12T12:00:00.000000', \
+         'end_date'       : '2014-12-12T13:59:59.000000', \
          'output_streams' : ['L3_Rective_power','L1_Rective_power','L2_Rective_power'], \
          'output_units'   : ['Watts','Watts','Watts'], \
-         'author'         : 'Calculated Grizzly', \
+         'author'         : 'Calculated Bank_514', \
          'name'           : 'Reactive power', \
-         'version'        : 5, \
+         'version'        : 6, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
