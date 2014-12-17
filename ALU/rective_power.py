@@ -68,18 +68,18 @@ def compute(input_streams):
         
         
     
-opts = { 'input_streams'  : ['upmu/grizzly_new/L1ANG','upmu/grizzly_new/C1ANG','upmu/grizzly_new/L2ANG',
-                             'upmu/grizzly_new/C2ANG','upmu/grizzly_new/L3ANG','upmu/grizzly_new/C3ANG'], \
-         'input_uids'     : ['b4776088-2f85-4c75-90cd-7472a949a8fa','4b7fec6d-270e-4bd6-b301-0eac6df17ca2',
-                             '8b80c070-7bb1-44d3-b3a8-301558d573ea','9ffeaf2a-46a9-465f-985d-96f84df66283',
-                             'b653c63b-4acc-45ee-ae3d-1602e6116bc1','8b40fe4c-36ee-4b10-8aef-1eef8c471e1d'], \
-         'start_date'     : '2014-12-03T00:00:00.000000', \
-         'end_date'       : '2014-12-03T23:59:59.000000', \
+opts = { 'input_streams'  : ['upmu/bank_514/L1ANG','upmu/bank_514/C1ANG','upmu/bank_514/L2ANG',
+                             'upmu/bank_514/C2ANG','upmu/bank_514/L3ANG','upmu/bank_514/C3ANG'], \
+         'input_uids'     : ['3c73d7ca-80ba-11e4-b1c9-002590e8ec24','3c73c866-80ba-11e4-b1c9-002590e8ec24',
+                             '3c73cb86-80ba-11e4-b1c9-002590e8ec24','3c73ce92-80ba-11e4-b1c9-002590e8ec24',
+                             '3c73af34-80ba-11e4-b1c9-002590e8ec24','3c73c514-80ba-11e4-b1c9-002590e8ec24'], \
+         'start_date'     : '2014-12-12T12:00:00.000000', \
+         'end_date'       : '2014-12-12T13:59:59.000000', \
          'output_streams' : ['L3_Rective_power','L1_Rective_power','L2_Rective_power'], \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Andrew', \
-         'name'           : 'Reactive power_g', \
-         'version'        : 4, \
+         'name'           : 'Reactive power_b', \
+         'version'        : 5, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
