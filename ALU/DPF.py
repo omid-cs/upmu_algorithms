@@ -73,13 +73,13 @@ opts = { 'input_streams'  : ['upmu/bank_514/L1ANG','upmu/bank_514/C1ANG','upmu/b
          'input_uids'     : ['3c73d7ca-80ba-11e4-b1c9-002590e8ec24','3c73c866-80ba-11e4-b1c9-002590e8ec24',
                              '3c73cb86-80ba-11e4-b1c9-002590e8ec24','3c73ce92-80ba-11e4-b1c9-002590e8ec24',
                              '3c73af34-80ba-11e4-b1c9-002590e8ec24','3c73c514-80ba-11e4-b1c9-002590e8ec24'], \
-         'start_date'     : '2014-12-12T12:00:00.000000', \
-         'end_date'       : '2014-12-12T13:59:59.000000', \
+         'start_date'     : '2015-01-01T00:00:00.000000', \
+         'end_date'       : '2015-01-20T12:59:59.000000', \
          'output_streams' : ['L3_DPF','L1_DPF','L2_DPF'], \
          'output_units'   : ['Precent','Precent','Precent'], \
          'author'         : 'Calculated Bank_514', \
          'name'           : 'Displacement Power Factor', \
-         'version'        : 16, \
+         'version'        : 17, \
          'algorithm'      : compute }        
 qdf.register(Distillate(), opts)
 qdf.begin()
