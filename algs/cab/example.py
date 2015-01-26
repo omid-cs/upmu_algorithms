@@ -21,7 +21,7 @@ class Phaseshift (qdf.QDF2Distillate):
     for point in input_streams["sinusoid"]:
       time = point[0]
       val = point[1]
-      val += shift
+      val += self.shift
       if val > 180:
         val -= 360
       out.addreading(time, val)
