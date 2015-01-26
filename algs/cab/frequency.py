@@ -29,9 +29,9 @@ class Frequency (qdf.QDF2Distillate):
 
     i1 = 0
     i2 = 120
-    while i1 < len(input_streams-120) and i2 < len(input_streams):
-      p1 = intput_streams[i]
-      p2 = intput_streams[i+120]
+    while i1 < len(input_streams["phase"])-120 and i2 < len(input_streams["phase"]):
+      p1 = input_streams["phase"][i]
+      p2 = input_streams["phase"][i+120]
 
       # check that points are exactly dt apart
       if round(((p2[i2]-p1[i1])/qdf.SECOND*120)) < 1:
