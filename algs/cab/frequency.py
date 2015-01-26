@@ -12,6 +12,7 @@ class Frequency (qdf.QDF2Distillate):
     self.dt = float(dt)
 
   def prereqs(self, changed_ranges):
+    print "[ALG] changed_ranges: " + str(changed_ranges)
     name = changed_ranges[0]
     uuid = changed_ranges[1]
     rngs = []
