@@ -27,9 +27,9 @@ class GenSin (qdf.QDF2Distillate):
         print "done compute"
 
 class Multiply (qdf.QDF2Distillate):
-    def initialize(self, factor=None):
+    def initialize(self, name="Multiplier", factor=None):
         self.set_section("Development")
-        self.set_name("Multiplier")
+        self.set_name(name)
         self.set_version(2)
         self.register_output("out", "arb_units")
         self.register_input("in")
