@@ -33,14 +33,14 @@ class Frequency (qdf.QDF2Distillate):
       p2 = input_streams["phase"][i2]
 
       # check that points are exactly dt apart
-      if round((float((p2[1]-p1[1]))/qdf.SECOND*120)) < 1:
+      if round((float((p2[0]-p1[0]))/qdf.SECOND*120)) < 1:
         if i2 == 120:
-          print float((p2[1]-p1[1]))/qdf.SECOND*120
+          print float((p2[0]-p1[0]))/qdf.SECOND*120
         i2 += 1
         continue
-      if round((float((p2[1]-p1[1]))/qdf.SECOND*120)) > 1:
+      if round((float((p2[0]-p1[0]))/qdf.SECOND*120)) > 1:
         if i1 == 0:
-          print float((p2[1]-p1[1]))/qdf.SECOND*120
+          print float((p2[0]-p1[0]))/qdf.SECOND*120
         i1 += 1
         continue
 
