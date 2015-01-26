@@ -15,7 +15,7 @@ class Frequency (qdf.QDF2Distillate):
     uuid = changed_ranges[0][0]
     name = changed_ranges[0][1]
     rngs = []
-    for rng in changes_ranges[0][2]:
+    for rng in changed_ranges[0][2]:
       rngs.append([rng[0]-self.dt, rng[1]])
     return [[name, uuid, rngs]]
 
