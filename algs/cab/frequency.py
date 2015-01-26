@@ -5,11 +5,11 @@ class Frequency (qdf.QDF2Distillate):
   def initialize(self, name="frequency", output="frequency", dt="1.0"):
     self.set_section("Development")
     self.set_name(name)
-    self.set_version(2)
+    self.set_version(3)
     self.register_output(output, "Hz")
     self.register_input("phase")
 
-    self.dt = float(dt)
+    self.dt = float(dt)*qdf.SECOND
 
   def prereqs(self, changed_ranges):
     uuid = changed_ranges[0][0]
@@ -41,13 +41,13 @@ class Frequency (qdf.QDF2Distillate):
         i1 += 1
         continue
 
-      time = int(p2[0])
+      time = p2[0]
       delta_phase = p2[1]-p1[1]
       if delta_phase > 180:
         delta_phase -= 360
       if delta_phase < -180:
         delta_phase += 360
-      freq = (delta_phase/self.dt)/360 + 60
+      freq = (delta_phase/self.dt)/360.0 + 60.0
       out.addreading(time, freq)
       i1 += 1
       i2 += 1
