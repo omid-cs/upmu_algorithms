@@ -29,6 +29,7 @@ class Frequency (qdf.QDF2Distillate):
 
     i1 = 0
     i2 = 120
+    print len(input_streams["phase"])
     while i1 < len(input_streams["phase"])-120 and i2 < len(input_streams["phase"]):
       p1 = input_streams["phase"][i1]
       p2 = input_streams["phase"][i2]
