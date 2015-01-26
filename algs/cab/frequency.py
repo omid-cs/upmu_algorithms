@@ -12,13 +12,12 @@ class Frequency (qdf.QDF2Distillate):
     self.dt = float(dt)
 
   def prereqs(self, changed_ranges):
-    print "[ALG] changed_ranges: " + str(changed_ranges)
-    name = changed_ranges[0]
-    uuid = changed_ranges[1]
+    uuid = changed_ranges[0][0]
+    name = changed_ranges[0][1]
     rngs = []
-    for rng in changes_ranges[2]:
+    for rng in changes_ranges[0][2]:
       rngs.append([rng[0]-self.dt, rng[1]])
-    return (name, uuid, rngs)
+    return [[name, uuid, rngs]]
 
   def compute(self, changed_ranges, input_streams, params, report):
     out = report.output("frequency")
