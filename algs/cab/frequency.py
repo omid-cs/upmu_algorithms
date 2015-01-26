@@ -5,7 +5,7 @@ class Frequency (qdf.QDF2Distillate):
   def initialize(self, name="frequency", output="frequency", dt="1.0"):
     self.set_section("Development")
     self.set_name(name)
-    self.set_version(5)
+    self.set_version(6)
     self.register_output(output, "Hz")
     self.register_input("phase")
 
@@ -33,14 +33,10 @@ class Frequency (qdf.QDF2Distillate):
       p2 = input_streams["phase"][i2]
 
       # check that points are exactly dt apart
-      if round(((p2[1]-p1[1])/qdf.SECOND*120)) < 1:
-        print "[alg] less than 1"
-        print round(((p2[1]-p1[1])/qdf.SECOND*120))
+      if round((float((p2[1]-p1[1]))/qdf.SECOND*120)) < 1:
         i2 += 1
         continue
-      if round(((p2[1]-p1[1])/qdf.SECOND*120)) > 1:
-        print "[alg] more than 1"
-        print round(((p2[1]-p1[1])/qdf.SECOND*120))
+      if round((float((p2[1]-p1[1]))/qdf.SECOND*120)) > 1:
         i1 += 1
         continue
 
