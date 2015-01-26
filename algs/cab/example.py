@@ -9,7 +9,7 @@ class Phaseshift (qdf.QDF2Distillate):
     self.register_output("out", "arb_units")
     self.register_input("sinusoid")
 
-    self.shift = shift
+    self.shift = int(shift)
 
   def compute(self, changed_ranges, input_streams, params, report):
     out = report.output("out")
@@ -19,12 +19,8 @@ class Phaseshift (qdf.QDF2Distillate):
     print "params: ", params
 
     for point in input_streams["sinusoid"]:
-      print point
-      print point[0]
-      print point[1]
-
-      time = int(point[0])
-      val = int(point[1])
+      time = point[0]
+      val = point[1]
       val += self.shift
       if val > 180:
         val -= 360
