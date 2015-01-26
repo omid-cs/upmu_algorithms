@@ -17,7 +17,8 @@ class Frequency (qdf.QDF2Distillate):
     rngs = []
     for rng in changed_ranges[0][2]:
       rngs.append([rng[0]-self.dt, rng[1]])
-    return [[name, uuid, rngs]]
+    print "[alg] returning..."
+    return [[uuid, name, rngs]]
 
   def compute(self, changed_ranges, input_streams, params, report):
     out = report.output("frequency")
