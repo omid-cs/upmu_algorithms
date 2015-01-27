@@ -5,7 +5,7 @@ class Frequency (qdf.QDF2Distillate):
   def initialize(self, name="frequency"):
     self.set_section("Development/foobar")
     self.set_name(name)
-    self.set_version(13)
+    self.set_version(14)
     self.register_output("frequency", "Hz")
     self.register_input("phase")
 
