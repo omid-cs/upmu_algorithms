@@ -32,9 +32,11 @@ class Frequency (qdf.QDF2Distillate):
 
       # check that points are exactly 1 second apart
       if round((float((p2[0]-p1[0]))/qdf.SECOND)) < 1:
+        print "increments i2"
         i2 += 1
         continue
       if round((float((p2[0]-p1[0]))/qdf.SECOND)) > 1:
+        print "increments i1"
         i1 += 1
         continue
 
