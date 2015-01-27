@@ -5,7 +5,7 @@ class Frequency (qdf.QDF2Distillate):
   def initialize(self, name="frequency", output="frequency", dt="1.0"):
     self.set_section("Development")
     self.set_name(name)
-    self.set_version(10)
+    self.set_version(11)
     self.register_output(output, "Hz")
     self.register_input("phase")
 
@@ -46,7 +46,7 @@ class Frequency (qdf.QDF2Distillate):
         delta_phase -= 360
       if delta_phase < -180:
         delta_phase += 360
-      freq = (delta_phase/self.dt)/360.0 + 60.0
+      freq = (delta_phase/self.dt*qdf.SECOND)/360.0 + 60.0
       out.addreading(time, freq)
       i1 += 1
       i2 += 1
