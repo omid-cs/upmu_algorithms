@@ -35,47 +35,154 @@ class Frequency (qdf.QDF2Distillate):
     idx2 = 0
     # matching time between data stream and skip the piont when there is no data for that time
     while idx1 < len(input_streams["building1_L1"]) and idx2 < len(input_streams["building2_L1"]):
-            if grizzly_L1[idx1].time < switcha6_L1[idx2].time:
+            b1=input_streams["building1_L1"][idx1]
+            b2=input_streams["building2_L1"][idx2]
+            if b1[0] < b2[0]:
                 idx1 += 1
                 continue
-            if grizzly_L1[idx1].time > switcha6_L1[idx2].time:
+            if  b1[0] >  b2[0]:
                 idx2 += 1
                 continue
             # compute angle difference 
-            delta = grizzly_L1[idx1].value - switcha6_L1[idx2].value
+            delta = b1[1] - b2[1]
             if delta > 180:
                 delta =delta-360
             if delta <-180:
                 delta=delta+360
             if delta ==-180:
                 delta=180
-            L2ang_GS.append((grizzly_L1[idx1].time, delta))
+            out1.addreading(b1[0], delta)
+            idx1 += 1
+            idx2 += 1
+    
+    idx1 = 0
+    idx2 = 0
+    # matching time between data stream and skip the piont when there is no data for that time
+    while idx1 < len(input_streams["building1_L2"]) and idx2 < len(input_streams["building2_L2"]):
+            b1=input_streams["building1_L2"][idx1]
+            b2=input_streams["building2_L2"][idx2]
+            if b1[0] < b2[0]:
+                idx1 += 1
+                continue
+            if  b1[0] >  b2[0]:
+                idx2 += 1
+                continue
+            # compute angle difference 
+            delta = b1[1] - b2[1]
+            if delta > 180:
+                delta =delta-360
+            if delta <-180:
+                delta=delta+360
+            if delta ==-180:
+                delta=180
+            out2.addreading(b1[0], delta)
+            idx1 += 1
+            idx2 += 1
+    
+    idx1 = 0
+    idx2 = 0          
+  # matching time between data stream and skip the piont when there is no data for that time
+    while idx1 < len(input_streams["building1_L3"]) and idx2 < len(input_streams["building2_L3"]):
+            b1=input_streams["building1_L3"][idx1]
+            b2=input_streams["building2_L3"][idx2]
+            if b1[0] < b2[0]:
+                idx1 += 1
+                continue
+            if  b1[0] >  b2[0]:
+                idx2 += 1
+                continue
+            # compute angle difference 
+            delta = b1[1] - b2[1]
+            if delta > 180:
+                delta =delta-360
+            if delta <-180:
+                delta=delta+360
+            if delta ==-180:
+                delta=180
+            out3.addreading(b1[0], delta)
             idx1 += 1
             idx2 += 1
             
-    while i1 < len(input_streams["phase"])-120 and i2 < len(input_streams["phase"]):
-      p1 = input_streams["phase"][i1]
-      p2 = input_streams["phase"][i2]
-
-      # check that points are exactly 1 second apart
-      if round((float((p2[0]-p1[0]))/qdf.SECOND)) < 1:
-        print "increments i2"
-        i2 += 1
-        continue
-      if round((float((p2[0]-p1[0]))/qdf.SECOND)) > 1:
-        print "increments i1"
-        i1 += 1
-        continue
-
-      time = p2[0]
-      delta_phase = p2[1]-p1[1]
-      if delta_phase > 180:
-        delta_phase -= 360
-      if delta_phase < -180:
-        delta_phase += 360
-      freq = delta_phase/360.0 + 60.0
-      out.addreading(time, freq)
-      i1 += 1
-      i2 += 1
-
-    out.addbounds(*changed_ranges["phase"])
+    idx1 = 0
+    idx2 = 0        
+  # matching time between data stream and skip the piont when there is no data for that time
+    while idx1 < len(input_streams["building1_C1"]) and idx2 < len(input_streams["building2_C1"]):
+            b1=input_streams["building1_C1"][idx1]
+            b2=input_streams["building2_C1"][idx2]
+            if b1[0] < b2[0]:
+                idx1 += 1
+                continue
+            if  b1[0] >  b2[0]:
+                idx2 += 1
+                continue
+            # compute angle difference 
+            delta = b1[1] - b2[1]
+            if delta > 180:
+                delta =delta-360
+            if delta <-180:
+                delta=delta+360
+            if delta ==-180:
+                delta=180
+            out4.addreading(b1, delta)
+            idx1 += 1
+            idx2 += 1  
+            
+    idx1 = 0
+    idx2 = 0        
+  # matching time between data stream and skip the piont when there is no data for that time
+    while idx1 < len(input_streams["building1_C2"]) and idx2 < len(input_streams["building2_C2"]):
+            b1=input_streams["building1_C2"][idx1]
+            b2=input_streams["building2_C2"][idx2]
+            if b1[0] < b2[0]:
+                idx1 += 1
+                continue
+            if  b1[0] >  b2[0]:
+                idx2 += 1
+                continue
+            # compute angle difference 
+            delta = b1[1] - b2[1]
+            if delta > 180:
+                delta =delta-360
+            if delta <-180:
+                delta=delta+360
+            if delta ==-180:
+                delta=180
+            out5.addreading(b1, delta)
+            idx1 += 1
+            idx2 += 1  
+            
+    idx1 = 0
+    idx2 = 0        
+  # matching time between data stream and skip the piont when there is no data for that time
+    while idx1 < len(input_streams["building1_C3"]) and idx2 < len(input_streams["building2_C3"]):
+            b1=input_streams["building1_C3"][idx1]
+            b2=input_streams["building2_C3"][idx2]
+            if b1[0] < b2[0]:
+                idx1 += 1
+                continue
+            if  b1[0] >  b2[0]:
+                idx2 += 1
+                continue
+            # compute angle difference 
+            delta = b1[1] - b2[1]
+            if delta > 180:
+                delta =delta-360
+            if delta <-180:
+                delta=delta+360
+            if delta ==-180:
+                delta=180
+            out6.addreading(b1, delta)
+            idx1 += 1
+            idx2 += 1  
+    out.addbounds(*changed_ranges["building1_L1"])
+    out.addbounds(*changed_ranges["building1_L2"])
+    out.addbounds(*changed_ranges["building1_L3"])
+    out.addbounds(*changed_ranges["building1_C1"])
+    out.addbounds(*changed_ranges["building1_C2"])
+    out.addbounds(*changed_ranges["building1_C3"])
+    out.addbounds(*changed_ranges["building2_L1"])
+    out.addbounds(*changed_ranges["building2_L2"])
+    out.addbounds(*changed_ranges["building2_L3"])
+    out.addbounds(*changed_ranges["building2_C1"])
+    out.addbounds(*changed_ranges["building2_C2"])
+    out.addbounds(*changed_ranges["building2_C3"])
