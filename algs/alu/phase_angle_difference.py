@@ -3,7 +3,7 @@ import numpy as np
 
 class Frequency (qdf.QDF2Distillate):
   def initialize(self, name="angle difference"):
-    self.set_section("Development/foobar")
+    self.set_section("Angle_diff/Grizzly-SwitchA6")
     self.set_name(name)
     self.set_version(1)
     self.register_output("Grizzly-SwitchA6_VOLT_ANGDIFF_1", "Degree")
