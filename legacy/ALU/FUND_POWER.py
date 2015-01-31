@@ -2,8 +2,7 @@ from distillate import Distillate
 import numpy as np
 import qdf
 
-def compute(input_streams):
-        # data input
+def compute(input_streams): # data input
         LBMag = input_streams[0]
         CBMag=input_streams[1]
         LCMag=input_streams[2]
