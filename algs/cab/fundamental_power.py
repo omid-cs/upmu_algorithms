@@ -3,7 +3,7 @@ import numpy as np
 
 class Fundamental_Power (qdf.QDF2Distillate):
   def initialize(self, name="default"):
-    self.set_section("fund_power")
+    self.set_section("fundamental_power")
     self.set_name(name)
     self.set_version(1)
     self.register_input("voltage")
@@ -39,8 +39,8 @@ class Fundamental_Power (qdf.QDF2Distillate):
 
       # Calculate fundamental power
       time = voltage[i_vol].time
-      fundamental_power = voltage[i_vol].value * current[i_cur].value * dpf[i_dpf].value
-      fundamental_power_output.addreading(time, fundamental_power)
+      fp = voltage[i_vol].value * current[i_cur].value * dpf[i_dpf].value
+      fundamental_power_output.addreading(time, fp)
 
       #increment counters and loop
       i_vol += 1
