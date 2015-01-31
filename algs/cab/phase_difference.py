@@ -3,20 +3,22 @@ import numpy as np
 
 class Phase_Difference (qdf.QDF2Distillate):
   def initialize(self, section="Phase_Difference", name="default"):
-    self.set_section("Phase_Difference")
+    print('Begin initializing algorithm')
+    self.set_section(section)
     self.set_name(name)
     self.set_version(1)
     self.register_input("phase1")
     self.register_input("phase2")
     self.register_output("Phase_Difference", "Degrees")
+    print('Finished initializing algorithm')
 
   def compute(self, changed_ranges, input_streams, params, report):
+    print "compute invoked:"
     phase1 = input_streams["phase1"]
     phase2 = input_streams["phase2"]
 
     phase_diff_output = report.output("Phase_Difference")
 
-    print "compute invoked:"
     print "changed_ranges: ", changed_ranges
     print "params: ", params
 
