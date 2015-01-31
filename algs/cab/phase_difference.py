@@ -6,16 +6,16 @@ class Phase_Difference (qdf.QDF2Distillate):
     print('Begin initializing algorithm')
     self.set_section(section)
     self.set_name(name)
-    self.set_version(1)
+    self.set_version(2)
     self.register_input("phase1")
-    self.register_input("phase2")
+    #self.register_input("phase2")
     self.register_output("Phase_Difference", "Degrees")
     print('Finished initializing algorithm')
 
   def compute(self, changed_ranges, input_streams, params, report):
     print "compute invoked:"
     phase1 = input_streams["phase1"]
-    phase2 = input_streams["phase2"]
+    #phase2 = input_streams["phase2"]
 
     phase_diff_output = report.output("Phase_Difference")
 
@@ -24,6 +24,7 @@ class Phase_Difference (qdf.QDF2Distillate):
 
     i1 = 0
     i2 = 0
+    print "algorithm successfully prepped for calculation"
     while i1 < len(phase1) and i2 < len(phase2):
       if not (phase1[i1].time == phase2[i2].time):
         # if times do not align, iteratively increment trailing stream until equal
