@@ -6,11 +6,12 @@ class Phase_Difference (qdf.QDF2Distillate):
     print('Begin initializing algorithm')
     self.set_section(section)
     self.set_name(name)
-    self.set_version(2)
+    self.set_version(3)
     self.register_output("phase_difference", "Degrees")
     self.register_input("phase1")
     self.register_input("phase2")
     print('Finished initializing algorithm')
+    print('additional test print')
 
   def compute(self, changed_ranges, input_streams, params, report):
     phase_diff_output = report.output("phase_difference")
