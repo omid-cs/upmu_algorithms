@@ -89,42 +89,44 @@ while idxM1 len(M1) and idxA1< len(A1) and idxM2< len(M2) and idxA2< len(A2) and
   v0real=(M3[idxM3].value*cosA3+M1[idxM1].value*cosA1+M2[idxM2].value*cosA2)/3.0
   v0mag=np.sqrt(v0imagine**2+v0real**2)
   v0ang=np.degrees(math.atan2(v0imagine,v0real))
-  zero_seq_angle.addreading(A1[idxA1].time, v0mag)
-  reactive_power_output.addreading(A1[idxA1].time, v0ang)
+  zero_seq_magnitude.addreading(A1[idxA1].time, v0mag)
+  zero_seq_angle.addreading(A1[idxA1].time, v0ang)
   
 #compute balance v+
-  vpimagine=(LBMag[idxLBM].value*sinLBAng+LCMag[idxLCM].value*sinLCAng_add120+LAMag[idxLAM].value*sinLAAng_add240)/3.0
-  vpreal=(LBMag[idxLBM].value*cosLBAng+LCMag[idxLCM].value*cosLCAng_add120+LAMag[idxLAM].value*cosLAAng_add240)/3.0
+  vpimagine=(M1[idxM1].value*sinA1+M2[idxM2].value*sinA2_add120+M3[idxM3].value*sinA3_add240)/3.0
+  vpreal=(M1[idxM1].value*cosA1+M2[idxM2].value*cosA2_add120+M3[idxM3].value*cosA3_add240)/3.0
   vpmag=np.sqrt(vpimagine**2+vpreal**2)
   vpang=np.degrees(math.atan2(vpimagine,vpreal))
-  VpMag.append((LAMag[idxLAM].time, vpmag))
-  VpAng.append((LAAng[idxLAA].time,vpang))
+  postive_seq_magnitude.addreading(A1[idxA1].time, vpmag)
+  postive_seq_angle.addreading(A1[idxA1].time, vpang)
+  
 # compute balance v-
-  vnimagine=(LBMag[idxLBM].value*sinLBAng+LCMag[idxLCM].value*sinLCAng_add240+LAMag[idxLAM].value*sinLAAng_add120)/3.0
-  vnreal=(LBMag[idxLBM].value*cosLBAng+LCMag[idxLCM].value*cosLCAng_add240+LAMag[idxLAM].value*cosLAAng_add120)/3.0
+  vnimagine=(M1[idxM1].value*sinA1+M2[idxM2].value*sinA2_add240+M3[idxM3].value*sinA3_add120)/3.0
+  vnreal=(M1[idxM1].value*cosA1+M2[idxM2].value*cosA2_add240+M3[idxM3].value*cosA3_add120)/3.0
   vnmag=np.sqrt(vnimagine**2+vnreal**2)
   vnang=np.degrees(math.atan2(vnimagine,vnreal))
-  VnMag.append((LAMag[idxLAM].time, vnmag))
-  VnAng.append((LAAng[idxLAA].time,vnang))
+  negative_seq_magnitude.addreading(A1[idxA1].time, vnmag)
+  negative_seq_angle.addreading(A1[idxA1].time, vnang)
+  
 # compute unbalance V-
-  Vn_ubalance_seq.append((LBMag[idxLBM].time,(vnmag/float(vpmag))*100))
+  unblance_negative_seq.addreading((A1[idxA1].time,(vnmag/float(vpmag))*100))
 # compute unbalance v0
-  V0_ubalance_seq.append((LBMag[idxLBM].time,(v0mag/float(vpmag))*100))
-  idxLAA+= 1
-  idxLAM+= 1
-  idxLBA+= 1
-  idxLBM+= 1
-  idxLCA+= 1
-  idxLCM+= 1
-out.addbounds(*changed_ranges["building1_L1"])
-out.addbounds(*changed_ranges["building1_L2"])
-out.addbounds(*changed_ranges["building1_L3"])
-out.addbounds(*changed_ranges["building1_C1"])
-out.addbounds(*changed_ranges["building1_C2"])
-out.addbounds(*changed_ranges["building1_C3"])
-out.addbounds(*changed_ranges["building2_L1"])
-out.addbounds(*changed_ranges["building2_L2"])
-out.addbounds(*changed_ranges["building2_L3"])
-out.addbounds(*changed_ranges["building2_C1"])
-out.addbounds(*changed_ranges["building2_C2"])
-out.addbounds(*changed_ranges["building2_C3"])
+  unblance_zero_seq.addreading((A1[idxA1].time,(v0mag/float(vpmag))*100))
+  idxA1+= 1
+  idxA2+= 1
+  idxA3+= 1
+  idxM1+= 1
+  idxM2+= 1
+  idxM3+= 1
+zero_seq_angle.addbounds(*changed_ranges["M1"])
+zero_seq_angle.addbounds(*changed_ranges["M2"])
+zero_seq_angle.addbounds(*changed_ranges["M3"])
+zero_seq_angle.addbounds(*changed_ranges["A1"])
+zero_seq_angle.addbounds(*changed_ranges["A2"])
+zero_seq_angle.addbounds(*changed_ranges["A3"])
+zero_seq_angle.addbounds(*changed_ranges["M1"])
+zero_seq_angle.addbounds(*changed_ranges["M2"])
+zero_seq_angle.addbounds(*changed_ranges["M3"])
+zero_seq_angle.addbounds(*changed_ranges["A1"])
+zero_seq_angle.addbounds(*changed_ranges["A2"])
+zero_seq_angle.addbounds(*changed_ranges["A3"])
