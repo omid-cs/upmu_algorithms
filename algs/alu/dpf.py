@@ -4,7 +4,7 @@ class DPF (qdf.QDF2Distillate):
     def initialize(self, section, name):
         self.set_section(section)
         self.set_name(name)
-        self.set_version(2)
+        self.set_version(3)
         self.register_output("L1_DPF", "Precent")
         self.register_output("L2_DPF", "Precent")
         self.register_output("L3_DPF", "Precent")
@@ -36,7 +36,7 @@ class DPF (qdf.QDF2Distillate):
         C2=input_streams["C2"]
         C3=input_streams["C3"]
 
-        while idxC1 len(C1) and idxL1< len(L1) :
+        while idxC1<len(C1) and idxL1< len(L1) :
             if not (C1[idxC1][0] == L1[idxL1][0]):
                 max_time=max(C1[idxC1][0],L1[idxL1][0])
                 if C1[idxC1][0] < max_time:
@@ -50,7 +50,7 @@ class DPF (qdf.QDF2Distillate):
             idxL1+=1
             idxC1+=1
             
-        while idxC2 len(C2) and idxL2< len(L2) :
+        while idxC2<len(C2) and idxL2< len(L2) :
             if not (C2[idxC2][0] == L2[idxL2][0]):
                 max_time=max(C2[idxC2][0],L2[idxL2][0])
                 if C2[idxC2][0] < max_time:
@@ -64,7 +64,7 @@ class DPF (qdf.QDF2Distillate):
             idxL2+=1
             idxC2+=1
             
-        while idxC3 len(C3) and idxL3< len(L3) :
+        while idxC3<len(C3) and idxL3< len(L3) :
             if not (C3[idxC3][0] == L3[idxL3][0]):
                 max_time=max(C3[idxC3][0],L3[idxL3][0])
                 if C3[idxC3][0] < max_time:
