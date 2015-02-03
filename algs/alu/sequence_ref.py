@@ -158,7 +158,7 @@ class sequence (qdf.QDF2Distillate):
     
     negative_seq_magnitude.addbounds(*changed_ranges["M1"])
     negative_seq_magnitude.addbounds(*changed_ranges["M2"])
-    negative_magnitude.addbounds(*changed_ranges["M3"])
+    negative_seq_magnitude.addbounds(*changed_ranges["M3"])
     negative_seq_magnitude.addbounds(*changed_ranges["A1"])
     negative_seq_magnitude.addbounds(*changed_ranges["A2"])
     negative_seq_magnitude.addbounds(*changed_ranges["A3"])
