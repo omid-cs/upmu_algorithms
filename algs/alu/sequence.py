@@ -4,7 +4,7 @@ class sequence (qdf.QDF2Distillate):
   def initialize(self, section, name):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(3)
+    self.set_version(4)
     self.register_output("ZERO_SEQ_ANG", "Degree")
     self.register_output("ZERO_SEQ_MAG", "V")
     self.register_output("POSITIVE_SEQ_ANG", "Degree")
