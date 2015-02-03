@@ -1,6 +1,6 @@
 import qdf
 import numpy as np
-class sequence (qdf.QDF2Distillate):
+class DPF (qdf.QDF2Distillate):
     def initialize(self, section, name):
         self.set_section(section)
         self.set_name(name)
