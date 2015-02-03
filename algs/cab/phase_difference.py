@@ -11,12 +11,13 @@ class Phase_Difference (qdf.QDF2Distillate):
     self.register_input("phase1")
     self.register_input("phase2")
     print('Finished initializing algorithm')
-    print('additional test print')
 
   def compute(self, changed_ranges, input_streams, params, report):
     phase_diff_output = report.output("phase_difference")
 
-    print "compute invoked:"
+    print "[ALG] compute invoked:"
+    print "[ALG] input_streams:"
+    print input_streams
     phase1 = input_streams["phase1"]
     phase2 = input_streams["phase2"]
 
@@ -37,10 +38,10 @@ class Phase_Difference (qdf.QDF2Distillate):
           i2 += 1
         continue
 
-      # Calculate reactive power
+      # Calculate phase difference
       time = phase1[i1].time
       pd = phase1[i1].value - phase2[i2].value
-      reactive_power_output.addreading(time, pd)
+      phase_diff_output.addreading(time, pd)
 
       #increment counters and loop
       i1 += 1
