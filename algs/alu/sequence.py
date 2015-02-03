@@ -49,7 +49,7 @@ class sequence (qdf.QDF2Distillate):
     A3=input_streams["A3"]
     Reference_Angle=input_streams["Reference_Angle"]
 
-    while idxM1 len(M1) and idxA1< len(A1) and idxM2< len(M2) and idxA2< len(A2) and idxM3 < len(M3) and idxA3 < len(A3) and idxAref<len(Reference_Angle):
+    while idxM1<len(M1) and idxA1< len(A1) and idxM2< len(M2) and idxA2< len(A2) and idxM3 < len(M3) and idxA3 < len(A3) and idxAref<len(Reference_Angle):
       if not (A1[idxA1].time == M1[idxM1].time and M1[idxM1].time==A2[idxA2].time and A2[idxA2].time==M2[idxM2].time and
       M2[idxM2].time==A3[idxA3].time and A3[idA3].time==M3[idxM3].time and M3[idxM3].time==Reference_Angle[idxAref].time):
         max_time=max(A1[idxA1].time,M1[idxM1].time,A2[idxA2].time,M2[idxM2].time,A3[idxA3].time,M3[idxM3].time)
