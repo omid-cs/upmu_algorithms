@@ -43,6 +43,6 @@ class Fundamental_Power (qdf.QDF2Distillate):
       i_cur += 1
       i_dpf += 1
 
-    fundamental_power_output.addbounds(*changed_ranges["voltage"])
-    fundamental_power_output.addbounds(*changed_ranges["current"])
+    fundamental_power_output.addbounds(*changed_ranges["voltage_phase"])
+    fundamental_power_output.addbounds(*changed_ranges["current_phase"])
     fundamental_power_output.addbounds(*changed_ranges["dpf"])
