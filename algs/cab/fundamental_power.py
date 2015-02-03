@@ -2,8 +2,8 @@ import qdf
 import numpy as np
 
 class Fundamental_Power (qdf.QDF2Distillate):
-  def initialize(self, name="default"):
-    self.set_section("fundamental_power")
+  def initialize(self, section="Fundamental_Power", name="fundamental_power"):
+    self.set_section(section)
     self.set_name(name)
     self.set_version(1)
     self.register_input("voltage")
@@ -18,28 +18,24 @@ class Fundamental_Power (qdf.QDF2Distillate):
 
     fundamental_power_output = report.output("Fundamental_Power")
 
-    print "compute invoked:"
-    print "changed_ranges: ", changed_ranges
-    print "params: ", params
-
     i_vol = 0
     i_cur = 0
     i_dpf = 0
     while i_vol < len(voltage) and i_cur < len(current) and i_dpf < len(dpf):
-      if not (voltage[i_vol].time == current[i_cur].time == dpf[i_dpf].time):
+      if not (voltage[i_vol][0] == current[i_cur][0] == dpf[i_dpf][0]):
         # if times do not align, iteratively increment trailing streams until equal
-        max_time = max(voltage[i_vol].time, current[i_cur].time, dpf[i_dpf].time)
-        if voltage[i_vol].time < max_time:
+        max_time = max(voltage[i_vol][0], current[i_cur][0], dpf[i_dpf][0])
+        if voltage[i_vol][0] < max_time:
           i_vol += 1
-        if current[i_cur].time < max_time:
+        if current[i_cur][0] < max_time:
           i_cur += 1
-        if dpf[i_dpf].time < max_time:
+        if dpf[i_dpf][0] < max_time:
           i_dpf += 1
         continue
 
       # Calculate fundamental power
-      time = voltage[i_vol].time
-      fp = voltage[i_vol].value * current[i_cur].value * dpf[i_dpf].value
+      time = voltage[i_vol][0]
+      fp = voltage[i_vol][1] * current[i_cur][1] * dpf[i_dpf][1]
       fundamental_power_output.addreading(time, fp)
 
       #increment counters and loop
