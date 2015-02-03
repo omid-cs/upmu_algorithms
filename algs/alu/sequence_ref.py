@@ -4,7 +4,7 @@ class sequence (qdf.QDF2Distillate):
   def initialize(self, section, name):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(7)
+    self.set_version(8)
     self.register_output("ZERO_SEQ_ANG", "Degree")
     self.register_output("ZERO_SEQ_MAG", "V")
     self.register_output("POSITIVE_SEQ_ANG", "Degree")
@@ -85,7 +85,7 @@ class sequence (qdf.QDF2Distillate):
       cosA2_add120=np.cos(np.radians(A2[idxA2][1]+120-Reference_Angle[idxAref][1]))
       cosA2_add240=np.cos(np.radians(A2[idxA2][1]+240-Reference_Angle[idxAref][1]))
       # compute balance V0
-      v0imagine=(M3[idxM3][1]*sinA3+M1[M1][1]*sinA1+M2[idxM2][1]*sinA2)/3.0
+      v0imagine=(M3[idxM3][1]*sinA3+M1[idxM1][1]*sinA1+M2[idxM2][1]*sinA2)/3.0
       v0real=(M3[idxM3][1]*cosA3+M1[idxM1][1]*cosA1+M2[idxM2][1]*cosA2)/3.0
       v0mag=np.sqrt(v0imagine**2+v0real**2)
       v0ang=np.degrees(math.atan2(v0imagine,v0real))
