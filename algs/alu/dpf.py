@@ -4,7 +4,7 @@ class DPF (qdf.QDF2Distillate):
     def initialize(self, section, name):
         self.set_section(section)
         self.set_name(name)
-        self.set_version(4)
+        self.set_version(5)
         self.register_output("L1_DPF", "Precent")
         self.register_output("L2_DPF", "Precent")
         self.register_output("L3_DPF", "Precent")
@@ -79,7 +79,7 @@ class DPF (qdf.QDF2Distillate):
             idxC3+=1    
         L1_DPF.addbounds(*changed_ranges["L1"])
         L1_DPF.addbounds(*changed_ranges["C1"])
-        l2_DPF.addbounds(*changed_ranges["L2"])
+        L2_DPF.addbounds(*changed_ranges["L2"])
         L2_DPF.addbounds(*changed_ranges["C2"])
         L3_DPF.addbounds(*changed_ranges["L3"])
         L3_DPF.addbounds(*changed_ranges["C3"])
