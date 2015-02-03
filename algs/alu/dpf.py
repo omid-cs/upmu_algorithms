@@ -46,7 +46,7 @@ class DPF (qdf.QDF2Distillate):
                 continue
             # compute cosin value of the differnece between voltage angle and current angle and dpf
             dpf1=(np.cos(np.radians(L1[idxL1][1]-C1[idxC1][1])))*100
-            L1_DPF.addreading((L1[idxL1][0],dpf1))
+            L1_DPF.addreading(L1[idxL1][0],dpf1)
             idxL1+=1
             idxC1+=1
             
@@ -60,7 +60,7 @@ class DPF (qdf.QDF2Distillate):
                 continue
             # compute cosin value of the differnece between voltage angle and current angle and dpf
             dpf2=(np.cos(np.radians(L2[idxL2][1]-C2[idxC2][1])))*100
-            L2_DPF.addreading((L2[idxL2][0],dpf2))
+            L2_DPF.addreading(L2[idxL2][0],dpf2)
             idxL2+=1
             idxC2+=1
             
@@ -74,7 +74,7 @@ class DPF (qdf.QDF2Distillate):
                 continue
             # compute cosin value of the differnece between voltage angle and current angle and dpf
             dpf3=(np.cos(np.radians(L3[idxL3][1]-C3[idxC3][1])))*100
-            L3_DPF.addreading((L3[idxL3][0],dpf3))
+            L3_DPF.addreading(L3[idxL3][0],dpf3)
             idxL3+=1
             idxC3+=1    
         l1_DPF.addbounds(*changed_ranges["L1"])
