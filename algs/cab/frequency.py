@@ -45,7 +45,7 @@ class Frequency (qdf.QDF2Distillate):
       v3 = angle_diff(p3[1], p4[1])
 
       time = p1[0]
-      freq = 60 + ((6.0*(v1)+3.0*(v2)+1.0*(v3))/10)*((120.0/360.0)))
+      freq = 60 + (((6.0*(v1)+3.0*(v2)+1.0*(v3))/10)*((120.0/360.0)))
 
       c37.addreading(time, freq)
       i += 1
