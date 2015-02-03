@@ -22,10 +22,10 @@ class DPF(qdf.QDF2Distillate):
         idxLA=0
         # matching time among all 6 data strams to make sure they are at same time before compute sequence
         while idxCA < len(CAAng) and idxLA < len(LAAng):
-            if CAAng[idxCA].time < LAAng[idxLA].time:
+            if CAAng[idxCA][0] < LAAng[idxLA][0]:
                 idxCA += 1
                 continue
-            if CAAng[idxCA].time > LAAng[idxLA].time:
+            if CAAng[idxCA][0] > LAAng[idxLA][0]:
                 idxLA += 1
                 continue
            # compute cosin value of the differnece between voltage angle and current angle and dpf
