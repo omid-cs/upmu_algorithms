@@ -4,7 +4,7 @@ class DPF (qdf.QDF2Distillate):
     def initialize(self, section, name):
         self.set_section(section)
         self.set_name(name)
-        self.set_version(3)
+        self.set_version(4)
         self.register_output("L1_DPF", "Precent")
         self.register_output("L2_DPF", "Precent")
         self.register_output("L3_DPF", "Precent")
