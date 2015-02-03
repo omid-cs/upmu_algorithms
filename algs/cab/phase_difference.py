@@ -29,18 +29,18 @@ class Phase_Difference (qdf.QDF2Distillate):
     i2 = 0
     print "algorithm successfully prepped for calculation"
     while i1 < len(phase1) and i2 < len(phase2):
-      if not (phase1[i1].time == phase2[i2].time):
+      if not (phase1[i1][0] == phase2[i2][0]):
         # if times do not align, iteratively increment trailing stream until equal
-        max_time = max(phase1[i1].time, phase2[i2].time)
-        if phase1[i1].time < max_time:
+        max_time = max(phase1[i1][0], phase2[i2][0])
+        if phase1[i1][0] < max_time:
           i1 += 1
-        if phase2[i2].time < max_time:
+        if phase2[i2][0] < max_time:
           i2 += 1
         continue
 
       # Calculate phase difference
-      time = phase1[i1].time
-      pd = phase1[i1].value - phase2[i2].value
+      time = phase1[i1][0]
+      pd = phase1[i1][1] - phase2[i2][1]
       phase_diff_output.addreading(time, pd)
 
       #increment counters and loop
