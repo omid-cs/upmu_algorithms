@@ -38,4 +38,4 @@ class Phase_Difference (qdf.QDF2Distillate):
       i2 += 1
 
     phase_diff_output.addbounds(*changed_ranges["phase1"])
-    reactive_power_output.addbounds(*changed_ranges["phase2"])
+    phase_diff_output.addbounds(*changed_ranges["phase2"])
