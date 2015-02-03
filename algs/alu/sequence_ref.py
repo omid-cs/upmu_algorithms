@@ -1,4 +1,5 @@
 import qdf
+import math
 import numpy as np
 class sequence (qdf.QDF2Distillate):
   def initialize(self, section, name):
