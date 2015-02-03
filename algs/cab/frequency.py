@@ -2,10 +2,10 @@ import qdf
 import numpy as np
 
 class Frequency (qdf.QDF2Distillate):
-  def initialize(self, name="frequency"):
-    self.set_section("Development/foobar")
+  def initialize(self, section="Frequency", name="frequency"):
+    self.set_section(section)
     self.set_name(name)
-    self.set_version(14)
+    self.set_version(15)
     self.register_output("frequency", "Hz")
     self.register_input("phase")
 
