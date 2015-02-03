@@ -5,7 +5,7 @@ class Phase_Difference (qdf.QDF2Distillate):
   def initialize(self, section="Phase_Difference", name="default"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(3)
+    self.set_version(4)
     self.register_output("phase_difference", "Degrees")
     self.register_input("phase1")
     self.register_input("phase2")
@@ -31,6 +31,10 @@ class Phase_Difference (qdf.QDF2Distillate):
       # Calculate phase difference
       time = phase1[i1][0]
       pd = phase1[i1][1] - phase2[i2][1]
+      if pd > 180:
+        pd -= 360
+      elif pd < -180:
+        pd += 180
       phase_diff_output.addreading(time, pd)
 
       #increment counters and loop
