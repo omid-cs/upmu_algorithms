@@ -77,7 +77,7 @@ class DPF (qdf.QDF2Distillate):
             L3_DPF.addreading(L3[idxL3][0],dpf3)
             idxL3+=1
             idxC3+=1    
-        l1_DPF.addbounds(*changed_ranges["L1"])
+        L1_DPF.addbounds(*changed_ranges["L1"])
         L1_DPF.addbounds(*changed_ranges["C1"])
         l2_DPF.addbounds(*changed_ranges["L2"])
         L2_DPF.addbounds(*changed_ranges["C2"])
