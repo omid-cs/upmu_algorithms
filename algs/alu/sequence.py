@@ -1,5 +1,6 @@
 import qdf
 import numpy as np
+import math
 class sequence (qdf.QDF2Distillate):
   def initialize(self, section, name):
     print('[ALG] Initialization Begins')
