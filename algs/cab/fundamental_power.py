@@ -35,7 +35,7 @@ class Fundamental_Power (qdf.QDF2Distillate):
 
       # Calculate fundamental power
       time = voltage[i_vol][0]
-      fp = voltage[i_vol][1] * current[i_cur][1] * dpf[i_dpf][1]
+      fp = voltage[i_vol][1] * current[i_cur][1] * dpf[i_dpf][1]/100
       fundamental_power_output.addreading(time, fp)
 
       #increment counters and loop
