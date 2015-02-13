@@ -120,9 +120,9 @@ class sequence (qdf.QDF2Distillate):
       negative_seq_angle.addreading(A1[idxA1][0], vnang)
       # compute unbalance V-
       print "[ALG] print test 2.5" #cab
-      unblance_negative_seq.addreading((A1[idxA1][0],(vnmag/float(vpmag))*100))
+      unblance_negative_seq.addreading(A1[idxA1][0],(vnmag/float(vpmag))*100)
       # compute unbalance v0
-      unblance_zero_seq.addreading((A1[idxA1][0],(v0mag/float(vpmag))*100))
+      unblance_zero_seq.addreading(A1[idxA1][0],(v0mag/float(vpmag))*100)
       idxA1+= 1
       idxA2+= 1
       idxA3+= 1
