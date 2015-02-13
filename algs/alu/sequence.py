@@ -91,11 +91,17 @@ class sequence (qdf.QDF2Distillate):
       # compute balance V0
       print "[ALG] print test 2.3" #cab
       v0imagine=(M3[idxM3][1]*sinA3+M1[M1][1]*sinA1+M2[idxM2][1]*sinA2)/3.0
+      print "[ALG] print test 2.3.0" #cab
       v0real=(M3[idxM3][1]*cosA3+M1[idxM1][1]*cosA1+M2[idxM2][1]*cosA2)/3.0
+      print "[ALG] print test 2.3.1" #cab
       v0mag=np.sqrt(v0imagine**2+v0real**2)
+      print "[ALG] print test 2.3.2" #cab
       v0ang=np.degrees(math.atan2(v0imagine,v0real))
+      print "[ALG] print test 2.3.3" #cab
       zero_seq_magnitude.addreading(A1[idxA1][0], v0mag)
+      print "[ALG] print test 2.3.4" #cab
       zero_seq_angle.addreading(A1[idxA1][0], v0ang)
+      print "[ALG] print test 2.3.5" #cab
       #compute balance v+
       vpimagine=(M1[idxM1][1]*sinA1+M2[idxM2][1]*sinA2_add120+M3[idxM3][1]*sinA3_add240)/3.0
       vpreal=(M1[idxM1][1]*cosA1+M2[idxM2][1]*cosA2_add120+M3[idxM3][1]*cosA3_add240)/3.0   
