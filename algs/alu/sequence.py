@@ -90,7 +90,7 @@ class sequence (qdf.QDF2Distillate):
       cosA2_add240=np.cos(np.radians(A2[idxA2][1]+240-A1[idxA1][1]))
       # compute balance V0
       print "[ALG] print test 2.3" #cab
-      v0imagine=(M3[idxM3][1]*sinA3+M1[M1][1]*sinA1+M2[idxM2][1]*sinA2)/3.0
+      v0imagine=(M3[idxM3][1]*sinA3+M1[idxM1][1]*sinA1+M2[idxM2][1]*sinA2)/3.0
       print "[ALG] print test 2.3.0" #cab
       v0real=(M3[idxM3][1]*cosA3+M1[idxM1][1]*cosA1+M2[idxM2][1]*cosA2)/3.0
       print "[ALG] print test 2.3.1" #cab
