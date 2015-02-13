@@ -169,3 +169,5 @@ class sequence (qdf.QDF2Distillate):
     unblance_zero_seq.addbounds(*changed_ranges["A1"])
     unblance_zero_seq.addbounds(*changed_ranges["A2"])
     unblance_zero_seq.addbounds(*changed_ranges["A3"])
+
+    print "finished alg"
