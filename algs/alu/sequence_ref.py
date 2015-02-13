@@ -118,7 +118,7 @@ class sequence (qdf.QDF2Distillate):
       idxM3+= 1
       idxAref+=1
       print loop
-      loop++
+      loop+=1
     zero_seq_angle.addbounds(*changed_ranges["M1"])
     zero_seq_angle.addbounds(*changed_ranges["M2"])
     zero_seq_angle.addbounds(*changed_ranges["M3"])
