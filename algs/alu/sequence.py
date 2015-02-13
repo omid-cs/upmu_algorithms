@@ -53,8 +53,8 @@ class sequence (qdf.QDF2Distillate):
 
     while idxM1<len(M1) and idxA1< len(A1) and idxM2< len(M2) and idxA2< len(A2) and idxM3 < len(M3) and idxA3 < len(A3):
       print "[ALG] print test 2.0" #cab
-      if not (A1[idxA1][0] == M1[idxM1][0] and M1[idxM1][0]==A2[idxA2][0] and A2[idxA2][0]==M2[idxM2][0] and
-      M2[idxM2][0]==A3[idxA3][0] and A3[idA3][0]==M3[idxM3][0] ):
+      if not (A1[idxA1][0] == M1[idxM1][0] and M1[idxM1][0]==A2[idxA2][0] and A2[idxA2][0]==M2[idxM2][0] and \
+              M2[idxM2][0]==A3[idxA3][0] and A3[idA3][0]==M3[idxM3][0] ):
         print "[ALG] print test 2.0.1" #cab
         max_time=max(A1[idxA1][0],M1[idxM1][0],A2[idxA2][0],M2[idxM2][0],A3[idxA3][0],M3[idxM3][0])
         print "[ALG] print test 2.1" #cab
