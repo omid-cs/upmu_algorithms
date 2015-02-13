@@ -2,6 +2,7 @@ import qdf
 import numpy as np
 class sequence (qdf.QDF2Distillate):
   def initialize(self, section, name):
+    print('[ALG] Initialization Begins')
     self.set_section(section)
     self.set_name(name)
     self.set_version(7)
@@ -19,8 +20,10 @@ class sequence (qdf.QDF2Distillate):
     self.register_input("A1")
     self.register_input("A2")
     self.register_input("A3")
+    print('[ALG] Initialization Complete')
     
   def compute(self, changed_ranges, input_streams, params, report):
+    print('[ALG] Computation Begins')
     zero_seq_angle = report.output("ZERO_SEQ_ANG")
     zero_seq_magnitude = report.output("ZERO_SEQ_MAG")
     postive_seq_angle = report.output("POSITIVE_SEQ_ANG")
