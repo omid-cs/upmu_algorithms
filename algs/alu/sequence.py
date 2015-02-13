@@ -55,6 +55,7 @@ class sequence (qdf.QDF2Distillate):
       if not (A1[idxA1][0] == M1[idxM1][0] and M1[idxM1][0]==A2[idxA2][0] and A2[idxA2][0]==M2[idxM2][0] and
       M2[idxM2][0]==A3[idxA3][0] and A3[idA3][0]==M3[idxM3][0] ):
         max_time=max(A1[idxA1][0],M1[idxM1][0],A2[idxA2][0],M2[idxM2][0],A3[idxA3][0],M3[idxM3][0])
+        print "[ALG] print test 2.1" #cab
         if A1[idxA1][0] < max_time:
           idxA1 += 1
         if A2[idxA2][0] < max_time:
@@ -68,6 +69,7 @@ class sequence (qdf.QDF2Distillate):
         if M3[idxM3][0] < max_time:
           idxM3 += 1
         continue
+      print "[ALG] print test 2.2" #cab
       # compute sin value for three phase and sin value for l2 and l3 anfter add 120 degree and 240 degree
       sinA3=np.sin(np.radians(A3[idxA3][1]-A1[idxA1][1]))
       sinA1=np.sin(np.radians(A1[idxA1][1]-A1[idxA1][1]))
@@ -85,6 +87,7 @@ class sequence (qdf.QDF2Distillate):
       cosA2_add120=np.cos(np.radians(A2[idxA2][1]+120-A1[idxA1][1]))
       cosA2_add240=np.cos(np.radians(A2[idxA2][1]+240-A1[idxA1][1]))
       # compute balance V0
+      print "[ALG] print test 2.3" #cab
       v0imagine=(M3[idxM3][1]*sinA3+M1[M1][1]*sinA1+M2[idxM2][1]*sinA2)/3.0
       v0real=(M3[idxM3][1]*cosA3+M1[idxM1][1]*cosA1+M2[idxM2][1]*cosA2)/3.0
       v0mag=np.sqrt(v0imagine**2+v0real**2)
@@ -99,6 +102,7 @@ class sequence (qdf.QDF2Distillate):
       postive_seq_magnitude.addreading(A1[idxA1][0], vpmag)
       postive_seq_angle.addreading(A1[idxA1][0], vpang)
       # compute balance v-
+      print "[ALG] print test 2.4" #cab
       vnimagine=(M1[idxM1][1]*sinA1+M2[idxM2][1]*sinA2_add240+M3[idxM3][1]*sinA3_add120)/3.0
       vnreal=(M1[idxM1][1]*cosA1+M2[idxM2][1]*cosA2_add240+M3[idxM3][1]*cosA3_add120)/3.0
       vnmag=np.sqrt(vnimagine**2+vnreal**2)
@@ -106,6 +110,7 @@ class sequence (qdf.QDF2Distillate):
       negative_seq_magnitude.addreading(A1[idxA1][0], vnmag)
       negative_seq_angle.addreading(A1[idxA1][0], vnang)
       # compute unbalance V-
+      print "[ALG] print test 2.5" #cab
       unblance_negative_seq.addreading((A1[idxA1][0],(vnmag/float(vpmag))*100))
       # compute unbalance v0
       unblance_zero_seq.addreading((A1[idxA1][0],(v0mag/float(vpmag))*100))
@@ -115,6 +120,7 @@ class sequence (qdf.QDF2Distillate):
       idxM1+= 1
       idxM2+= 1
       idxM3+= 1
+      print "[ALG] print test 2.6" #cab
     print "[ALG] print test 3" #cab
 
     zero_seq_angle.addbounds(*changed_ranges["M1"])
