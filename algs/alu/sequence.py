@@ -42,12 +42,14 @@ class sequence (qdf.QDF2Distillate):
     idxA2=0
     idxA3=0
     
+    print "[ALG] print test 1" #cab
     M1=input_streams["M1"]
     A1=input_streams["A1"]
     M2=input_streams["M2"]
     A2=input_streams["A2"]
     M3=input_streams["M3"]
     A3=input_streams["A3"]
+    print "[ALG] print test 2" #cab
 
     while idxM1<len(M1) and idxA1< len(A1) and idxM2< len(M2) and idxA2< len(A2) and idxM3 < len(M3) and idxA3 < len(A3):
       if not (A1[idxA1][0] == M1[idxM1][0] and M1[idxM1][0]==A2[idxA2][0] and A2[idxA2][0]==M2[idxM2][0] and
@@ -113,6 +115,7 @@ class sequence (qdf.QDF2Distillate):
       idxM1+= 1
       idxM2+= 1
       idxM3+= 1
+    print "[ALG] print test 3" #cab
 
     zero_seq_angle.addbounds(*changed_ranges["M1"])
     zero_seq_angle.addbounds(*changed_ranges["M2"])
@@ -170,4 +173,4 @@ class sequence (qdf.QDF2Distillate):
     unblance_zero_seq.addbounds(*changed_ranges["A2"])
     unblance_zero_seq.addbounds(*changed_ranges["A3"])
 
-    print "finished alg"
+    print "[ALG] print test 4" #cab
