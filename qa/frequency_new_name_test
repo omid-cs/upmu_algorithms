@@ -1,6 +1,6 @@
 [ global ]
 algorithm = cab.frequency.Frequency
-enabled = false
+enabled = true
 
 [ frequency ]
   chunking = parallel
@@ -11,12 +11,13 @@ enabled = false
 
   [[ deps ]]
   # grizzly_new/L1ANG
-  phase = 081df639-eb80-4bff-b99d-ac68633f9768
+  phase = 9bd140d3-ff34-489b-8557-dc728b993274
 
   [[ params ]]
-  section = Development/Production
+  section = Production
   name = LBNL_GP_BUS2_L1-E_FREQ-1-SEC
 
   [[ outputs ]]
-  1-Sec = c74989f5-9509-42ae-9747-9344257bdbe6
-  C37 = 9d41e3af-4f0f-4082-b8fc-7bf96e60b426
+  1-Sec = dd03dcfd-f0c9-4da1-a505-6d96cd583b65
+  C37 = 73db3750-e992-4ba1-abf6-99d6b82c423b
+
