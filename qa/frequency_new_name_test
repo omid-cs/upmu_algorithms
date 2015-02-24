@@ -1,0 +1,22 @@
+[ global ]
+algorithm = cab.frequency.Frequency
+enabled = false
+
+[ frequency ]
+  chunking = parallel
+  paramver = 1
+
+  mintime = 2014-12-21T00:00:00
+  maxtime = 2015-12-01T00:00:00
+
+  [[ deps ]]
+  # grizzly_new/L1ANG
+  phase = 081df639-eb80-4bff-b99d-ac68633f9768
+
+  [[ params ]]
+  section = Development/Production
+  name = LBNL_GP_BUS2_L1-E_FREQ-1-SEC
+
+  [[ outputs ]]
+  1-Sec = c74989f5-9509-42ae-9747-9344257bdbe6
+  C37 = 9d41e3af-4f0f-4082-b8fc-7bf96e60b426
