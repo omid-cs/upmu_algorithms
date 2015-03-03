@@ -1,4 +1,4 @@
-import algorithm_fields
+from algorithm_fields import algorithms
 from inigen import IniGen
 import re
 from uuid import UUID
@@ -11,13 +11,13 @@ prompt_text = 'Generated config file name: '
 filename = raw_input(prompt_text)
 
 prompt_text = ['Algorithm:']
-for alg in algorithm_fields.alg_list:
+for alg in algorithms.keys():
   prompt_text.append('\t- {0}'.format(alg))
 prompt_text.append('-> ')
 prompt_text = "\n".join(prompt_text)
 while True:
   algorithm = raw_input(prompt_text)
-  if algorithm not in algorithm_fields.alg_list:
+  if algorithm not in algorithms.keys():
     print "Invalid algorithm. Select one from the list"
   else:
     break
@@ -31,7 +31,7 @@ while True:
     break
 
 p = re.compile('^[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]T[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]$')
-prompt_text = 'Min Time: '
+prompt_text = 'Min Time [yyyy-mm-ddThh:mm:ss]: '
 while True:
   mintime = raw_input(prompt_text)
   if not p.match(mintime):
@@ -40,7 +40,7 @@ while True:
     break
 
 
-prompt_text = 'Max Time: '
+prompt_text = 'Max Time [yyyy-mm-ddThh:mm:ss]: '
 while True:
   maxtime = raw_input(prompt_text)
   if not p.match(maxtime):
@@ -60,17 +60,17 @@ while True:
     continue
   break
 
-settings = algorithm_fields.settings[algorithm]
+settings = algorithms[algorithm]
 gen.emit_global(settings['path'], enabled)
 
 run_num = 1
 while run_num <= num_runs:
   print "- - -     Run Settings: run {0}     - - - ".format(str(run_num))
-  prompt_text = "Label: "
+  prompt_text = "Run Label: "
   label = raw_input(prompt_text)
 
   deps_info = []
-  print "Dependencies:"
+  print "Dependencies: "
   for dep in settings['deps']:
     prompt_text = "\t{0} (description): ".format(dep)
     comment = raw_input(prompt_text)
@@ -80,6 +80,7 @@ while run_num <= num_runs:
       uuid = raw_input(prompt_text)
       try:
         UUID(uuid)
+        uuid = uuid.lower()
         break
       except ValueError:
         print "\tInvalid uuid format. Select an appropriate uuid dependency"
@@ -90,7 +91,7 @@ while run_num <= num_runs:
   params_info = []
   print "Parameters"
   for param in settings['params']:
-    prompt_text = "\t{0}:".format(param)
+    prompt_text = "\t{0}: ".format(param)
     param_val = raw_input(prompt_text)
     
     params_info.append([param, param_val])

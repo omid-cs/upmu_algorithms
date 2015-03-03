@@ -1,6 +1,4 @@
-alg_list = ['frequency', 'phase_difference']
-
-settings = {
+algorithms = {
   'frequency' :        { 'path'    : 'cab.frequency.Frequency',
                          'deps'    : ['phase'],
                          'params'  : ['section', 'name'],
@@ -33,5 +31,4 @@ settings = {
                                       'POSITIVE_SEQ_ANG', 'POSITIVE_SEQ_MAG',
                                       'NEGATIVE_SEQ_ANG', 'NEGATIVE_SEQ_ANG',
                                       'UNBALANCE_NEG_SEQ', 'UNBALANCE_ZERO_SEQ'] },
-
 }
