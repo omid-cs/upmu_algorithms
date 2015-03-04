@@ -30,7 +30,7 @@ class Reactive_Power (qdf.QDF2Distillate):
 
       # Calculate reactive power
       time = voltage_phase[i_vol][0]
-      rp = np.sin(np.radians(voltage_phase[i_vol][1]-current_phase[i_cur][1]))
+      rp = np.sin(np.radians(voltage_phase[i_vol][1]-current_phase[i_cur][1])) #mult by magV and magC
       reactive_power_output.addreading(time, rp)
 
       #increment counters and loop
