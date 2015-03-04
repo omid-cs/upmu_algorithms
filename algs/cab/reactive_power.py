@@ -8,7 +8,7 @@ class Reactive_Power (qdf.QDF2Distillate):
     self.set_version(1)
     self.register_input("voltage_phase")
     self.register_input("current_phase")
-    self.register_output("Reactive_Power", "Watts")
+    self.register_output("Reactive_Power", "VAR")
 
   def compute(self, changed_ranges, input_streams, params, report):
     voltage_phase = input_streams["voltage_phase"]
