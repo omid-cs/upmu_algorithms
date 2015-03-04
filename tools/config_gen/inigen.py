@@ -2,42 +2,61 @@ from uuid import uuid4 as uuid
 
 class IniGen():
   def __init__(self):
-    self.output = []
+    self.emitted = []
 
   def emit_global(self, algorithm, enabled):
-    self.output.append("[ global ]")
-    self.output.append("algorithm = {0}".format(algorithm))
-    self.output.append("enabled = {0}".format(enabled))
-    self.output.append("")
+    emitted = []
+    emitted.append("[ global ]")
+    emitted.append("algorithm = {0}".format(algorithm))
+    emitted.append("enabled = {0}".format(enabled))
+    emitted.append("")
+
+    for line in emitted:
+      self.emitted.append(line)
+
+    return emitted
 
   def emit_run_header(self, label, chunking, mintime, maxtime):
-    self.output.append("[ " + label + " ]")
-    self.output.append("  chunking = {0}".format(chunking))
-    self.output.append("  paramver = 1")
-    self.output.append("")
-    self.output.append("  mintime = {0}".format(str(mintime)))
-    self.output.append("  maxtime = {0}".format(str(maxtime)))
-    self.output.append("")
+    emitted = []
+    emitted.append("[ " + label + " ]")
+    emitted.append("  chunking = {0}".format(chunking))
+    emitted.append("  paramver = 1")
+    emitted.append("")
+    emitted.append("  mintime = {0}".format(str(mintime)))
+    emitted.append("  maxtime = {0}".format(str(maxtime)))
+    emitted.append("")
+
+    for line in emitted:
+      self.emitted.append(line)
+
+    return emitted
 
   def emit_run_body(self, deps, params, outputs):
-    self.output.append("  [[ deps ]]")
+    emitted = []
+
+    emitted.append("  [[ deps ]]")
     for dep in deps:
-      self.output.append("  #{0}".format(dep[0]))
-      self.output.append("  {0} = {1}".format(dep[1], dep[2]))
-    self.output.append("")
+      emitted.append("  #{0}".format(dep[0]))
+      emitted.append("  {0} = {1}".format(dep[1], dep[2]))
+    emitted.append("")
 
-    self.output.append("  [[ params ]]")
+    emitted.append("  [[ params ]]")
     for param in params:
-      self.output.append("  {0} = {1}".format(param[0], param[1]))
-    self.output.append("")
+      emitted.append("  {0} = {1}".format(param[0], param[1]))
+    emitted.append("")
 
-    self.output.append("  [[ outputs ]]")
+    emitted.append("  [[ outputs ]]")
     for output in outputs:
-      self.output.append("  {0} = {1}".format(output, str(uuid())))
-    self.output.append("")
+      emitted.append("  {0} = {1}".format(output, str(uuid())))
+    emitted.append("")
+
+    for line in emitted:
+      self.emitted.append(line)
+
+    return emitted
 
   def generate_file(self, filename):
-    out_string = "\n".join(self.output)
+    out_string = "\n".join(self.emitted)
     f = open(filename, 'w')
     f.write(out_string)
     f.close()

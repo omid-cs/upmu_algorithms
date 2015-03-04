@@ -9,7 +9,7 @@ algorithms = {
                          'params'  : ['section', 'name'],
                          'outputs' : ['phase_difference'] },
 
-  'fundamental_power': { 'path'    : 'cab.fundamental_power.Rundamental_Power',
+  'fundamental_power': { 'path'    : 'cab.fundamental_power.Fundamental_Power',
                          'deps'    : ['voltage_phase', 'current_phase', 'dpf'],
                          'params'  : ['section', 'name'],
                          'outputs' : ['Fundamental_Power'] },

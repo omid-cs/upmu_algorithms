@@ -3,7 +3,7 @@ from inigen import IniGen
 import re
 from uuid import UUID
 
-from Tkinter import Tk, E, W, N, S, Text, END, Scrollbar, RIGHT, LEFT, BOTH, Y
+from Tkinter import Tk, E, W, N, S, Text, END, Scrollbar, RIGHT, LEFT, BOTH, Y, Checkbutton, IntVar
 from ttk import Frame, Button, Label, Style, Combobox
 from ttk import Entry
 
@@ -12,95 +12,202 @@ class IniGenGui(Frame):
   def __init__(self, parent):
     Frame.__init__(self, parent)
     self.parent = parent
-    self.initUI()
+    self.inigen = IniGen()
+    self.initUIGlobals()
 
-    self.run = 1
-
-  def initUI(self):
+  def initUIGlobals(self):
     self.parent.title("Ini Generator")
 
     Style().configure("TButton", padding=(0, 5, 0, 5), font='serif 10')
 
-    self.columnconfigure(0, pad=3)
-    self.columnconfigure(1, pad=3)
-    self.columnconfigure(2, pad=3)
-
-    self.rowconfigure(0, pad=3)
-    self.rowconfigure(1, pad=3)
-    self.rowconfigure(2, pad=3)
-    self.rowconfigure(3, pad=3)
-    self.rowconfigure(4, pad=3)
-    self.rowconfigure(5, pad=3)
-    self.rowconfigure(6, pad=3)
-    self.rowconfigure(7, pad=3)
-    self.rowconfigure(8, pad=3)
-    self.rowconfigure(9, pad=3)
-    self.rowconfigure(10, pad=3)
+    row = 0
 
     label_globals = Label(self, text="Globals")
-    label_globals.grid(row=0, column=0)
+    label_globals.grid(row=row, column=0)
+    row += 1
 
     label_alg = Label(self, text="Algorithm")
-    label_alg.grid(row=1, column=0, sticky=E+W)
-    cbox_alg = Combobox(self, values=algorithms.keys(), state='readonly')
-    cbox_alg.current(0)
-    cbox_alg.grid(row=2, column=0, sticky=E+W+S+N)
+    label_alg.grid(row=row, column=0, sticky=E+W)
+    row += 1
+    self.cbox_alg = Combobox(self, values=algorithms.keys(), state='readonly')
+    self.cbox_alg.current(0)
+    self.cbox_alg.grid(row=row, column=0, sticky=E+W+S+N)
+    row += 1
+
+    label_filename = Label(self, text="Output File Name")
+    label_filename.grid(row=row, column=0, sticky=E+W)
+    row += 1
+    self.entry_filename = Entry(self)
+    self.entry_filename.grid(row=row, column=0, sticky=W+E)
+    row += 1
 
     label_mintime = Label(self, text="Min Time")
-    label_mintime.grid(row=3, column=0, sticky=E+W)
-    entry_mintime = Entry(self)
-    entry_mintime.grid(row=4, column=0, sticky=W+E)
+    label_mintime.grid(row=row, column=0, sticky=E+W)
+    row += 1
+    self.entry_mintime = Entry(self)
+    self.entry_mintime.grid(row=row, column=0, sticky=W+E)
+    row += 1
 
     label_maxtime = Label(self, text="Max Time")
-    label_maxtime.grid(row=5, column=0, sticky=W+E)
-    entry_maxtime = Entry(self)
-    entry_maxtime.grid(row=6, column=0, sticky=W+E)
+    label_maxtime.grid(row=row, column=0, sticky=W+E)
+    row += 1
+    self.entry_maxtime = Entry(self)
+    self.entry_maxtime.grid(row=row, column=0, sticky=W+E)
+    row += 1
+
+    self.enabled = IntVar()
+    self.check_enabled = Checkbutton(self, text="set enabled", variable=self.enabled)
+    self.check_enabled.grid(row=row, column=0, sticky=W+E)
+    row += 1
+
+    self.button_emit_globals = Button(self, text="Emit Globals", command=self.emit_globals)
+    self.button_emit_globals.grid(row=row, column=0, sticky=W+E)
+    row += 1
 
     button_addrun = Button(self, text="Add Run", command=self.emit_run)
-    button_addrun.grid(row=7, column=0, sticky=W+E)
+    button_addrun.grid(row=row, column=0, sticky=W+E)
+    row += 1
 
-    button_generate = Button(self, text="Generate File")
-    button_generate.grid(row=8, column=0, sticky=W+E)
-
-    label_runs = Label(self, text="Runs")
-    label_runs.grid(row=0, column=1)
-
-    label_name = Label(self, text="Run Label")
-    label_name.grid(row=1, column=1, sticky=W+E)
-    entry_name = Entry(self)
-    entry_name.grid(row=2, column=1, sticky=W+E)
-
-    label_desc = Label(self, text="Description")
-    label_desc.grid(row=3, column=1, sticky=W+E)
-    entry_desc = Entry(self)
-    entry_desc.grid(row=4, column=1, sticky=W+E)
-
-    label_uuid = Label(self, text="UUID")
-    label_uuid.grid(row=5, column=1, sticky=W+E)
-    entry_uuid = Entry(self)
-    entry_uuid.grid(row=6, column=1, sticky=W+E)
-
-    label_section = Label(self, text="Section")
-    label_section.grid(row=7, column=1, sticky=W+E)
-    entry_section = Entry(self)
-    entry_section.grid(row=8, column=1, sticky=W+E)
-
-    label_name = Label(self, text="Name")
-    label_name.grid(row=9, column=1, sticky=W+E)
-    entry_name = Entry(self)
-    entry_name.grid(row=10, column=1, sticky=W+E)
-
-    self.text_file = Text(self)
-    self.text_file.grid(column=3, row=0, rowspan=11, sticky=W+E+N+S, padx=5, pady=5)
-    self.text_file.configure(state='disabled')
+    button_generate = Button(self, text="Generate File", command=self.generate_file)
+    button_generate.grid(row=row, column=0, sticky=W+E)
+    row += 1
 
     self.pack()
 
-  def emit_run(self):
-    self.text_file.configure(state='normal')
-    self.text_file.insert(END, "Run {0}\n".format(str(self.run)))
+  def initUIRuns(self):
+
+    self.entry_run_name = None
+    self.entries_dep_description = []
+    self.entries_dep_uuid = []
+    self.entries_param = []
+
+    row = 0
+    column = 1
+
+    label_runs = Label(self, text="Runs")
+    label_runs.grid(row=row, column=column)
+    row += 1
+
+    label_run_name = Label(self, text="Run Name")
+    label_run_name.grid(row=row, column=column, sticky=W+E)
+    row += 1
+
+    self.entry_run_name = Entry(self)
+    self.entry_run_name.grid(row=row, column=column, sticky=W+E)
+    row += 1
+
+    algorithm = self.cbox_alg.get()
+    settings = algorithms[algorithm]
+
+    for dep in settings['deps']:
+
+      label_dep_description = Label(self, text="{0} (description)".format(dep))
+      label_dep_description.grid(row=row, column=column, sticky=W+E)
+      row += 1
+
+      entry_dep_description = Entry(self)
+      entry_dep_description.grid(row=row, column=column, sticky=W+E)
+      row += 1
+
+      label_dep_uuid = Label(self, text="{0} (uuid)".format(dep))
+      label_dep_uuid.grid(row=row, column=column, sticky=W+E)
+      row += 1
+
+      entry_dep_uuid = Entry(self)
+      entry_dep_uuid.grid(row=row, column=column, sticky=W+E)
+      row += 1
+
+      self.entries_dep_description.append(entry_dep_description)
+      self.entries_dep_uuid.append(entry_dep_uuid)
+
+    for param in settings['params']:
+
+      label_param = Label(self, text=param)
+      label_param.grid(row=row, column=column, sticky=W+E)
+      row += 1
+
+      entry_param = Entry(self)
+      entry_param.grid(row=row, column=column, sticky=W+E)
+      row += 1
+
+      self.entries_param.append(entry_param)
+
+    """
+    self.text_file = Text(self, yscrollcommand=scrollbar.set)
+
+    scrollbar = Scrollbar(self)
+    scrollbar.pack(side=RIGHT, fill=Y, expand=False, command=self.text_file.yview)
+    scrollbar.grid(row=1, column=3, sticky=N+S)
+
+    self.text_file.pack(side=LEFT, fill=BOTH, expand=True)
+    self.text_file.grid(column=3, row=0, rowspan=row, sticky=W+E+N+S, padx=5, pady=5)
+    scrollbar.config(command=self.text_file.yview)
     self.text_file.configure(state='disabled')
-    self.run += 1
+    """
+
+    self.text_file = Text(self)
+    self.text_file.grid(row=0, column=3, rowspan=row, sticky=W+E+N+S, padx=5, pady=5)
+    scrollbar = Scrollbar(self, command=self.text_file.yview)
+    self.text_file.config(yscrollcommand=scrollbar.set)
+    scrollbar.grid(row=0, column=4, rowspan=row, sticky=N+S)
+
+    self.pack()
+
+  def emit_globals(self):
+    self.algorithm = algorithms[self.cbox_alg.get()]
+    path = self.algorithm['path']
+    if self.enabled.get():
+      enabled = 'True'
+    else:
+      enabled = 'False'
+
+    lines = self.inigen.emit_global(path, enabled)
+
+    self.mintime = self.entry_mintime.get()
+    self.maxtime = self.entry_maxtime.get()
+
+    self.cbox_alg.configure(state='disabled')
+    self.entry_filename.configure(state='disabled')
+    self.entry_mintime.configure(state='disabled')
+    self.entry_maxtime.configure(state='disabled')
+    self.check_enabled.configure(state='disabled')
+    self.button_emit_globals.configure(state='disabled')
+
+    self.initUIRuns()
+    self.update_text(lines)
+
+  def emit_run(self):
+    label = self.entry_run_name.get()
+    chunking = 'parallel' #hardcoded for now
+    mintime = self.mintime
+    maxtime = self.maxtime
+    lines = self.inigen.emit_run_header(label, chunking, mintime, maxtime)
+    self.update_text(lines)
+
+    deps = []
+    for i in range(len(self.entries_dep_description)):
+      deps.append([self.entries_dep_description[i].get(),
+                   self.algorithm['deps'][i],
+                   self.entries_dep_uuid[i].get()])
+    params = []
+    for i in range(len(self.entries_param)):
+      params.append([self.algorithm['params'][i],
+                     self.entries_param[i].get()])
+    outputs = self.algorithm['outputs']
+    lines = self.inigen.emit_run_body(deps, params, outputs)
+    self.update_text(lines)
+
+  def generate_file(self):
+    self.inigen.generate_file(self.entry_filename.get())
+    self.quit()
+
+  def update_text(self, lines):
+    self.text_file.configure(state='normal')
+    string = "\n".join(lines)
+    self.text_file.insert(END, string)
+    self.text_file.configure(state='disabled')
+
+
 
 def main():
   root = Tk()
