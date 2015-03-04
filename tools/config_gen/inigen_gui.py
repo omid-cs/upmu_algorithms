@@ -16,12 +16,32 @@ class IniGenGui(Frame):
     self.initUIGlobals()
 
   def initUIGlobals(self):
+    """
+      This is the first part of the window to be rendered. After these have been
+       set by the user and 'Emit Globals' has been clicked, the given algorithm
+       can then specify how to generate the second part of the window. All fields
+       are disabled for user input after globals have been emitted.
+
+      Information in Global Parameters:
+        Algorithm
+          - name of the algorithm to use
+        File Name
+          - name of the output file to be generated
+        Min Time
+          - Minimum Time for distillers to run
+        Max Time
+          - Maximum Time for distillers to run
+        Set Enabled:
+          - checkbox to specify if the distiller should be enabled True or False
+    """
     self.parent.title("Ini Generator")
 
     Style().configure("TButton", padding=(0, 5, 0, 5), font='serif 10')
 
+    # initialize row counter. This is incremented after each element added to grid
     row = 0
 
+    # Globals: entries for info common to all runs
     label_globals = Label(self, text="Globals")
     label_globals.grid(row=row, column=0)
     row += 1
@@ -60,6 +80,7 @@ class IniGenGui(Frame):
     self.check_enabled.grid(row=row, column=0, sticky=W+E)
     row += 1
 
+    # Control: buttons used to emmiting text and generating file
     self.button_emit_globals = Button(self, text="Emit Globals", command=self.emit_globals)
     self.button_emit_globals.grid(row=row, column=0, sticky=W+E)
     row += 1
@@ -75,6 +96,19 @@ class IniGenGui(Frame):
     self.pack()
 
   def initUIRuns(self):
+    """
+      Second part of gui to be rendered. This contains all the fields needed to emit
+       a single run within a distiller file. Multiple runs can be added by clicking
+       'Add Run' multiple times.
+
+      Information in Run Parameters:
+        Run Name
+          - header name for run
+        Dependencies
+          - description and uuid fields for each dependency in the algorithm
+        Params
+          - parameter fields for each parameter in the algorithm
+    """
 
     self.entry_run_name = None
     self.entries_dep_description = []
@@ -131,19 +165,6 @@ class IniGenGui(Frame):
       row += 1
 
       self.entries_param.append(entry_param)
-
-    """
-    self.text_file = Text(self, yscrollcommand=scrollbar.set)
-
-    scrollbar = Scrollbar(self)
-    scrollbar.pack(side=RIGHT, fill=Y, expand=False, command=self.text_file.yview)
-    scrollbar.grid(row=1, column=3, sticky=N+S)
-
-    self.text_file.pack(side=LEFT, fill=BOTH, expand=True)
-    self.text_file.grid(column=3, row=0, rowspan=row, sticky=W+E+N+S, padx=5, pady=5)
-    scrollbar.config(command=self.text_file.yview)
-    self.text_file.configure(state='disabled')
-    """
 
     self.text_file = Text(self)
     self.text_file.grid(row=0, column=3, rowspan=row, sticky=W+E+N+S, padx=5, pady=5)
