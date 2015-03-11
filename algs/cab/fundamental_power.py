@@ -5,18 +5,18 @@ class Fundamental_Power (qdf.QDF2Distillate):
   def initialize(self, section="Fundamental_Power", name="fundamental_power"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(1)
+    self.set_version(2)
     self.register_input("voltage_phase")
     self.register_input("current_phase")
     self.register_input("dpf")
-    self.register_output("Fundamental_Power", "Watts")
+    self.register_output("FUNDAMENTAL-POWER", "Watts")
 
   def compute(self, changed_ranges, input_streams, params, report):
     voltage = input_streams["voltage_phase"]
     current = input_streams["current_phase"]
     dpf =     input_streams["dpf"]
 
-    fundamental_power_output = report.output("Fundamental_Power")
+    fundamental_power_output = report.output("FUNDAMENTAL-POWER")
 
     i_vol = 0
     i_cur = 0
