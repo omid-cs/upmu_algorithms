@@ -6,12 +6,12 @@ class Angle_Difference (qdf.QDF2Distillate):
     self.set_section(section)
     self.set_name(name)
     self.set_version(1)
-    self.register_output("ANGLE_DIFFERENCE", "Degrees")
+    self.register_output("ANGLE-DIFFERENCE", "Degrees")
     self.register_input("angle1")
     self.register_input("angle2")
 
   def compute(self, changed_ranges, input_streams, params, report):
-    angle_diff_output = report.output("ANGLE_DIFFERENCE")
+    angle_diff_output = report.output("ANGLE-DIFFERENCE")
 
     angle1 = input_streams["angle1"]
     angle2 = input_streams["angle2"]
