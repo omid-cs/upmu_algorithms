@@ -5,8 +5,8 @@ class Frequency (qdf.QDF2Distillate):
   def initialize(self, section="Frequency", name="frequency"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(15)
-    self.register_output("1-Sec", "Hz")
+    self.set_version(16)
+    self.register_output("1-SEC", "Hz")
     self.register_output("C37", "Hz")
     self.register_input("phase")
 
@@ -19,7 +19,7 @@ class Frequency (qdf.QDF2Distillate):
     return [[uuid, name, rngs]]
 
   def compute(self, changed_ranges, input_streams, params, report):
-    sec = report.output("1-Sec")
+    sec = report.output("1-SEC")
     c37 = report.output("C37")
 
     phase = input_streams["phase"]

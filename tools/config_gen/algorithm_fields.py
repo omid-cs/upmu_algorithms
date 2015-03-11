@@ -2,22 +2,22 @@ algorithms = {
   'frequency' :        { 'path'    : 'cab.frequency.Frequency',
                          'deps'    : ['phase'],
                          'params'  : ['section', 'name'],
-                         'outputs' : ['1-Sec', 'C37'] },
+                         'outputs' : ['1-SEC', 'C37'] },
 
-  'phase_difference' : { 'path'    : 'cab.phase_difference.Phase_Difference',
-                         'deps'    : ['phase1', 'phase2'],
+  'angle_difference' : { 'path'    : 'cab.angle_difference.Angle_Difference',
+                         'deps'    : ['angle1', 'angle2'],
                          'params'  : ['section', 'name'],
-                         'outputs' : ['phase_difference'] },
+                         'outputs' : ['ANGLE-DIFFERENCE'] },
 
   'fundamental_power': { 'path'    : 'cab.fundamental_power.Fundamental_Power',
                          'deps'    : ['voltage_phase', 'current_phase', 'dpf'],
                          'params'  : ['section', 'name'],
-                         'outputs' : ['Fundamental_Power'] },
+                         'outputs' : ['FUNDAMENTAL_POWER'] },
 
   'reactive_power'   : { 'path'    : 'cab.reactive_power.Reactive_Power',
                          'deps'    : ['voltage_phase', 'current_phase'],
                          'params'  : ['section', 'name'],
-                         'outputs' : ['Reactive_Power'] },
+                         'outputs' : ['REACTIVE_POWER'] },
 
    'dpf'             : { 'path'    : 'cab.dpf.DPF',
                          'deps'    : ['voltage_phase', 'current_phase'],
