@@ -15,6 +15,7 @@ class IniGenGui(Frame):
     self.inigen = IniGen()
     self.initUIGlobals()
 
+
   def initUIGlobals(self):
     """
       This is the first part of the window to be rendered. After these have been
@@ -40,58 +41,62 @@ class IniGenGui(Frame):
 
     # initialize row counter. This is incremented after each element added to grid
     row = 0
+    # initialize column counter. This is incremented after a column has been filled
+    self.column = 0
 
     # Globals: entries for info common to all runs
     label_globals = Label(self, text="Globals")
-    label_globals.grid(row=row, column=0)
+    label_globals.grid(row=row, column=self.column)
     row += 1
 
     label_alg = Label(self, text="Algorithm")
-    label_alg.grid(row=row, column=0, sticky=E+W)
+    label_alg.grid(row=row, column=self.column, sticky=E+W)
     row += 1
     self.cbox_alg = Combobox(self, values=algorithms.keys(), state='readonly')
     self.cbox_alg.current(0)
-    self.cbox_alg.grid(row=row, column=0, sticky=E+W+S+N)
+    self.cbox_alg.grid(row=row, column=self.column, sticky=E+W+S+N)
     row += 1
 
     label_filename = Label(self, text="Output File Name")
-    label_filename.grid(row=row, column=0, sticky=E+W)
+    label_filename.grid(row=row, column=self.column, sticky=E+W)
     row += 1
     self.entry_filename = Entry(self)
-    self.entry_filename.grid(row=row, column=0, sticky=W+E)
+    self.entry_filename.grid(row=row, column=self.column, sticky=W+E)
     row += 1
 
     label_mintime = Label(self, text="Min Time")
-    label_mintime.grid(row=row, column=0, sticky=E+W)
+    label_mintime.grid(row=row, column=self.column, sticky=E+W)
     row += 1
     self.entry_mintime = Entry(self)
-    self.entry_mintime.grid(row=row, column=0, sticky=W+E)
+    self.entry_mintime.grid(row=row, column=self.column, sticky=W+E)
     row += 1
 
     label_maxtime = Label(self, text="Max Time")
-    label_maxtime.grid(row=row, column=0, sticky=W+E)
+    label_maxtime.grid(row=row, column=self.column, sticky=W+E)
     row += 1
     self.entry_maxtime = Entry(self)
-    self.entry_maxtime.grid(row=row, column=0, sticky=W+E)
+    self.entry_maxtime.grid(row=row, column=self.column, sticky=W+E)
     row += 1
 
     self.enabled = IntVar()
     self.check_enabled = Checkbutton(self, text="set enabled", variable=self.enabled)
-    self.check_enabled.grid(row=row, column=0, sticky=W+E)
+    self.check_enabled.grid(row=row, column=self.column, sticky=W+E)
     row += 1
 
     # Control: buttons used to emmiting text and generating file
     self.button_emit_globals = Button(self, text="Emit Globals", command=self.emit_globals)
-    self.button_emit_globals.grid(row=row, column=0, sticky=W+E)
+    self.button_emit_globals.grid(row=row, column=self.column, sticky=W+E)
     row += 1
 
     button_addrun = Button(self, text="Add Run", command=self.emit_run)
-    button_addrun.grid(row=row, column=0, sticky=W+E)
+    button_addrun.grid(row=row, column=self.column, sticky=W+E)
     row += 1
 
     button_generate = Button(self, text="Generate File", command=self.generate_file)
-    button_generate.grid(row=row, column=0, sticky=W+E)
+    button_generate.grid(row=row, column=self.column, sticky=W+E)
     row += 1
+
+    self.column += 1
 
     self.pack()
 
@@ -116,18 +121,17 @@ class IniGenGui(Frame):
     self.entries_param = []
 
     row = 0
-    column = 1
 
     label_runs = Label(self, text="Runs")
-    label_runs.grid(row=row, column=column)
+    label_runs.grid(row=row, column=self.column)
     row += 1
 
     label_run_name = Label(self, text="Run Name")
-    label_run_name.grid(row=row, column=column, sticky=W+E)
+    label_run_name.grid(row=row, column=self.column, sticky=W+E)
     row += 1
 
     self.entry_run_name = Entry(self)
-    self.entry_run_name.grid(row=row, column=column, sticky=W+E)
+    self.entry_run_name.grid(row=row, column=self.column, sticky=W+E)
     row += 1
 
     algorithm = self.cbox_alg.get()
@@ -135,20 +139,24 @@ class IniGenGui(Frame):
 
     for dep in settings['deps']:
 
+      if row >= 31:
+        self.column += 1
+        row = 1
+
       label_dep_description = Label(self, text="{0} (description)".format(dep))
-      label_dep_description.grid(row=row, column=column, sticky=W+E)
+      label_dep_description.grid(row=row, column=self.column, sticky=W+E)
       row += 1
 
       entry_dep_description = Entry(self)
-      entry_dep_description.grid(row=row, column=column, sticky=W+E)
+      entry_dep_description.grid(row=row, column=self.column, sticky=W+E)
       row += 1
 
       label_dep_uuid = Label(self, text="{0} (uuid)".format(dep))
-      label_dep_uuid.grid(row=row, column=column, sticky=W+E)
+      label_dep_uuid.grid(row=row, column=self.column, sticky=W+E)
       row += 1
 
       entry_dep_uuid = Entry(self)
-      entry_dep_uuid.grid(row=row, column=column, sticky=W+E)
+      entry_dep_uuid.grid(row=row, column=self.column, sticky=W+E)
       row += 1
 
       self.entries_dep_description.append(entry_dep_description)
@@ -156,21 +164,29 @@ class IniGenGui(Frame):
 
     for param in settings['params']:
 
+      if row >= 31:
+        self.column += 1
+        row = 1
+
       label_param = Label(self, text=param)
-      label_param.grid(row=row, column=column, sticky=W+E)
+      label_param.grid(row=row, column=self.column, sticky=W+E)
       row += 1
 
       entry_param = Entry(self)
-      entry_param.grid(row=row, column=column, sticky=W+E)
+      entry_param.grid(row=row, column=self.column, sticky=W+E)
       row += 1
 
       self.entries_param.append(entry_param)
 
+    row = 0
+    self.column += 1
+
     self.text_file = Text(self)
-    self.text_file.grid(row=0, column=3, rowspan=row, sticky=W+E+N+S, padx=5, pady=5)
+    self.text_file.grid(row=row, column=self.column, rowspan=31, sticky=W+E+N+S, padx=5, pady=5)
+    self.column += 1
     scrollbar = Scrollbar(self, command=self.text_file.yview)
     self.text_file.config(yscrollcommand=scrollbar.set)
-    scrollbar.grid(row=0, column=4, rowspan=row, sticky=N+S)
+    scrollbar.grid(row=row, column=self.column, rowspan=31, sticky=N+S)
 
     self.pack()
 
