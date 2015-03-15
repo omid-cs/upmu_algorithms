@@ -13,7 +13,7 @@ class Clean (qdf.QDF2Distillate):
                   'deg', 'A', 'deg', 'A', 'deg', 'A', 'bitmap']
 
     for i in xrange(len(self.names)):
-      self.reigister_output(self.names[i], units[i])
+      self.register_output(self.names[i], units[i])
       self.register_input(self.names[i])
 
   def compute(self, changed_ranges, input_streams, params, report):
