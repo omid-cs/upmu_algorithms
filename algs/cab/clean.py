@@ -12,7 +12,7 @@ class Clean (qdf.QDF2Distillate):
     units      = ['deg', 'A', 'deg', 'A', 'deg', 'A',
                   'deg', 'A', 'deg', 'A', 'deg', 'A', 'bitmap']
 
-    for i in xrange(self.names):
+    for i in xrange(len(self.names)):
       self.reigister_output(self.names[i], units[i])
       self.register_input(self.names[i])
 
@@ -20,7 +20,7 @@ class Clean (qdf.QDF2Distillate):
     raw_list  = [input_streams[name] for name in self.names]
     clean_list = [report.output(name) for name in self.names]
 
-    for i in xrange(raw_list):
+    for i in xrange(len(raw_list)):
       raw_stream = raw_list[i]
       clean_stream = clean_list[i]
       for point in raw_stream:
