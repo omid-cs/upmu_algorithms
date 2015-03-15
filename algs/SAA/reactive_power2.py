@@ -5,12 +5,12 @@ class Reactive_Power2 (qdf.QDF2Distillate):
   def initialize(self, section="Reactive_Power", name="reactive_power"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(2)
+    self.set_version(3)
     self.register_input("voltage_phase")
     self.register_input("current_phase")
     self.register_input("voltage_mag")
     self.register_input("current_mag")
-    self.register_output("REACTIVE_POWER", "VAR")
+    self.register_output("reactive_power_output", "VAR")
 
   def compute(self, changed_ranges, input_streams, params, report):
     voltage_phase = input_streams["voltage_phase"]
