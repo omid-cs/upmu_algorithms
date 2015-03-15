@@ -5,7 +5,7 @@ class Reactive_Power2 (qdf.QDF2Distillate):
   def initialize(self, section="Reactive_Power", name="reactive_power"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(1)
+    self.set_version(2)
     self.register_input("voltage_phase")
     self.register_input("current_phase")
     self.register_input("voltage_mag")
