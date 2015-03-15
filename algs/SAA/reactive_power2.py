@@ -1,7 +1,7 @@
 import qdf
 import numpy as np
 
-class Reactive_Power (qdf.QDF2Distillate):
+class Reactive_Power2 (qdf.QDF2Distillate):
   def initialize(self, section="Reactive_Power", name="reactive_power"):
     self.set_section(section)
     self.set_name(name)
