@@ -5,7 +5,7 @@ class Reactive_Power2 (qdf.QDF2Distillate):
   def initialize(self, section="Reactive_Power", name="reactive_power"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(4)
+    self.set_version(5)
     self.register_input("voltage_phase")
     self.register_input("current_phase")
     self.register_input("voltage_mag")
@@ -41,7 +41,7 @@ class Reactive_Power2 (qdf.QDF2Distillate):
 
       # Calculate reactive power
       time = voltage_phase[i_vol_phase][0]
-      rp = voltage_mag[i_vol_mag][1]*current_mag[i_cur_mag][1]*np.sin(np.radians(voltage_phase[i_vol_phase][1]- voltage_phase[i_cur_phase][1]))
+      rp = voltage_mag[i_vol_mag][1]*current_mag[i_cur_mag][1]*np.cos(np.radians(voltage_phase[i_vol_phase][1]- voltage_phase[i_cur_phase][1]))
       #rp = np.sin(np.radians(voltage_phase[i_vol][1]-current_phase[i_cur][1])) #mult by magV and magC
       reactive_power_output.addreading(time, rp)
 
