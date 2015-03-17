@@ -1,29 +1,29 @@
 import qdf
-import numpy as np
 
 class Clean (qdf.QDF2Distillate):
-  def initialize(self, section="Clean", name="default"):
+  def initialize(self, section="Clean", name="default", stream_type):
     self.set_section(section)
     self.set_name(name)
     self.set_version(1)
 
-    self.names = ["C1ANG", "C1MAG", "C2ANG", "C2MAG", "C3ANG", "C3MAG",
-                  "L1ANG", "L1MAG", "L2ANG", "L2MAG", "L3ANG", "L3MAG", "LSTATE"]
-    units      = ['deg', 'A', 'deg', 'A', 'deg', 'A',
-                  'deg', 'A', 'deg', 'A', 'deg', 'A', 'bitmap']
+    if 'ANG' in stream_type:
+      units = 'deg'
+    elif 'MAG' in stream_type:
+      units = 'V'
+    elif 'LSTATE' in stream_type:
+      units = 'bitmap'
+    else:
+      units = 'arb'
 
-    for i in xrange(len(self.names)):
-      self.register_output(self.names[i], units[i])
-      self.register_input(self.names[i])
+    self.register_output('CLEAN', units)
+    self.register_input('raw')
 
   def compute(self, changed_ranges, input_streams, params, report):
-    raw_list  = [input_streams[name] for name in self.names]
-    clean_list = [report.output(name) for name in self.names]
+    raw = input_streams['raw']
+    clean = report.output('CLEAN')
 
-    for i in xrange(len(raw_list)):
-      raw_stream = raw_list[i]
-      clean_stream = clean_list[i]
-      for point in raw_stream:
-        # where cleaning happens
-        clean_stream.addreading(point[0], point[1])
-      clean_stream.addbounds(*changed_ranges[self.names[i]])
+    for point in raw:
+      # where cleaning happens
+      clean.addreading(point[0], point[1])
+
+    clean.addbounds(*changed_ranges['raw'])
