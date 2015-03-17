@@ -9,7 +9,10 @@ class Clean (qdf.QDF2Distillate):
     if 'ANG' in stream_type:
       units = 'deg'
     elif 'MAG' in stream_type:
-      units = 'V'
+      if 'C' in stream_type:
+        units = 'A'
+      else:
+        units = 'V'
     elif 'LSTATE' in stream_type:
       units = 'bitmap'
     else:
