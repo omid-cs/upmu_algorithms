@@ -22,6 +22,7 @@ class Power (qdf.QDF2Distillate):
 
     reactive_power_output = report.output("reactive_power_output")
     fundamental_power_output = report.output("fundamental_power_output")
+    phasediff_output = report.output("phasediff_output")
     i_vol_phase = 0
     i_cur_phase = 0
     i_vol_mag = 0
