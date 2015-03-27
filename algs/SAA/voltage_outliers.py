@@ -2,7 +2,7 @@ import qdf
 import numpy as np
 
 class Voltage_Outliers(qdf.QDF2Distillate):
-	def initialize(section, name):
+	def initialize(self, section = "EventDetection", name = "default"):
 		self.set_section(section)
 		self.set_name(name)
 		self.set_version(3)
