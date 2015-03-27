@@ -5,7 +5,7 @@ class Voltage_Outliers(qdf.QDF2Distillate):
 	def initialize(section, name):
 		self.set_section(section)
 		self.set_name(name)
-		self.set_version(2)
+		self.set_version(3)
 		self.register_input("Mag")
 		self.register_output("outliers_output", "none")
 

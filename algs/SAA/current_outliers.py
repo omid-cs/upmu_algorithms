@@ -2,10 +2,10 @@ import qdf
 import numpy as np
 
 class Current_Outliers(qdf.QDF2Distillate):
-	def initialize(section = 'Event Detection', name = 'Current Outliers'):
+	def initialize(section, name):
 		self.set_section(section)
 		self.set_name(name)
-		self.set_version(1)
+		self.set_version(2)
 		self.register_input("Mag")
 		self.register_output("outliers_output", "none")
 
