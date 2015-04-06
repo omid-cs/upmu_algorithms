@@ -35,4 +35,12 @@ algorithms = {
                          'deps'    : ['raw'],
                          'params'  : ['section', 'name', 'stream_type'],
                          'outputs' : ['CLEAN'] }
+                         
+   'sequence_ref'        : { 'path'    : 'alu.sequence.Sequence',
+                         'deps'    : ['M1', 'M2', 'M3', 'A1', 'A2', 'A3','Reference_Angle'],
+                         'params'  : ['section', 'name'],
+                         'outputs' : ['ZERO_SEQ_ANG', 'ZERO_SEQ_MAG',
+                                      'POSITIVE_SEQ_ANG', 'POSITIVE_SEQ_MAG',
+                                      'NEGATIVE_SEQ_ANG', 'NEGATIVE_SEQ_ANG',
+                                      'UNBALANCE_NEG_SEQ', 'UNBALANCE_ZERO_SEQ'] },
 }
