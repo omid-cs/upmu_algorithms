@@ -3,16 +3,16 @@ import numpy as np
 from math import ceil
 
 class Filter (qdf.QDF2Distillate):
-  def initialize(self, section="Filter", name="default", units='arb', window_time='1', accuracy='.9'):
+  def initialize(self, section="Filter", name="default", units='arb', window_time='1', availability_threshold='.9'):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(1)
+    self.set_version(2)
     self.register_output("FILTERED", units)
     self.register_input("UNFILTERED")
 
     self.win_time = int(window_time)*qdf.SECOND
     self.win_width = int(window_time)*120 #seconds * pts/second
-    self.accuracy = float(accuracy)
+    self.availability_threshold = float(availability_threshold)
 
   def prereqs(self, changed_ranges):
     uuid = changed_ranges[0][0]
@@ -31,8 +31,8 @@ class Filter (qdf.QDF2Distillate):
     mid_time = unfiltered[0][0]
     max_time = unfiltered[0][0]+self.win_time/2
 
-    # calculate points required for accuracy threshold, rounded up
-    pts_needed = int(ceil(self.win_width * self.accuracy))
+    # calculate points required for availability_threshold threshold, rounded up
+    pts_needed = int(ceil(self.win_width * self.availability_threshold))
 
     # initialize starting and ending points
     start = 0

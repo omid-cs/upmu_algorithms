@@ -46,6 +46,6 @@ algorithms = {
 
    'filter'          : { 'path'    : 'cab.filter.Filter',
                          'deps'    : ['UNFILTERED'],
-                         'params'  : ['section', 'name', 'units', 'window_time', 'accuracy'],
+                         'params'  : ['section', 'name', 'units', 'window_time', 'availability_threshold'],
                          'outputs' : ['FILTERED'] }
 }
