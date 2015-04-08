@@ -27,9 +27,9 @@ class Filter (qdf.QDF2Distillate):
     unfiltered = input_streams["UNFILTERED"]
 
     # initialize minimum time as time of first point in array
-    min_time = unfiltered[0]-self.win_time/2
-    mid_time = unfiltered[0]
-    max_time = unfiltered[0]+self.win_time/2
+    min_time = unfiltered[0][0]-self.win_time/2
+    mid_time = unfiltered[0][0]
+    max_time = unfiltered[0][0]+self.win_time/2
 
     # calculate points required for accuracy threshold, rounded up
     pts_needed = int(ceil(self.win_width * self.accuracy))
