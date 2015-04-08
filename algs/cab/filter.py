@@ -41,7 +41,7 @@ class Filter (qdf.QDF2Distillate):
     total_val = 0.0
 
     # loop over all midpoint times
-    while not (end == len(unfiltered) and end-start < pts_needed)
+    while not (end == len(unfiltered) and end-start < pts_needed):
       # search for start point, removing trailing points if outside range
       while (start < len(unfiltered) and unfiltered[start][0] < min_time):
         tot_pts -= 1
