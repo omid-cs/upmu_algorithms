@@ -139,7 +139,7 @@ class IniGenGui(Frame):
 
     for dep in settings['deps']:
 
-      if row >= 31:
+      if row >= 21:
         self.column += 1
         row = 1
 
@@ -164,7 +164,7 @@ class IniGenGui(Frame):
 
     for param in settings['params']:
 
-      if row >= 31:
+      if row >= 21:
         self.column += 1
         row = 1
 
