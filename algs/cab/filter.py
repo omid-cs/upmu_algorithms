@@ -54,6 +54,7 @@ class Filter (qdf.QDF2Distillate):
         total_val += unfiltered[end][1]
         end += 1
 
+      total_pts = end-start
       if total_pts >= pts_needed:
         filtered.addreading(mid_time, total_val/total_pts)
 
