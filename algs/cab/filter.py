@@ -12,7 +12,7 @@ class Filter (qdf.QDF2Distillate):
 
     self.win_time = int(window_time)*qdf.SECOND
     self.win_width = int(window_time)*120 #seconds * pts/second
-    self.accuracy = accuracy
+    self.accuracy = float(accuracy)
 
   def prereqs(self, changed_ranges):
     uuid = changed_ranges[0][0]
