@@ -6,7 +6,7 @@ class Filter (qdf.QDF2Distillate):
   def initialize(self, section="Filter", name="default", units='arb', window_time='1', availability_threshold='.9'):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(2)
+    self.set_version(3)
     self.register_output("FILTERED", units)
     self.register_input("UNFILTERED")
 
@@ -25,6 +25,10 @@ class Filter (qdf.QDF2Distillate):
   def compute(self, changed_ranges, input_streams, params, report):
     filtered = report.output("FILTERED")
     unfiltered = input_streams["UNFILTERED"]
+
+    # do nothing if no data in input stream
+    if len(unfiltered) == 0:
+      return 
 
     # initialize minimum time as time of first point in array
     min_time = unfiltered[0][0]-self.win_time/2
