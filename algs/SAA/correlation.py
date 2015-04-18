@@ -32,7 +32,7 @@ class Correlation(qdf.QDF2Distillate):
 				#if the time at a particular index of signal 1 is not equal to the time at the index of signal 2 increment the index of one of the
 				# signal for which the time is lower
 				if not (Signal1[i_Signal1][0] == Signal2[i_Signal2][0]):
-					max_time = max(Signal1[i_Signal1][0],Signal2[i_Signal2[0])
+					max_time = max(Signal1[i_Signal1][0],Signal2[i_Signal2][0])
 					if Signal1[i_Signal1][0] < max_time:
 						i_Signal1 += 1
 					elif Signal2[i_Signal2][0] < max_time:
