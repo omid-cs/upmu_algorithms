@@ -38,8 +38,8 @@ class Correlation(qdf.QDF2Distillate):
 					elif Signal2[i_Signal2][0] < max_time:
 						i_Signal2 += 1
 				else:
-					i_Signal1_array.extend(i_Signal1)
-					i_Signal2_array.extend(i_Signal2)
+					i_Signal1_array.extend([i_Signal1])
+					i_Signal2_array.extend([i_Signal2])
 
 			#once window has been lined up perform calculation
 			windowed_signal1 = [Signal1[i][1] for i in i_Signal1_array]
