@@ -42,9 +42,10 @@ class Correlation(qdf.QDF2Distillate):
 					i_Signal2_array = np.append(i_Signal2_array,i_Signal2)
 
 			#once window has been lined up perform calculation
-			print type(Signal1)
-			print type(i_Signal1_array)
-			covariance_matrix = np.cov(Signal1[i_Signal1_array],Signal2[i_Signal2_array])
+			print type(Signal1[:][1])
+			windowed_signal1 = [Signal1[i][1] for i in i_Signal1_array]
+			windowed_signal2 = [Signal2[i][1] for i in i_Signal2_array]
+			covariance_matrix = np.cov(windowed_signal1,windowed_signal2)
 			co = covariance_matrix[0,1]
 			window_starttime = Signal1[i_Signal1_array[0]][0]
 			window_endtime = Signal1[i_Signal1_array[-1]][0]
