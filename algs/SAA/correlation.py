@@ -24,8 +24,8 @@ class Correlation(qdf.QDF2Distillate):
 		while i_Signal1 < (len(Signal1) - 1200) and i_Signal2 < (len(Signal2) - 1200): #this should be replaced with a time restriction
 			#construct a signal for which 10 elements are lined up so that the correlation may be calculated
 			#first construct array of n number of elements which line up
-			i_Signal1_array = np.array([])
-			i_Signal2_array = np.array([])
+			i_Signal1_array = []
+			i_Signal2_array = []
 			#600 elements
 			#line up window
 			while len(i_Signal1_array)< windowsize and len(i_Signal2_array) < windowsize:
@@ -38,11 +38,10 @@ class Correlation(qdf.QDF2Distillate):
 					elif Signal2[i_Signal2][0] < max_time:
 						i_Signal2 += 1
 				else:
-					i_Signal1_array = np.append(i_Signal1_array,i_Signal1)
-					i_Signal2_array = np.append(i_Signal2_array,i_Signal2)
+					i_Signal1_array.extend(i_Signal1)
+					i_Signal2_array.extend(i_Signal2)
 
 			#once window has been lined up perform calculation
-			print type(Signal1[:][1])
 			windowed_signal1 = [Signal1[i][1] for i in i_Signal1_array]
 			windowed_signal2 = [Signal2[i][1] for i in i_Signal2_array]
 			covariance_matrix = np.cov(windowed_signal1,windowed_signal2)
