@@ -5,7 +5,7 @@ class Correlation(qdf.QDF2Distillate):
 	def initialize(self, section , name ):
 		self.set_section(section)
 		self.set_name(name)
-		self.set_version(3)
+		self.set_version(4)
 		self.register_input("Signal1")
 		self.register_input("Signal2")
 		self.register_output("correlation_output","none")
@@ -20,8 +20,8 @@ class Correlation(qdf.QDF2Distillate):
 		i_correlation = 0
 		i_Signal1 = 0
 		i_Signal2 = 0
-		windowsize = 600
-		while i_Signal1 < (len(Signal1) - 1200) and i_Signal2 < (len(Signal2) - 1200): #this should be replaced with a time restriction
+		windowsize = 10
+		while i_Signal1 < (len(Signal1) - 2*windowsize) and i_Signal2 < (len(Signal2) - 2*windowsize): #this should be replaced with a time restriction
 			#construct a signal for which 10 elements are lined up so that the correlation may be calculated
 			#first construct array of n number of elements which line up
 			i_Signal1_array = []
