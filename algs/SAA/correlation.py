@@ -54,8 +54,8 @@ class Correlation(qdf.QDF2Distillate):
 			window_endtime = Signal1[i_Signal1_array[-1]][0]
 			correlation_output.addreading(window_starttime,co)
 			#shift over start of window
-			i_Signal1_array = [1:]
-			i_Signal2_array = [1:]
+			i_Signal1_array = i_Signal1_array[1:]
+			i_Signal2_array = i_Signal1_array[1:]
 			i_Signal1 = i_Signal1_array[-1]
 			i_Signal2 = i_Signal2_array[-1]
 			#find suitable end point of window by finding index at which they line up
