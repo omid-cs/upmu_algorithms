@@ -51,7 +51,10 @@ class Correlation(qdf.QDF2Distillate):
 		
 		while i_Signal1end < (len(Signal1)) and i_Signal2end < (len(Signal2)): #this should be replaced with a time restriction
 
-
+			print len(Signal1)
+			print len(Signal2)
+			print i_Signal1end
+			print i_Signal2end
 			#once window has been lined up perform calculation
 			windowed_signal1 = [Signal1[i][1] for i in i_Signal1_array]
 			print windowed_signal1
@@ -88,6 +91,7 @@ class Correlation(qdf.QDF2Distillate):
 
 			i_Signal1end = i_Signal1
 			i_Signal2end = i_Signal2
+
 
 		
 
