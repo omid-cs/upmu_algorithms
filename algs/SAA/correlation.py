@@ -40,10 +40,6 @@ class Correlation(qdf.QDF2Distillate):
 				i_Signal2 += 1
 
 
-		print i_Signal1_array
-		print i_Signal2_array
-		print len(i_Signal1_array)
-		print len(i_Signal2_array)
 		i_Signal1end = i_Signal1_array[-1]
 		i_Signal2end = i_Signal2_array[-1]
 		i_Signal1 = i_Signal1_array[0]
@@ -51,15 +47,9 @@ class Correlation(qdf.QDF2Distillate):
 		
 		while i_Signal1end < (len(Signal1)) and i_Signal2end < (len(Signal2)): #this should be replaced with a time restriction
 
-			print len(Signal1)
-			print len(Signal2)
-			print i_Signal1end
-			print i_Signal2end
 			#once window has been lined up perform calculation
 			windowed_signal1 = [Signal1[i][1] for i in i_Signal1_array]
-			print windowed_signal1
 			windowed_signal2 = [Signal2[i][1] for i in i_Signal2_array]
-			print windowed_signal2
 			covariance_matrix = np.cov(windowed_signal1,windowed_signal2)
 			co = covariance_matrix[0,1]
 			window_starttime = Signal1[i_Signal1_array[0]][0]
@@ -67,7 +57,7 @@ class Correlation(qdf.QDF2Distillate):
 			correlation_output.addreading(window_starttime,co)
 			#shift over start of window
 			i_Signal1_array = i_Signal1_array[1:]
-			i_Signal2_array = i_Signal1_array[1:]
+			i_Signal2_array = i_Signal2_array[1:]
 			i_Signal1 = i_Signal1_array[-1]
 			i_Signal2 = i_Signal2_array[-1]
 			#find suitable end point of window by finding index at which they line up
