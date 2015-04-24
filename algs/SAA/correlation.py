@@ -54,7 +54,9 @@ class Correlation(qdf.QDF2Distillate):
 
 			#once window has been lined up perform calculation
 			windowed_signal1 = [Signal1[i][1] for i in i_Signal1_array]
+			print windowed_signal1
 			windowed_signal2 = [Signal2[i][1] for i in i_Signal2_array]
+			print windowed_signal2
 			covariance_matrix = np.cov(windowed_signal1,windowed_signal2)
 			co = covariance_matrix[0,1]
 			window_starttime = Signal1[i_Signal1_array[0]][0]
