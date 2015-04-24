@@ -36,6 +36,9 @@ class Correlation(qdf.QDF2Distillate):
 			else:
 				i_Signal1_array.extend([i_Signal1])
 				i_Signal2_array.extend([i_Signal2])
+				i_Signal1 += 1
+				i_Signal2 += 1
+
 
 		print i_Signal1_array
 		print i_Signal2_array
@@ -78,6 +81,8 @@ class Correlation(qdf.QDF2Distillate):
 				else:
 					i_Signal1_array.extend([i_Signal1])
 					i_Signal2_array.extend([i_Signal2])
+					i_Signal1 +=1
+					i_Signal2 +=1
 
 			i_Signal1end = i_Signal1_array[-1]
 			i_Signal2end = i_Signal2_array[-1]
