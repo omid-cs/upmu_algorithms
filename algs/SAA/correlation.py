@@ -86,8 +86,8 @@ class Correlation(qdf.QDF2Distillate):
 					i_Signal1 +=1
 					i_Signal2 +=1
 
-			i_Signal1end = i_Signal1_array[-1]
-			i_Signal2end = i_Signal2_array[-1]
+			i_Signal1end = i_Signal1
+			i_Signal2end = i_Signal2
 
 		
 
