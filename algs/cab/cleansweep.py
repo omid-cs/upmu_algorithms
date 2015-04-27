@@ -6,7 +6,7 @@ class CleanSweep (qdf.QDF2Distillate):
   def initialize(self, section="Filter", name="default"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(1)
+    self.set_version(2)
     self.register_output("OFFSET_SWEEP_OUT", 'bitmap')
     self.register_input("LSTATE")
     #self.register_input("OFFSET_SWEEP_IN")
@@ -55,15 +55,15 @@ class CleanSweep (qdf.QDF2Distillate):
           i += 1
 
         if time == next_time and next_value == 8:
-          # case 1: timeshift block of exactly 1 second
+          # case 1: timeshift block of block length exactly 1 second
           sweep_out.addreading(time, 1.0)
           sweep_out.addbounds(time, time+1)
-        elif time != next_time:
-          # case 2: the beginning of a time shifted block > 1 second
+        elif time != next_time and time < prev_time + (qdf.SECOND*1.1):
+          # case 2: the beginning of a time shifted block
           sweep_out.addreading(time, 2.0)
           sweep_out.addbounds(time, time+1)
         elif (time == next_time and next_value != 8) or (time == prev_time and prev_value != 8):
-          # case 3: the end of a time shifted block > 1 second
+          # case 3: the end of a time shifted block
           sweep_out.addreading(time, 3.0)
           sweep_out.addbounds(time, time+1)
         else:
