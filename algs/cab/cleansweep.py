@@ -68,7 +68,7 @@ class CleanSweep (qdf.QDF2Distillate):
           sweep_out.addbounds(time, time+1)
         else:
           # something went very wrong....
-          print("time: {0}\tvalue: {1}".format(time, value)
-          print("prev_time: {0}\tprev_value{1}".format(prev_time, prev_value)
-          print("next_time: {0}\tnext_value: {1}".format(next_time, next_value)
+          print("time: {0}\tvalue: {1}".format(time, value))
+          print("prev_time: {0}\tprev_value{1}".format(prev_time, prev_value))
+          print("next_time: {0}\tnext_value: {1}".format(next_time, next_value))
           raise RuntimeError("lockstate 8 but does not match known cases")
