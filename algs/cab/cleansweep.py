@@ -6,10 +6,10 @@ class CleanSweep (qdf.QDF2Distillate):
   def initialize(self, section="Filter", name="default"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(3)
+    self.set_version(4)
     self.register_output("OFFSET_SWEEP_OUT", 'bitmap')
     self.register_input("LSTATE")
-    #self.register_input("OFFSET_SWEEP_IN")
+    self.register_input("OFFSET_SWEEP_IN")
 
   """
   def prereqs(self, changed_ranges):
@@ -24,7 +24,7 @@ class CleanSweep (qdf.QDF2Distillate):
   def compute(self, changed_ranges, input_streams, params, report):
     sweep_out = report.output("OFFSET_SWEEP_OUT")
     lstates = input_streams["LSTATE"]
-    #sweep_in = input_streams["OFFSET_SWEEP_IN"]
+    sweep_in = input_streams["OFFSET_SWEEP_IN"]
 
     i = 0
     while i < len(lstates):
@@ -72,4 +72,7 @@ class CleanSweep (qdf.QDF2Distillate):
           print("prev_time: {0}\tprev_value{1}".format(prev_time, prev_value))
           print("next_time: {0}\tnext_value: {1}".format(next_time, next_value))
           raise RuntimeError("lockstate 8 but does not match known cases")
+      else:
+        sweep_out.addreading(time, 0.0)
+        sweep_out.addbounds(time, time+1)
       i += 1
