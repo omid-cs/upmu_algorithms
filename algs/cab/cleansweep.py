@@ -6,7 +6,7 @@ class CleanSweep (qdf.QDF2Distillate):
   def initialize(self, section="Filter", name="default"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(2)
+    self.set_version(3)
     self.register_output("OFFSET_SWEEP_OUT", 'bitmap')
     self.register_input("LSTATE")
     #self.register_input("OFFSET_SWEEP_IN")
