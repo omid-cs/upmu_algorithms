@@ -6,20 +6,21 @@ class CleanSweep (qdf.QDF2Distillate):
   def initialize(self, section="Filter", name="default"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(4)
+    self.set_version(5)
     self.register_output("OFFSET_SWEEP_OUT", 'bitmap')
     self.register_input("LSTATE")
     self.register_input("OFFSET_SWEEP_IN")
 
-  """
   def prereqs(self, changed_ranges):
+    for changed_range in changed_ranges:
+      print changed_range[0]
+      print changed_range[1]
     uuid = changed_ranges[0][0]
     name = changed_ranges[0][1]
     rngs = []
     for rng in changed_ranges[0][2]:
       rngs.append([rng[0]-(qdf.SECOND), rng[1]])
     return [[uuid, name, rngs]]
-  """
 
   def compute(self, changed_ranges, input_streams, params, report):
     sweep_out = report.output("OFFSET_SWEEP_OUT")
