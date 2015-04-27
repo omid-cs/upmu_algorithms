@@ -72,3 +72,4 @@ class CleanSweep (qdf.QDF2Distillate):
           print("prev_time: {0}\tprev_value{1}".format(prev_time, prev_value))
           print("next_time: {0}\tnext_value: {1}".format(next_time, next_value))
           raise RuntimeError("lockstate 8 but does not match known cases")
+      i += 1
