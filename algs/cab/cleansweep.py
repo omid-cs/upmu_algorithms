@@ -39,8 +39,8 @@ class CleanSweep (qdf.QDF2Distillate):
 
       if value == 8:
         # if there is a time shift, inspect previous and next lstates
-        prev_time, prev_value = None, None
-        next_time, next_value = None, None
+        prev_time, prev_value = 0, 0
+        next_time, next_value = 0, 0
         if i > 0:
           prev_lstate = lstates[i-1]
           prev_time = prev_lstate[0]
@@ -58,7 +58,7 @@ class CleanSweep (qdf.QDF2Distillate):
           # case 1: timeshift block of block length exactly 1 second
           sweep_out.addreading(time, 1.0)
           sweep_out.addbounds(time, time+1)
-        elif time != next_time and time < prev_time + (qdf.SECOND*1.1):
+        elif time != next_time and time != prev_time and time < prev_time + (qdf.SECOND*1.1):
           # case 2: the beginning of a time shifted block
           sweep_out.addreading(time, 2.0)
           sweep_out.addbounds(time, time+1)
