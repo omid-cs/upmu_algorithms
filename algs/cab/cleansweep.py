@@ -13,8 +13,8 @@ class CleanSweep (qdf.QDF2Distillate):
 
   def prereqs(self, changed_ranges):
     for changed_range in changed_ranges:
-      print changed_range[0]
-      print changed_range[1]
+      print "[ALG] changed_range[0]: {0}".format(changed_range[0])
+      print "[ALG] changed_range[1]: {0}".format(changed_range[1])
     uuid = changed_ranges[0][0]
     name = changed_ranges[0][1]
     rngs = []
