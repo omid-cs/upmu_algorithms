@@ -10,7 +10,7 @@ class CleanSweep (qdf.QDF2Distillate):
     self.register_output("OFFSET_SWEEP_OUT", 'bitmap')
     self.register_input("LSTATE")
     self.register_input("OFFSET_SWEEP_IN")
-
+"""
   def prereqs(self, changed_ranges):
     for changed_range in changed_ranges:
       print "[ALG] changed_range[0]: {0}".format(changed_range[0])
@@ -21,6 +21,7 @@ class CleanSweep (qdf.QDF2Distillate):
     for rng in changed_ranges[0][2]:
       rngs.append([rng[0]-(qdf.SECOND), rng[1]])
     return [[uuid, name, rngs]]
+"""
 
   def compute(self, changed_ranges, input_streams, params, report):
     sweep_out = report.output("OFFSET_SWEEP_OUT")
