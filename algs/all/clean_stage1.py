@@ -1,9 +1,10 @@
 # modified from cab.cleansweep
-
+__author__ = 'aliao'
 import qdf
 import numpy as np
 from math import ceil
 
+print ("defining clean_stage1.CleanSweep")
 class CleanSweep (qdf.QDF2Distillate):
   def initialize(self, section="Filter", name="default"):
     self.set_section(section)
@@ -82,3 +83,5 @@ class CleanSweep (qdf.QDF2Distillate):
         sweep_out.addbounds(time, time+1)
       '''
       i += 1
+	
+    print "done compute"
