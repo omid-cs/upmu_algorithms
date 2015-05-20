@@ -10,24 +10,26 @@ class CleanSweep (qdf.QDF2Distillate):
     self.register_output("OFFSET_SWEEP_OUT", 'bitmap')
     self.register_input("LSTATE")
     self.register_input("OFFSET_SWEEP_IN")
-  """
+
   def prereqs(self, changed_ranges):
     for changed_range in changed_ranges:
-      print "[ALG] changed_range[0]: {0}".format(changed_range[0])
-      print "[ALG] changed_range[1]: {0}".format(changed_range[1])
-    uuid = changed_ranges[0][0]
-    name = changed_ranges[0][1]
-    rngs = []
-    for rng in changed_ranges[0][2]:
-      rngs.append([rng[0]-(qdf.SECOND), rng[1]])
-    return [[uuid, name, rngs]]
-  """
+      if changed_range[1] == "LSTATE":
+        changed_range_lstate = changed_range
+      elif changed_range[1] == "OFFSET_SWEEP_IN":
+        changed_range_offset = changed_range
+    offset_uuid = changed_ranges[0][0]
+    offset_name = changed_ranges[0][1]
+    offset_rngs = []
+    for rng in changed_range_offset[2]:
+      offset_rngs.append([rng[-1], rng[-1]+(qdf.MINUTE*10)])
+    return [changed_range_lstate, [offset_uuid, offset_name, offset_rngs]]
 
   def compute(self, changed_ranges, input_streams, params, report):
     sweep_out = report.output("OFFSET_SWEEP_OUT")
     lstates = input_streams["LSTATE"]
     sweep_in = input_streams["OFFSET_SWEEP_IN"]
 
+    # initial sweep
     i = 0
     while i < len(lstates):
       lstate = lstates[i]
@@ -59,15 +61,13 @@ class CleanSweep (qdf.QDF2Distillate):
         if time == next_time and next_value == 8:
           # case 1: timeshift block of block length exactly 1 second
           sweep_out.addreading(time, 1.0)
-          sweep_out.addbounds(time, time+1)
-        elif time != next_time and time != prev_time and time < prev_time + (qdf.SECOND*1.1):
+          i += 1
+        elif time != next_time and time != prev_time and time > prev_time + (qdf.SECOND*.9):
           # case 2: the beginning of a time shifted block
           sweep_out.addreading(time, 2.0)
-          sweep_out.addbounds(time, time+1)
         elif (time == next_time and next_value != 8) or (time == prev_time and prev_value != 8):
           # case 3: the end of a time shifted block
           sweep_out.addreading(time, 3.0)
-          sweep_out.addbounds(time, time+1)
         else:
           # something went very wrong....
           print("time: {0}\tvalue: {1}".format(time, value))
@@ -76,5 +76,9 @@ class CleanSweep (qdf.QDF2Distillate):
           raise RuntimeError("lockstate 8 but does not match known cases")
       else:
         sweep_out.addreading(time, 0.0)
-        sweep_out.addbounds(time, time+1)
       i += 1
+    sweep_out.addbounds(*changed_ranges['LSTATE'])
+
+    # annotate stream
+    for offset in sweep_in:
+
