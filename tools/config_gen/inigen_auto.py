@@ -144,7 +144,10 @@ class IniGenAutomation():
     inigen.emit_global(algorithm_path, enabled)
 
     for label in self.uuid_map:
-      distillate_label = get_distillate_label([label])
+      if label == 'LSTATE':
+        distillate_label = label
+      else:
+        distillate_label = get_distillate_label([label])
 
       # header
       inigen.emit_run_header(label, CHUNKING, MINTIME, MAXTIME)
@@ -190,7 +193,10 @@ class IniGenAutomation():
     inigen.emit_global(algorithm_path, enabled)
 
     for label in self.uuid_map:
-      distillate_label = get_distillate_label([label, label])
+      if label == 'LSTATE':
+        distillate_label = label
+      else:
+        distillate_label = get_distillate_label([label])
 
       # header
       inigen.emit_run_header(label, CHUNKING, MINTIME, MAXTIME)
@@ -416,6 +422,12 @@ class IniGenAutomation():
     inigen.generate_file(filename)
     return output_uuid_map
 
+  def sequence_ref(self):
+    return None
+
+  def filter(self):
+    return None
+
   def create_directory(self):
     """
       creates a new directory with the same name as the uPMU name
@@ -429,7 +441,7 @@ class IniGenAutomation():
         mkdir(dirname)
         return dirname
       except OSError:
-        dirname = name+"_distillates_{0}".format(i)
+        dirname = self.name+"_distillates_{0}".format(i)
         i += 1
 
 def get_distillate_label(labels):
@@ -448,7 +460,7 @@ def get_stream_type(label):
   pattern = re.compile('(C|L)([0-9])(ANG|MAG)')
   match = re.match(pattern, label)
   if match:
-    return match.group(1) + match.group(2)
+    return match.group(1) + match.group(3)
   else:
      return "ARB"
 

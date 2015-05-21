@@ -1,9 +1,9 @@
+from inigen_auto import IniGenAutomation
 from algorithm_fields import algorithms, locations
-from inigen import IniGen
 import re
 from uuid import UUID
 
-from Tkinter import Tk, E, W, N, S, Text, END, Scrollbar, RIGHT, LEFT, BOTH, Y, Checkbutton, IntVar, Radiobutton, StringVar, Listbox, Frame, DISABLED, NORMAL
+from Tkinter import Tk, E, W, N, S, Text, END, Scrollbar, RIGHT, LEFT, BOTH, Y, Checkbutton, IntVar, Radiobutton, StringVar, Listbox, Frame, DISABLED, NORMAL, LabelFrame
 from ttk import Frame, Button, Label, Style, Combobox, Entry
 import tkMessageBox
 
@@ -12,7 +12,6 @@ class IniGenGui(Frame):
   def __init__(self, parent):
     Frame.__init__(self, parent)
     self.parent = parent
-    self.inigen = IniGen()
     self.initUIGlobals()
 
   def initUIGlobals(self):
@@ -21,24 +20,18 @@ class IniGenGui(Frame):
 
     Style().configure("TButton", padding=(0, 0, 0, 0), font='serif 10')
 
-    # initialize row counter. This is incremented after each element added to grid
+    f1 = Frame(self)
+    f1.grid(row=0, column=0, padx=10, sticky=N+S+E+W)
+
+    f11 = LabelFrame(f1, text="Algorithms to Run")
+    f11.grid(row=0, column=0)
     row = 0
-
-    f11 = Frame(self)
-    f11.grid(row=0, column=0, sticky=N+E+W)
-
-    f12 = Frame(self)
-    f12.grid(row=1, column=0, sticky=S+E+W)
-
-    label_algs = Label(f11, text="Algorithms to Run")
-    label_algs.grid(row=row, column=0)
-    row += 1
 
     self.check_algs_value_list = []
     self.check_algs_map = {}
     for alg in algorithms:
       check_alg_value = IntVar()
-      check_alg = Checkbutton(f11, text=alg, variable=check_alg_value)
+      check_alg = Checkbutton(f11, text=alg, variable=check_alg_value, justify=LEFT, width=25)
       check_alg.grid(row=row, column=0, sticky=W+E)
       self.check_algs_value_list.append(check_alg_value)
       self.check_algs_map[alg] = check_alg_value
@@ -54,71 +47,89 @@ class IniGenGui(Frame):
 
     row = 0
 
-    label_loc = Label(f12, text="Location of uPMU")
-    label_loc.grid(row=row, column=0)
-    row += 1
+    f12 = Frame(f1)
+    f12.grid(row=1, column=0, pady=20, sticky=S+W+E)
+
+    f121 = LabelFrame(f12, text='Location of uPMU')
+    f121.grid(row=0, column=0)
 
     self.radio_loc_string = StringVar()
     locations.append('Other Location')
     for loc in locations:
-      radio_loc = Radiobutton(f12, text=loc, variable=self.radio_loc_string, value=loc, command=self.set_loc)
+      radio_loc = Radiobutton(f121, text=loc, variable=self.radio_loc_string, value=loc, command=self.set_loc, justify=LEFT, width=25)
       radio_loc.grid(row=row, column=0, sticky=W+E)
       row += 1
 
-    self.entry_otherloc = Entry(f12)
+    self.entry_otherloc = Entry(f121)
 
     f2 = Frame(self)
-    f2.grid(row=0, column=1, rowspan=2)
+    f2.grid(row=0, column=1, padx=10, sticky=N+S+E+W)
+
+    f21 = LabelFrame(f2, text='Name of uPMU (raw)')
+    f21.grid(row=0)
     row = 0
 
-    label_name = Label(f2, text="Name of uPMU")
-    label_name.grid(row=row, column=1, columnspan=2)
+    f211 = Frame(f21)
+    f211.grid(row=row)
     row += 1
 
-    self.entry_namesearch = Entry(f2)
-    self.entry_namesearch.grid(row=row, column=1, sticky=E+W)
+    self.entry_namesearch = Entry(f211)
+    self.entry_namesearch.grid(row=0, column=0, sticky=E+W)
 
-    button_namesearch = Button(f2, text="Search", command=self.namesearch)
-    button_namesearch.grid(row=row, column=2, sticky=W+E)
-    row += 1
+    button_namesearch = Button(f211, text="Search", command=self.namesearch)
+    button_namesearch.grid(row=0, column=1, sticky=W+E)
 
-    self.lstbx_namelist = Listbox(f2)
+    self.lstbx_namelist = Listbox(f21)
     self.lstbx_namelist.bind("<Double-Button-1>", self.namelist_select)
-    self.lstbx_namelist.grid(row=row, column=1, columnspan=2, sticky=W+E)
+    self.lstbx_namelist.grid(row=row, sticky=W+E)
     row += 1
 
-    label_nameselected = Label(f2, text="Selected:")
-    label_nameselected.grid(row=row, column=1)
-
-    self.entry_nameselected = Entry(f2, state=DISABLED)
-    self.entry_nameselected.grid(row=row, column=2, sticky=W+E)
+    f212 = Frame(f21)
+    f212.grid(row=row)
     row += 1
 
-    label_refname = Label(f2, text="Name of Reference uPMU")
-    label_refname.grid(row=row, column=1, columnspan=2)
+    label_nameselected = Label(f212, text="Selected:")
+    label_nameselected.grid(row=0, column=0)
+
+    self.entry_nameselected = Entry(f212, state=DISABLED)
+    self.entry_nameselected.grid(row=0, column=1, sticky=W+E)
+
+    f22 = LabelFrame(f2, text="Name of uPMU (path)")
+    f22.grid(row=1, sticky=W+E, pady=10)
+    self.entry_name = Entry(f22, width=30)
+    self.entry_name.grid(row=0, column=0, sticky=E+W)
+
+    f23 = LabelFrame(f2, text="Name of Reference uPMU (path)")
+    f23.grid(row=2, pady=10)
+    row = 0
+
+    f231 = Frame(f23)
+    f231.grid(row=row)
     row += 1
 
-    self.entry_refnamesearch = Entry(f2)
-    self.entry_refnamesearch.grid(row=row, column=1, sticky=E+W)
+    self.entry_refnamesearch = Entry(f231)
+    self.entry_refnamesearch.grid(row=0, column=0, sticky=E+W)
 
-    button_refnamesearch = Button(f2, text="Search", command=self.refnamesearch)
-    button_refnamesearch.grid(row=row, column=2, sticky=W+E)
-    row += 1
+    button_refnamesearch = Button(f231, text="Search", command=self.refnamesearch)
+    button_refnamesearch.grid(row=0, column=1, sticky=W+E)
 
-    self.lstbx_refnamelist = Listbox(f2)
+    self.lstbx_refnamelist = Listbox(f23)
     self.lstbx_refnamelist.bind("<Double-Button-1>", self.refnamelist_select)
-    self.lstbx_refnamelist.grid(row=row, column=1, columnspan=2, sticky=W+E)
+    self.lstbx_refnamelist.grid(row=row, sticky=W+E)
     row += 1
 
-    label_refnameselected = Label(f2, text="Selected:")
-    label_refnameselected.grid(row=row, column=1)
-
-    self.entry_refnameselected = Entry(f2, state=DISABLED)
-    self.entry_refnameselected.grid(row=row, column=2, sticky=W+E)
+    f232 = Frame(f23)
+    f232.grid(row=row)
     row += 1
+
+    label_refnameselected = Label(f232, text="Selected:")
+    label_refnameselected.grid(row=0, column=0)
+
+    self.entry_refnameselected = Entry(f232, state=DISABLED)
+    self.entry_refnameselected.grid(row=0, column=1, sticky=W+E)
 
     button_gen = Button(self, text="Generate Files", command=self.generate_files)
-    button_gen.grid(row=2, column=0, columnspan=2, sticky=W+E)
+    button_gen.grid(row=1, column=0, columnspan=2, sticky=W+E)
 
     self.pack()
 
@@ -133,13 +144,21 @@ class IniGenGui(Frame):
     else:
       location = self.radio_loc_string.get()
 
-    name = self.entry_nameselected.get()
-    refname = self.entry_refnameselected.get()
+    name_raw = self.entry_nameselected.get()
+    name = self.entry_name.get()
+    ref_name = self.entry_refnameselected.get()
+
+    uuid_map = self.get_uuid_map(name)
+    reference_uuid_map = self.get_uuid_map(ref_name)
 
     print "algs: "+str(algs)
     print "location: "+location
     print "name: "+name
-    print "ref name: "+refname
+    print "ref name: "+ref_name
+
+    IniGenAutomation(location, name_raw, name, uuid_map, ref_name, reference_uuid_map, algs)
+
+    print "Automation Complete!"
 
   def namesearch(self):
     searchterm = self.entry_namesearch.get()
@@ -186,6 +205,25 @@ class IniGenGui(Frame):
     self.entry_refnameselected.delete(0, END)
     self.entry_refnameselected.insert(0, selected)
     self.entry_refnameselected.configure(state=DISABLED)
+
+  def get_uuid_map(self, path):
+    uuid_map = {}
+    uuid_map['C1ANG'] = '0'
+    uuid_map['C2ANG'] = '1'
+    uuid_map['C3ANG'] = '2'
+    uuid_map['L1ANG'] = '3'
+    uuid_map['L2ANG'] = '4'
+    uuid_map['L3ANG'] = '5'
+    uuid_map['C1MAG'] = '6'
+    uuid_map['C2MAG'] = '7'
+    uuid_map['C3MAG'] = '8'
+    uuid_map['L1MAG'] = '9'
+    uuid_map['L2MAG'] = 'a'
+    uuid_map['L3MAG'] = 'b'
+    uuid_map['LSTATE'] = 'c'
+    for key in uuid_map:
+      uuid_map[key] += '_path'
+    return uuid_map
 
 def main():
   root = Tk()
