@@ -356,6 +356,7 @@ class IniGenAutomation():
 
     label = "SEQ"
     for t in ['C','L']:
+      run_label = label+'_'+t
       t1Mag_label = '{0}1MAG'.format(t)
       t2Mag_label = '{0}2MAG'.format(t)
       t3Mag_label = '{0}3MAG'.format(t)
@@ -365,7 +366,7 @@ class IniGenAutomation():
       distillate_label = "{0}-ALL".format(t)
 
       # header
-      inigen.emit_run_header(label, CHUNKING, MINTIME, MAXTIME)
+      inigen.emit_run_header(run_label, CHUNKING, MINTIME, MAXTIME)
 
       # body
       dep_1Mag_label = t1Mag_label
@@ -463,16 +464,3 @@ def get_stream_type(label):
     return match.group(1) + match.group(3)
   else:
      return "ARB"
-
-if __name__ == "__main__":
-  location = "LBNL"
-  name_raw = "grizzly_new"
-  name = "GP_BUS2"
-  uuid_map = {'C1ANG':'0','C1MAG':'1','C2ANG':'2','C2MAG':'3','C3ANG':'4','C3MAG':'5',
-              'L1ANG':'6','L1MAG':'7','L2ANG':'8','L2MAG':'9','L3ANG':'a','L3MAG':'b'}
-  ref_name = "A6_BUS1"
-  reference_uuid_map = {'C1ANG':'c','C1MAG':'d','C2ANG':'e','C2MAG':'f','C3ANG':'g','C3MAG':'h',
-                        'L1ANG':'i','L1MAG':'j','L2ANG':'k','L2MAG':'l','L3ANG':'m','L3MAG':'n'}
-  algs = ['frequency','angle_difference','rpfp','dpf','sequence']
-  iniGenAutomation = IniGenAutomation(location, name_raw, name, uuid_map, ref_name, reference_uuid_map, algs)
-

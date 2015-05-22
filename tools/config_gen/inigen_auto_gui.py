@@ -2,6 +2,7 @@ from inigen_auto import IniGenAutomation
 from algorithm_fields import algorithms, locations
 import re
 from uuid import UUID
+import _mysql
 
 from Tkinter import Tk, E, W, N, S, Text, END, Scrollbar, RIGHT, LEFT, BOTH, Y, Checkbutton, IntVar, Radiobutton, StringVar, Listbox, Frame, DISABLED, NORMAL, LabelFrame
 from ttk import Frame, Button, Label, Style, Combobox, Entry
@@ -94,12 +95,12 @@ class IniGenGui(Frame):
     self.entry_nameselected = Entry(f212, state=DISABLED)
     self.entry_nameselected.grid(row=0, column=1, sticky=W+E)
 
-    f22 = LabelFrame(f2, text="Name of uPMU (path)")
+    f22 = LabelFrame(f2, text="Name of uPMU (abbr)")
     f22.grid(row=1, sticky=W+E, pady=10)
     self.entry_name = Entry(f22, width=30)
     self.entry_name.grid(row=0, column=0, sticky=E+W)
 
-    f23 = LabelFrame(f2, text="Name of Reference uPMU (path)")
+    f23 = LabelFrame(f2, text="Name of Reference uPMU (clean)")
     f23.grid(row=2, pady=10)
     row = 0
 
@@ -148,33 +149,49 @@ class IniGenGui(Frame):
     name = self.entry_name.get()
     ref_name = self.entry_refnameselected.get()
 
-    uuid_map = self.get_uuid_map(name)
-    reference_uuid_map = self.get_uuid_map(ref_name)
-
-    print "algs: "+str(algs)
-    print "location: "+location
-    print "name: "+name
-    print "ref name: "+ref_name
+    uuid_map = self.get_uuid_map(name_raw)
+    reference_uuid_map = self.get_ref_uuid_map(ref_name)
 
     IniGenAutomation(location, name_raw, name, uuid_map, ref_name, reference_uuid_map, algs)
 
-    print "Automation Complete!"
-
   def namesearch(self):
     searchterm = self.entry_namesearch.get()
-    if "A6" in searchterm:
-      self.lstbx_namelist.delete(0, END)
-      self.lstbx_namelist.insert(0, 'A6_BUS1', 'A6_BUS2')
-    else:
+    searchphrase = '/upmu/%{0}%/%'.format(searchterm)
+    search_results = self.search(searchterm, searchphrase)
+    self.lstbx_namelist.delete(0, END)
+    if len(search_results) == 0:
       tkMessageBox.showwarning('Search Error', 'No matches from search for \'{0}\''.format(searchterm))
-
+    else:
+      for result in search_results:
+        self.lstbx_namelist.insert(END, result)
+        
   def refnamesearch(self):
     searchterm = self.entry_refnamesearch.get()
-    if "GP" in searchterm:
-      self.lstbx_refnamelist.delete(0, END)
-      self.lstbx_refnamelist.insert(0, 'GP_BUS1', 'GP_BUS2')
-    else:
+    searchphrase = '/Clean/%{0}%/%'.format(searchterm)
+    search_results = self.search(searchterm, searchphrase)
+    self.lstbx_refnamelist.delete(0, END)
+    if len(search_results) == 0:
       tkMessageBox.showwarning('Search Error', 'No matches from search for \'{0}\''.format(searchterm))
+    else:
+      for result in search_results:
+        self.lstbx_refnamelist.insert(END, result)
+  
+  def search(self, searchterm, searchphrase):
+    connection = _mysql.connect(host="128.32.37.231", port=3306, user="upmuteam",
+                                passwd="moresecuredataftw", db='upmu')
+    connection.query("SELECT * FROM uuidpathmap WHERE path LIKE '{0}'".format(searchphrase))
+    results = connection.store_result()
+    queried_data = {}
+    result = results.fetch_row()
+    while result != tuple():
+      queried_data[result[0][0]] = result[0][1]
+      result = results.fetch_row()
+    search_results = set()
+    for path in queried_data:
+      dirs = path.split('/')
+      if searchterm in dirs[2]:
+        search_results.add(dirs[2])
+    return search_results
 
   def set_loc(self):
     if self.radio_loc_string.get() == "Other Location":
@@ -206,25 +223,32 @@ class IniGenGui(Frame):
     self.entry_refnameselected.insert(0, selected)
     self.entry_refnameselected.configure(state=DISABLED)
 
-  def get_uuid_map(self, path):
+  def get_uuid_map(self, name):
     uuid_map = {}
-    uuid_map['C1ANG'] = '0'
-    uuid_map['C2ANG'] = '1'
-    uuid_map['C3ANG'] = '2'
-    uuid_map['L1ANG'] = '3'
-    uuid_map['L2ANG'] = '4'
-    uuid_map['L3ANG'] = '5'
-    uuid_map['C1MAG'] = '6'
-    uuid_map['C2MAG'] = '7'
-    uuid_map['C3MAG'] = '8'
-    uuid_map['L1MAG'] = '9'
-    uuid_map['L2MAG'] = 'a'
-    uuid_map['L3MAG'] = 'b'
-    uuid_map['LSTATE'] = 'c'
-    for key in uuid_map:
-      uuid_map[key] += '_path'
+    connection = _mysql.connect(host="128.32.37.231", port=3306, user="upmuteam",
+                                passwd="moresecuredataftw", db='upmu')
+    connection.query("SELECT * FROM uuidpathmap WHERE path LIKE '/upmu/{0}/%'".format(name))
+    results = connection.store_result()
+    result = results.fetch_row()
+    while result != tuple():
+      path = result[0][0].split('/')
+      uuid_map[path[-1]] = result[0][1]
+      result = results.fetch_row()
     return uuid_map
-
+    
+  def get_ref_uuid_map(self, name):
+    uuid_map = {}
+    connection = _mysql.connect(host="128.32.37.231", port=3306, user="upmuteam",
+                                passwd="moresecuredataftw", db='upmu')
+    connection.query("SELECT * FROM uuidpathmap WHERE path LIKE '/Clean/{0}/%'".format(name))
+    results = connection.store_result()
+    result = results.fetch_row()
+    while result != tuple():
+      path = result[0][0].split('/')
+      uuid_map[path[-2]] = result[0][1]
+      result = results.fetch_row()
+    return uuid_map
+    
 def main():
   root = Tk()
   app = IniGenGui(root)
