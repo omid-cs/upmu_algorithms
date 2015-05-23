@@ -148,8 +148,8 @@ class IniGenAutomation():
         distillate_label = label
       else:
         distillate_label = get_distillate_label([label])
-        if 'MAG' in distillate_label:
-          continue
+      if 'ANG' not in distillate_label:
+        continue
 
       # header
       inigen.emit_run_header(label, CHUNKING, MINTIME, MAXTIME)
