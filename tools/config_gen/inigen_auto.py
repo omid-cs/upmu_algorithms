@@ -4,8 +4,8 @@ from os import mkdir
 import re
 
 # CONSTANTS
-MINTIME = '2014-12-13T00:00:00'
-MAXTIME = '2014-12-15T00:00:00'
+MINTIME = '2014-12-01T00:00:00'
+MAXTIME = '2016-12-01T00:00:00'
 CHUNKING = 'parallel'
 
 class IniGenAutomation():

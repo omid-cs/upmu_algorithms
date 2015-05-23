@@ -31,6 +31,8 @@ class IniGenGui(Frame):
     self.check_algs_value_list = []
     self.check_algs_map = {}
     for alg in algorithms:
+      if alg == 'clean':
+        continue
       check_alg_value = IntVar()
       check_alg = Checkbutton(f11, text=alg, variable=check_alg_value, justify=LEFT, width=25)
       check_alg.grid(row=row, column=0, sticky=W+E)
