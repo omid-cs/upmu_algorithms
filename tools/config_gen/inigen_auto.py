@@ -148,6 +148,8 @@ class IniGenAutomation():
         distillate_label = label
       else:
         distillate_label = get_distillate_label([label])
+        if 'MAG' in distillate_label:
+          continue
 
       # header
       inigen.emit_run_header(label, CHUNKING, MINTIME, MAXTIME)
@@ -159,7 +161,7 @@ class IniGenAutomation():
       deps = [[dep_label, dep_name, dep_uuid]]
 
       param_section_name = fields['params'][0]
-      param_section_value = "Production/{0}/{1}".format(self.location, distillate_label)
+      param_section_value = "Production/{0}/{1}/{2}".format(self.location, self.name, distillate_label)
       param_name_name = fields['params'][1]
       param_name_value = "FREQ"
       params = [[param_section_name, param_section_value],
