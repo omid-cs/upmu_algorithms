@@ -6,13 +6,14 @@ __author__ = 'aliao'
 import qdf
 import numpy as np
 from math import ceil
+import sys
 
 print ("defining clean_stage2.CleanSweep")
 class CleanSweep (qdf.QDF2Distillate):
   def initialize(self, section="Filter", name="default",stream_type="ANG"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(4)
+    self.set_version(5)
 
     if 'ANG' in stream_type:
       units = 'deg'
