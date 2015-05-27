@@ -12,7 +12,7 @@ class CleanSweep (qdf.QDF2Distillate):
   def initialize(self, section="Filter", name="default",stream_type="ANG"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(3)
+    self.set_version(4)
 
     if 'ANG' in stream_type:
       units = 'deg'
@@ -51,7 +51,7 @@ class CleanSweep (qdf.QDF2Distillate):
     #first_pt_processed = False
     shift_mode = False
     while i < len(raw_data):
-           
+       try:    
           if sweep_in[i][1] == 0:
              i += 1
              continue
@@ -110,5 +110,8 @@ class CleanSweep (qdf.QDF2Distillate):
           else:
              # sweep_in[i] is empty
              i += 1
+       except:
+          e = sys.exc_info()[0]
+          print "Error: %s, i=%i" % (e,i)
     
     print "done computing clean_stage2"
