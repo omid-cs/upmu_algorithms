@@ -12,7 +12,7 @@ class CleanSweep (qdf.QDF2Distillate):
   def initialize(self, section="Filter", name="default",stream_type="ANG"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(1)
+    self.set_version(2)
 
     if 'ANG' in stream_type:
       units = 'deg'
@@ -26,7 +26,8 @@ class CleanSweep (qdf.QDF2Distillate):
     else:
       units = 'arb'
 
-    self.register_output("CLEAN_SHIFTED",output)
+    #self.register_output("CLEAN_SHIFTED",output)
+    self.register_output("CLEAN_SHIFTED")
     self.register_input("CLEAN1_OUT")
     self.register_input("RAW_DATA")
 
