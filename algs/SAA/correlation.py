@@ -6,7 +6,7 @@ class Correlation(qdf.QDF2Distillate):
 	def initialize(self, section , name ):
 		self.set_section(section)
 		self.set_name(name)
-		self.set_version(7)
+		self.set_version(8)
 		self.register_input("Signal1")
 		self.register_input("Signal2")
 		self.register_output("correlation_output","none")
