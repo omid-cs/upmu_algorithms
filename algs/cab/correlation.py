@@ -5,7 +5,7 @@ class Correlation(qdf.QDF2Distillate):
 	def initialize(self, section , name ):
 		self.set_section(section)
 		self.set_name(name)
-		self.set_version(6)
+		self.set_version(7)
 		self.register_input("Signal1")
 		self.register_input("Signal2")
 		self.register_output("correlation_output","none")
@@ -46,7 +46,7 @@ class Correlation(qdf.QDF2Distillate):
 		i_Signal2 = i_Signal2_array[0]
 
 		#continue up until the either signal reaches its end point for the given time window
-		while i_Signal1end < (len(Signal1)) and i_Signal2end < (len(Signal2)): 
+		while i_Signal1 < (len(Signal1)) and i_Signal2 < (len(Signal2)): 
 
 			#once window has been lined up perform calculation
 			windowed_signal1 = [Signal1[i][1] for i in i_Signal1_array]
@@ -65,25 +65,18 @@ class Correlation(qdf.QDF2Distillate):
 			i_Signal2 = i_Signal2_array[-1]
 			
 
-			while len(i_Signal1_array)< windowsize and len(i_Signal2_array) < windowsize:
-			#if the time at a particular index of signal 1 is not equal to the time at the index of signal 2 increment the index of one of the
-			# signal for which the time is lower
-				if i_Signal1 > len(Signal1) or i_Signal2 > len(Signal2):
-					break
-				if not (Signal1[i_Signal1][0] == Signal2[i_Signal2][0]):
-					max_time = max(Signal1[i_Signal1][0],Signal2[i_Signal2][0])
-					if Signal1[i_Signal1][0] < max_time:
-							i_Signal1 += 1
-					elif Signal2[i_Signal2][0] < max_time:
-							i_Signal2 += 1
-				else:
-					i_Signal1_array.extend([i_Signal1])
-					i_Signal2_array.extend([i_Signal2])
-					i_Signal1 +=1
-					i_Signal2 +=1
-
-			i_Signal1end = i_Signal1_array[-1]
-			i_Signal2end = i_Signal2_array[-1]
+			#line up signals again 
+			if not (Signal1[i_Signal1][0] == Signal2[i_Signal2][0]):
+				max_time = max(Signal1[i_Signal1][0],Signal2[i_Signal2][0])
+				if Signal1[i_Signal1][0] < max_time:
+						i_Signal1 += 1
+				elif Signal2[i_Signal2][0] < max_time:
+						i_Signal2 += 1
+			else:
+				i_Signal1_array.extend([i_Signal1])
+				i_Signal2_array.extend([i_Signal2])
+				i_Signal1 +=1
+				i_Signal2 +=1
 
 
 		
