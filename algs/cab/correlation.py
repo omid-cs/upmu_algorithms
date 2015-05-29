@@ -40,11 +40,6 @@ class Correlation(qdf.QDF2Distillate):
 				i_Signal2 += 1
 
 
-		i_Signal1end = i_Signal1_array[-1]
-		i_Signal2end = i_Signal2_array[-1]
-		i_Signal1 = i_Signal1_array[0]
-		i_Signal2 = i_Signal2_array[0]
-
 		#continue up until the either signal reaches its end point for the given time window
 		while i_Signal1 < (len(Signal1)) and i_Signal2 < (len(Signal2)): 
 
@@ -60,9 +55,7 @@ class Correlation(qdf.QDF2Distillate):
 			i_Signal1_array = i_Signal1_array[1:]
 			i_Signal2_array = i_Signal2_array[1:]
 			#note that window is still less than the required windowsize
-			#start lining up by looking at the last lined up point
-			i_Signal1 = i_Signal1_array[-1]
-			i_Signal2 = i_Signal2_array[-1]
+
 			
 
 			#line up signals again 
