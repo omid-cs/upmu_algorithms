@@ -74,5 +74,5 @@ class Correlation(qdf.QDF2Distillate):
 
 		
 
-		outliers_output.addbounds(*changed_ranges["Signal1"])
-		outliers_output.addbounds(*changed_ranges["Signal2"])
+		correlation_output.addbounds(*changed_ranges["Signal1"])
+		correlation_output.addbounds(*changed_ranges["Signal2"])
