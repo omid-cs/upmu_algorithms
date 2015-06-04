@@ -17,7 +17,7 @@ class Voltage_Sag(qdf.QDF2Distillate):
 		nominal_voltage = 765000
 		voltage_sag_boolean = False
 		mag_list = []
-		voltage = report.output("outliers_output")
+		outliers_output = report.output("outliers_output")
 		
 		while i_vol_mag < len(voltage_mag):
 			mag = voltage_mag[i_vol_mag][1]
