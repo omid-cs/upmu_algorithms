@@ -36,10 +36,10 @@ class Voltage_Sag(qdf.QDF2Distillate):
 				voltage_sag_boolean = True
 				#skip ahead to next minute if that is the case
 				i_vol_mag = i_vol_mag + (120 - count)
-			else if count >= 24 and max(mag_list) <= 0.7 * nominal_voltage:
+			elif count >= 24 and max(mag_list) <= 0.7 * nominal_voltage:
 				voltage_sag_boolean = True
 				i_vol_mag = i_vol_mag + (120 - count)
-			else if count >= 32 and max(mag_list) <= 0.8 * nominal_voltage:
+			elif count >= 32 and max(mag_list) <= 0.8 * nominal_voltage:
 				voltage_sag_boolean = True
 				i_vol_mag = i_vol_mag + (120 - count)
 			else:
