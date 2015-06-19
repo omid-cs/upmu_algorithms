@@ -5,7 +5,7 @@ class Voltage_Sag(qdf.QDF2Distillate):
 	def initialize(self, section = "EventDetection", name = "default"):
 		self.set_section(section)
 		self.set_name(name)
-		self.set_version(4)
+		self.set_version(5)
 		self.register_input("Mag")
 		self.register_output("outliers_output", "none")
 
@@ -32,7 +32,7 @@ class Voltage_Sag(qdf.QDF2Distillate):
 			mag_list.extend([mag])
 			count += 1
 
-			if count >= 10 and max(mag_list) <= 0.5 * nominal_voltage:
+			if count >= 3 and max(mag_list) <= 0.9 * nominal_voltage:
 				voltage_sag_boolean = True
 				#skip ahead to next minute if that is the case
 				i_vol_mag = i_vol_mag + (120 - count)
