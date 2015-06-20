@@ -5,7 +5,7 @@ class Voltage_Sag(qdf.QDF2Distillate):
 	def initialize(self, section = "EventDetection", name = "default"):
 		self.set_section(section)
 		self.set_name(name)
-		self.set_version(5)
+		self.set_version(6)
 		self.register_input("Mag")
 		self.register_output("outliers_output", "none")
 
