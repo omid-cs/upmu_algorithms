@@ -5,7 +5,7 @@ class Correlation(qdf.QDF2Distillate):
 	def initialize(self, section , name ):
 		self.set_section(section)
 		self.set_name(name)
-		self.set_version(9)
+		self.set_version(10)
 		self.register_input("Signal1")
 		self.register_input("Signal2")
 		self.register_output("correlation_output","none")
@@ -41,25 +41,28 @@ class Correlation(qdf.QDF2Distillate):
 
 
 		#continue up until the either signal reaches its end point for the given time window
+		lined_up = True
 		while i_Signal1 < (len(Signal1)) and i_Signal2 < (len(Signal2)): 
 
 			#once window has been lined up perform calculation
-			windowed_signal1 = [Signal1[i][1] for i in i_Signal1_array]
-			windowed_signal2 = [Signal2[i][1] for i in i_Signal2_array]
-			covariance_matrix = np.cov(windowed_signal1,windowed_signal2)
-			co = covariance_matrix[0,1]
-			#get the starting index for the window and set this to be the corresponding time for window start time. 
-			window_starttime = Signal1[i_Signal1_array[0]][0]
-			correlation_output.addreading(window_starttime,co)
-			#shift over window
-			i_Signal1_array = i_Signal1_array[1:]
-			i_Signal2_array = i_Signal2_array[1:]
-			#note that window is still less than the required windowsize
+			if lined_up:
+				windowed_signal1 = [Signal1[i][1] for i in i_Signal1_array]
+				windowed_signal2 = [Signal2[i][1] for i in i_Signal2_array]
+				covariance_matrix = np.cov(windowed_signal1,windowed_signal2)
+				co = covariance_matrix[0,1]
+				#get the starting index for the window and set this to be the corresponding time for window start time. 
+				window_starttime = Signal1[i_Signal1_array[0]][0]
+				correlation_output.addreading(window_starttime,co)
+				#shift over window
+				i_Signal1_array = i_Signal1_array[1:]
+				i_Signal2_array = i_Signal2_array[1:]
+				#note that window is still less than the required windowsize
 
 			
 
 			#line up signals again 
 			if not (Signal1[i_Signal1][0] == Signal2[i_Signal2][0]):
+				lined_up = False
 				max_time = max(Signal1[i_Signal1][0],Signal2[i_Signal2][0])
 				if Signal1[i_Signal1][0] < max_time:
 						i_Signal1 += 1
@@ -70,6 +73,7 @@ class Correlation(qdf.QDF2Distillate):
 				i_Signal2_array.extend([i_Signal2])
 				i_Signal1 +=1
 				i_Signal2 +=1
+				lined_up = True
 
 
 		
