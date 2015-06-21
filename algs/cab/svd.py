@@ -44,6 +44,8 @@ class svd(qdf.QDF2Distillate):
 		ind_vector = [0]*12
 		#initialize ind_vector list
 		ind_vector_list = []
+		#define window size
+		windowsize = 12
 
 
 		while len(ind_vector_list) < windowsize:
