@@ -83,7 +83,7 @@ class svd(qdf.QDF2Distillate):
 					ind_vector = ind_vector_list[i]
 					mag_vector = [L1_E[ind_vector[0]][1], L2_E[ind_vector[1]][1], L3_E[ind_vector[2]][1],C1[ind_vector[3]][1],C2[ind_vector[4]][1],C3[ind_vector[5]][1],L1_E_angle[ind_vector[6]][1],L2_E_angle
 		[ind_vector[7]][1],L3_E_angle[ind_vector[8]][1],C1_angle[ind_vector[9]][1],C2_angle[ind_vector[10]][1],C3_angle[ind_vector[11]][1]]
-					mag_vector_list.extend(mag_vector)
+					mag_vector_list.extend([mag_vector])
 					mag_vector = []
 
 				mag_matrix = np.array(mag_vector_list)
