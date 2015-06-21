@@ -51,7 +51,7 @@ class svd(qdf.QDF2Distillate):
 		while len(ind_vector_list) < windowsize:
 			#now get the time vector
 			time_vector = [L1_E[ind_vector[0]][0], L2_E[ind_vector[1]][0], L3_E[ind_vector[2]][0],C1[ind_vector[3]][0],C2[ind_vector[4]][0],C3[ind_vector[5]][0],L1_E_angle[ind_vector[6]][0],L2_E_angle
-[ind_vector[7]][0],L3_E_angle[ind_vector[8]][0],C1_angle[ind_vector[9]][0],C2_angle[ind_vector[10]][0],C3_angle[ind_vector[11]][0]]]
+[ind_vector[7]][0],L3_E_angle[ind_vector[8]][0],C1_angle[ind_vector[9]][0],C2_angle[ind_vector[10]][0],C3_angle[ind_vector[11]][0]]
 			#check if all elements of timevector the same
 			lined_up = all(x == time_vector[0] for x in time_vector)
 			#if the vectors are not lined up find the signal that is furthest in time
@@ -82,7 +82,7 @@ class svd(qdf.QDF2Distillate):
 				for i in range(0,len(ind_vector_list)):
 					ind_vector = ind_vector_list[i]
 					mag_vector = [L1_E[ind_vector[0]][1], L2_E[ind_vector[1]][1], L3_E[ind_vector[2]][1],C1[ind_vector[3]][1],C2[ind_vector[4]][1],C3[ind_vector[5]][1],L1_E_angle[ind_vector[6]][1],L2_E_angle
-		[ind_vector[7]][1],L3_E_angle[ind_vector[8]][1],C1_angle[ind_vector[9]][1],C2_angle[ind_vector[10]][1],C3_angle[ind_vector[11]][1]]]
+		[ind_vector[7]][1],L3_E_angle[ind_vector[8]][1],C1_angle[ind_vector[9]][1],C2_angle[ind_vector[10]][1],C3_angle[ind_vector[11]][1]]
 					mag_vector_list.extend(mag_vector)
 					mag_vector = []
 
@@ -98,7 +98,7 @@ class svd(qdf.QDF2Distillate):
 
 
 			time_vector = [L1_E[ind_vector[0]][0], L2_E[ind_vector[1]][0], L3_E[ind_vector[2]][0],C1[ind_vector[3]][0],C2[ind_vector[4]][0],C3[ind_vector[5]][0],L1_E_angle[ind_vector[6]][0],L2_E_angle
-[ind_vector[7]][0],L3_E_angle[ind_vector[8]][0],C1_angle[ind_vector[9]][0],C2_angle[ind_vector[10]][0],C3_angle[ind_vector[11]][0]]]
+[ind_vector[7]][0],L3_E_angle[ind_vector[8]][0],C1_angle[ind_vector[9]][0],C2_angle[ind_vector[10]][0],C3_angle[ind_vector[11]][0]]
 			lined_up = all(x == time_vector[0] for x in time_vector)
 			#if the vectors are not lined up find the signal that is furthest in time
 			if not lined_up:
