@@ -90,7 +90,7 @@ class svd(qdf.QDF2Distillate):
 				#now that matrix is created use in build svd function
 				U,s,V = np.linalg.svd(mag_matrix)
 				#get the time for which to assign the reading time should be the same for all values in a row therefore
-				time = mag_vector_list[0][0][0]
+				time = L1_E[ind_vector_list[0][0]][0]
 				svd_output.addreading(time,s[0])
 				#now shift over everything by one
 				ind_vector_list = ind_vector_list[1:]
