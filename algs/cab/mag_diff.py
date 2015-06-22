@@ -6,12 +6,12 @@ class Magnitude_Difference (qdf.QDF2Distillate):
     self.set_section(section)
     self.set_name(name)
     self.set_version(1)
-    self.register_output("MAG-DIFFERENCE", "Volts")
+    self.register_output("MAG-DIFF", "V")
     self.register_input("magnitude1")
     self.register_input("magnitude2")
 
   def compute(self, changed_ranges, input_streams, params, report):
-    mag_diff_output = report.output("MAG-DIFFERENCE")
+    mag_diff_output = report.output("MAG-DIFF")
 
     mag1 = input_streams["magnitude1"]
     mag2 = input_streams["magnitude2"]
