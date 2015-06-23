@@ -5,7 +5,7 @@ class Magnitude_Difference (qdf.QDF2Distillate):
   def initialize(self, section="Magnitude_Difference", name="default"):
     self.set_section(section)
     self.set_name(name)
-    self.set_version(1)
+    self.set_version(2)
     self.register_output("MAG-DIFF", "V")
     self.register_input("magnitude1")
     self.register_input("magnitude2")
