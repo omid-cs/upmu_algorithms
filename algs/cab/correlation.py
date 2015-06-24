@@ -5,7 +5,7 @@ class Correlation(qdf.QDF2Distillate):
 	def initialize(self, section , name ):
 		self.set_section(section)
 		self.set_name(name)
-		self.set_version(10)
+		self.set_version(11)
 		self.register_input("Signal1")
 		self.register_input("Signal2")
 		self.register_output("correlation_output","none")
@@ -48,7 +48,7 @@ class Correlation(qdf.QDF2Distillate):
 			if lined_up:
 				windowed_signal1 = [Signal1[i][1] for i in i_Signal1_array]
 				windowed_signal2 = [Signal2[i][1] for i in i_Signal2_array]
-				covariance_matrix = np.cov(windowed_signal1,windowed_signal2)
+				covariance_matrix = np.corrcoef(windowed_signal1,windowed_signal2)
 				co = covariance_matrix[0,1]
 				#get the starting index for the window and set this to be the corresponding time for window start time. 
 				window_starttime = Signal1[i_Signal1_array[0]][0]
