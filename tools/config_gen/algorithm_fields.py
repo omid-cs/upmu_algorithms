@@ -45,4 +45,4 @@ algorithms = {
                         'params'  : ['section', 'name', 'units', 'window_time', 'availability_threshold'],
                         'outputs' : ['FILTERED'] }
 }
-locations = ['LBNL', 'UCB', 'PSL']
+locations = ['LBNL', 'UCB', 'PSL', 'TVA']

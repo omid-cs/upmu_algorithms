@@ -191,8 +191,8 @@ class IniGenGui(Frame):
     search_results = set()
     for path in queried_data:
       dirs = path.split('/')
-      if searchterm in dirs[2]:
-        search_results.add(dirs[2])
+      if searchterm in '/'.join(dirs[2:-1]):
+        search_results.add('/'.join(dirs[2:-1]))
     return search_results
 
   def set_loc(self):
