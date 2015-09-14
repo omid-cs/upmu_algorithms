@@ -170,7 +170,7 @@ class IniGenGui(Frame):
   def refnamesearch(self):
     searchterm = self.entry_refnamesearch.get()
     searchphrase = '/Clean/%{0}%/%'.format(searchterm)
-    search_results = self.search(searchterm, searchphrase)
+    search_results = self.search(searchterm, searchphrase, ref=True)
     self.lstbx_refnamelist.delete(0, END)
     if len(search_results) == 0:
       tkMessageBox.showwarning('Search Error', 'No matches from search for \'{0}\''.format(searchterm))
@@ -178,7 +178,7 @@ class IniGenGui(Frame):
       for result in search_results:
         self.lstbx_refnamelist.insert(END, result)
   
-  def search(self, searchterm, searchphrase):
+  def search(self, searchterm, searchphrase, ref=False):
     connection = _mysql.connect(host="128.32.37.231", port=3306, user="upmuteam",
                                 passwd="moresecuredataftw", db='upmu')
     connection.query("SELECT * FROM uuidpathmap WHERE path LIKE '{0}'".format(searchphrase))
@@ -191,8 +191,12 @@ class IniGenGui(Frame):
     search_results = set()
     for path in queried_data:
       dirs = path.split('/')
-      if searchterm in '/'.join(dirs[2:-1]):
-        search_results.add('/'.join(dirs[2:-1]))
+      if ref:
+        if searchterm in '/'.join(dirs[2:-2]):
+          search_results.add('/'.join(dirs[2:-2]))
+      else:
+        if searchterm in '/'.join(dirs[2:-1]):
+          search_results.add('/'.join(dirs[2:-1]))
     return search_results
 
   def set_loc(self):
